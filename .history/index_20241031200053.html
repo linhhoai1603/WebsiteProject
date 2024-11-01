@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <title>Fashion Store - Trang Sản Phẩm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        /* CSS Cơ Bản */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        /* Sidebar Styling */
+        .product-list {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product-list h5 {
+            background-color: #00a2ff;
+            color: white;
+            padding: 10px;
+            margin: 0 0 20px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .product-list .all-products {
+            /* Single div wrapping all products */
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .product-list .all-products .product-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .product-list .all-products .product-item:last-child {
+            border-bottom: none;
+        }
+        .product-list .all-products .product-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .product-list .all-products .product-info {
+            flex-grow: 1;
+        }
+        .product-list .all-products .product-info del {
+            color: #999;
+            margin-right: 5px;
+        }
+        .product-list .all-products .product-info .price {
+            color: #00a2ff;
+            font-weight: bold;
+        }
+        /* Commitment Section Styling */
+        .commitment-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        .commitment-section h3 {
+            color: #00a2ff;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .commitment-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .commitment-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+            object-fit: cover;
+        }
+        .commitment-info .stars {
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+        .commitment-info p {
+            margin: 0 0 10px 0;
+            color: #555;
+        }
+        .commitment-info .manager {
+            font-weight: bold;
+            color: #333;
+        }
+        /* Accordion Styling */
+        .accordion-item {
+            border: none;
+            margin-bottom: 10px;
+        }
+        .accordion-button {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: bold;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #00a2ff;
+            background-color: #e9ecef;
+        }
+        /* Footer Styling */
+        footer {
+            background-color: #ffffff;
+            padding: 20px 0;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        footer .text-center {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container chính -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Sidebar: Sản phẩm bán chạy -->
+            <div class="col-md-4">
+                <div class="product-list">
+                    <h5>SẢN PHẨM BÁN CHẠY</h5>
+                    <div class="all-products">
+                        <!-- Sản phẩm 1 -->
+                        <div class="product-item">
+                            <img alt="Áo sơ mi nam dài tay Café-DriS khử mùi - Đen" src="https://storage.googleapis.com/a1aa/image/GwOYbe20WiRdEKLwGPb8MwpZ1wVf8vFJnYO1p4ZJyLBBoSsTA.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Áo sơ mi nam dài tay Café-DriS khử mùi - Đen</div>
+                                <div>
+                                    <del>469,000₫</del>
+                                    <span class="price">390,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 2 -->
+                        <div class="product-item">
+                            <img alt="Áo sơ mi nam dài tay Café-DriS khử mùi - Xanh nhạt" src="https://storage.googleapis.com/a1aa/image/028j9JUuxbaBD5cILe1Jju4hRAAFueAf3SsJ19u8jmQRQlYnA.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Áo sơ mi nam dài tay Café-DriS khử mùi - Xanh nhạt</div>
+                                <div>
+                                    <del>469,000₫</del>
+                                    <span class="price">390,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 3 -->
+                        <div class="product-item">
+                            <img alt="Áo sơ mi nam dài tay Café-DriS khử mùi - Xám tro" src="https://storage.googleapis.com/a1aa/image/nLGRjSSRxwJDKtQUtaWZvIRpIgyISJ8llGO4qbYpPwHAqE7E.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Áo sơ mi nam dài tay Café-DriS khử mùi - Xám tro</div>
+                                <div>
+                                    <del>469,000₫</del>
+                                    <span class="price">390,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 4 -->
+                        <div class="product-item">
+                            <img alt="Áo sơ mi nam dài tay Café-DriS khử mùi - Trắng" src="https://storage.googleapis.com/a1aa/image/qunkg64SZUqdERFM1rzXhHwcDbVGuWDORnUFkf9hL5IenSsTA.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Áo sơ mi nam dài tay Café-DriS khử mùi - Trắng</div>
+                                <div>
+                                    <del>469,000₫</del>
+                                    <span class="price">390,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 5 -->
+                        <div class="product-item">
+                            <img alt="Quần khaki túi chéo Ceffylo - Camel" src="https://storage.googleapis.com/a1aa/image/30JRhfTs641OJamE16LyReR55zq7BgYZgpV9VTwGQFTGoSsTA.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Quần khaki túi chéo Ceffylo - Camel</div>
+                                <div>
+                                    <del>429,000₫</del>
+                                    <span class="price">366,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 6 -->
+                        <div class="product-item">
+                            <img alt="Quần khaki túi chéo Ceffylo - Be" src="https://storage.googleapis.com/a1aa/image/UAzFeaPFJjQpTiLfRgytev491XgZrm6f2JWATeCbxtzTBVidC.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Quần khaki túi chéo Ceffylo - Be</div>
+                                <div>
+                                    <del>429,000₫</del>
+                                    <span class="price">366,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 7 -->
+                        <div class="product-item">
+                            <img alt="Quần khaki túi chéo Ceffylo - Xám đậm" src="https://storage.googleapis.com/a1aa/image/8DfIjEU16USDUy9wfnqAKxMf10RyFevcCkp86bYDamV6fUidC.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Quần khaki túi chéo Ceffylo - Xám đậm</div>
+                                <div>
+                                    <del>429,000₫</del>
+                                    <span class="price">366,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 8 -->
+                        <div class="product-item">
+                            <img alt="Quần khaki túi chéo Ceffylo - Đen" src="https://storage.googleapis.com/a1aa/image/0uAQwWUPetUAGKgW2DUy6TlfeDUVYFMg9NSTr802NjWOQlYnA.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Quần khaki túi chéo Ceffylo - Đen</div>
+                                <div>
+                                    <del>429,000₫</del>
+                                    <span class="price">366,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sản phẩm 9 -->
+                        <div class="product-item">
+                            <img alt="Túi tote vải Canvas SS2 Care &amp; Share - Be" src="https://storage.googleapis.com/a1aa/image/ifnJS9XoUJ1kD644fwYgShT5zFOCy07keOCOj9hAlDb3PlYnA.jpg" width="50" height="50"/>
+                            <div class="product-info">
+                                <div>Túi tote vải Canvas SS2 Care &amp; Share - Be</div>
+                                <div>
+                                    <del>159,000₫</del>
+                                    <span class="price">119,000₫</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phần Bên Phải: Cam Kết 100% Hài Lòng và Accordion -->
+                <div class="col-md-8 commitment-section">
+                    <h3>Cam Kết 100% Hài Lòng</h3>
+                    <!-- Commitment Item 1 -->
+                    <div class="commitment-item">
+                        <img alt="Person in black t-shirt" src="https://storage.googleapis.com/a1aa/image/0NI3eL5qhx2xPiIWbdBSGnfnN2HeJQucQcwCVz0VJqDJQlYnA.jpg" width="100" height="100"/>
+                        <div class="commitment-info">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>
+                                Sản phẩm rất ưng ý. Đóng gói chuyên nghiệp. Một người mua hàng thông thái, không chỉ cần 1 sp (sản phẩm) chất lượng, đóng gói sản phẩm đẹp mà bên cạnh điều đó thì điều Phục Vụ chuyên nghiệp là điều quan trọng nhất, điều đó phục vụ tốt sẽ làm khách hàng hài lòng, và sẽ giới thiệu cho nhiều người khác.
+                            </p>
+                            <div class="manager">
+                                Nguyễn Thế Anh / Manager
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Commitment Item 2 -->
+                    <div class="commitment-item">
+                        <img alt="Person in blue shirt" src="https://storage.googleapis.com/a1aa/image/ikfb5xQyYgUyRi2Glkz6IcNyh57sMwxSQ7LetHFEvWbCoSsTA.jpg" width="100" height="100"/>
+                        <div class="commitment-info">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>
+                                Sản phẩm rất ưng ý. Đóng gói chuyên nghiệp. Một người mua hàng thông thái, không chỉ cần 1 sp (sản phẩm) chất lượng, đóng gói sản phẩm đẹp mà bên cạnh điều đó thì điều Phục Vụ chuyên nghiệp là điều quan trọng nhất, điều đó phục vụ tốt sẽ làm khách hàng hài lòng, và sẽ giới thiệu cho nhiều người khác.
+                            </p>
+                            <div class="manager">
+                                Nguyễn Thế Anh / Manager
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion Section -->
+                    <h3 class="mt-5">Cam Kết 100% Hài Lòng</h3>
+                    <div class="accordion" id="accordionExample">
+                        <!-- Accordion Item 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    01. Liên hệ Chăm sóc khách hàng dễ dàng
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Liên hệ Chăm sóc khách hàng dễ dàng
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    02. Thời gian trao đổi với các bạn tổng đài viên là không hạn chế
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Thời gian trao đổi với các bạn tổng đài viên là không hạn chế
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    03. Văn hoá say YES trong xử lý tình huống
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Văn hoá say YES trong xử lý tình huống
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    04. Sự tương tác mang tính cá nhân hoá
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Sự tương tác mang tính cá nhân hoá
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 5 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    05. CSKH hoạt động 13,5h/1 ngày và 7 ngày/1 tuần
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    CSKH hoạt động 13,5h/1 ngày và 7 ngày/1 tuần
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 6 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    06. Dịch vụ đổi trả miễn phí 60 ngày với BẤT CỨ LÝ DO GÌ
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dịch vụ đổi trả miễn phí 60 ngày với BẤT CỨ LÝ DO GÌ
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 7 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSeven">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                    07. Dịch vụ đổi trả tận nơi của Fashion
+                                </button>
+                            </h2>
+                            <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Dịch vụ đổi trả tận nơi của Fashion
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 8 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingEight">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                    08. Trả hàng hoàn tiền và có bưu tá lấy hàng tận nơi
+                                </button>
+                            </h2>
+                            <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Trả hàng hoàn tiền và có bưu tá lấy hàng tận nơi
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Accordion Item 9 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingNine">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                    09. Giao hàng nhanh mà không thu thêm phí
+                                </button>
+                            </h2>
+                            <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    Giao hàng nhanh mà không thu thêm phí
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+    </div>
+    <!-- Footer (Optional) -->
+    <footer class="bg-light text-center text-lg-start py-4">
+        <div class="text-center p-3">
+            © 2024 Fashion Store. All rights reserved.
+        </div>
+    </footer>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
