@@ -17,7 +17,7 @@
         /* Custom size for the dropdown menu */
         .dropdown-menu.custom-dropdown {
             width: 1000px;  /* Set width */
-            height: 500px;  /* Set height */
+            height: 450px;  /* Set height */
             overflow: auto;  /* Enable scrolling if content overflows */
         }
         .card{
@@ -27,15 +27,18 @@
         }
         a{
             text-decoration: none;
-            color: black;
+            color: black !important;
             text-align: center;
+        }
+        .dropdown-item .row .col-md-2 h4{
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <!--navbar for page-->
-        <nav class="navbar navbar-expand-lg" style="background-color: #4FD0B6;">
+        <nav class="navbar navbar-expand-lg" style="background-color: #4FD0B6; height: 40px;">
             <div class="container-fluid">
                 <a class="navbar-brand text-white" href="\user?method=home">Trang chủ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,23 +116,42 @@
                                             </div>
 
                                             <div class="col-md-2">
-                                                <h4>Bán chạy</h4>
-                                                <a href="...">Vải Cotton</a>
+                                                <h4>Mùa hè</h4>
+                                                <a href="...">Vải Cotton</a><br>
+                                                <a href="...">Vải Linen </a><br>
+                                                <a href="...">Vải Rayon</a><br>
+                                                <a href="...">Vải Bamboo </a><br>
+                                                <a href="...">Vải Chambray</a><br>
                                             </div>
 
                                             <div class="col-md-2">
-                                                <h4>Bán chạy</h4>
-                                                <a href="...">Vải Cotton</a>
+                                                <h4>Mùa thu</h4>
+                                                <a href="...">Vải Cotton</a>   <br> 
+                                                <a href="...">Vải Wool </a><br>
+                                                <a href="...">Vải Tweed</a><br>
+                                                <a href="...">Vải Flannel</a><br>
+                                                <a href="...">Vải Corduroy</a><br>
+                                                <a href="...">Vải Denim</a><br>
                                             </div>
 
                                             <div class="col-md-2">
-                                                <h4>Bán chạy</h4>
-                                                <a href="...">Vải Cotton</a>
+                                                <h4>Đồng phục</h4>
+                                                <a href="...">Polyester</a><br>
+                                                <a href="...">Cotton-PVC</a><br>
+                                                <a href="...">Nỉ </a><br>
+                                                <a href="...">Kaki</a><br>
+                                                <a href="...">Lanh </a><br>
+
                                             </div>
 
                                             <div class="col-md-2">
-                                                <h4>Bán chạy</h4>
-                                                <a href="...">Vải Cotton</a>
+                                                <h4>Nội thất</h4>
+                                                <a href="...">Vải Cotton</a><br>
+                                                <a href="...">Vải Microfiber</a><br>
+                                                <a href="...">Vải Velvet</a><br>
+                                                <a href="...">Vải Polyester</a><br>
+                                                <a href="...">Vải Tweed</a><br>
+                                                <a href="...">Vải Canvas</a><br>
                                             </div>
                                         </div>
                                     </div>
@@ -138,8 +160,10 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="\user?method=service">Vải may mặc</a>
-                        </li>
+                            <!-- create dropdown with bootstrap-->
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="\user?method=blog">Vải may mặc</a>
+                            </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="\user?method=blog">Vải nội thất</a>
                         </li>
