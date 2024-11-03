@@ -1,0 +1,71 @@
+.bestseller-title{
+  background-color: #339C87; /* Chuyển đổi sang màu xanh lá cây */
+  color: white;
+  padding: 5px;
+  padding-top: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.custom-btn:hover,
+.custom-btn:focus ,
+.custom-btn:active{
+  background-color: #339C87; /* Màu nền khi nhấn */
+  color: #fff; /* Màu chữ khi nhấn */
+  border-color: #339C87; /* Màu viền khi nhấn */
+}
+.button-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  
+}
+.button-container .btn{
+  width: 100%;
+  outline-color: #339C87;
+}
+.custom-btn{
+  background-color:#339C87 ;
+  outline-color: #A6E3E9;
+}
+.pagination-container {
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc nếu cần */
+  margin-top: 20px; /* Khoảng cách bên trên (tuỳ chọn) */
+}
+
+.pagination {
+  display: flex;
+  gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 50%; /* Hình tròn */
+  background-color: transparent;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.page-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.page-btn.active {
+  background-color: #4a6583; /* Màu nền khi được chọn */
+  color: #fff; /* Màu chữ khi được chọn */
+  border-color: #4a6583;
+}
+
+
