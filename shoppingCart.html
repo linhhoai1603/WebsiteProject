@@ -81,15 +81,13 @@
             width: 100%;
             height: 100%;
         }
-        html, body {
-        width: 100%;
-        overflow-x: hidden; /* Ngăn chặn cuộn ngang */
-        }
+       
        
 
 
+
      </style>
-    <title>Các mẫu thiết kế</title>
+    <title>Giỏ hàng</title>
 </head>
 <body>
       <!-- Header -->
@@ -273,220 +271,115 @@
     </div>
     <!-- End Navbar -->
     <!-- Content -->
-    <div class="container-fluid">
-        <!-- Vải linen -->
+     <div class="container"> 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-1"></div> <!-- Empty div-->
+
+            <!-- Danh mục sản phẩm trong giỏ hàng -->
+            <div class="col-md-10"> <!-- content of cart -->
                 <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-center">Các mẫu thiết kế với vải Linen</h2>
+                    <!-- sản phẩm trong giỏ hàng-->
+                    <div class="col-md-7">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Sản phẩm</th>
+                                    <th scope="col">Giá</th>
+                                    <th scope="col">Số lượng</th>
+                                    <th scope="col">Tạm tính</th>
+                                    <th scope="col">Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img src="images/cart2.jpg" alt="" style="width: 100%; height: 100%; text-align: center;">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <h5>Vải lụa</h5>
+                                                <p>Chất liệu: Lụa</p>
+                                                <p>Màu sắc: Trắng</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>100.000đ</td>
+                                    <td>
+                                        <input type="number" value="1" min="1" style="width: 50px; text-align: center;">
+                                    </td>
+                                    <td>100.000đ</td>
+                                    <td>
+                                        <button class="rounded-circle bg-danger text-white"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img src="images/cart1.jpg" alt="" style="width: 100%; height: 100%; ">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <h5>Vải kaki</h5>
+                                                <p>Chất liệu: Kaki</p>
+                                                <p>Màu sắc: Xanh</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>150.000đ</td>
+                                    <td>
+                                        <input type="number" value="1" min="1" style="width: 50px; text-align: center;">
+                                    </td>
+                                    <td>150.000đ</td>
+                                    <td>
+                                        <button class="rounded-circle bg-danger text-white"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <img src="images/cart3.jpg" alt="" style="width: 100%; height: 100%;">
+                                            </div>
+                                            <div class="col-md-9">
+                                                <h5>Vải nhung</h5>
+                                                <p>Chất liệu: Nhung</p>
+                                                <p>Màu sắc: Đen</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>200.000đ</td>
+                                    <td>
+                                        <input type="number" value="1" min="1" style="width: 50px; text-align: center;">
+                                    </td>
+                                    <td>200.000đ</td>
+                                    <td>
+                                        <button class="rounded-circle bg-danger text-white"><i class="fa-solid fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <!-- end sản phẩm-->
+                    <!-- Thanh toán giỏ hàng -->
+                    <div class="col-md-3">
+                    </div>
+                        
+                    <!-- end thanh toán giỏ hàng -->
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/design1.webp" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design2.webp" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design3.jpg" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/design4.webp" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design5.jpg" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design6.webp" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                </div>
+
             </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-center">Chi tiết</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="images/designSlide.jpg" class="d-block w-100 h-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/designSlide2.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/designSlide1.jpg" class="d-block w-100 h-100" alt="...">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <img src="images/design7.jpg" alt="" style="height: 620px; width: 500px;">
-                    </div>
-                </div>
-            </div>
+
+
+
+
+
+            <div class="col-md-1"></div> <!-- Empty div-->
         </div>
-        <!-- End vải linen -->
-          <!-- Vải cotton -->
-        <div class="row mt-3 mb-4">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-center">Các mẫu thiết kế với vải Cotton</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/design-c1.webp" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design-c2.webp" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design-c3.webp" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/design-c4.webp" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design-c5.webp" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/design-c6.webp" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-center">Chi tiết</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="carouselExampleControl" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="images/ds-c1.jpg" class="d-block w-100 h-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/ds-c2.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/ds-c3.jpg" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControl" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControl" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <img src="images/ds-c4.jpg" alt="" style="height: 620px; width: 500px;">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End vải cotton -->
-        <!-- Vải nỉ -->
-          <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-center">Các mẫu thiết kế với vải nỉ</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/dl1.jpg" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/dl2.jpg" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/dl3.jpg" alt="" style="width: 100%; height: 100%;">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="images/dl4.jpg" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/dl5.jpg" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/dl6.jpg" alt="" style="width: 100%; height: 100%; margin-top: 10px;">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="text-center">Chi tiết</h2>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="carouselExampleControlsNi" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="images/sl1.jpg" class="d-block w-100 h-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/sl2.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="images/sl3.jpg" class="d-block w-100 h-100" alt="...">
-                                </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNi" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNi" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <img src="images/sl4.jpg" alt="" style="height: 620px; width: 500px; margin-top: 10px;">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End vải nỉ -->              
-    </div>
+     </div>
+    <!-- End content -->
     <!-- footer -->
-    <footer class="text-white pt-5 pb-4" style="background-color: #4FD0B6;">
+    <footer class="text-white pt-5 pb-4" style="background-color: #4FD0B6; width: 100%;">
         <div class="container text-md-left">
           <div class="row text-md-left">
             <!-- Liên hệ -->
