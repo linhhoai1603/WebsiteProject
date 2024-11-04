@@ -1,0 +1,28 @@
+
+.poster{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+
+}
+.poster img{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.btn-custom{
+  background-color:#339C87 ;
+}
+.btn-custom:hover,
+.btn-custom:focus ,
+.btn-custom:active{
+  background-color: #008080; /* Màu nền khi nhấn */
+  color: #fff; /* Màu chữ khi nhấn */
+  border-color: #008080; /* Màu viền khi nhấn */
+}
+
+.footer{
+  background-color: #339C87;
+  height: 100px;
+  width: 100%;
+}
