@@ -18,6 +18,7 @@
     />
     <title>Trang chủ</title>
     <style>
+      /* Các style hiện tại của bạn */
       .bg {
         background-color: #4fd0b6;
       }
@@ -29,6 +30,9 @@
       body {
         margin: 0;
         padding: 0;
+        /* Tùy chỉnh scrollbar cho Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
       }
 
       .intro {
@@ -85,16 +89,38 @@
         width: 100%;
         padding: 3px;
       }
+
       .active {
         font-size: 19px;
       }
+
       .active:hover {
         text-decoration: none;
       }
+
       html,
       body {
         width: 100%;
         overflow-x: hidden; /* Ngăn chặn cuộn ngang */
+      }
+
+      /* Tùy chỉnh scrollbar cho trình duyệt WebKit (Chrome, Safari) */
+      ::-webkit-scrollbar {
+        width: 8px; /* Độ rộng của scrollbar */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.5); /* Màu của thanh cuộn */
+        border-radius: 4px; /* Bo góc cho thanh cuộn */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
       }
     </style>
   </head>
@@ -111,7 +137,7 @@
           <div class="col-md-2 text-center">
             <img
               src="images/logo.jpg"
-              alt=""
+              alt="Logo"
               style="width: 100%; height: 100%"
             />
           </div>
@@ -132,15 +158,15 @@
             </form>
           </div>
           <div class="col-md-5 text-center pt-4">
-            <a href="\user?method=cart" class="btn text-white btn-bg"
-              ><i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng</a
-            >
-            <a href="\user?method=login" class="btn text-white btn-bg"
-              ><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập</a
-            >
-            <a href="\user?method=register" class="btn text-white btn-bg"
-              ><i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký</a
-            >
+            <a href="\user?method=cart" class="btn text-white btn-bg">
+              <i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng
+            </a>
+            <a href="\user?method=login" class="btn text-white btn-bg">
+              <i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập
+            </a>
+            <a href="\user?method=register" class="btn text-white btn-bg">
+              <i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký
+            </a>
           </div>
         </div>
       </div>
@@ -186,7 +212,7 @@
                     aria-labelledby="dropdownMenuLink"
                   >
                     <!-- Nội dung Dropdown hiện tại -->
-                    <!-- ... -->
+                    <!-- Bạn có thể thêm các mục sản phẩm ở đây -->
                   </ul>
                 </div>
               </li>
@@ -214,30 +240,30 @@
 
               <!-- Các mục khác -->
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=blog"
-                  >Vải may mặc</a
-                >
+                <a class="nav-link text-white" href="\user?method=blog">
+                  Vải may mặc
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=blog"
-                  >Vải nội thất</a
-                >
+                <a class="nav-link text-white" href="\user?method=blog">
+                  Vải nội thất
+                </a>
               </li>
               <!-- Các mục còn lại -->
               <li class="nav-item">
-                <a class="nav-link text-white" href="designProduct.html"
-                  >Các mẫu thiết kế</a
-                >
+                <a class="nav-link text-white" href="designProduct.html">
+                  Các mẫu thiết kế
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=contact"
-                  >Liên hệ</a
-                >
+                <a class="nav-link text-white" href="\user?method=contact">
+                  Liên hệ
+                </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=about"
-                  >Chính sách đổi trả</a
-                >
+                <a class="nav-link text-white" href="\user?method=about">
+                  Chính sách đổi trả
+                </a>
               </li>
             </ul>
           </div>
@@ -263,7 +289,7 @@
         src="contact.html"
         scrolling="no"
         frameborder="0"
-        style="width: 100%; height: 3200px"
+        style="width: 100%; height: 1600px; overflow: hidden"
       ></iframe>
     </div>
     <!-- footer -->
@@ -327,29 +353,29 @@
             <div class="text-center text-md-right">
               <ul class="list-unstyled list-inline">
                 <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white"
-                    ><i class="fab fa-facebook"></i
-                  ></a>
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-facebook"></i>
+                  </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white"
-                    ><i class="fab fa-instagram"></i
-                  ></a>
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-instagram"></i>
+                  </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white"
-                    ><i class="fab fa-tiktok"></i
-                  ></a>
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-tiktok"></i>
+                  </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white"
-                    ><i class="fab fa-zalo"></i
-                  ></a>
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-zalo"></i>
+                  </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#" class="btn-floating btn-sm text-white"
-                    ><i class="fab fa-youtube"></i
-                  ></a>
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-youtube"></i>
+                  </a>
                 </li>
               </ul>
             </div>
@@ -367,7 +393,16 @@
       } else {
         iframe.style.height = "3200px";
       }
-      // slide.html hiden when width of screen < 768px but still show content.html
+      // slide.html hidden when width of screen < 768px but still show content.html
+      document.addEventListener("DOMContentLoaded", () => {
+        const iframe = document.getElementById("iframe__content");
+
+        iframe.onload = function () {
+          // Điều chỉnh chiều cao của iframe dựa trên nội dung của nó
+          iframe.style.height =
+            iframe.contentWindow.document.body.scrollHeight + "px";
+        };
+      });
     </script>
     <!-- Bootstrap JS -->
     <script

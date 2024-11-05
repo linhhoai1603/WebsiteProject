@@ -210,8 +210,11 @@
                 </div>
               </div>
               <div class="form-floating mb-4">
-                <textarea class="form-control" id="message" placeholder="Nhập nội dung" style="height: 150px"></textarea>
-                <label for="message">Nội dung</label>
+                <textarea class="form-control" id="message" placeholder="Nhập nội dung" style="height: 150px" required></textarea>
+                <label for="message">Nội dung <span class="text-danger">*</span></label>
+                <div class="invalid-feedback">
+                  Vui lòng nhập nội dung.
+                </div>
               </div>
               <!-- Google reCAPTCHA -->
               <div class="mb-4">
@@ -252,17 +255,43 @@
           return;
         }
 
-        if (form.checkValidity()) {
-          // Here you can handle the form data, e.g., send it via AJAX
-          // For demonstration, we'll just show an alert
-          alert('Cảm ơn bạn đã liên hệ với chúng tôi!');
-          form.reset();
-          grecaptcha.reset();
-          form.classList.remove('was-validated');
-        } else {
-          form.classList.add('was-validated');
+        try {
+          if (form.checkValidity()) {
+            // Here you can handle the form data, e.g., send it via AJAX
+            // For demonstration, we'll just show an alert
+            alert('Cảm ơn bạn đã liên hệ với chúng tôi!');
+            form.reset();
+            grecaptcha.reset();
+            form.classList.remove('was-validated');
+          } else {
+            form.classList.add('was-validated');
+          }
+        } catch (error) {
+          console.error('Có lỗi xảy ra:', error);
+          alert('Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại sau.');
         }
-      }, false)
+      }, false);
+
+      // Handle required field focus and blur events
+      const requiredFields = form.querySelectorAll('[required]');
+      requiredFields.forEach((field) => {
+        field.addEventListener('focus', () => {
+          field.classList.remove('is-invalid');
+        });
+
+        field.addEventListener('blur', () => {
+          if (!field.checkValidity()) {
+            field.classList.add('is-invalid');
+          }
+        });
+      });
+
+      // Handle input field changes to remove invalid styles
+      form.addEventListener('input', (event) => {
+        if (event.target.classList.contains('form-control')) {
+          event.target.classList.remove('is-invalid');
+        }
+      });
     })()
   </script>
 </body>
