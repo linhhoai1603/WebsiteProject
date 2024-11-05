@@ -115,17 +115,15 @@
       }
 
       .sidebar {
-    max-height: 600px; /* Giới hạn chiều cao của sidebar */
-    overflow-y: auto; /* Bật thanh cuộn nếu vượt quá chiều cao */
-}
+        max-height: 600px; /* Giới hạn chiều cao của sidebar */
+        overflow-y: auto; /* Bật thanh cuộn nếu vượt quá chiều cao */
+      }
       /* Ẩn sidebar khi ở chế độ iframe nếu thấy không cần thiết */
       @media (max-width: 768px) {
         .sidebar {
           display: none;
         }
       }
-
-      
     </style>
   </head>
   <body>
@@ -406,7 +404,7 @@
     <div class="container-fluid" style="margin-top: -200px">
       <iframe
         id="iframe__content"
-        src="nutao.html"
+        src="Button_Up.html"
         scrolling="no"
         frameborder="0"
         style="width: 100%; height: 1600px; overflow: hidden"
@@ -516,13 +514,14 @@
       // slide.html hiden when width of screen < 768px but still show content.html
 
       document.addEventListener("DOMContentLoaded", () => {
-  const iframe = document.getElementById("iframe__content");
-  
-  iframe.onload = function () {
-    // Điều chỉnh chiều cao của iframe dựa trên nội dung của nó
-    iframe.style.height = iframe.contentWindow.document.body.scrollHeight + "px";
-  };
-}); 
+        const iframe = document.getElementById("iframe__content");
+
+        iframe.onload = function () {
+          // Điều chỉnh chiều cao của iframe dựa trên nội dung của nó
+          iframe.style.height =
+            iframe.contentWindow.document.body.scrollHeight + "px";
+        };
+      });
     </script>
     <!-- Bootstrap JS -->
     <script

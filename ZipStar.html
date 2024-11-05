@@ -22,22 +22,27 @@
         font-family: "Arial", sans-serif;
         background-color: #f5f5f5;
       }
+
+      /* Chỉnh sửa breadcrumb */
       .breadcrumb {
-        background-color: #fff;
+        background-color: #4fd0b6; /* Màu nền mới */
         margin-bottom: 20px;
         padding: 10px 15px;
         border-radius: 5px;
       }
-      .breadcrumb-item a {
-        color: #333;
+      .breadcrumb-item a,
+      .breadcrumb-item.active {
+        color: #fff; /* Màu chữ trắng */
         text-decoration: none;
       }
       .breadcrumb-item a:hover {
         text-decoration: underline;
+        color: #fff; /* Giữ màu chữ trắng khi hover */
       }
       .breadcrumb-item.active {
-        color: #000;
+        color: #fff; /* Màu chữ trắng cho mục active */
       }
+
       .sidebar {
         background-color: #fff;
         padding: 20px;
@@ -217,7 +222,7 @@
       .description {
         display: -webkit-box;
         --webkit-line-clamp: 3; /* Giới hạn 3 dòng */
-        -webkit-box-orient: vertical;
+        --webkit-box-orient: vertical;
         overflow: hidden;
         text-overflow: ellipsis;
       }
@@ -274,9 +279,9 @@
                 data-min="10000"
                 data-max="20000"
               />
-              <label class="form-check-label" for="price2"
-                >10.000đ - 20.000đ</label
-              >
+              <label class="form-check-label" for="price2">
+                10.000đ - 20.000đ
+              </label>
             </div>
             <div class="form-check mb-2">
               <input
@@ -286,9 +291,9 @@
                 data-min="20000"
                 data-max="50000"
               />
-              <label class="form-check-label" for="price3"
-                >20.000đ - 50.000đ</label
-              >
+              <label class="form-check-label" for="price3">
+                20.000đ - 50.000đ
+              </label>
             </div>
             <div class="form-check mb-2">
               <input
@@ -298,9 +303,9 @@
                 data-min="50000"
                 data-max="100000"
               />
-              <label class="form-check-label" for="price4"
-                >50.000đ - 100.000đ</label
-              >
+              <label class="form-check-label" for="price4">
+                50.000đ - 100.000đ
+              </label>
             </div>
             <div class="form-check mb-2">
               <input
@@ -672,7 +677,7 @@
             <div
               class="col-md-4 mb-4"
               data-price="10000"
-              data-brand="ElegantZips"
+              data-brand="ZipperPro"
             >
               <div class="card h-100">
                 <img
@@ -979,7 +984,7 @@
             <div
               class="col-md-4 mb-4"
               data-price="13000"
-              data-brand="ElegantZips"
+              data-brand="ZipperPro"
             >
               <div class="card h-100">
                 <img

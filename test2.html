@@ -1,502 +1,554 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Bootstrap CSS -->
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  />
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-  <title>Trang chủ</title>
-  <style>
-    .bg {
-      background-color: #4fd0b6;
-    }
-
-    .btn:hover {
-      background-color: #4fd0b6;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-    }
-
-    .intro {
-      height: 25px;
-    }
-
-    .btn-bg {
-      background-color: #339c87 !important;
-      color: white;
-    }
-
-    /* Custom styles for dropdown hover */
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
-    /* Custom size for the dropdown menu */
-    .dropdown-menu.custom-dropdown {
-      width: 1000px; /* Set width */
-      height: auto; /* Set height to auto to allow content to define height */
-      max-height: 600px; /* Optional: set max height */
-      overflow-y: auto; /* Enable scrolling if content overflows */
-    }
-
-    .card {
-      width: 100%;
-      cursor: pointer;
-    }
-
-    a {
-      text-decoration: none;
-      color: black !important;
-      text-align: center;
-    }
-
-    .dropdown-item .row .col-md-2 h4 {
-      font-size: 20px;
-    }
-
-    .slide-container {
-      width: 70%;
-      height: 100vh;
-    }
-
-    .ad-section {
-      width: 30%;
-      height: 50vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .ad-section img {
-      width: 100%;
-      padding: 3px;
-    }
-
-    .active {
-      font-size: 19px;
-    }
-
-    .active:hover {
-      text-decoration: none;
-    }
-
-    html,
-    body {
-      width: 100%;
-      overflow-x: hidden; /* Ngăn chặn cuộn ngang */
-    }
-
-    /* Đặt giới hạn chiều rộng cho phần chính */
-    .container-fluid {
-      max-width: 100%;
-      padding: 0 10px; /* Giảm padding để phù hợp với iframe */
-    }
-
-    /* Giảm chiều rộng của các card sản phẩm để phù hợp với iframe */
-    .card {
-      max-width: 100%; /* Giới hạn chiều rộng */
-      margin: auto; /* Căn giữa trong trường hợp kích thước iframe thay đổi */
-    }
-
-    .card-img-top {
-      max-height: 150px; /* Giới hạn chiều cao của hình ảnh để không chiếm quá nhiều không gian */
-      object-fit: cover; /* Giữ tỉ lệ mà không bị méo hình */
-    }
-
-    .sidebar {
-      max-height: 600px; /* Giới hạn chiều cao của sidebar */
-      overflow-y: auto; /* Bật thanh cuộn nếu vượt quá chiều cao */
-    }
-
-    /* Ẩn sidebar khi ở chế độ iframe nếu thấy không cần thiết */
-    @media (max-width: 768px) {
-      .sidebar {
-        display: none;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Trang chủ</title>
+    <style>
+      .bg {
+        background-color: #4fd0b6;
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- Header -->
-  <div class="container-fluid">
-    <div class="row intro text-white bg">
-      <div class="col-md-12">
-        <p class="text-center">Vô Vàn Vải - Vô vàn sáng tạo</p>
+
+      .btn:hover {
+        background-color: #4fd0b6;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .intro {
+        height: 25px;
+      }
+
+      .btn-bg {
+        background-color: #339c87 !important;
+        color: white;
+      }
+
+      /* Custom styles for dropdown hover */
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Custom size for the dropdown menu */
+      .dropdown-menu.custom-dropdown {
+        width: 1000px; /* Set width */
+        height: auto; /* Set height to auto to allow content to define height */
+        max-height: 600px; /* Optional: set max height */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+      }
+
+      .card {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      a {
+        text-decoration: none;
+        color: black !important;
+        text-align: center;
+      }
+
+      .dropdown-item .row .col-md-2 h4 {
+        font-size: 20px;
+      }
+
+      .slide-container {
+        width: 70%;
+        height: 100vh;
+      }
+
+      .ad-section {
+        width: 30%;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .ad-section img {
+        width: 100%;
+        padding: 3px;
+      }
+
+      .active {
+        font-size: 19px;
+      }
+
+      .active:hover {
+        text-decoration: none;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden; /* Ngăn chặn cuộn ngang */
+      }
+
+      /* Đặt giới hạn chiều rộng cho phần chính */
+      .container-fluid {
+        max-width: 100%;
+        padding: 0 10px; /* Giảm padding để phù hợp với iframe */
+      }
+
+      /* Giảm chiều rộng của các card sản phẩm để phù hợp với iframe */
+      .card {
+        max-width: 100%; /* Giới hạn chiều rộng */
+        margin: auto; /* Căn giữa trong trường hợp kích thước iframe thay đổi */
+      }
+
+      .card-img-top {
+        max-height: 150px; /* Giới hạn chiều cao của hình ảnh để không chiếm quá nhiều không gian */
+        object-fit: cover; /* Giữ tỉ lệ mà không bị méo hình */
+      }
+
+      .sidebar {
+        max-height: 600px; /* Giới hạn chiều cao của sidebar */
+        overflow-y: auto; /* Bật thanh cuộn nếu vượt quá chiều cao */
+      }
+
+      /* Ẩn sidebar khi ở chế độ iframe nếu thấy không cần thiết */
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="container-fluid">
+      <div class="row intro text-white bg">
+        <div class="col-md-12">
+          <p class="text-center">Vô Vàn Vải - Vô vàn sáng tạo</p>
+        </div>
       </div>
-    </div>
-    <div class="header">
-      <div class="row">
-        <div class="col-md-2 text-center">
-          <img
-            src="images/logo.jpg"
-            alt="Logo"
-            style="width: 100%; height: 100%"
-          />
-        </div>
-        <div class="col-md-5 text-center pt-4">
-          <form action="/user?method=search" method="post">
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Tìm kiếm sản phẩm"
-                name="search"
-                id="searchInput"
-              />
-              <button class="btn text-white btn-bg" type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>&nbsp;Tìm kiếm
-              </button>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-5 text-center pt-4">
-          <a href="/user?method=cart" class="btn text-white btn-bg">
-            <i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng
-          </a>
-          <a href="/user?method=login" class="btn text-white btn-bg">
-            <i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập
-          </a>
-          <a href="/user?method=register" class="btn text-white btn-bg">
-            <i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navbar -->
-  <div class="container-fluid">
-    <!--navbar for page-->
-    <nav
-      class="navbar navbar-expand-lg"
-      style="background-color: #4fd0b6; height: 40px"
-    >
-      <div class="container-fluid">
-        <a class="navbar-item text-white active" href="">Trang chủ</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <div class="dropdown">
-                <a
-                  class="nav-link dropdown-toggle text-white"
-                  href="#"
-                  role="button"
-                  id="dropdownMenuLink"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Sản phẩm
-                </a>
-                <div
-                  class="dropdown-menu custom-dropdown"
-                  aria-labelledby="dropdownMenuLink"
-                >
-                  <div class="dropdown-item">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar1.jpg"
-                              class="card-img-top"
-                              alt="Vải lụa"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải lụa</h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar2.jpg"
-                              class="card-img-top"
-                              alt="Vải kaki"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải kaki</h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar3.jpg"
-                              class="card-img-top"
-                              alt="Vải nhung"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải nhung</h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar4.jpg"
-                              class="card-img-top"
-                              alt="Vải Linen"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải Linen</h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="dropdown-item">
-                    <div class="row">
-                      <div class="col-md-2">
-                        <h4>Bán chạy</h4>
-                        <a href="...">Vải Cotton</a><br />
-                        <a href="...">Vải Linen</a><br />
-                        <a href="...">Vải Silk</a><br />
-                        <a href="...">Polyester</a><br />
-                        <a href="...">Denim</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Mùa đông</h4>
-                        <a href="...">Vải len</a><br />
-                        <a href="...">Vải nhung</a><br />
-                        <a href="...">Vải lanh</a><br />
-                        <a href="...">Vải da</a><br />
-                        <a href="...">Vải dù</a>
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Mùa hè</h4>
-                        <a href="...">Vải Cotton</a><br />
-                        <a href="...">Vải Linen</a><br />
-                        <a href="...">Vải Rayon</a><br />
-                        <a href="...">Vải Bamboo</a><br />
-                        <a href="...">Vải Chambray</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Mùa thu</h4>
-                        <a href="...">Vải Cotton</a> <br />
-                        <a href="...">Vải Wool</a><br />
-                        <a href="...">Vải Tweed</a><br />
-                        <a href="...">Vải Flannel</a><br />
-                        <a href="...">Vải Corduroy</a><br />
-                        <a href="...">Vải Denim</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Đồng phục</h4>
-                        <a href="...">Polyester</a><br />
-                        <a href="...">Cotton-PVC</a><br />
-                        <a href="...">Nỉ</a><br />
-                        <a href="...">Kaki</a><br />
-                        <a href="...">Lanh</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Nội thất</h4>
-                        <a href="...">Vải Cotton</a><br />
-                        <a href="...">Vải Microfiber</a><br />
-                        <a href="...">Vải Velvet</a><br />
-                        <a href="...">Vải Polyester</a><br />
-                        <a href="...">Vải Tweed</a><br />
-                        <a href="...">Vải Canvas</a><br />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div class="header">
+        <div class="row">
+          <div class="col-md-2 text-center">
+            <img
+              src="images/logo.jpg"
+              alt="Logo"
+              style="width: 100%; height: 100%"
+            />
+          </div>
+          <div class="col-md-5 text-center pt-4">
+            <form action="/user?method=search" method="post">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Tìm kiếm sản phẩm"
+                  name="search"
+                  id="searchInput"
+                />
+                <button class="btn text-white btn-bg" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>&nbsp;Tìm kiếm
+                </button>
               </div>
-            </li>
-            <li class="nav-item">
-              <!-- Tạo dropdown khác nếu cần -->
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/user?method=blog">Vải may mặc</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/user?method=blog">Vải nội thất</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/user?method=contact">Phụ kiện may mặc</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/user?method=contact">Liên hệ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="/user?method=about">Chính sách đổi trả</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!--end navbar for page-->
-  </div>
-
-  <!-- Slide -->
-  <div class="container-fluid">
-    <iframe
-      src="slide.html"
-      scrolling="no"
-      frameborder="0"
-      style="width: 100%; height: 546px; margin-top: 10px"
-    ></iframe>
-  </div>
-
-  <!-- Content -->
-  <div class="container-fluid" style="margin-top: -200px">
-    <iframe
-      id="iframe__content"
-      src="phukienvai.html"
-      scrolling="no"
-      frameborder="0"
-      style="width: 100%; height: 1600px; overflow: hidden"
-    ></iframe>
-  </div>
-
-  <!-- Footer -->
-  <footer class="text-white pt-5 pb-4" style="background-color: #4fd0b6">
-    <div class="container text-md-left">
-      <div class="row text-md-left">
-        <!-- Liên hệ -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Liên hệ</h5>
-          <p>Địa chỉ: KĐT Linh Đàm, Quận Hoàng Mai, TP Hà Nội</p>
-          <p>Hotline: 0243 0000 111 - 039 5555 119</p>
-          <p>Email: myphamchinhhang@gmail.com</p>
-          <p>Website: <a href="https://thoitrang9.vnwordpress.net" target="_blank" class="text-white">thoitrang9.vnwordpress.net</a></p>
-        </div>
-
-        <!-- Chính sách chung -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Chính sách chung</h5>
-          <p><a href="#" class="text-white">Chính sách quy định chung</a></p>
-          <p><a href="#" class="text-white">Chính sách vận chuyển</a></p>
-          <p><a href="#" class="text-white">Chính sách bảo hành</a></p>
-          <p><a href="#" class="text-white">Chính sách đổi trả và hoàn tiền</a></p>
-          <p><a href="#" class="text-white">Chính sách cho doanh nghiệp</a></p>
-          <p><a href="#" class="text-white">Chính sách hàng chính hãng</a></p>
-        </div>
-
-        <!-- Hướng dẫn dịch vụ -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Hướng dẫn dịch vụ</h5>
-          <p><a href="#" class="text-white">Hướng dẫn mua hàng trực tuyến</a></p>
-          <p><a href="#" class="text-white">Hướng dẫn thanh toán</a></p>
-          <p><a href="#" class="text-white">Hướng dẫn mua hàng trả góp</a></p>
-          <p><a href="#" class="text-white">In hóa đơn điện tử</a></p>
-          <p><a href="#" class="text-white">Gửi yêu cầu bảo hành</a></p>
-          <p><a href="#" class="text-white">Góp ý, khiếu nại</a></p>
-        </div>
-
-        <!-- Giờ làm việc -->
-        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-          <h5 class="text-uppercase mb-4 font-weight-bold">Giờ làm việc</h5>
-          <p>Gọi mua: 1800.1111 (7:30 - 22:00)</p>
-          <p>Kỹ thuật: 1800.2222 (7:30 - 22:00)</p>
-          <p>Khiếu nại: 1800.3333 (8:00 - 21:30)</p>
-          <p>Bảo hành: 1800.4444 (8:00 - 21:00)</p>
-        </div>
-      </div>
-
-      <hr class="mb-4" />
-
-      <!-- Social Media Icons -->
-      <div class="row align-items-center">
-        <div class="col-md-7 col-lg-8">
-          <p>&copy; 2024 Bản quyền thuộc về <a href="https://thoitrang9.vnwordpress.net" target="_blank" class="text-white">thoitrang9.vnwordpress.net</a></p>
-        </div>
-
-        <div class="col-md-5 col-lg-4">
-          <div class="text-center text-md-right">
-            <ul class="list-unstyled list-inline">
-              <li class="list-inline-item">
-                <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-facebook"></i></a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-instagram"></i></a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-tiktok"></i></a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-zalo"></i></a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-youtube"></i></a>
-              </li>
-            </ul>
+            </form>
+          </div>
+          <div class="col-md-5 text-center pt-4">
+            <a href="/user?method=cart" class="btn text-white btn-bg">
+              <i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng
+            </a>
+            <a href="/user?method=login" class="btn text-white btn-bg">
+              <i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập
+            </a>
+            <a href="/user?method=register" class="btn text-white btn-bg">
+              <i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </footer>
 
-  <!-- JavaScript để điều chỉnh chiều cao iframe -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const iframe = document.getElementById("iframe__content");
+    <!-- Navbar -->
+    <div class="container-fluid">
+      <!--navbar for page-->
+      <nav
+        class="navbar navbar-expand-lg"
+        style="background-color: #4fd0b6; height: 40px"
+      >
+        <div class="container-fluid">
+          <a class="navbar-item text-white active" href="">Trang chủ</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <div class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Sản phẩm
+                  </a>
+                  <div
+                    class="dropdown-menu custom-dropdown"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <div class="dropdown-item">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar1.jpg"
+                                class="card-img-top"
+                                alt="Vải lụa"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">Vải lụa</h4>
+                              </div>
+                            </div>
+                          </div>
 
-      // Hàm để cập nhật chiều cao của iframe
-      function updateIframeHeight(event) {
-        // Kiểm tra origin nếu cần thiết
-        // if (event.origin !== "https://your-domain.com") return;
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar2.jpg"
+                                class="card-img-top"
+                                alt="Vải kaki"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">Vải kaki</h4>
+                              </div>
+                            </div>
+                          </div>
 
-        const newHeight = parseInt(event.data);
-        if (!isNaN(newHeight)) {
-          iframe.style.height = newHeight + "px";
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar3.jpg"
+                                class="card-img-top"
+                                alt="Vải nhung"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">
+                                  Vải nhung
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar4.jpg"
+                                class="card-img-top"
+                                alt="Vải Linen"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">
+                                  Vải Linen
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dropdown-item">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <h4>Bán chạy</h4>
+                          <a href="...">Vải Cotton</a><br />
+                          <a href="...">Vải Linen</a><br />
+                          <a href="...">Vải Silk</a><br />
+                          <a href="...">Polyester</a><br />
+                          <a href="...">Denim</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa đông</h4>
+                          <a href="...">Vải len</a><br />
+                          <a href="...">Vải nhung</a><br />
+                          <a href="...">Vải lanh</a><br />
+                          <a href="...">Vải da</a><br />
+                          <a href="...">Vải dù</a>
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa hè</h4>
+                          <a href="...">Vải Cotton</a><br />
+                          <a href="...">Vải Linen</a><br />
+                          <a href="...">Vải Rayon</a><br />
+                          <a href="...">Vải Bamboo</a><br />
+                          <a href="...">Vải Chambray</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa thu</h4>
+                          <a href="...">Vải Cotton</a> <br />
+                          <a href="...">Vải Wool</a><br />
+                          <a href="...">Vải Tweed</a><br />
+                          <a href="...">Vải Flannel</a><br />
+                          <a href="...">Vải Corduroy</a><br />
+                          <a href="...">Vải Denim</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Đồng phục</h4>
+                          <a href="...">Polyester</a><br />
+                          <a href="...">Cotton-PVC</a><br />
+                          <a href="...">Nỉ</a><br />
+                          <a href="...">Kaki</a><br />
+                          <a href="...">Lanh</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Nội thất</h4>
+                          <a href="...">Vải Cotton</a><br />
+                          <a href="...">Vải Microfiber</a><br />
+                          <a href="...">Vải Velvet</a><br />
+                          <a href="...">Vải Polyester</a><br />
+                          <a href="...">Vải Tweed</a><br />
+                          <a href="...">Vải Canvas</a><br />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <!-- Tạo dropdown khác nếu cần -->
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/user?method=blog"
+                  >Vải may mặc</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/user?method=blog"
+                  >Vải nội thất</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/user?method=contact"
+                  >Phụ kiện may mặc</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="designProduct.html"
+                  >Các mẫu thiết kế</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/user?method=contact"
+                  >Liên hệ</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/user?method=about"
+                  >Chính sách đổi trả</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--end navbar for page-->
+    </div>
+
+    <!-- Slide -->
+    <div class="container-fluid">
+      <iframe
+        src="slide.html"
+        scrolling="no"
+        frameborder="0"
+        style="width: 100%; height: 546px; margin-top: 10px"
+      ></iframe>
+    </div>
+
+    <!-- Content -->
+    <div class="container-fluid" style="margin-top: -200px">
+      <iframe
+        id="iframe__content"
+        src="Lace_Haven.html"
+        scrolling="no"
+        frameborder="0"
+        style="width: 100%; height: 1600px; overflow: hidden"
+      ></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #4fd0b6">
+      <div class="container text-md-left">
+        <div class="row text-md-left">
+          <!-- Liên hệ -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Liên hệ</h5>
+            <p>Địa chỉ: KĐT Linh Đàm, Quận Hoàng Mai, TP Hà Nội</p>
+            <p>Hotline: 0243 0000 111 - 039 5555 119</p>
+            <p>Email: myphamchinhhang@gmail.com</p>
+            <p>
+              Website:
+              <a
+                href="https://thoitrang9.vnwordpress.net"
+                target="_blank"
+                class="text-white"
+                >thoitrang9.vnwordpress.net</a
+              >
+            </p>
+          </div>
+
+          <!-- Chính sách chung -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">
+              Chính sách chung
+            </h5>
+            <p><a href="#" class="text-white">Chính sách quy định chung</a></p>
+            <p><a href="#" class="text-white">Chính sách vận chuyển</a></p>
+            <p><a href="#" class="text-white">Chính sách bảo hành</a></p>
+            <p>
+              <a href="#" class="text-white">Chính sách đổi trả và hoàn tiền</a>
+            </p>
+            <p>
+              <a href="#" class="text-white">Chính sách cho doanh nghiệp</a>
+            </p>
+            <p><a href="#" class="text-white">Chính sách hàng chính hãng</a></p>
+          </div>
+
+          <!-- Hướng dẫn dịch vụ -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">
+              Hướng dẫn dịch vụ
+            </h5>
+            <p>
+              <a href="#" class="text-white">Hướng dẫn mua hàng trực tuyến</a>
+            </p>
+            <p><a href="#" class="text-white">Hướng dẫn thanh toán</a></p>
+            <p><a href="#" class="text-white">Hướng dẫn mua hàng trả góp</a></p>
+            <p><a href="#" class="text-white">In hóa đơn điện tử</a></p>
+            <p><a href="#" class="text-white">Gửi yêu cầu bảo hành</a></p>
+            <p><a href="#" class="text-white">Góp ý, khiếu nại</a></p>
+          </div>
+
+          <!-- Giờ làm việc -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Giờ làm việc</h5>
+            <p>Gọi mua: 1800.1111 (7:30 - 22:00)</p>
+            <p>Kỹ thuật: 1800.2222 (7:30 - 22:00)</p>
+            <p>Khiếu nại: 1800.3333 (8:00 - 21:30)</p>
+            <p>Bảo hành: 1800.4444 (8:00 - 21:00)</p>
+          </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Social Media Icons -->
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-8">
+            <p>
+              &copy; 2024 Bản quyền thuộc về
+              <a
+                href="https://thoitrang9.vnwordpress.net"
+                target="_blank"
+                class="text-white"
+                >thoitrang9.vnwordpress.net</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"
+                    ><i class="fab fa-facebook"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"
+                    ><i class="fab fa-tiktok"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"
+                    ><i class="fab fa-zalo"></i
+                  ></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"
+                    ><i class="fab fa-youtube"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript để điều chỉnh chiều cao iframe -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const iframe = document.getElementById("iframe__content");
+
+        // Hàm để cập nhật chiều cao của iframe
+        function updateIframeHeight(event) {
+          // Kiểm tra origin nếu cần thiết
+          // if (event.origin !== "https://your-domain.com") return;
+
+          const newHeight = parseInt(event.data);
+          if (!isNaN(newHeight)) {
+            iframe.style.height = newHeight + "px";
+          }
         }
-      }
 
-      // Thêm listener để nhận message từ iframe
-      window.addEventListener("message", updateIframeHeight, false);
+        // Thêm listener để nhận message từ iframe
+        window.addEventListener("message", updateIframeHeight, false);
 
-      // Optional: Gửi yêu cầu để nhận chiều cao ban đầu nếu cần
-    });
-  </script>
+        // Optional: Gửi yêu cầu để nhận chiều cao ban đầu nếu cần
+      });
+    </script>
 
-  <!-- Bootstrap JS (Bootstrap 4.5.2) -->
-  <script
-    src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"
-  ></script>
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-LtrjvnR4Twt/qOuYx4Py0DNeE9Vx3StF20phak0paQX49Tc27qV6cOZjV0CZo3LZ"
-    crossorigin="anonymous"
-  ></script>
-</body>
+    <!-- Bootstrap JS (Bootstrap 4.5.2) -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-LtrjvnR4Twt/qOuYx4Py0DNeE9Vx3StF20phak0paQX49Tc27qV6cOZjV0CZo3LZ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

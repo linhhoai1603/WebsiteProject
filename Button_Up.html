@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Thai Tuan</title>
+    <title>Nút Áo</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -22,22 +22,26 @@
         font-family: "Arial", sans-serif;
         background-color: #f5f5f5;
       }
+      /* Chỉnh sửa breadcrumb */
       .breadcrumb {
-        background-color: #fff;
+        background-color: #4fd0b6; /* Màu nền mới */
         margin-bottom: 20px;
         padding: 10px 15px;
         border-radius: 5px;
       }
-      .breadcrumb-item a {
-        color: #333;
+      .breadcrumb-item a,
+      .breadcrumb-item.active {
+        color: #fff; /* Màu chữ trắng */
         text-decoration: none;
       }
       .breadcrumb-item a:hover {
         text-decoration: underline;
+        color: #fff; /* Giữ màu chữ trắng khi hover */
       }
       .breadcrumb-item.active {
-        color: #000;
+        color: #fff; /* Màu chữ trắng cho mục active */
       }
+
       .sidebar {
         background-color: #fff;
         padding: 20px;
@@ -192,8 +196,17 @@
         padding: 0;
       }
 
-      /* Responsive điều chỉnh cho List View (đã loại bỏ vì không sử dụng) */
-      /* Loại bỏ các kiểu CSS liên quan đến List View */
+      /* Responsive điều chỉnh */
+      .sidebar {
+        max-width: 100%;
+        padding: 10px; /* Giảm padding */
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+      }
 
       /* Giới hạn độ dài văn bản */
       .card-title {
@@ -223,10 +236,10 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
           <li class="breadcrumb-item">
-            <a href="#">REN Cao Cấp Vô Vàn Vải</a>
+            <a href="#">Nút Áo</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
-            Phụ Kiện REN 2024
+            Phụ Kiện Nút Áo 2024
           </li>
         </ol>
       </nav>
@@ -236,16 +249,16 @@
           <div class="sidebar">
             <h5>Danh mục</h5>
             <ul class="list-unstyled mb-4">
-              <li><a href="#">Vải In</a></li>
-              <li><a href="#">Vải Gấm</a></li>
-              <li><a href="#">Vải Tơ Tằm</a></li>
-              <li><a href="#">Vải Họa Sĩ</a></li>
-              <li><a href="#">Thái Tuấn Premium</a></li>
-              <li><a href="#">Vải Satin</a></li>
-              <li><a href="#">Vải Lụa</a></li>
-              <li><a href="#">Vải Voan</a></li>
-              <li><a href="#">Vải Jean</a></li>
-              <li><a href="#">Vải Denim</a></li>
+              <li><a href="#">Nút Áo Tròn</a></li>
+              <li><a href="#">Nút Áo Vuông</a></li>
+              <li><a href="#">Nút Áo Kim Loại</a></li>
+              <li><a href="#">Nút Áo Nhựa</a></li>
+              <li><a href="#">Nút Áo Thắt Lưng</a></li>
+              <li><a href="#">Nút Áo Trang Trí</a></li>
+              <li><a href="#">Nút Áo Cổ Điển</a></li>
+              <li><a href="#">Nút Áo Đa Năng</a></li>
+              <li><a href="#">Nút Áo Sang Trọng</a></li>
+              <li><a href="#">Nút Áo Đa Màu</a></li>
             </ul>
             <h5>Giá</h5>
             <div class="form-check mb-2">
@@ -254,20 +267,20 @@
                 id="price1"
                 type="checkbox"
                 data-min="0"
-                data-max="500000"
+                data-max="10000"
               />
-              <label class="form-check-label" for="price1">Dưới 500.000đ</label>
+              <label class="form-check-label" for="price1">Dưới 10.000đ</label>
             </div>
             <div class="form-check mb-2">
               <input
                 class="form-check-input price-filter"
                 id="price2"
                 type="checkbox"
-                data-min="500000"
-                data-max="1000000"
+                data-min="10000"
+                data-max="20000"
               />
               <label class="form-check-label" for="price2"
-                >500.000đ - 1.000.000đ</label
+                >10.000đ - 20.000đ</label
               >
             </div>
             <div class="form-check mb-2">
@@ -275,11 +288,11 @@
                 class="form-check-input price-filter"
                 id="price3"
                 type="checkbox"
-                data-min="1000000"
-                data-max="2000000"
+                data-min="20000"
+                data-max="50000"
               />
               <label class="form-check-label" for="price3"
-                >1.000.000đ - 2.000.000đ</label
+                >20.000đ - 50.000đ</label
               >
             </div>
             <div class="form-check mb-2">
@@ -287,11 +300,11 @@
                 class="form-check-input price-filter"
                 id="price4"
                 type="checkbox"
-                data-min="2000000"
-                data-max="4000000"
+                data-min="50000"
+                data-max="100000"
               />
               <label class="form-check-label" for="price4"
-                >2.000.000đ - 4.000.000đ</label
+                >50.000đ - 100.000đ</label
               >
             </div>
             <div class="form-check mb-2">
@@ -299,12 +312,10 @@
                 class="form-check-input price-filter"
                 id="price5"
                 type="checkbox"
-                data-min="4000000"
+                data-min="100000"
                 data-max=""
               />
-              <label class="form-check-label" for="price5"
-                >Trên 4.000.000đ</label
-              >
+              <label class="form-check-label" for="price5">Trên 100.000đ</label>
             </div>
 
             <h5 class="brand-section">Thương hiệu</h5>
@@ -313,29 +324,29 @@
                 class="form-check-input brand-filter"
                 id="brand1"
                 type="checkbox"
-                data-brand="REN Chính Hãng"
+                data-brand="ButtonPro"
               />
-              <label class="form-check-label" for="brand1"
-                >REN Chính Hãng</label
-              >
+              <label class="form-check-label" for="brand1">ButtonPro</label>
             </div>
             <div class="form-check mb-2">
               <input
                 class="form-check-input brand-filter"
                 id="brand2"
                 type="checkbox"
-                data-brand="REN Giảm Giá"
+                data-brand="StyleButtons"
               />
-              <label class="form-check-label" for="brand2">REN Giảm Giá</label>
+              <label class="form-check-label" for="brand2">StyleButtons</label>
             </div>
             <div class="form-check mb-2">
               <input
                 class="form-check-input brand-filter"
                 id="brand3"
                 type="checkbox"
-                data-brand="REN Mới"
+                data-brand="ElegantButtons"
               />
-              <label class="form-check-label" for="brand3">REN Mới</label>
+              <label class="form-check-label" for="brand3"
+                >ElegantButtons</label
+              >
             </div>
           </div>
         </div>
@@ -346,7 +357,7 @@
             class="d-flex justify-content-between align-items-center mb-3 header-controls"
           >
             <div class="header-left">
-              <h5 class="mb-0">REN CAO CẤP Vô Vàn Vải</h5>
+              <h5 class="mb-0">Phụ Kiện Nút Áo Cao Cấp</h5>
             </div>
             <div class="header-right d-flex align-items-center">
               <!-- Loại bỏ view-toggle -->
@@ -392,16 +403,12 @@
           <!-- Product Grid -->
           <div class="row product-grid">
             <!-- Sản phẩm 1 -->
-            <div
-              class="col-md-4 mb-4"
-              data-price="549500"
-              data-brand="REN Chính Hãng"
-            >
+            <div class="col-md-4 mb-4" data-price="8000" data-brand="ButtonPro">
               <div class="card h-100">
                 <img
-                  src="images/vairenthantienmautrang.jpg"
+                  src="images/nutaothantienmautrang.jpg"
                   class="card-img-top"
-                  alt="REN Thần Tiên"
+                  alt="Nút Áo Thần Tiên - Màu Trắng"
                 />
                 <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
@@ -413,15 +420,15 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Thần Tiên - Màu Trắng</h5>
+                  <h5 class="card-title">Nút Áo Thần Tiên - Màu Trắng</h5>
                   <p class="card-text description">
-                    Chất liệu vải cao cấp, mềm mại và bền bỉ, phù hợp cho mọi
-                    loại trang phục.
+                    Nút áo chất liệu cao cấp, bền bỉ, phù hợp cho mọi loại trang
+                    phục.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-50%</span>
-                    <span class="discounted-price">549,500đ</span>
-                    <span class="original-price">1,099,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">8,000đ</span>
+                    <span class="original-price">8,888đ</span>
                   </div>
                 </div>
               </div>
@@ -430,14 +437,14 @@
             <!-- Sản phẩm 2 -->
             <div
               class="col-md-4 mb-4"
-              data-price="699500"
-              data-brand="REN Giảm Giá"
+              data-price="12000"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/renthaitrangxanhdam.jpg"
+                  src="images/nutaostyleblue.jpg"
                   class="card-img-top"
-                  alt="REN Thái Trang"
+                  alt="Nút Áo Style - Màu Xanh Dương"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -448,15 +455,15 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Thái Trang - Màu Xanh Đậm</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Xanh Dương</h5>
                   <p class="card-text description">
-                    Chất liệu vải cao cấp, mềm mại và bền bỉ, phù hợp cho mọi
-                    loại trang phục.
+                    Nút áo thiết kế hiện đại, đa màu sắc, phù hợp với nhiều
+                    phong cách.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-50%</span>
-                    <span class="discounted-price">699,500đ</span>
-                    <span class="original-price">1,399,000đ</span>
+                    <span class="discount-badge">-15%</span>
+                    <span class="discounted-price">12,000đ</span>
+                    <span class="original-price">14,117đ</span>
                   </div>
                 </div>
               </div>
@@ -465,14 +472,14 @@
             <!-- Sản phẩm 3 -->
             <div
               class="col-md-4 mb-4"
-              data-price="749000"
-              data-brand="REN Chính Hãng"
+              data-price="15000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/vairensangthantienmaudo.jpg"
+                  src="images/nutaoelegantred.jpg"
                   class="card-img-top"
-                  alt="REN Sang Tiên"
+                  alt="Nút Áo Elegant - Màu Đỏ"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -483,27 +490,27 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Sang Tiên - Màu Đỏ</h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Đỏ</h5>
                   <p class="card-text description">
-                    Vải chất lượng cao, đảm bảo sự thoải mái và phong cách cho
-                    bạn.
+                    Nút áo sang trọng, thiết kế tinh tế, phù hợp cho các dịp đặc
+                    biệt.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-30%</span>
-                    <span class="discounted-price">749,000đ</span>
-                    <span class="original-price">1,070,000đ</span>
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">15,000đ</span>
+                    <span class="original-price">18,750đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Sản phẩm 4 -->
-            <div class="col-md-4 mb-4" data-price="899000" data-brand="REN Mới">
+            <div class="col-md-4 mb-4" data-price="5000" data-brand="ButtonPro">
               <div class="card h-100">
                 <img
-                  src="images/vairenuocmomauhong.jpg"
+                  src="images/nutaothanhtheocochai.jpg"
                   class="card-img-top"
-                  alt="REN Mơ Ước"
+                  alt="Nút Áo Thánh Thiểu - Cổ Chai"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -514,30 +521,32 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Mơ Ước - Màu Hồng</h5>
+                  <h5 class="card-title">Nút Áo Thánh Thiểu - Cổ Chai</h5>
                   <p class="card-text description">
-                    Vải mềm mại, thích hợp cho các thiết kế thời trang nữ tính.
+                    Nút áo cổ chai, phù hợp với các loại áo sơ mi cổ điển.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">899,000đ</span>
-                    <span class="original-price">1,124,000đ</span>
+                    <span class="discount-badge">-5%</span>
+                    <span class="discounted-price">5,000đ</span>
+                    <span class="original-price">5,263đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Thêm các sản phẩm cho trang 2 và 3 -->
+            <!-- Bạn có thể sao chép các sản phẩm trên và thay đổi thuộc tính data-price và data-brand phù hợp -->
             <!-- Sản phẩm 5 -->
             <div
               class="col-md-4 mb-4"
-              data-price="499000"
-              data-brand="REN Giảm Giá"
+              data-price="7000"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/rennangdongmauvang.jpg"
+                  src="images/nutaostylexanhla.jpg"
                   class="card-img-top"
-                  alt="REN Năng Động"
+                  alt="Nút Áo Style - Màu Xanh Lá"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -548,14 +557,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Năng Động - Màu Vàng</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Xanh Lá</h5>
                   <p class="card-text description">
-                    Vải bền chắc, thích hợp cho các trang phục thường ngày.
+                    Nút áo màu xanh lá, tạo điểm nhấn cho trang phục hàng ngày.
                   </p>
                   <div class="pricing mt-auto">
                     <span class="discount-badge">-10%</span>
-                    <span class="discounted-price">499,000đ</span>
-                    <span class="original-price">554,000đ</span>
+                    <span class="discounted-price">7,000đ</span>
+                    <span class="original-price">7,778đ</span>
                   </div>
                 </div>
               </div>
@@ -564,14 +573,14 @@
             <!-- Sản phẩm 6 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1299000"
-              data-brand="REN Chính Hãng"
+              data-price="9000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/renthanhlichmauden.jpg"
+                  src="images/nutaoelexanhduong.jpg"
                   class="card-img-top"
-                  alt="REN Thanh Lịch"
+                  alt="Nút Áo Elegant - Màu Xanh Dương"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -582,26 +591,31 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Thanh Lịch - Màu Đen</h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Xanh Dương</h5>
                   <p class="card-text description">
-                    Vải cao cấp, phù hợp cho các bộ vest và trang phục công sở.
+                    Nút áo màu xanh dương, phong cách và hiện đại cho mọi loại
+                    áo.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-40%</span>
-                    <span class="discounted-price">1,299,000đ</span>
-                    <span class="original-price">2,165,000đ</span>
+                    <span class="discount-badge">-15%</span>
+                    <span class="discounted-price">9,000đ</span>
+                    <span class="original-price">10,588đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Sản phẩm 7 -->
-            <div class="col-md-4 mb-4" data-price="649000" data-brand="REN Mới">
+            <div
+              class="col-md-4 mb-4"
+              data-price="11000"
+              data-brand="ButtonPro"
+            >
               <div class="card h-100">
                 <img
-                  src="images/rensangtaomauxam.jpg"
+                  src="images/nutaothanthietmauvang.jpg"
                   class="card-img-top"
-                  alt="REN Sáng Tạo"
+                  alt="Nút Áo Thần Thiết - Màu Vàng"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -612,15 +626,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Sáng Tạo - Màu Xám</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Màu Vàng</h5>
                   <p class="card-text description">
-                    Vải đa năng, dễ dàng phối hợp với nhiều màu sắc và kiểu
-                    dáng.
+                    Nút áo màu vàng, nổi bật và thu hút ánh nhìn cho trang phục.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-25%</span>
-                    <span class="discounted-price">649,000đ</span>
-                    <span class="original-price">866,000đ</span>
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">11,000đ</span>
+                    <span class="original-price">13,750đ</span>
                   </div>
                 </div>
               </div>
@@ -629,14 +642,14 @@
             <!-- Sản phẩm 8 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1499000"
-              data-brand="REN Giảm Giá"
+              data-price="6000"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/rencodienmaunau.jpg"
+                  src="images/nutaomaubac.jpg"
                   class="card-img-top"
-                  alt="REN Cổ Điển"
+                  alt="Nút Áo Style - Màu Bạc"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -647,30 +660,32 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Cổ Điển - Màu Nâu</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Bạc</h5>
                   <p class="card-text description">
-                    Vải chất lượng, mang lại vẻ đẹp truyền thống và sang trọng.
+                    Nút áo màu bạc, tinh tế và thanh lịch cho trang phục công
+                    sở.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-35%</span>
-                    <span class="discounted-price">1,299,000đ</span>
-                    <span class="original-price">1,857,000đ</span>
+                    <span class="discount-badge">-5%</span>
+                    <span class="discounted-price">6,000đ</span>
+                    <span class="original-price">6,316đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Tiếp tục thêm các sản phẩm tương tự cho các trang 2 và 3 -->
             <!-- Sản phẩm 9 -->
             <div
               class="col-md-4 mb-4"
-              data-price="599000"
-              data-brand="REN Giảm Giá"
+              data-price="10000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/renhiendaimauxanhla.jpg"
+                  src="images/nutaoelegantgreen.jpg"
                   class="card-img-top"
-                  alt="REN Hiện Đại"
+                  alt="Nút Áo Elegant - Màu Xanh Lá"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -681,33 +696,31 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Hiện Đại - Màu Xanh Lá</h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Xanh Lá</h5>
                   <p class="card-text description">
-                    Vải mới, phù hợp với xu hướng thời trang hiện đại và năng
-                    động.
+                    Nút áo màu xanh lá, phù hợp với các loại áo thể thao và
+                    casual.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-15%</span>
-                    <span class="discounted-price">599,000đ</span>
-                    <span class="original-price">705,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">10,000đ</span>
+                    <span class="original-price">11,111đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Thêm các sản phẩm cho trang 2 và 3 -->
-            <!-- Bạn có thể sao chép các sản phẩm trên và thay đổi thuộc tính data-price và data-brand phù hợp -->
             <!-- Sản phẩm 10 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1599000"
-              data-brand="REN Chính Hãng"
+              data-price="13000"
+              data-brand="ButtonPro"
             >
               <div class="card h-100">
                 <img
-                  src="images/renluatotam.jpg"
+                  src="images/nutaothanhtheoococ.jpg"
                   class="card-img-top"
-                  alt="REN Lụa Tơ Tằm"
+                  alt="Nút Áo Thần Thiết - Cổ Cọc"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -718,27 +731,31 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Lụa Tơ Tằm - Màu Xanh Biển</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Cổ Cọc</h5>
                   <p class="card-text description">
-                    Vải lụa tự nhiên, mềm mịn và bóng bẩy, lý tưởng cho trang
-                    phục sang trọng.
+                    Nút áo cổ cọc, thiết kế đặc biệt cho các loại áo thun và
+                    polo.
                   </p>
                   <div class="pricing mt-auto">
                     <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">1,599,000đ</span>
-                    <span class="original-price">2,000,000đ</span>
+                    <span class="discounted-price">13,000đ</span>
+                    <span class="original-price">16,250đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Sản phẩm 11 -->
-            <div class="col-md-4 mb-4" data-price="799000" data-brand="REN Mới">
+            <div
+              class="col-md-4 mb-4"
+              data-price="9000"
+              data-brand="StyleButtons"
+            >
               <div class="card h-100">
                 <img
-                  src="images/renvailoanmautrang.jpg"
+                  src="images/nutaostylegold.jpg"
                   class="card-img-top"
-                  alt="REN Vải Voan"
+                  alt="Nút Áo Style - Màu Vàng Gold"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -749,15 +766,15 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Voan - Màu Trắng Sữa</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Vàng Gold</h5>
                   <p class="card-text description">
-                    Vải voan nhẹ nhàng, thoáng mát, phù hợp cho trang phục mùa
-                    hè.
+                    Nút áo màu vàng gold, lấp lánh và nổi bật cho các sự kiện
+                    đặc biệt.
                   </p>
                   <div class="pricing mt-auto">
                     <span class="discount-badge">-15%</span>
-                    <span class="discounted-price">799,000đ</span>
-                    <span class="original-price">940,000đ</span>
+                    <span class="discounted-price">9,000đ</span>
+                    <span class="original-price">10,588đ</span>
                   </div>
                 </div>
               </div>
@@ -766,14 +783,14 @@
             <!-- Sản phẩm 12 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1249000"
-              data-brand="REN Giảm Giá"
+              data-price="14000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_polyester_xanhlacay.jpg"
+                  src="images/nutaoelegantsilver.jpg"
                   class="card-img-top"
-                  alt="REN Vải Polyester"
+                  alt="Nút Áo Elegant - Màu Bạc"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -784,33 +801,31 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">
-                    REN Vải Polyester - Màu Xanh Lá Cây
-                  </h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Bạc</h5>
                   <p class="card-text description">
-                    Vải polyester bền đẹp, chống nhăn và dễ bảo quản, phù hợp
-                    cho nhiều loại trang phục.
+                    Nút áo màu bạc, thanh lịch và phù hợp với nhiều loại áo.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-15%</span>
-                    <span class="discounted-price">1,149,000đ</span>
-                    <span class="original-price">1,350,000đ</span>
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">14,000đ</span>
+                    <span class="original-price">17,500đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Tiếp tục thêm các sản phẩm tương tự cho các trang tiếp theo -->
             <!-- Sản phẩm 13 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1299000"
-              data-brand="REN Giảm Giá"
+              data-price="10000"
+              data-brand="ButtonPro"
             >
               <div class="card h-100">
                 <img
-                  src="images/RenVaijean.jpg"
+                  src="images/nutaothanhtheoocochai.jpg"
                   class="card-img-top"
-                  alt="REN Vải Jean"
+                  alt="Nút Áo Thần Thiết - Cổ Chai"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -821,15 +836,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Jean - Màu Đen Classic</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Cổ Chai</h5>
                   <p class="card-text description">
-                    Vải jean đen cổ điển, phù hợp cho nhiều phong cách thời
-                    trang.
+                    Nút áo cổ chai, phù hợp với các loại áo sơ mi cổ điển.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-30%</span>
-                    <span class="discounted-price">1,299,000đ</span>
-                    <span class="original-price">1,857,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">10,000đ</span>
+                    <span class="original-price">11,111đ</span>
                   </div>
                 </div>
               </div>
@@ -838,14 +852,14 @@
             <!-- Sản phẩm 14 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1199000"
-              data-brand="REN Mới"
+              data-price="8500"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/renvaisatin.jpg"
+                  src="images/nutaostylepurple.jpg"
                   class="card-img-top"
-                  alt="REN Vải Satin"
+                  alt="Nút Áo Style - Màu Tím"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -856,15 +870,15 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Satin - Màu Hồng Pastel</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Tím</h5>
                   <p class="card-text description">
-                    Vải satin mềm mượt, lấp lánh, lý tưởng cho trang phục dạ
-                    hội.
+                    Nút áo màu tím, phong cách và thích hợp cho các loại áo thể
+                    thao.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">1,199,000đ</span>
-                    <span class="original-price">1,499,000đ</span>
+                    <span class="discount-badge">-5%</span>
+                    <span class="discounted-price">8,500đ</span>
+                    <span class="original-price">8,947đ</span>
                   </div>
                 </div>
               </div>
@@ -873,14 +887,14 @@
             <!-- Sản phẩm 15 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1299000"
-              data-brand="REN Giảm Giá"
+              data-price="16000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/renvaihoasi.jpg"
+                  src="images/nutaoelegantblack.jpg"
                   class="card-img-top"
-                  alt="REN Vải Họa Sĩ"
+                  alt="Nút Áo Elegant - Màu Đen"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -891,31 +905,26 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Họa Sĩ - Mẫu Hoa Đỏ</h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Đen</h5>
                   <p class="card-text description">
-                    Vải họa sĩ với họa tiết hoa đỏ nổi bật, tạo điểm nhấn cho
-                    trang phục.
+                    Nút áo màu đen, tinh tế và phù hợp với các loại áo công sở.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-25%</span>
-                    <span class="discounted-price">1,299,000đ</span>
-                    <span class="original-price">1,732,000đ</span>
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">16,000đ</span>
+                    <span class="original-price">20,000đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Sản phẩm 16 -->
-            <div
-              class="col-md-4 mb-4"
-              data-price="1499000"
-              data-brand="REN Giảm Giá"
-            >
+            <div class="col-md-4 mb-4" data-price="7500" data-brand="ButtonPro">
               <div class="card h-100">
                 <img
-                  src="images/renvaitoluavangngoc.jpg"
+                  src="images/nutaothanhtheoocochai.jpg"
                   class="card-img-top"
-                  alt="REN Vải Tơ Lụa"
+                  alt="Nút Áo Thần Thiết - Cổ Chai"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -926,15 +935,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Tơ Lụa - Màu Vàng Ngọc</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Cổ Chai</h5>
                   <p class="card-text description">
-                    Vải tơ lụa cao cấp, mang lại cảm giác mềm mại và bóng bẩy
-                    cho trang phục.
+                    Nút áo cổ chai, phù hợp với các loại áo sơ mi cổ điển.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-30%</span>
-                    <span class="discounted-price">1,299,000đ</span>
-                    <span class="original-price">1,857,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">7,500đ</span>
+                    <span class="original-price">8,333đ</span>
                   </div>
                 </div>
               </div>
@@ -943,14 +951,14 @@
             <!-- Sản phẩm 17 -->
             <div
               class="col-md-4 mb-4"
-              data-price="899000"
-              data-brand="REN Chính Hãng"
+              data-price="9500"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/Renvailinenmaunau.jpg"
+                  src="images/nutaostylebrown.jpg"
                   class="card-img-top"
-                  alt="REN Vải Linen"
+                  alt="Nút Áo Style - Màu Nâu"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -961,15 +969,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Linen - Màu Be Nâu</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Nâu</h5>
                   <p class="card-text description">
-                    Vải linen tự nhiên, thoáng mát và thấm hút tốt, phù hợp cho
-                    trang phục mùa hè.
+                    Nút áo màu nâu, cổ điển và dễ phối hợp với nhiều loại áo.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-10%</span>
-                    <span class="discounted-price">899,000đ</span>
-                    <span class="original-price">999,000đ</span>
+                    <span class="discount-badge">-15%</span>
+                    <span class="discounted-price">9,500đ</span>
+                    <span class="original-price">11,176đ</span>
                   </div>
                 </div>
               </div>
@@ -978,14 +985,14 @@
             <!-- Sản phẩm 18 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1149000"
-              data-brand="REN Giảm Giá"
+              data-price="13000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_cashmere_timnhat.jpg"
+                  src="images/nutaoelegantwhite.jpg"
                   class="card-img-top"
-                  alt="REN Vải Cashmere"
+                  alt="Nút Áo Elegant - Màu Trắng"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -996,15 +1003,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Cashmere - Màu Tím Nhạt</h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Trắng</h5>
                   <p class="card-text description">
-                    Vải cashmere cao cấp, mềm mịn và ấm áp, lý tưởng cho áo
-                    khoác và sweater.
+                    Nút áo màu trắng, tinh tế và phù hợp với các loại áo formal.
                   </p>
                   <div class="pricing mt-auto">
                     <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">2,399,000đ</span>
-                    <span class="original-price">3,000,000đ</span>
+                    <span class="discounted-price">13,000đ</span>
+                    <span class="original-price">16,250đ</span>
                   </div>
                 </div>
               </div>
@@ -1013,14 +1019,14 @@
             <!-- Sản phẩm 19 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1899000"
-              data-brand="REN Mới"
+              data-price="11000"
+              data-brand="ButtonPro"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_rayon_cam_sang.jpg"
+                  src="images/nutaothanhtheoocochai2.jpg"
                   class="card-img-top"
-                  alt="REN Vải Rayon"
+                  alt="Nút Áo Thần Thiết - Cổ Chai 2"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1031,15 +1037,15 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Rayon - Màu Cam Sáng</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Cổ Chai 2</h5>
                   <p class="card-text description">
-                    Vải rayon mềm mại và mát mẻ, thích hợp cho các trang phục
-                    mùa xuân và hè.
+                    Nút áo cổ chai, thiết kế đặc biệt cho các loại áo sơ mi cổ
+                    điển.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-25%</span>
-                    <span class="discounted-price">1,899,000đ</span>
-                    <span class="original-price">2,529,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">11,000đ</span>
+                    <span class="original-price">12,222đ</span>
                   </div>
                 </div>
               </div>
@@ -1048,14 +1054,14 @@
             <!-- Sản phẩm 20 -->
             <div
               class="col-md-4 mb-4"
-              data-price="999000"
-              data-brand="REN Mới"
+              data-price="14000"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_spandex_den.jpg"
+                  src="images/nutaostyleblack.jpg"
                   class="card-img-top"
-                  alt="REN Vải Spandex"
+                  alt="Nút Áo Style - Màu Đen"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1066,15 +1072,15 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Spandex - Màu Đen Bóng</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Đen</h5>
                   <p class="card-text description">
-                    Vải spandex co giãn tốt, mang lại sự thoải mái và linh hoạt
-                    cho người mặc.
+                    Nút áo màu đen, sang trọng và phù hợp với nhiều loại áo khác
+                    nhau.
                   </p>
                   <div class="pricing mt-auto">
                     <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">1,199,000đ</span>
-                    <span class="original-price">1,499,000đ</span>
+                    <span class="discounted-price">14,000đ</span>
+                    <span class="original-price">17,500đ</span>
                   </div>
                 </div>
               </div>
@@ -1083,14 +1089,14 @@
             <!-- Sản phẩm 21 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1149000"
-              data-brand="REN Mới"
+              data-price="7000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_chambray_navy.jpg"
+                  src="images/nutaoelegantpink.jpg"
                   class="card-img-top"
-                  alt="REN Vải Chambray"
+                  alt="Nút Áo Elegant - Màu Hồng"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1101,15 +1107,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Chambray - Màu Xanh Navy</h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Hồng</h5>
                   <p class="card-text description">
-                    Vải chambray nhẹ nhàng, thích hợp cho áo sơ mi và váy mùa
-                    hè.
+                    Nút áo màu hồng, nữ tính và phù hợp với các loại áo mềm mại.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-15%</span>
-                    <span class="discounted-price">1,149,000đ</span>
-                    <span class="original-price">1,349,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">7,000đ</span>
+                    <span class="original-price">7,778đ</span>
                   </div>
                 </div>
               </div>
@@ -1118,14 +1123,14 @@
             <!-- Sản phẩm 22 -->
             <div
               class="col-md-4 mb-4"
-              data-price="899000"
-              data-brand="REN Chính Hãng"
+              data-price="16000"
+              data-brand="ButtonPro"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_flannel_nausam.jpg"
+                  src="images/nutaothanhtheoocochai3.jpg"
                   class="card-img-top"
-                  alt="REN Vải Flannel"
+                  alt="Nút Áo Thần Thiết - Cổ Chai 3"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1136,15 +1141,15 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Flannel - Màu Nâu Sẫm</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Cổ Chai 3</h5>
                   <p class="card-text description">
-                    Vải flannel ấm áp, phù hợp cho áo khoác và trang phục mùa
-                    đông.
+                    Nút áo cổ chai, thiết kế đặc biệt cho các loại áo sơ mi cổ
+                    điển.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-10%</span>
-                    <span class="discounted-price">899,000đ</span>
-                    <span class="original-price">999,000đ</span>
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">16,000đ</span>
+                    <span class="original-price">20,000đ</span>
                   </div>
                 </div>
               </div>
@@ -1153,14 +1158,14 @@
             <!-- Sản phẩm 23 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1299000"
-              data-brand="REN Giảm Giá"
+              data-price="8000"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_fleece_xamnhat.jpg"
+                  src="images/nutaostyleorange.jpg"
                   class="card-img-top"
-                  alt="REN Vải Fleece"
+                  alt="Nút Áo Style - Màu Cam"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1171,15 +1176,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Fleece - Màu Xám Nhạt</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Cam</h5>
                   <p class="card-text description">
-                    Vải fleece mềm mại, giữ ấm tốt, thích hợp cho trang phục thể
-                    thao.
+                    Nút áo màu cam, tươi sáng và phù hợp với các loại áo mùa hè.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">1,299,000đ</span>
-                    <span class="original-price">1,624,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">8,000đ</span>
+                    <span class="original-price">8,889đ</span>
                   </div>
                 </div>
               </div>
@@ -1188,14 +1192,14 @@
             <!-- Sản phẩm 24 -->
             <div
               class="col-md-4 mb-4"
-              data-price="2399000"
-              data-brand="REN Mới"
+              data-price="17000"
+              data-brand="ElegantButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/ren_vai_brocade_vanggold.jpg"
+                  src="images/nutaoelegantpurple.jpg"
                   class="card-img-top"
-                  alt="REN Vải Brocade"
+                  alt="Nút Áo Elegant - Màu Tím"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1206,31 +1210,27 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Brocade - Màu Vàng Gold</h5>
+                  <h5 class="card-title">Nút Áo Elegant - Màu Tím</h5>
                   <p class="card-text description">
-                    Vải brocade đậm chất nghệ thuật, thích hợp cho trang phục dạ
-                    hội và sự kiện.
+                    Nút áo màu tím, sang trọng và phù hợp với các loại áo dạ
+                    hội.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-25%</span>
-                    <span class="discounted-price">2,399,000đ</span>
-                    <span class="original-price">3,199,000đ</span>
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">17,000đ</span>
+                    <span class="original-price">21,250đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Sản phẩm 25 -->
-            <div
-              class="col-md-4 mb-4"
-              data-price="999000"
-              data-brand="REN Mới"
-            >
+            <div class="col-md-4 mb-4" data-price="9500" data-brand="ButtonPro">
               <div class="card h-100">
                 <img
-                  src="images/renvaiintrangden.jpg"
+                  src="images/nutaothanhtheoocochai4.jpg"
                   class="card-img-top"
-                  alt="REN Vải In"
+                  alt="Nút Áo Thần Thiết - Cổ Chai 4"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1241,15 +1241,14 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải In - Mẫu Trắng Đen</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Cổ Chai 4</h5>
                   <p class="card-text description">
-                    Vải in họa tiết trắng đen tinh tế, phù hợp cho nhiều phong
-                    cách thời trang.
+                    Nút áo cổ chai, phù hợp với các loại áo sơ mi cổ điển.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">999,000đ</span>
-                    <span class="original-price">1,249,000đ</span>
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">9,500đ</span>
+                    <span class="original-price">10,556đ</span>
                   </div>
                 </div>
               </div>
@@ -1258,14 +1257,14 @@
             <!-- Sản phẩm 26 -->
             <div
               class="col-md-4 mb-4"
-              data-price="1299000"
-              data-brand="REN Giảm Giá"
+              data-price="18000"
+              data-brand="StyleButtons"
             >
               <div class="card h-100">
                 <img
-                  src="images/renvaitoluavangngoc.jpg"
+                  src="images/nutaostylegray.jpg"
                   class="card-img-top"
-                  alt="REN Vải Tơ Lụa"
+                  alt="Nút Áo Style - Màu Xám"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1276,15 +1275,48 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">REN Vải Tơ Lụa - Màu Vàng Ngọc</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Xám</h5>
                   <p class="card-text description">
-                    Vải tơ lụa cao cấp, mang lại cảm giác mềm mại và bóng bẩy
-                    cho trang phục.
+                    Nút áo màu xám, phù hợp với các loại áo vest và áo khoác.
                   </p>
                   <div class="pricing mt-auto">
-                    <span class="discount-badge">-30%</span>
-                    <span class="discounted-price">1,299,000đ</span>
-                    <span class="original-price">1,857,000đ</span>
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">18,000đ</span>
+                    <span class="original-price">22,500đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 27 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="16000"
+              data-brand="ElegantButtons"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/nutaoelegantwhite2.jpg"
+                  class="card-img-top"
+                  alt="Nút Áo Elegant - Màu Trắng 2"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">Nút Áo Elegant - Màu Trắng 2</h5>
+                  <p class="card-text description">
+                    Nút áo màu trắng, tinh tế và phù hợp với các loại áo formal.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">16,000đ</span>
+                    <span class="original-price">20,000đ</span>
                   </div>
                 </div>
               </div>
@@ -1589,13 +1621,23 @@
         });
 
         // Khởi tạo khi tải trang
-        // Thiết lập mặc định là Grid View
         // Đảm bảo không có lớp 'list-view' trên product-grid
         productGrid.classList.remove("list-view");
 
         // Lọc sản phẩm ban đầu
         filterProducts();
       });
+
+      function sendHeight() {
+        const height = document.body.scrollHeight;
+        window.parent.postMessage(height, "*"); // Trong sản xuất, thay '*' bằng origin cụ thể
+      }
+
+      // Gửi chiều cao khi tải trang
+      window.addEventListener("load", sendHeight);
+
+      // Gửi chiều cao khi kích thước cửa sổ thay đổi
+      window.addEventListener("resize", sendHeight);
     </script>
   </body>
 </html>

@@ -18,84 +18,56 @@
     />
     <title>Trang chủ</title>
     <style>
-      /* Màu nền cho phần intro */
       .bg {
         background-color: #4fd0b6;
       }
 
-      /* Hiệu ứng hover cho các nút */
       .btn:hover {
         background-color: #4fd0b6;
       }
 
-      /* Reset margin và padding cho body */
       body {
         margin: 0;
         padding: 0;
       }
 
-      /* Chiều cao cho phần intro */
       .intro {
         height: 25px;
       }
 
-      /* Màu nền và chữ cho các nút */
       .btn-bg {
         background-color: #339c87 !important;
         color: white;
       }
 
-      /* Hiển thị dropdown menu khi hover */
+      /* Custom styles for dropdown hover */
       .dropdown:hover .dropdown-menu {
         display: block;
       }
 
-      /* Kích thước tùy chỉnh cho dropdown menu */
+      /* Custom size for the dropdown menu */
       .dropdown-menu.custom-dropdown {
-        width: 1000px; /* Đặt chiều rộng */
-        height: 450px; /* Đặt chiều cao */
-        overflow: auto; /* Bật cuộn nếu nội dung vượt quá */
+        width: 1000px; /* Set width */
+        height: auto; /* Set height to auto to allow content to define height */
+        max-height: 600px; /* Optional: set max height */
+        overflow-y: auto; /* Enable scrolling if content overflows */
       }
 
-      /* Kiểu Card */
       .card {
         width: 100%;
         cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 5px;
       }
 
-      /* Hiệu ứng khi hover vào card */
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Giới hạn chiều cao của hình ảnh trong card */
-      .card-img-top {
-        max-height: 150px; /* Giới hạn chiều cao của hình ảnh để không chiếm quá nhiều không gian */
-        object-fit: cover; /* Giữ tỉ lệ mà không bị méo hình */
-        width: 100%;
-      }
-
-      /* Đặt kiểu cho các liên kết */
       a {
         text-decoration: none;
         color: black !important;
         text-align: center;
       }
 
-      /* Kích thước tiêu đề trong dropdown */
       .dropdown-item .row .col-md-2 h4 {
         font-size: 20px;
       }
 
-      /* Kiểu cho slide và quảng cáo */
       .slide-container {
         width: 70%;
         height: 100vh;
@@ -114,7 +86,6 @@
         padding: 3px;
       }
 
-      /* Kiểu cho trạng thái active */
       .active {
         font-size: 19px;
       }
@@ -123,7 +94,6 @@
         text-decoration: none;
       }
 
-      /* Ngăn chặn cuộn ngang */
       html,
       body {
         width: 100%;
@@ -142,10 +112,14 @@
         margin: auto; /* Căn giữa trong trường hợp kích thước iframe thay đổi */
       }
 
-      /* Giới hạn chiều rộng sidebar */
+      .card-img-top {
+        max-height: 150px; /* Giới hạn chiều cao của hình ảnh để không chiếm quá nhiều không gian */
+        object-fit: cover; /* Giữ tỉ lệ mà không bị méo hình */
+      }
+
       .sidebar {
-        max-width: 100%;
-        padding: 10px; /* Giảm padding */
+        max-height: 600px; /* Giới hạn chiều cao của sidebar */
+        overflow-y: auto; /* Bật thanh cuộn nếu vượt quá chiều cao */
       }
 
       /* Ẩn sidebar khi ở chế độ iframe nếu thấy không cần thiết */
@@ -154,64 +128,6 @@
           display: none;
         }
       }
-
-      /* Custom Scrollbar Styles */
-      /* WebKit-based browsers */
-      .dropdown-menu.custom-dropdown::-webkit-scrollbar {
-        width: 8px; /* Thay đổi kích thước thanh cuộn */
-        height: 8px; /* Kích thước thanh cuộn ngang */
-      }
-
-      .dropdown-menu.custom-dropdown::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 4px;
-      }
-
-      .dropdown-menu.custom-dropdown::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 4px;
-      }
-
-      .dropdown-menu.custom-dropdown::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-
-      /* Firefox */
-      .dropdown-menu.custom-dropdown {
-        scrollbar-width: thin;
-        scrollbar-color: #888 #f1f1f1;
-      }
-
-      /* Optional: Global Scrollbar Styles (Nếu bạn muốn thu nhỏ thanh cuộn toàn trang) */
-      /*
-      /* WebKit-based browsers */
-      /*
-      ::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-
-      /* Firefox */
-      /*
-      body {
-        scrollbar-width: thin;
-        scrollbar-color: #888 #f1f1f1;
-      }
-      */
     </style>
   </head>
   <body>
@@ -232,7 +148,7 @@
             />
           </div>
           <div class="col-md-5 text-center pt-4">
-            <form action="\user?method=search" method="post">
+            <form action="/user?method=search" method="post">
               <div class="input-group">
                 <input
                   type="text"
@@ -248,13 +164,13 @@
             </form>
           </div>
           <div class="col-md-5 text-center pt-4">
-            <a href="\user?method=cart" class="btn text-white btn-bg">
+            <a href="/user?method=cart" class="btn text-white btn-bg">
               <i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng
             </a>
-            <a href="\user?method=login" class="btn text-white btn-bg">
+            <a href="/user?method=login" class="btn text-white btn-bg">
               <i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập
             </a>
-            <a href="\user?method=register" class="btn text-white btn-bg">
+            <a href="/user?method=register" class="btn text-white btn-bg">
               <i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký
             </a>
           </div>
@@ -274,8 +190,8 @@
           <button
             class="navbar-toggler"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
+            data-toggle="collapse"
+            data-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
@@ -291,12 +207,13 @@
                     href="#"
                     role="button"
                     id="dropdownMenuLink"
-                    data-bs-toggle="dropdown"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
                     aria-expanded="false"
                   >
                     Sản phẩm
                   </a>
-                  <ul
+                  <div
                     class="dropdown-menu custom-dropdown"
                     aria-labelledby="dropdownMenuLink"
                   >
@@ -311,12 +228,7 @@
                                 alt="Vải lụa"
                               />
                               <div class="card-body">
-                                <h4
-                                  class="card-title"
-                                  style="text-align: center"
-                                >
-                                  Vải lụa
-                                </h4>
+                                <h4 class="card-title text-center">Vải lụa</h4>
                               </div>
                             </div>
                           </div>
@@ -329,12 +241,7 @@
                                 alt="Vải kaki"
                               />
                               <div class="card-body">
-                                <h4
-                                  class="card-title"
-                                  style="text-align: center"
-                                >
-                                  Vải kaki
-                                </h4>
+                                <h4 class="card-title text-center">Vải kaki</h4>
                               </div>
                             </div>
                           </div>
@@ -347,10 +254,7 @@
                                 alt="Vải nhung"
                               />
                               <div class="card-body">
-                                <h4
-                                  class="card-title"
-                                  style="text-align: center"
-                                >
+                                <h4 class="card-title text-center">
                                   Vải nhung
                                 </h4>
                               </div>
@@ -365,10 +269,7 @@
                                 alt="Vải Linen"
                               />
                               <div class="card-body">
-                                <h4
-                                  class="card-title"
-                                  style="text-align: center"
-                                >
+                                <h4 class="card-title text-center">
                                   Vải Linen
                                 </h4>
                               </div>
@@ -400,16 +301,16 @@
                         <div class="col-md-2">
                           <h4>Mùa hè</h4>
                           <a href="...">Vải Cotton</a><br />
-                          <a href="...">Vải Linen </a><br />
+                          <a href="...">Vải Linen</a><br />
                           <a href="...">Vải Rayon</a><br />
-                          <a href="...">Vải Bamboo </a><br />
+                          <a href="...">Vải Bamboo</a><br />
                           <a href="...">Vải Chambray</a><br />
                         </div>
 
                         <div class="col-md-2">
                           <h4>Mùa thu</h4>
                           <a href="...">Vải Cotton</a> <br />
-                          <a href="...">Vải Wool </a><br />
+                          <a href="...">Vải Wool</a><br />
                           <a href="...">Vải Tweed</a><br />
                           <a href="...">Vải Flannel</a><br />
                           <a href="...">Vải Corduroy</a><br />
@@ -420,9 +321,9 @@
                           <h4>Đồng phục</h4>
                           <a href="...">Polyester</a><br />
                           <a href="...">Cotton-PVC</a><br />
-                          <a href="...">Nỉ </a><br />
+                          <a href="...">Nỉ</a><br />
                           <a href="...">Kaki</a><br />
-                          <a href="...">Lanh </a><br />
+                          <a href="...">Lanh</a><br />
                         </div>
 
                         <div class="col-md-2">
@@ -436,25 +337,25 @@
                         </div>
                       </div>
                     </div>
-                  </ul>
+                  </div>
                 </div>
               </li>
               <li class="nav-item">
-                <!-- Tạo dropdown với Bootstrap (nếu cần) -->
+                <!-- Tạo dropdown khác nếu cần -->
               </li>
 
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=blog"
+                <a class="nav-link text-white" href="/user?method=blog"
                   >Vải may mặc</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=blog"
+                <a class="nav-link text-white" href="/user?method=blog"
                   >Vải nội thất</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=contact"
+                <a class="nav-link text-white" href="/user?method=contact"
                   >Phụ kiện may mặc</a
                 >
               </li>
@@ -464,12 +365,12 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=contact"
+                <a class="nav-link text-white" href="/user?method=contact"
                   >Liên hệ</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="\user?method=about"
+                <a class="nav-link text-white" href="/user?method=about"
                   >Chính sách đổi trả</a
                 >
               </li>
@@ -479,6 +380,7 @@
       </nav>
       <!--end navbar for page-->
     </div>
+
     <!-- Slide -->
     <div class="container-fluid">
       <iframe
@@ -488,17 +390,19 @@
         style="width: 100%; height: 546px; margin-top: 10px"
       ></iframe>
     </div>
+
     <!-- Content -->
-    <div class="container-fluid" style="margin-top: 20px;">
+    <div class="container-fluid" style="margin-top: -200px">
       <iframe
         id="iframe__content"
-        src="daykeo.html"
+        src="ZipStar.html"
         scrolling="no"
         frameborder="0"
-        style="width: 100%; min-height: 1600px; overflow: hidden"
+        style="width: 100%; height: 1600px; overflow: hidden"
       ></iframe>
     </div>
-    <!-- footer -->
+
+    <!-- Footer -->
     <footer class="text-white pt-5 pb-4" style="background-color: #4fd0b6">
       <div class="container text-md-left">
         <div class="row text-md-left">
@@ -508,7 +412,15 @@
             <p>Địa chỉ: KĐT Linh Đàm, Quận Hoàng Mai, TP Hà Nội</p>
             <p>Hotline: 0243 0000 111 - 039 5555 119</p>
             <p>Email: myphamchinhhang@gmail.com</p>
-            <p>Website: thoitrang9.vnwordpress.net</p>
+            <p>
+              Website:
+              <a
+                href="https://thoitrang9.vnwordpress.net"
+                target="_blank"
+                class="text-white"
+                >thoitrang9.vnwordpress.net</a
+              >
+            </p>
           </div>
 
           <!-- Chính sách chung -->
@@ -516,12 +428,16 @@
             <h5 class="text-uppercase mb-4 font-weight-bold">
               Chính sách chung
             </h5>
-            <p>Chính sách quy định chung</p>
-            <p>Chính sách vận chuyển</p>
-            <p>Chính sách bảo hành</p>
-            <p>Chính sách đổi trả và hoàn tiền</p>
-            <p>Chính sách cho doanh nghiệp</p>
-            <p>Chính sách hàng chính hãng</p>
+            <p><a href="#" class="text-white">Chính sách quy định chung</a></p>
+            <p><a href="#" class="text-white">Chính sách vận chuyển</a></p>
+            <p><a href="#" class="text-white">Chính sách bảo hành</a></p>
+            <p>
+              <a href="#" class="text-white">Chính sách đổi trả và hoàn tiền</a>
+            </p>
+            <p>
+              <a href="#" class="text-white">Chính sách cho doanh nghiệp</a>
+            </p>
+            <p><a href="#" class="text-white">Chính sách hàng chính hãng</a></p>
           </div>
 
           <!-- Hướng dẫn dịch vụ -->
@@ -529,12 +445,14 @@
             <h5 class="text-uppercase mb-4 font-weight-bold">
               Hướng dẫn dịch vụ
             </h5>
-            <p>Hướng dẫn mua hàng trực tuyến</p>
-            <p>Hướng dẫn thanh toán</p>
-            <p>Hướng dẫn mua hàng trả góp</p>
-            <p>In hóa đơn điện tử</p>
-            <p>Gửi yêu cầu bảo hành</p>
-            <p>Góp ý, khiếu nại</p>
+            <p>
+              <a href="#" class="text-white">Hướng dẫn mua hàng trực tuyến</a>
+            </p>
+            <p><a href="#" class="text-white">Hướng dẫn thanh toán</a></p>
+            <p><a href="#" class="text-white">Hướng dẫn mua hàng trả góp</a></p>
+            <p><a href="#" class="text-white">In hóa đơn điện tử</a></p>
+            <p><a href="#" class="text-white">Gửi yêu cầu bảo hành</a></p>
+            <p><a href="#" class="text-white">Góp ý, khiếu nại</a></p>
           </div>
 
           <!-- Giờ làm việc -->
@@ -552,7 +470,15 @@
         <!-- Social Media Icons -->
         <div class="row align-items-center">
           <div class="col-md-7 col-lg-8">
-            <p>&copy; 2024 Bản quyền thuộc về thoitrang9.vnwordpress.net</p>
+            <p>
+              &copy; 2024 Bản quyền thuộc về
+              <a
+                href="https://thoitrang9.vnwordpress.net"
+                target="_blank"
+                class="text-white"
+                >thoitrang9.vnwordpress.net</a
+              >
+            </p>
           </div>
 
           <div class="col-md-5 col-lg-4">
@@ -590,36 +516,38 @@
       </div>
     </footer>
 
+    <!-- JavaScript để điều chỉnh chiều cao iframe -->
     <script>
-      // Lắng nghe thông điệp từ iframe để điều chỉnh chiều cao
-      window.addEventListener('message', function(event) {
-        // Xác thực nguồn gốc thông điệp
-        // if (event.origin !== 'https://your-domain.com') return; // Thay bằng domain của bạn
+      document.addEventListener("DOMContentLoaded", () => {
+        const iframe = document.getElementById("iframe__content");
 
-        var iframe = document.getElementById('iframe__content');
-        if (iframe && event.data && typeof event.data === 'number') {
-          iframe.style.height = event.data + 'px';
+        // Hàm để cập nhật chiều cao của iframe
+        function updateIframeHeight(event) {
+          // Kiểm tra origin nếu cần thiết
+          // if (event.origin !== "https://your-domain.com") return;
+
+          const newHeight = parseInt(event.data);
+          if (!isNaN(newHeight)) {
+            iframe.style.height = newHeight + "px";
+          }
         }
-      }, false);
 
-      // Hàm yêu cầu chiều cao từ iframe
-      function requestIframeHeight() {
-        var iframe = document.getElementById('iframe__content');
-        if (iframe && iframe.contentWindow) {
-          iframe.contentWindow.postMessage('getHeight', '*'); // Trong sản xuất, thay '*' bằng origin cụ thể
-        }
-      }
+        // Thêm listener để nhận message từ iframe
+        window.addEventListener("message", updateIframeHeight, false);
 
-      // Yêu cầu chiều cao khi tải trang
-      window.addEventListener('load', requestIframeHeight);
-
-      // Yêu cầu chiều cao khi kích thước cửa sổ thay đổi
-      window.addEventListener('resize', requestIframeHeight);
+        // Optional: Gửi yêu cầu để nhận chiều cao ban đầu nếu cần
+      });
     </script>
-    <!-- Bootstrap JS -->
+
+    <!-- Bootstrap JS (Bootstrap 4.5.2) -->
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-LtrjvnR4Twt/qOuYx4Py0DNeE9Vx3StF20phak0paQX49Tc27qV6cOZjV0CZo3LZ"
       crossorigin="anonymous"
     ></script>
   </body>
