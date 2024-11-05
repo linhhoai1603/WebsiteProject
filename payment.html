@@ -9,120 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- jQuery Library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <style>
-       .bg {
-           background-color: #4FD0B6;
-       }
-
-       .btn:hover {
-           background-color: #4FD0B6;
-       }
-
-       body {
-           margin: 0;
-           padding: 0;
-       }
-
-       .intro {
-           height: 25px;
-       }
-
-       .btn-bg {
-           background-color: #339C87 !important;
-           color: white;
-       }
-       /* Custom styles for dropdown hover */
-       .dropdown:hover .dropdown-menu {
-           display: block;
-       }
-
-       /* Custom size for the dropdown menu */
-       .dropdown-menu.custom-dropdown {
-           width: 1000px;  /* Set width */
-           height: 450px;  /* Set height */
-           overflow: auto;  /* Enable scrolling if content overflows */
-       }
-
-       .card {
-           width: 100%;
-           height: 200px;
-           cursor: pointer;
-       }
-
-       a {
-           text-decoration: none;
-           color: black !important;
-           text-align: center;
-       }
-
-       .dropdown-item .row .col-md-2 h4 {
-           font-size: 20px;
-       }
-
-       .slide-container {
-           width: 70%;
-           height: 100vh;
-       }
-
-       .ad-section {
-           width: 30%;
-           height: 50vh;
-           display: flex;
-           flex-direction: column;
-           justify-content: space-between;
-       }
-
-       .ad-section img {
-           width: 100%;
-           padding: 3px;
-       }
-       .active{
-           font-size: 19px;
-       }
-       .img-design{
-           width: 100%;
-           height: 100%;
-       }
-       tr td.text-right{
-           text-align: right;
-       }
-       #voucher{
-              cursor: pointer;
-       }
-       #inputVoucher{
-           display: none;  
-            padding: 10px;
-            width: 100%;
-           border: 1px solid black;
-           border-top: #4FD0B6 5px solid;
-       }
-       #inputVoucher input{
-           width: 80%;
-       }
-       #inputVoucher button{
-           width: 15%;
-           padding: 10px;
-           margin-bottom: 5px;
-       }
-       #form-otherAddress{
-            display: none;
-            padding: 10px;
-            width: 100%;
-            border: 0.5px solid black;
-            border-top: #4FD0B6 5px solid;
-       }
-       #text-red{
-            color: red;
-       }
-       .img-pay{
-            height: 50px;
-            width: 70;
-       }
-    </style>
-   <title>Giỏ hàng</title>
+    <link rel="stylesheet" href="css/payment.css">
+   <title>Thanh toán</title>
 </head>
 <body>
-    <!-- Header --> 
      <!-- Header -->
      <div class="container-fluid">
         <div class="row intro text-white bg">
@@ -144,9 +34,9 @@
                     </form>
                 </div>
                 <div class="col-md-5 text-center pt-4">
-                    <a href="\user?method=cart" class="btn text-white btn-bg"><i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng</a>
-                    <a href="\user?method=login" class="btn text-white btn-bg"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập</a>
-                    <a href="\user?method=register" class="btn text-white btn-bg"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký</a>
+                    <a href="shoppingCart.html" class="btn text-white btn-bg"><i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng</a>
+                    <a href="login.html" class="btn text-white btn-bg"><i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập</a>
+                    <a href="login.html" class="btn text-white btn-bg"><i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký</a>
                 </div>
             </div>
         </div>
@@ -287,13 +177,13 @@
                             <a class="nav-link text-white" href="\user?method=contact">Phụ kiện may mặc</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="">Các mẫu thiết kế</a>
+                            <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="\user?method=contact">Liên hệ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="\user?method=about">Chính sách đổi trả</a>
+                            <a class="nav-link text-white" href="policyReturn.html">Chính sách đổi trả</a>
                         </li>
                     </ul>
                 </div>
@@ -495,11 +385,12 @@
                             <div class="row">
                                 <div class="col-md-3 fw-bold text-center text-primary">Tổng</div>
                                 <div class="col-md-6"></div>
-                                <div class="col-md-3 fw-bold text-center text-primary" >450,000đ</div>
+                                <div class="col-md-3 fw-bold text-center text-primary" >480,000đ</div>
                             </div>
                         </tr>
                         <hr>
                         <tr>
+                            <h5 style="margin-left: 5px;">Phương thức thanh toán</h5>
                             <div class="row">
                                 <div class="col-md-5 text-center">
                                     <input type="radio" name="payment" id="payment-online">
@@ -516,6 +407,7 @@
                         </tr>
                         <tr>
                             <div class="row">
+                               
                                 <div class="col-md-5 text-center">
                                     <input type="radio" name="payment" id="payment-cash" checked>
                                     <label for="payment-cash">Thanh toán khi nhận hàng</label>
