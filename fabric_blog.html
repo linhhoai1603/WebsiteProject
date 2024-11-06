@@ -8,284 +8,129 @@
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet"/>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0; /* Removed to prevent double margin */
-        }
-        /* Navbar Chính */
+        /* Custom Styles */
         .main-navbar {
-            background-color: #4FD0B6;
-            padding: 10px 0;
-        }
-        .main-navbar .navbar-brand {
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            width: 100%;
-        }
-        /* Breadcrumb */
-        .breadcrumb {
-            background-color: transparent;
-            padding: 10px 0;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-        .breadcrumb-item a {
-            color: #6c757d;
-            text-decoration: none;
-        }
-        .breadcrumb-item.active {
-            color: #6c757d;
-        }
-        /* Tiêu Đề và Meta */
-        .post-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-top: 20px;
-            text-align: center;
-        }
-        .post-meta {
-            color: #6c757d;
-            font-size: 14px;
-            text-align: center;
-            margin-bottom: 10px;
+            background-color: #343a40;
         }
         .post-category {
-            background-color: #bfae6a;
-            color: white;
-            padding: 5px 15px;
-            font-size: 14px;
-            display: inline-block;
-            margin: 20px auto;
+            background-color: #f8f9fa;
+            padding: 10px 20px;
             border-radius: 5px;
-            text-align: center;
-        }
-        /* Nội Dung Bài Viết */
-        .post-content {
-            margin-top: 20px;
-            line-height: 1.8;
-            font-size: 16px;
-        }
-        .post-image {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin: 20px 0;
-        }
-        /* Sidebar */
-        .sidebar {
-            margin-top: 20px;
-        }
-        .sidebar .list-group-item {
-            border: none;
-            padding: 10px 0;
-        }
-        .sidebar .list-group-item a {
-            color: #6c757d;
-            text-decoration: none;
-        }
-        .sidebar .list-group-item a:hover {
-            text-decoration: underline;
-        }
-        .sidebar .list-group-item .badge {
-            background-color: #6c757d;
-        }
-        .sidebar .recent-posts img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .sidebar .recent-posts .card-title {
-            font-size: 16px;
             font-weight: bold;
-            margin-top: 10px;
-        }
-        .sidebar .recent-posts .card-text {
-            font-size: 12px;
-            color: #6c757d;
-        }
-        .btn-outline-secondary {
-            border-color: #6c757d;
-            color: #6c757d;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .btn-outline-secondary:hover {
-            background-color: #6c757d;
-            color: white;
-        }
-        /* Vải Cotton Styles */
-        .content {
-            margin: 20px 0;
-        }
-        .content h1, .content h2 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .content h2 {
-            font-size: 20px;
-            margin-top: 25px;
-        }
-        .content p, .content ul, .content li {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        .content ul {
-            padding-left: 20px;
-        }
-        .content .image-caption {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-            text-align: center;
-        }
-        .content .section-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 25px;
-        }
-        /* Product Cards */
-        .product-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            text-align: center;
             margin-bottom: 20px;
+        }
+        .post-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .post-meta a {
+            text-decoration: none;
+            color: #6c757d;
+        }
+        .image-caption {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .product-card {
+            border: 1px solid #e0e0e0;
             border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
+            padding: 15px;
+            transition: transform 0.2s;
             background-color: #fff;
         }
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        .product-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .discount-badge, .discount {
+        .discount-badge {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #f0ad4e;
-            color: white;
+            top: 15px;
+            left: 15px;
+            background-color: #dc3545;
+            color: #fff;
             padding: 5px 10px;
             border-radius: 5px;
-            font-size: 14px;
-        }
-        .product-title {
-            font-size: 18px;
+            font-size: 0.8rem;
             font-weight: bold;
-            margin-top: 10px;
+        }
+        .price {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: auto;
         }
         .original-price {
             text-decoration: line-through;
-            color: #888;
-            margin-top: 5px;
+            color: #6c757d;
+            font-size: 0.9rem;
         }
-        .discounted-price, .price {
-            color: #d9534f;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 5px;
+        .sidebar .list-group-item a {
+            text-decoration: none;
+            color: #343a40;
         }
-        /* Additional Product Page Styles */
-        .product-page-container {
-            margin-top: 40px;
-            padding: 20px 0;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
+        .recent-posts .card {
+            border: none;
+            border-bottom: 1px solid #e0e0e0;
         }
-        .product-page-container h5 {
-            font-size: 20px;
-            margin-bottom: 15px;
+        .recent-posts .card:last-child {
+            border-bottom: none;
         }
-        .product-page-container ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-bottom: 20px;
+        .recent-posts .card-title {
+            font-size: 1rem;
+            margin-bottom: 5px;
         }
-        /* Vải Len Styles */
-        .wool-section {
-            margin: 40px 0;
-            padding: 20px 0;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
+        footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
         }
-        .wool-section h1, .wool-section h2 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .wool-section h2 {
-            font-size: 20px;
-            margin-top: 25px;
-        }
-        .wool-section p, .wool-section li {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        .wool-section ul {
-            padding-left: 20px;
-        }
-        .wool-section .image-caption {
-            font-size: 14px;
-            font-style: italic;
-            text-align: center;
-            margin-top: 10px;
-        }
-        /* Vải Acrylic Styles */
-        .acrylic-section {
-            margin: 40px 0;
-            padding: 20px 0;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
-        }
-        .acrylic-section h1, .acrylic-section h2 {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .acrylic-section h2 {
-            font-size: 20px;
-            margin-top: 25px;
-        }
-        .acrylic-section p, .acrylic-section ul, .acrylic-section li {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        .acrylic-section ul {
-            padding-left: 20px;
-        }
-        .acrylic-section .image-caption {
-            font-size: 14px;
-            font-style: italic;
-            text-align: center;
-            margin-top: 5px;
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .sidebar {
+                margin-top: 30px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navbar Chính -->
-    <nav class="navbar navbar-expand-lg navbar-dark main-navbar">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                Blog về nội thất
-            </a>
-        </div>
-    </nav>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark main-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    Blog về nội thất
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Optional: Add navigation links here -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Trang Chủ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Bài Viết</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Liên Hệ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <!-- Breadcrumb -->
-    <div class="container mt-2">
+    <div class="container mt-3">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <ol class="breadcrumb justify-content-center mb-4">
                 <li class="breadcrumb-item"><a href="#">TRANG CHỦ</a></li>
                 <li class="breadcrumb-item active" aria-current="page">VẢI NỘI THẤT</li>
             </ol>
@@ -293,29 +138,34 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container my-4">
+    <main class="container my-4">
         <div class="row">
             <!-- Bài Viết Chính -->
-            <div class="col-lg-8 d-flex flex-column">
+            <section class="col-lg-8">
                 <!-- Danh Mục Bài Viết -->
-                <div class="post-category mx-auto">
+                <div class="post-category text-center">
                     VẢI NỘI THẤT, THIẾT KẾ NỘI THẤT
                 </div>
 
                 <!-- Tiêu Đề Bài Viết -->
-                <h1 class="post-title">
+                <h1 class="post-title text-center">
                     Top 6 Các Loại Vải Nội Thất Phổ Biến Và Cách Bảo Quản
                 </h1>
 
                 <!-- Thông Tin Bài Viết -->
-                <div class="post-meta">
+                <div class="post-meta text-center mb-4">
                     Đăng bởi <a href="#">Nguyễn Lê Hoàng Khang</a>
                 </div>
 
                 <!-- Hình Ảnh Bài Viết -->
-                <img src="https://storage.googleapis.com/a1aa/image/YyoDFeQWhi3qMK7NNjYDo9HhAiAxc3E3B7YF8dIgqLda8G3JA.jpg" 
-                     alt="A cozy bed with a chevron-patterned blanket, a book, and a cup of coffee on a tray" 
-                     class="post-image">
+                <div class="text-center mb-4">
+                    <img src="https://storage.googleapis.com/a1aa/image/YyoDFeQWhi3qMK7NNjYDo9HhAiAxc3E3B7YF8dIgqLda8G3JA.jpg" 
+                         alt="A cozy bed with a chevron-patterned blanket, a book, and a cup of coffee on a tray" 
+                         class="post-image img-fluid rounded">
+                    <div class="image-caption text-center mt-2">
+                        Một chiếc giường ấm cúng với chăn họa tiết zigzag
+                    </div>
+                </div>
 
                 <!-- Nội Dung Bài Viết -->
                 <div class="post-content">
@@ -328,25 +178,28 @@
                     <p>
                         Để giúp bạn hiểu thêm về ưu điểm và cách bảo quản các loại vải nội thất, hãy cùng nhau tìm hiểu về các chất liệu vải dưới đây:
                     </p>
-                    <button class="btn btn-outline-secondary">
+                    <button class="btn btn-outline-secondary mb-4">
                         MỤC LỤC BÀI VIẾT [Hiện]
                     </button>
                 </div>
 
-                <!-- Vải Cotton Content -->
-                <div class="content">
-                    <h1>
-                        Vải Cotton
-                    </h1>
-                    <div class="row">
+                <!-- Các Phần Nội Dung Vải -->
+                <!-- Vải Cotton -->
+                <article class="content mb-5">
+                    <h2>Vải Cotton</h2>
+                    <div class="row mb-3">
                         <div class="col-md-6">
-                            <img alt="A neatly made bed with blue cotton sheets and pillows" height="400" src="https://storage.googleapis.com/a1aa/image/6jvGZUq5cK7OJJBLRJeYZsG4wqwqZqnOlGqGRRzjDxL2CH3JA.jpg" width="600"/>
+                            <img src="https://storage.googleapis.com/a1aa/image/6jvGZUq5cK7OJJBLRJeYZsG4wqwqZqnOlGqGRRzjDxL2CH3JA.jpg" 
+                                 alt="A neatly made bed with blue cotton sheets and pillows" 
+                                 class="img-fluid rounded">
                         </div>
-                        <div class="col-md-6">
-                            <img alt="Close-up of blue cotton fabric showing its texture" height="400" src="https://storage.googleapis.com/a1aa/image/xrH9agg4oYKAFlWWuQZwZAY6jrT4ZOmDvUONOd1aWIhahj7E.jpg" width="600"/>
+                        <div class="col-md-6 mt-3 mt-md-0">
+                            <img src="https://storage.googleapis.com/a1aa/image/xrH9agg4oYKAFlWWuQZwZAY6jrT4ZOmDvUONOd1aWIhahj7E.jpg" 
+                                 alt="Close-up of blue cotton fabric showing its texture" 
+                                 class="img-fluid rounded">
                         </div>
                     </div>
-                    <div class="image-caption">
+                    <div class="image-caption text-center mb-3">
                         Ga giường vải cotton
                     </div>
                     <p>
@@ -356,221 +209,122 @@
                         Ưu điểm của vải cotton:
                     </div>
                     <ul>
-                        <li>
-                            Mang đến cho người dùng cảm giác thoải mái, dễ chịu nhờ khả năng hút ẩm cao, thấm hút tốt.
-                        </li>
-                        <li>
-                            Vải cotton có giá thành rẻ hơn so với các loại sợi pha khác do nguyên liệu dễ kiếm, sẵn có.
-                        </li>
-                        <li>
-                            Dễ bảo quản, nhanh khô, sử dụng được trong máy giặt và có thể giặt với nhiều loại chất giặt tẩy khác.
-                        </li>
-                        <li>
-                            Không gây kích ứng da, là tính năng vượt trội mà Cotton khác biệt so với nhiều loại sợi trên thị trường, đặc biệt là sự chọn lựa tốt nhất cho các bệnh nhân hen suyễn, phù hợp với sự dịu nhẹ và sự thông thoáng của làn da.
-                        </li>
-                        <li>
-                            Có thể nhuộm màu lên bông, tạo ra một trong những loại vải đa dạng về màu sắc. Với tính thông dụng, dễ dàng tìm kiếm mà bền đẹp, dễ “thởi” dễ dàng, mang đến cảm giác thoải mái, thoáng mát cho người mặc, đồng thời giúp cho sản phẩm thoát khỏi mùi hôi khó chịu.
-                        </li>
+                        <li>Mang đến cho người dùng cảm giác thoải mái, dễ chịu nhờ khả năng hút ẩm cao, thấm hút tốt.</li>
+                        <li>Vải cotton có giá thành rẻ hơn so với các loại sợi pha khác do nguyên liệu dễ kiếm, sẵn có.</li>
+                        <li>Dễ bảo quản, nhanh khô, sử dụng được trong máy giặt và có thể giặt với nhiều loại chất giặt tẩy khác.</li>
+                        <li>Không gây kích ứng da, là tính năng vượt trội mà Cotton khác biệt so với nhiều loại sợi trên thị trường, đặc biệt là sự chọn lựa tốt nhất cho các bệnh nhân hen suyễn, phù hợp với sự dịu nhẹ và sự thông thoáng của làn da.</li>
+                        <li>Có thể nhuộm màu lên bông, tạo ra một trong những loại vải đa dạng về màu sắc. Với tính thông dụng, dễ dàng tìm kiếm mà bền đẹp, dễ “thởi” dễ dàng, mang đến cảm giác thoải mái, thoáng mát cho người mặc, đồng thời giúp cho sản phẩm thoát khỏi mùi hôi khó chịu.</li>
                     </ul>
                     <div class="section-title">
                         Cách bảo quản vải cotton:
                     </div>
                     <ul>
-                        <li>
-                            Không nên ngâm vải trong nước quá lâu, chỉ ngâm trong nước giặt vài phút và tiến hành giặt sạch ngay.
-                        </li>
-                        <li>
-                            Trước khi giặt nên tiến hành thao tác phân loại áo, nên giặt riêng áo màu trắng và áo màu để tránh bị bám màu với những bộ đồ khác.
-                        </li>
-                        <li>
-                            Phơi tại nơi thông thoáng, tránh ánh nắng trực tiếp.
-                        </li>
-                        <li>
-                            Chỉ sử dụng những loại bột giặt có độ pH trung tính, độ tẩy rửa nhẹ nhàng chất giặt mạnh sẽ làm cho độ bền của vải bị giảm sút gây nên tình trạng hư hỏng, mài mòn áo bị phai và loang lổ khi giặt.
-                        </li>
-                        <li>
-                            Phơi quần áo cotton ở nơi khô ráo, thoáng mát tránh ánh nắng mặt trời gắt. Điều này sẽ đảm bảo được độ bền tối đa cho người dùng trong quá trình sử dụng.
-                        </li>
+                        <li>Không nên ngâm vải trong nước quá lâu, chỉ ngâm trong nước giặt vài phút và tiến hành giặt sạch ngay.</li>
+                        <li>Trước khi giặt nên tiến hành thao tác phân loại áo, nên giặt riêng áo màu trắng và áo màu để tránh bị bám màu với những bộ đồ khác.</li>
+                        <li>Phơi tại nơi thông thoáng, tránh ánh nắng trực tiếp.</li>
+                        <li>Chỉ sử dụng những loại bột giặt có độ pH trung tính, độ tẩy rửa nhẹ nhàng chất giặt mạnh sẽ làm cho độ bền của vải bị giảm sút gây nên tình trạng hư hỏng, mài mòn áo bị phai và loang lổ khi giặt.</li>
+                        <li>Phơi quần áo cotton ở nơi khô ráo, thoáng mát tránh ánh nắng mặt trời gắt. Điều này sẽ đảm bảo được độ bền tối đa cho người dùng trong quá trình sử dụng.</li>
                     </ul>
-                </div>
+                </article>
 
-                <!-- Vải Polyester Content -->
-                <div class="content">
-                    <h1>
-                        Vải Nội Thất Polyester
-                    </h1>
+                <!-- Vải Polyester -->
+                <article class="content mb-5">
+                    <h2>Vải Nội Thất Polyester</h2>
                     <p>
                         Bạn có muốn cảm giác đắt tiền trong phòng khách của bạn mà không cần sử dụng vải đắt tiền? Polyester sẽ giúp bạn đạt được điều đó một cách dễ dàng với tính chất mềm mại và thoải mái của nó. Nó có thể được sử dụng để bọc đệm ghế và sofa. Loại vải này có thể thay thế loại vải mỏng manh hơn nếu bạn có trẻ nhỏ trong nhà.
                     </p>
                     <p>
                         Vải polyester là một loại vải tổng hợp có thành phần từ dầu mỏ, than đá và không khí được gọi là ethylene. Về cơ bản, polyester là một loại nhựa và các sợi polyester này được tạo thành nhờ vào quá trình hóa học trùng hợp cùng với 4 dạng sợi cơ bản đó là: sợi thô, sợi xơ, sợi fiberfill và sợi filament.
                     </p>
-                    <img alt="A cozy living room with a white fluffy rug, a dark wooden coffee table, and a beige sofa with cushions" class="img-fluid" height="400" src="https://storage.googleapis.com/a1aa/image/wd8Ug4ehfLs9XER53vNI0hujMf4RjMKSAV6QJcJqy5py1icnA.jpg" width="800"/>
-                    <div class="image-caption">
-                        Vải Nội Thất Polyester
+                    <div class="text-center mb-3">
+                        <img src="https://storage.googleapis.com/a1aa/image/wd8Ug4ehfLs9XER53vNI0hujMf4RjMKSAV6QJcJqy5py1icnA.jpg" 
+                             alt="A cozy living room with a white fluffy rug, a dark wooden coffee table, and a beige sofa with cushions" 
+                             class="img-fluid rounded">
+                        <div class="image-caption text-center mt-2">
+                            Vải Nội Thất Polyester
+                        </div>
                     </div>
-                    <h2>
-                        Ưu điểm của vải Polyester
-                    </h2>
-                    <p>
-                        <strong>
-                            Độ bền tốt:
-                        </strong>
-                        Vải Polyester có độ co giãn tốt cùng với khả năng chống co rút sau thời gian sử dụng. Ngoài ra vải Polyester còn có khả năng không bị bám mùi và chống nhăn hiệu quả.
-                    </p>
-                    <p>
-                        <strong>
-                            Chống nước tốt:
-                        </strong>
-                        Những sản phẩm có khả năng chống nước tốt đều được sản xuất từ Polyester như áo khoác, lều bạt và túi ngủ... Với đặc tính nổi bật là ít hút ẩm kém, không bị phai màu theo thời gian mà rất dễ dàng gia công.
-                    </p>
-                    <p>
-                        <strong>
-                            Dễ dàng giặt ủi:
-                        </strong>
-                        Polyester thường dễ bền và có khả năng chịu được nhiều loại hóa chất. Với loại vải này, bạn có thể giặt và sấy khô tại nhà mà không lo nhiệt độ làm hư vải cũng như có thể giặt mạnh hơn so với các loại vải khác.
-                    </p>
-                    <p>
-                        <strong>
-                            Giá thành rẻ:
-                        </strong>
-                        Vải polyester được sản xuất từ nguyên liệu có chi phí thấp và quy trình sản xuất không phức tạp nên có giá thành rẻ, phù hợp với người tiêu dùng.
-                    </p>
-                    <p>
-                        <strong>
-                            Vải Polyester có khả năng chống nấm mốc và chống vi khuẩn:
-                        </strong>
-                        Quần áo của loại vải này có bề trơn, khi chạm vào nên rất dễ chịu với làn da của người mặc và bề mặt vải lại không bám bẩn.
-                    </p>
-                </div>
+                    <h3>Ưu điểm của vải Polyester</h3>
+                    <p><strong>Độ bền tốt:</strong> Vải Polyester có độ co giãn tốt cùng với khả năng chống co rút sau thời gian sử dụng. Ngoài ra vải Polyester còn có khả năng không bị bám mùi và chống nhăn hiệu quả.</p>
+                    <p><strong>Chống nước tốt:</strong> Những sản phẩm có khả năng chống nước tốt đều được sản xuất từ Polyester như áo khoác, lều bạt và túi ngủ... Với đặc tính nổi bật là ít hút ẩm kém, không bị phai màu theo thời gian mà rất dễ dàng gia công.</p>
+                    <p><strong>Dễ dàng giặt ủi:</strong> Polyester thường dễ bền và có khả năng chịu được nhiều loại hóa chất. Với loại vải này, bạn có thể giặt và sấy khô tại nhà mà không lo nhiệt độ làm hư vải cũng như có thể giặt mạnh hơn so với các loại vải khác.</p>
+                    <p><strong>Giá thành rẻ:</strong> Vải polyester được sản xuất từ nguyên liệu có chi phí thấp và quy trình sản xuất không phức tạp nên có giá thành rẻ, phù hợp với người tiêu dùng.</p>
+                    <p><strong>Vải Polyester có khả năng chống nấm mốc và chống vi khuẩn:</strong> Quần áo của loại vải này có bề trơn, khi chạm vào nên rất dễ chịu với làn da của người mặc và bề mặt vải lại không bám bẩn.</p>
+                </article>
 
-                <!-- Vải Len Content -->
-                <div class="wool-section">
-                    <h1>
-                        Vải len
-                    </h1>
+                <!-- Vải Len -->
+                <section class="wool-section mb-5">
+                    <h2>Vải Len</h2>
                     <p>
                         Vải len được làm từ sợi tự nhiên và có nguồn gốc từ lông của một số loài động vật như cừu, dê, thỏ, lạc đà... Nhờ vào đặc tính cách nhiệt, cách điện tốt và khả năng giữ ấm, độ bền cao, nên vải len thường được sử dụng phổ biến trong ngành thời trang may mặc và sản xuất chăn ga gối đệm.
                     </p>
-                    <h2>
-                        Ưu điểm của vải len
-                    </h2>
+                    <h3>Ưu điểm của vải len</h3>
                     <ul>
-                        <li>
-                            Vải len khi nhìn trực tiếp có thể thấy sợi len và kết cấu đan dệt.
-                        </li>
-                        <li>
-                            Chất vải mềm mại, sờ khá xốp, ít nhăn.
-                        </li>
-                        <li>
-                            Mặc lên tạo cảm giác nhẹ nhàng, thoải mái.
-                        </li>
-                        <li>
-                            Có độ co giãn và độ đàn hồi cao.
-                        </li>
-                        <li>
-                            Có khả năng hút ẩm.
-                        </li>
-                        <li>
-                            Chịu nhiệt, cách nhiệt, cách điện tốt.
-                        </li>
-                        <li>
-                            Khả năng khó cháy, cháy rất chậm, tắt ngay khi lấy ra khỏi lửa.
-                        </li>
-                        <li>
-                            Hấp thụ thuốc nhuộm trực tiếp mà không cần sử dụng hóa chất.
-                        </li>
+                        <li>Vải len khi nhìn trực tiếp có thể thấy sợi len và kết cấu đan dệt.</li>
+                        <li>Chất vải mềm mại, sờ khá xốp, ít nhăn.</li>
+                        <li>Mặc lên tạo cảm giác nhẹ nhàng, thoải mái.</li>
+                        <li>Có độ co giãn và độ đàn hồi cao.</li>
+                        <li>Có khả năng hút ẩm.</li>
+                        <li>Chịu nhiệt, cách nhiệt, cách điện tốt.</li>
+                        <li>Khả năng khó cháy, cháy rất chậm, tắt ngay khi lấy ra khỏi lửa.</li>
+                        <li>Hấp thụ thuốc nhuộm trực tiếp mà không cần sử dụng hóa chất.</li>
                     </ul>
 
-                    <!-- Cách bảo quản vải len (Nội Dung Mới) -->
-                    <h2>
-                        Cách bảo quản vải len
-                    </h2>
-                    <h3>Nên:</h3>
+                    <!-- Cách bảo quản vải len -->
+                    <h3>Cách bảo quản vải len</h3>
+                    <h4>Nên:</h4>
                     <ul>
-                        <li>
-                            Loại bỏ bớt bụi ra khỏi đồ len trước khi giặt bằng cách đập bụi.
-                        </li>
-                        <li>
-                            Cho thêm một ít giấm trung hòa nước giặt để giữ màu len.
-                        </li>
-                        <li>
-                            Ủi bằng hơi nước không quá 150 độ C.
-                        </li>
-                        <li>
-                            Mặc một chiếc áo mỏng bên trong ngăn mồ hôi tiếp xúc với vải len.
-                        </li>
-                        <li>
-                            Để nơi khô thoáng, không ẩm mốc và tránh bị côn trùng cắn.
-                        </li>
+                        <li>Loại bỏ bớt bụi ra khỏi đồ len trước khi giặt bằng cách đập bụi.</li>
+                        <li>Cho thêm một ít giấm trung hòa nước giặt để giữ màu len.</li>
+                        <li>Ủi bằng hơi nước không quá 150 độ C.</li>
+                        <li>Mặc một chiếc áo mỏng bên trong ngăn mồ hôi tiếp xúc với vải len.</li>
+                        <li>Để nơi khô thoáng, không ẩm mốc và tránh bị côn trùng cắn.</li>
                     </ul>
-                    <h3>Không nên:</h3>
+                    <h4>Không nên:</h4>
                     <ul>
-                        <li>
-                            Treo đồ len bằng móc treo làm chảy xệ, mất phom.
-                        </li>
-                        <li>
-                            Tẩy trắng bằng chất chứa Clo và chỉ tẩy khi cần.
-                        </li>
-                        <li>
-                            Dùng nước nóng để giặt đồ gây giãn vải, xơ sợi, mất hình dáng ban đầu.
-                        </li>
+                        <li>Treo đồ len bằng móc treo làm chảy xệ, mất phom.</li>
+                        <li>Tẩy trắng bằng chất chứa Clo và chỉ tẩy khi cần.</li>
+                        <li>Dùng nước nóng để giặt đồ gây giãn vải, xơ sợi, mất hình dáng ban đầu.</li>
                     </ul>
 
-                    <div class="text-center">
-                        <img alt="Tấm trải giường từ Vải len" class="img-fluid" height="400" src="https://storage.googleapis.com/a1aa/image/JH7qAEC0hI7NFJpem5j3OTaSignIAxeb2n5f72HEEkSGUkcnA.jpg" width="800"/>
-                        <div class="image-caption">
+                    <div class="text-center mt-3">
+                        <img src="https://storage.googleapis.com/a1aa/image/JH7qAEC0hI7NFJpem5j3OTaSignIAxeb2n5f72HEEkSGUkcnA.jpg" 
+                             alt="Tấm trải giường từ Vải len" 
+                             class="img-fluid rounded">
+                        <div class="image-caption mt-2">
                             Tấm trải giường từ Vải len
                         </div>
                     </div>
-                </div>
+                </section>
 
-                <!-- Vải Acrylic Content -->
-                <div class="acrylic-section">
-                    <h1>
-                        Vải Acrylic
-                    </h1>
+                <!-- Vải Acrylic -->
+                <article class="acrylic-section mb-5">
+                    <h2>Vải Acrylic</h2>
                     <p>
                         Vải acrylic còn được biết đến tên gọi là len nhân tạo, sợi tổng hợp acrylic, sợi len acrylic, là loại vải được tạo nên từ một loại polymer tổng hợp có tên Acrylonitrile. Loại vải này được sản xuất bằng cách cho hóa chất dầu mỏ hoặc than với một số hóa chất khác nhau để cải thiện khả năng hấp thụ chất nhuộm, tăng thêm đặc tính cho chất liệu.
                     </p>
-                    <img alt="Various colors of acrylic fabric stacked in layers" class="img-fluid" height="400" src="https://storage.googleapis.com/a1aa/image/PR3NPu3LZUqmDVL503qH2Uhf0mnGEfxLhyFS2C2wSmrRPSuTA.jpg" width="800"/>
-                    <div class="image-caption">
-                        Vải acrylic là gì
+                    <div class="text-center mb-3">
+                        <img src="https://storage.googleapis.com/a1aa/image/PR3NPu3LZUqmDVL503qH2Uhf0mnGEfxLhyFS2C2wSmrRPSuTA.jpg" 
+                             alt="Various colors of acrylic fabric stacked in layers" 
+                             class="img-fluid rounded">
+                        <div class="image-caption text-center mt-2">
+                            Vải acrylic là gì
+                        </div>
                     </div>
-                    <h2>
-                        Ưu điểm vải Acrylic:
-                    </h2>
+                    <h3>Ưu điểm vải Acrylic:</h3>
                     <ul>
-                        <li>
-                            Trọng lượng nhẹ nhưng ấm áp: Sự liên kết chặt chẽ đảm bảo độ bền chắc và khả năng giữ ấm trong thời tiết lạnh.
-                        </li>
-                        <li>
-                            Độ co giãn tốt: Nhờ ưu điểm này nên vải có khả năng phục hồi nguyên trạng tốt, chống nếp nhăn, vết gấp hiệu quả trong quá trình sử dụng.
-                        </li>
-                        <li>
-                            Chịu nhiệt cao: Loại vải này đứng thứ 2 trong danh sách những sợi tổng hợp có khả năng chịu nhiệt tốt nhất.
-                        </li>
-                        <li>
-                            Có thể chống lại một số tác nhân có hại: Vải có thể chống lại nhiều vết bẩn cứng một số hóa chất, ngăn chặn các loại sâu bướm và hạn chế tác tụ cặn tạm thời. Ngoài ra, chúng cũng không bị co bóp bởi các loại ánh sáng mặt trời.
-                        </li>
-                        <li>
-                            Dễ nhuộm màu: Acrylic đáp ứng rất tốt nhu cầu về thụ khí rất dễ nhuộm màu và giữ được độ bám màu cao.
-                        </li>
-                        <li>
-                            Giá bán vải Acrylic: So với những loại vải tổng hợp khác thì giá thành của Acrylic được đánh giá là rẻ và cũng phải chăng, phù hợp với túi tiền của người tiêu dùng.
-                        </li>
-                        <li>
-                            Dễ vệ sinh: Do Acrylic có thể chống lại các vết bẩn, bụi nhanh khô, khả năng chịu nhiệt lại tốt nên rất thuận tiện trong việc vệ sinh, giặt giũ.
-                        </li>
-                        <li>
-                            Bên cạnh những ứng dụng phổ biến trên, vải acrylic còn được dùng để sản xuất chăn, thảm trải sàn, áo bọc đệm, vải dù, đồ chơi trẻ em. Ngoài ra, chúng còn được dùng để sản xuất khăn lau, thay thế bông vải và trong ngành công nghiệp.
-                        </li>
+                        <li>Trọng lượng nhẹ nhưng ấm áp: Sự liên kết chặt chẽ đảm bảo độ bền chắc và khả năng giữ ấm trong thời tiết lạnh.</li>
+                        <li>Độ co giãn tốt: Nhờ ưu điểm này nên vải có khả năng phục hồi nguyên trạng tốt, chống nếp nhăn, vết gấp hiệu quả trong quá trình sử dụng.</li>
+                        <li>Chịu nhiệt cao: Loại vải này đứng thứ 2 trong danh sách những sợi tổng hợp có khả năng chịu nhiệt tốt nhất.</li>
+                        <li>Có thể chống lại một số tác nhân có hại: Vải có thể chống lại nhiều vết bẩn cứng một số hóa chất, ngăn chặn các loại sâu bướm và hạn chế tác tụ cặn tạm thời. Ngoài ra, chúng cũng không bị co bóp bởi các loại ánh sáng mặt trời.</li>
+                        <li>Dễ nhuộm màu: Acrylic đáp ứng rất tốt nhu cầu về thụ khí rất dễ nhuộm màu và giữ được độ bám màu cao.</li>
+                        <li>Giá bán vải Acrylic: So với những loại vải tổng hợp khác thì giá thành của Acrylic được đánh giá là rẻ và cũng phải chăng, phù hợp với túi tiền của người tiêu dùng.</li>
+                        <li>Dễ vệ sinh: Do Acrylic có thể chống lại các vết bẩn, bụi nhanh khô, khả năng chịu nhiệt lại tốt nên rất thuận tiện trong việc vệ sinh, giặt giũ.</li>
+                        <li>Bên cạnh những ứng dụng phổ biến trên, vải acrylic còn được dùng để sản xuất chăn, thảm trải sàn, áo bọc đệm, vải dù, đồ chơi trẻ em. Ngoài ra, chúng còn được dùng để sản xuất khăn lau, thay thế bông vải và trong ngành công nghiệp.</li>
                     </ul>
 
-                    <!-- Hướng Dẫn Vệ Sinh và Bảo Quản Vải Acrylic (Nội Dung Mới) -->
-                    <h2>
-                        Hướng dẫn cách vệ sinh và bảo quản vải Acrylic
-                    </h2>
+                    <!-- Hướng Dẫn Vệ Sinh và Bảo Quản Vải Acrylic -->
+                    <h3>Hướng dẫn cách vệ sinh và bảo quản vải Acrylic</h3>
                     <p>
                         Trước khi giặt hoặc làm sạch vải acrylic, hãy đọc nhãn chăm sóc của sản phẩm để được hướng dẫn cụ thể; các nhà sản xuất có thể đã trộn lẫn trong các loại vải và sợi khác, và thậm chí cả các loại acrylic khác nhau.
                     </p>
@@ -580,14 +334,103 @@
                     <p>
                         Khi giặt bằng máy, sử dụng nước ấm và chế độ giặt nhẹ. Bạn có thể sấy khô acrylic trong máy sấy ở chế độ thấp và nhanh chóng loại bỏ chúng khi khô.
                     </p>
-                </div>
-            </div>
+                </article>
+
+                <!-- Vải Canvas -->
+                <section class="canvas-section mb-5">
+                    <h2>Vải Canvas</h2>
+                    <p>
+                        Vải canvas hay còn được gọi là vải bố. Đây là sản phẩm được làm từ sợi gai dầu. Là dòng sản phẩm ngày càng được sử dụng để phổ biến hơn từ trong may mặc đến các đồ gia dụng và được ứng dụng rất nhiều hiện nay.
+                    </p>
+                    <h3>Ưu điểm vải bố canvas</h3>
+                    <p>
+                        Vải canvas có độ bền rất tốt và có thể tái sử dụng thường xuyên. Đặc biệt, vải còn có khả năng chống thấm cực kỳ hoàn hảo, dễ dàng được ứng dụng trong may mặc. Sản phẩm làm từ vải bố canvas, ngoài ra còn sử dụng trong những lĩnh vực khác như nội thất và làm các đồ dùng khác.
+                    </p>
+                    <p>
+                        Với khả năng chống thấm, không bám mùi, chống cháy nổ tốt, vải bố canvas thường được sử dụng may các dòng túi xách mang theo các đồ dùng cá nhân hàng ngày. Ngày nay, rất nhiều sản phẩm vải bố canvas còn được ứng dụng trong may mặc và làm các loại túi xách hoặc các loại đồ dùng khác.
+                    </p>
+                    <div class="text-center mb-3">
+                        <img src="https://storage.googleapis.com/a1aa/image/QGqE9CpkNPIJKtxk8JMsRmjFckJKZ6MPKsrfSHXtkT2OJJ3JA.jpg" 
+                             alt="Two decorative pillows, one with a pink cover featuring a white llama and orange pom-poms, and the other with a plain white cover." 
+                             class="img-fluid rounded">
+                        <div class="image-caption text-center mt-2">
+                            Vải Canvas
+                        </div>
+                    </div>
+                    <h3>Bí quyết bảo quản và vệ sinh vải canvas đúng cách</h3>
+                    <p>
+                        Vải canvas có độ bền rất tốt nhưng để bảo quản và vệ sinh đúng cách thì bạn nên lưu ý kiểm điểm các bước đơn giản sau đây để vải được sử dụng đúng cách nhất.
+                    </p>
+                    <p>
+                        Khi vải có vết bẩn bạn nên làm sạch ngay bằng cách dùng bàn chải và xà phòng chà nhẹ nhàng. Sau đó bạn ngâm vải trong nước ấm và giặt sạch. Đối với các vết bẩn cứng đầu bạn có thể dùng các loại chất tẩy rửa chuyên dụng. Tuy nhiên hạn chế dùng các loại chất tẩy rửa mạnh để tránh làm hỏng vải.
+                    </p>
+                    <p>
+                        Vải canvas có thể giặt bằng máy giặt, tuy nhiên không nên giặt quá nhiều lần để tránh làm hỏng vải. Bạn có thể phơi vải ở nơi thoáng mát, tránh ánh nắng trực tiếp để vải không bị phai màu. Khi không sử dụng bạn nên cất vải ở nơi khô ráo, tránh ẩm ướt để vải không bị mốc.
+                    </p>
+
+                    <!-- Danh mục sản phẩm Gối tựa lưng tại Flexhouse VN -->
+                    <h5 class="mt-4 mb-3">Danh mục sản phẩm Gối tựa lưng tại Flexhouse VN</h5>
+                    <div class="row">
+                        <!-- Sử dụng Card -->
+                        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                            <div class="product-card position-relative h-100 d-flex flex-column">
+                                <div class="discount-badge">
+                                    -25%
+                                </div>
+                                <img src="https://storage.googleapis.com/a1aa/image/hC5HnVLNy8LCMdPSRtMC9FerHXdgJHZOJeaNfEyTRtetSJ5OB.jpg" 
+                                     alt="Vỏ gối tựa sofa họa tiết thêu nổi nhiều màu sắc HL1844" 
+                                     class="img-fluid rounded">
+                                <p class="mt-2">Vỏ gối tựa sofa họa tiết thêu nổi nhiều màu sắc HL1844</p>
+                                <p class="price mt-auto">66,000 đ</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                            <div class="product-card position-relative h-100 d-flex flex-column">
+                                <div class="discount-badge">
+                                    -20%
+                                </div>
+                                <img src="https://storage.googleapis.com/a1aa/image/GOIfEzwJ6EUuFCutU7eOhv6kXbMiIwNnvTOeEkCmVPNapkcnA.jpg" 
+                                     alt="Gối tựa lưng sofa phong cách Nhật Bản FH4886" 
+                                     class="img-fluid rounded">
+                                <p class="mt-2">Gối tựa lưng sofa phong cách Nhật Bản FH4886</p>
+                                <p class="price mt-auto">430,000 đ</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                            <div class="product-card position-relative h-100 d-flex flex-column">
+                                <div class="discount-badge">
+                                    -28%
+                                </div>
+                                <img src="https://storage.googleapis.com/a1aa/image/SsYESCSK0eW2caIATHz1aReTvrBveOTm4EJDhP9YCvzgpkcnA.jpg" 
+                                     alt="Ghế đôn hạt xốp trang trí phòng khách PCH4747" 
+                                     class="img-fluid rounded">
+                                <p class="mt-2">Ghế đôn hạt xốp trang trí phòng khách PCH4747</p>
+                                <p class="original-price">575,000 đ</p>
+                                <p class="price mt-auto">414,000 đ</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                            <div class="product-card position-relative h-100 d-flex flex-column">
+                                <div class="discount-badge">
+                                    -28%
+                                </div>
+                                <img src="https://storage.googleapis.com/a1aa/image/RjZjPsqwmewJYaUecIHeFNetW2VzYX1jyTiKDCOnSddwSJ5OB.jpg" 
+                                     alt="Đệm ghế tròn vải lông nhung hoạt hình BMF7200" 
+                                     class="img-fluid rounded">
+                                <p class="mt-2">Đệm ghế tròn vải lông nhung hoạt hình BMF7200</p>
+                                <p class="original-price">385,000 đ</p>
+                                <p class="price mt-auto">277,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
 
             <!-- Sidebar -->
-            <div class="col-lg-4">
+            <aside class="col-lg-4">
                 <!-- Chuyên Mục -->
                 <div class="sidebar">
-                    <h5 class="text-center">CHUYÊN MỤC</h5>
+                    <h5 class="text-center mb-3">CHUYÊN MỤC</h5>
                     <ul class="list-group mb-4">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <a href="#">Các phòng</a>
@@ -640,7 +483,7 @@
                     </ul>
 
                     <!-- Bài Viết Mới -->
-                    <h5 class="text-center">BÀI VIẾT MỚI</h5>
+                    <h5 class="text-center mb-3">BÀI VIẾT MỚI</h5>
                     <div class="recent-posts">
                         <!-- Sử dụng Card -->
                         <div class="card mb-3">
@@ -720,365 +563,170 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Danh Mục Sản Phẩm Ga Giường Vải Cotton -->
-            <div class="container">
-                <h2 class="my-4 text-center">
-                    Danh mục sản phẩm Ga giường vải Cotton tại Flexhouse VN
-                </h2>
-                <div class="row">
-                    <div class="col-md-3 d-flex align-items-stretch">
-                        <div class="product-card">
-                            <div class="discount-badge">
-                                -28%
-                            </div>
-                            <img alt="Bộ chăn ga gối Tencel họa tiết hoa anh đào JJ4408" height="200" src="https://storage.googleapis.com/a1aa/image/fkRNPfTePiMtqoV3gVL2wKJfmpwyO9SH3fn1KIfYjkRxBRk7E.jpg" width="300"/>
-                            <div class="product-title">
-                                Bộ chăn ga gối Tencel họa tiết hoa anh đào JJ4408
-                            </div>
-                            <div class="original-price">
-                                4,085,000 đ
-                            </div>
-                            <div class="discounted-price">
-                                2,941,000 đ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 d-flex align-items-stretch">
-                        <div class="product-card">
-                            <div class="discount-badge">
-                                -28%
-                            </div>
-                            <img alt="Bộ chăn ga gối Tencel họa tiết người tuyết JJ1991" height="200" src="https://storage.googleapis.com/a1aa/image/6mkVYUyqsTJUIpuVypghfSZ27qC7c5EdmIbKTEdZN5PDiI3JA.jpg" width="300"/>
-                            <div class="product-title">
-                                Bộ chăn ga gối Tencel họa tiết người tuyết JJ1991
-                            </div>
-                            <div class="original-price">
-                                4,378,000 đ
-                            </div>
-                            <div class="discounted-price">
-                                3,152,000 đ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 d-flex align-items-stretch">
-                        <div class="product-card">
-                            <div class="discount-badge">
-                                -28%
-                            </div>
-                            <img alt="Bộ chăn ga vỏ gối kẻ caro màu xanh lá cây tươi ZH7039" height="200" src="https://storage.googleapis.com/a1aa/image/w59675QKwxoLEBfH5Un9llAGghCSjMI6HoIXUcIT8f7IERuTA.jpg" width="300"/>
-                            <div class="product-title">
-                                Bộ chăn ga vỏ gối kẻ caro màu xanh lá cây tươi ZH7039
-                            </div>
-                            <div class="original-price">
-                                3,296,000 đ
-                            </div>
-                            <div class="discounted-price">
-                                2,373,000 đ
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 d-flex align-items-stretch">
-                        <div class="product-card">
-                            <div class="discount-badge">
-                                -28%
-                            </div>
-                            <img alt="Bộ chăn ga giường gối màu sắc hoàng gia ZH6537" height="200" src="https://storage.googleapis.com/a1aa/image/zxrm8qOvacrmAxmGP02ftZBJRkAmvZsYgPdhwSzf5jJEERuTA.jpg" width="300"/>
-                            <div class="product-title">
-                                Bộ chăn ga giường gối màu sắc hoàng gia ZH6537
-                            </div>
-                            <div class="original-price">
-                                3,632,000 đ
-                            </div>
-                            <div class="discounted-price">
-                                2,618,000 đ
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Vải Nội Thất Polyester Section -->
-            <div class="container">
-                <h1 class="my-4">
-                    Vải Nội Thất Polyester
-                </h1>
-                <p>
-                    Bạn có muốn cảm giác đắt tiền trong phòng khách của bạn mà không cần sử dụng vải đắt tiền? Polyester sẽ giúp bạn đạt được điều đó một cách dễ dàng với tính chất mềm mại và thoải mái của nó. Nó có thể được sử dụng để bọc đệm ghế và sofa. Loại vải này có thể thay thế loại vải mỏng manh hơn nếu bạn có trẻ nhỏ trong nhà.
-                </p>
-                <p>
-                    Vải polyester là một loại vải tổng hợp có thành phần từ dầu mỏ, than đá và không khí được gọi là ethylene. Về cơ bản, polyester là một loại nhựa và các sợi polyester này được tạo thành nhờ vào quá trình hóa học trùng hợp cùng với 4 dạng sợi cơ bản đó là: sợi thô, sợi xơ, sợi fiberfill và sợi filament.
-                </p>
-                <img alt="A cozy living room with a white fluffy rug, a dark wooden coffee table, and a beige sofa with cushions" class="img-fluid" height="400" src="https://storage.googleapis.com/a1aa/image/wd8Ug4ehfLs9XER53vNI0hujMf4RjMKSAV6QJcJqy5py1icnA.jpg" width="800"/>
-                <div class="image-caption">
-                    Vải Nội Thất Polyester
-                </div>
-                <h2>
-                    Ưu điểm của vải Polyester
-                </h2>
-                <p>
-                    <strong>
-                        Độ bền tốt:
-                    </strong>
-                    Vải Polyester có độ co giãn tốt cùng với khả năng chống co rút sau thời gian sử dụng. Ngoài ra vải Polyester còn có khả năng không bị bám mùi và chống nhăn hiệu quả.
-                </p>
-                <p>
-                    <strong>
-                        Chống nước tốt:
-                    </strong>
-                    Những sản phẩm có khả năng chống nước tốt đều được sản xuất từ Polyester như áo khoác, lều bạt và túi ngủ... Với đặc tính nổi bật là ít hút ẩm kém, không bị phai màu theo thời gian mà rất dễ dàng gia công.
-                </p>
-                <p>
-                    <strong>
-                        Dễ dàng giặt ủi:
-                    </strong>
-                    Polyester thường dễ bền và có khả năng chịu được nhiều loại hóa chất. Với loại vải này, bạn có thể giặt và sấy khô tại nhà mà không lo nhiệt độ làm hư vải cũng như có thể giặt mạnh hơn so với các loại vải khác.
-                </p>
-                <p>
-                    <strong>
-                        Giá thành rẻ:
-                    </strong>
-                    Vải polyester được sản xuất từ nguyên liệu có chi phí thấp và quy trình sản xuất không phức tạp nên có giá thành rẻ, phù hợp với người tiêu dùng.
-                </p>
-                <p>
-                    <strong>
-                        Vải Polyester có khả năng chống nấm mốc và chống vi khuẩn:
-                    </strong>
-                    Quần áo của loại vải này có bề trơn, khi chạm vào nên rất dễ chịu với làn da của người mặc và bề mặt vải lại không bám bẩn.
-                </p>
-            </div>
-
-            <!-- Cách bảo quản vải polyester và danh mục sản phẩm Thảm trải sàn phòng khách -->
-            <div class="container product-page-container">
-                <h5>
-                    Cách bảo quản vải polyester:
-                </h5>
-                <ul>
-                    <li>
-                        Khi giặt đồ dùng màu trắng nên ngâm sản phẩm trước khi xử lý trong nước ấm, sau đó ngâm qua đêm và giặt lại vào buổi sáng hôm sau.
-                    </li>
-                    <li>
-                        Để đảm bảo sạch đồ dùng nên giặt với nước ấm vì loại vải này có tác dụng làm sạch rất tốt với chất polyester. Nên giặt bằng tay để có hiệu quả tốt nhất.
-                    </li>
-                    <li>
-                        Cách sử dụng để vải không bị nhăn là nên phơi ở nhiệt độ trung bình như trong bóng mát, hơi là bằng máy là hơi với nhiệt độ thấp.
-                    </li>
-                </ul>
-                <h5>
-                    Danh mục sản phẩm Thảm trải sàn phòng khách tại Flexhouse VN
-                </h5>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="product-card">
-                            <div class="discount">
-                                -27%
-                            </div>
-                            <img alt="Thảm trải phòng ngủ sợi tổng hợp đa màu YN-SGL09" height="200" src="https://storage.googleapis.com/a1aa/image/B0uwlfbYDXRYJqcIEou4DlorlerNgSAEUCW1MNg9JxyphRuTA.jpg" width="200"/>
-                            <p>
-                                Thảm trải phòng ngủ sợi tổng hợp đa màu YN-SGL09
-                            </p>
-                            <p class="original-price">
-                                3,450,000 ₫
-                            </p>
-                            <p class="price">
-                                2,530,000 ₫
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-card">
-                            <div class="discount">
-                                -27%
-                            </div>
-                            <img alt="Thảm trang trí Việt mẫu ảo nghệ thuật YN-SGL08" height="200" src="https://storage.googleapis.com/a1aa/image/yX0fAfddB5lMVElToTntGPvttfXmSgA8eRsXJZbemuj4MMydC.jpg" width="200"/>
-                            <p>
-                                Thảm trang trí Việt mẫu ảo nghệ thuật YN-SGL08
-                            </p>
-                            <p class="original-price">
-                                3,450,000 ₫
-                            </p>
-                            <p class="price">
-                                2,530,000 ₫
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-card">
-                            <div class="discount">
-                                -25%
-                            </div>
-                            <img alt="Thảm trải sàn sợi tổng hợp hoa văn hiện đại KNS08317" height="200" src="https://storage.googleapis.com/a1aa/image/TkvkOZ7bDQpfVyoYee4GbOFZaenkaM3yf9RqxjZIsfuWZYk7E.jpg" width="200"/>
-                            <p>
-                                Thảm trải sàn sợi tổng hợp hoa văn hiện đại KNS08317
-                            </p>
-                            <p class="original-price">
-                                105,000 ₫
-                            </p>
-                            <p class="price">
-                                79,000 ₫
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="product-card">
-                            <div class="discount">
-                                -20%
-                            </div>
-                            <img alt="Thảm trải sàn văn phòng sọc nổi đa màu ZC3008" height="200" src="https://storage.googleapis.com/a1aa/image/fh9S590H6eg1Sktx7QQn4f0Ls3uXOWren7hvAEh5ZZlRGG5OB.jpg" width="200"/>
-                            <p>
-                                Thảm trải sàn văn phòng sọc nổi đa màu ZC3008
-                            </p>
-                            <p class="original-price">
-                                100,000 ₫
-                            </p>
-                            <p class="price">
-                                80,000 ₫
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </aside>
         </div>
 
-        <!-- Vải Len Section (Nội Dung Mới) -->
-        <div class="container wool-section">
-            <h1>
-                Vải len
-            </h1>
-            <p>
-                Vải len được làm từ sợi tự nhiên và có nguồn gốc từ lông của một số loài động vật như cừu, dê, thỏ, lạc đà... Nhờ vào đặc tính cách nhiệt, cách điện tốt và khả năng giữ ấm, độ bền cao, nên vải len thường được sử dụng phổ biến trong ngành thời trang may mặc và sản xuất chăn ga gối đệm.
-            </p>
-            <h2>
-                Ưu điểm của vải len
+        <!-- Danh Mục Sản Phẩm Ga Giường Vải Cotton -->
+        <section class="container my-5">
+            <h2 class="text-center mb-4">
+                Danh mục sản phẩm Ga giường vải Cotton tại Flexhouse VN
             </h2>
-            <ul>
-                <li>
-                    Vải len khi nhìn trực tiếp có thể thấy sợi len và kết cấu đan dệt.
-                </li>
-                <li>
-                    Chất vải mềm mại, sờ khá xốp, ít nhăn.
-                </li>
-                <li>
-                    Mặc lên tạo cảm giác nhẹ nhàng, thoải mái.
-                </li>
-                <li>
-                    Có độ co giãn và độ đàn hồi cao.
-                </li>
-                <li>
-                    Có khả năng hút ẩm.
-                </li>
-                <li>
-                    Chịu nhiệt, cách nhiệt, cách điện tốt.
-                </li>
-                <li>
-                    Khả năng khó cháy, cháy rất chậm, tắt ngay khi lấy ra khỏi lửa.
-                </li>
-                <li>
-                    Hấp thụ thuốc nhuộm trực tiếp mà không cần sử dụng hóa chất.
-                </li>
-            </ul>
-
-            <!-- Cách bảo quản vải len (Nội Dung Mới) -->
-            <h2>
-                Cách bảo quản vải len
-            </h2>
-            <h3>Nên:</h3>
-            <ul>
-                <li>
-                    Loại bỏ bớt bụi ra khỏi đồ len trước khi giặt bằng cách đập bụi.
-                </li>
-                <li>
-                    Cho thêm một ít giấm trung hòa nước giặt để giữ màu len.
-                </li>
-                <li>
-                    Ủi bằng hơi nước không quá 150 độ C.
-                </li>
-                <li>
-                    Mặc một chiếc áo mỏng bên trong ngăn mồ hôi tiếp xúc với vải len.
-                </li>
-                <li>
-                    Để nơi khô thoáng, không ẩm mốc và tránh bị côn trùng cắn.
-                </li>
-            </ul>
-            <h3>Không nên:</h3>
-            <ul>
-                <li>
-                    Treo đồ len bằng móc treo làm chảy xệ, mất phom.
-                </li>
-                <li>
-                    Tẩy trắng bằng chất chứa Clo và chỉ tẩy khi cần.
-                </li>
-                <li>
-                    Dùng nước nóng để giặt đồ gây giãn vải, xơ sợi, mất hình dáng ban đầu.
-                </li>
-            </ul>
-
-            <div class="text-center">
-                <img alt="Tấm trải giường từ Vải len" class="img-fluid" height="400" src="https://storage.googleapis.com/a1aa/image/JH7qAEC0hI7NFJpem5j3OTaSignIAxeb2n5f72HEEkSGUkcnA.jpg" width="800"/>
-                <div class="image-caption">
-                    Tấm trải giường từ Vải len
+            <div class="row">
+                <div class="col-md-3 d-flex align-items-stretch mb-4">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -28%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/fkRNPfTePiMtqoV3gVL2wKJfmpwyO9SH3fn1KIfYjkRxBRk7E.jpg" 
+                             alt="Bộ chăn ga gối Tencel họa tiết hoa anh đào JJ4408" 
+                             class="img-fluid rounded">
+                        <div class="product-title mt-2">
+                            Bộ chăn ga gối Tencel họa tiết hoa anh đào JJ4408
+                        </div>
+                        <div class="original-price">
+                            4,085,000 đ
+                        </div>
+                        <div class="discounted-price">
+                            2,941,000 đ
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-stretch mb-4">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -28%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/6mkVYUyqsTJUIpuVypghfSZ27qC7c5EdmIbKTEdZN5PDiI3JA.jpg" 
+                             alt="Bộ chăn ga gối Tencel họa tiết người tuyết JJ1991" 
+                             class="img-fluid rounded">
+                        <div class="product-title mt-2">
+                            Bộ chăn ga gối Tencel họa tiết người tuyết JJ1991
+                        </div>
+                        <div class="original-price">
+                            4,378,000 đ
+                        </div>
+                        <div class="discounted-price">
+                            3,152,000 đ
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-stretch mb-4">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -28%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/w59675QKwxoLEBfH5Un9llAGghCSjMI6HoIXUcIT8f7IERuTA.jpg" 
+                             alt="Bộ chăn ga vỏ gối kẻ caro màu xanh lá cây tươi ZH7039" 
+                             class="img-fluid rounded">
+                        <div class="product-title mt-2">
+                            Bộ chăn ga vỏ gối kẻ caro màu xanh lá cây tươi ZH7039
+                        </div>
+                        <div class="original-price">
+                            3,296,000 đ
+                        </div>
+                        <div class="discounted-price">
+                            2,373,000 đ
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-stretch mb-4">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -28%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/RjZjPsqwmewJYaUecIHeFNetW2VzYX1jyTiKDCOnSddwSJ5OB.jpg" 
+                             alt="Đệm ghế tròn vải lông nhung hoạt hình BMF7200" 
+                             class="img-fluid rounded">
+                        <div class="product-title mt-2">
+                            Đệm ghế tròn vải lông nhung hoạt hình BMF7200
+                        </div>
+                        <div class="original-price">
+                            385,000 đ
+                        </div>
+                        <div class="discounted-price">
+                            277,000 đ
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Vải Acrylic Content -->
-        <div class="acrylic-section">
-            <h1>
-                Vải Acrylic
-            </h1>
-            <p>
-                Vải acrylic còn được biết đến tên gọi là len nhân tạo, sợi tổng hợp acrylic, sợi len acrylic, là loại vải được tạo nên từ một loại polymer tổng hợp có tên Acrylonitrile. Loại vải này được sản xuất bằng cách cho hóa chất dầu mỏ hoặc than với một số hóa chất khác nhau để cải thiện khả năng hấp thụ chất nhuộm, tăng thêm đặc tính cho chất liệu.
-            </p>
-            <img alt="Various colors of acrylic fabric stacked in layers" class="img-fluid" height="400" src="https://storage.googleapis.com/a1aa/image/PR3NPu3LZUqmDVL503qH2Uhf0mnGEfxLhyFS2C2wSmrRPSuTA.jpg" width="800"/>
-            <div class="image-caption">
-                Vải acrylic là gì
-            </div>
-            <h2>
-                Ưu điểm vải Acrylic:
-            </h2>
+        <!-- Danh Mục Sản Phẩm Thảm Trải Sàn Phòng Khách -->
+        <section class="container product-page-container mb-5">
+            <h5 class="mb-3">Cách bảo quản vải polyester:</h5>
             <ul>
-                <li>
-                    Trọng lượng nhẹ nhưng ấm áp: Sự liên kết chặt chẽ đảm bảo độ bền chắc và khả năng giữ ấm trong thời tiết lạnh.
-                </li>
-                <li>
-                    Độ co giãn tốt: Nhờ ưu điểm này nên vải có khả năng phục hồi nguyên trạng tốt, chống nếp nhăn, vết gấp hiệu quả trong quá trình sử dụng.
-                </li>
-                <li>
-                    Chịu nhiệt cao: Loại vải này đứng thứ 2 trong danh sách những sợi tổng hợp có khả năng chịu nhiệt tốt nhất.
-                </li>
-                <li>
-                    Có thể chống lại một số tác nhân có hại: Vải có thể chống lại nhiều vết bẩn cứng một số hóa chất, ngăn chặn các loại sâu bướm và hạn chế tác tụ cặn tạm thời. Ngoài ra, chúng cũng không bị co bóp bởi các loại ánh sáng mặt trời.
-                </li>
-                <li>
-                    Dễ nhuộm màu: Acrylic đáp ứng rất tốt nhu cầu về thụ khí rất dễ nhuộm màu và giữ được độ bám màu cao.
-                </li>
-                <li>
-                    Giá bán vải Acrylic: So với những loại vải tổng hợp khác thì giá thành của Acrylic được đánh giá là rẻ và cũng phải chăng, phù hợp với túi tiền của người tiêu dùng.
-                </li>
-                <li>
-                    Dễ vệ sinh: Do Acrylic có thể chống lại các vết bẩn, bụi nhanh khô, khả năng chịu nhiệt lại tốt nên rất thuận tiện trong việc vệ sinh, giặt giũ.
-                </li>
-                <li>
-                    Bên cạnh những ứng dụng phổ biến trên, vải acrylic còn được dùng để sản xuất chăn, thảm trải sàn, áo bọc đệm, vải dù, đồ chơi trẻ em. Ngoài ra, chúng còn được dùng để sản xuất khăn lau, thay thế bông vải và trong ngành công nghiệp.
-                </li>
+                <li>Khi giặt đồ dùng màu trắng nên ngâm sản phẩm trước khi xử lý trong nước ấm, sau đó ngâm qua đêm và giặt lại vào buổi sáng hôm sau.</li>
+                <li>Để đảm bảo sạch đồ dùng nên giặt với nước ấm vì loại vải này có tác dụng làm sạch rất tốt với chất polyester. Nên giặt bằng tay để có hiệu quả tốt nhất.</li>
+                <li>Cách sử dụng để vải không bị nhăn là nên phơi ở nhiệt độ trung bình như trong bóng mát, hơi là bằng máy là hơi với nhiệt độ thấp.</li>
             </ul>
+            <h5 class="mt-4 mb-3">Danh mục sản phẩm Thảm trải sàn phòng khách tại Flexhouse VN</h5>
+            <div class="row">
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -27%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/B0uwlfbYDXRYJqcIEou4DlorlerNgSAEUCW1MNg9JxyphRuTA.jpg" 
+                             alt="Thảm trải phòng ngủ sợi tổng hợp đa màu YN-SGL09" 
+                             class="img-fluid rounded">
+                        <p class="mt-2">Thảm trải phòng ngủ sợi tổng hợp đa màu YN-SGL09</p>
+                        <p class="original-price">3,450,000 ₫</p>
+                        <p class="price">2,530,000 ₫</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -27%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/yX0fAfddB5lMVElToTntGPvttfXmSgA8eRsXJZbemuj4MMydC.jpg" 
+                             alt="Thảm trang trí Việt mẫu ảo nghệ thuật YN-SGL08" 
+                             class="img-fluid rounded">
+                        <p class="mt-2">Thảm trang trí Việt mẫu ảo nghệ thuật YN-SGL08</p>
+                        <p class="original-price">3,450,000 ₫</p>
+                        <p class="price">2,530,000 ₫</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -25%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/TkvkOZ7bDQpfVyoYee4GbOFZaenkaM3yf9RqxjZIsfuWZYk7E.jpg" 
+                             alt="Thảm trải sàn sợi tổng hợp hoa văn hiện đại KNS08317" 
+                             class="img-fluid rounded">
+                        <p class="mt-2">Thảm trải sàn sợi tổng hợp hoa văn hiện đại KNS08317</p>
+                        <p class="original-price">105,000 ₫</p>
+                        <p class="price">79,000 ₫</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                    <div class="product-card position-relative h-100 d-flex flex-column">
+                        <div class="discount-badge">
+                            -20%
+                        </div>
+                        <img src="https://storage.googleapis.com/a1aa/image/fh9S590H6eg1Sktx7QQn4f0Ls3uXOWren7hvAEh5ZZlRGG5OB.jpg" 
+                             alt="Thảm trải sàn văn phòng sọc nổi đa màu ZC3008" 
+                             class="img-fluid rounded">
+                        <p class="mt-2">Thảm trải sàn văn phòng sọc nổi đa màu ZC3008</p>
+                        <p class="original-price">100,000 ₫</p>
+                        <p class="price">80,000 ₫</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-            <!-- Hướng Dẫn Vệ Sinh và Bảo Quản Vải Acrylic (Nội Dung Mới) -->
-            <h2>
-                Hướng dẫn cách vệ sinh và bảo quản vải Acrylic
-            </h2>
-            <p>
-                Trước khi giặt hoặc làm sạch vải acrylic, hãy đọc nhãn chăm sóc của sản phẩm để được hướng dẫn cụ thể; các nhà sản xuất có thể đã trộn lẫn trong các loại vải và sợi khác, và thậm chí cả các loại acrylic khác nhau.
-            </p>
-            <p>
-                Đối với các mặt hàng mỏng, tốt nhất nên được giặt bằng tay và trong nước ấm và phơi khô trên dây phơi hoặc móc treo trong nhà.
-            </p>
-            <p>
-                Khi giặt bằng máy, sử dụng nước ấm và chế độ giặt nhẹ. Bạn có thể sấy khô acrylic trong máy sấy ở chế độ thấp và nhanh chóng loại bỏ chúng khi khô.
-            </p>
+    <!-- Footer -->
+    <footer class="container text-center py-4">
+        <p>&copy; 2024 Blog về Nội Thất. All rights reserved.</p>
+        <!-- Optional: Add social media links or additional navigation -->
+        <div class="mt-3">
+            <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
         </div>
-    </div>
+    </footer>
 
     <!-- Bootstrap JS và các phụ thuộc -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+YdPzLg5FzQZZK3IYHTcP2C4XrP2/" crossorigin="anonymous"></script>
