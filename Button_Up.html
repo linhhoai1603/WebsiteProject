@@ -360,10 +360,10 @@
               <h5 class="mb-0">Phụ Kiện Nút Áo Cao Cấp</h5>
             </div>
             <div class="header-right d-flex align-items-center">
-              <!-- Loại bỏ view-toggle -->
+              <!-- Thay đổi view-toggle thành sort-select với các tùy chọn mới -->
               <select class="form-select d-inline-block w-auto" id="sortSelect">
-                <option value="name-asc" selected>Sắp xếp theo: Tên A-Z</option>
-                <option value="name-desc">Tên Z-A</option>
+                <option value="newest" selected>Mới Nhất</option>
+                <option value="best-selling">Bán Chạy Nhất</option>
                 <option value="price-asc">Giá tăng dần</option>
                 <option value="price-desc">Giá giảm dần</option>
               </select>
@@ -403,7 +403,7 @@
           <!-- Product Grid -->
           <div class="row product-grid">
             <!-- Sản phẩm 1 -->
-            <div class="col-md-4 mb-4" data-price="8000" data-brand="ButtonPro">
+            <div class="col-md-4 mb-4" data-price="8000" data-brand="ButtonPro" data-date="2024-01-10" data-sales="150">
               <div class="card h-100">
                 <img
                   src="images/nutaothantienmautrang.jpg"
@@ -439,6 +439,8 @@
               class="col-md-4 mb-4"
               data-price="12000"
               data-brand="StyleButtons"
+              data-date="2024-02-15"
+              data-sales="200"
             >
               <div class="card h-100">
                 <img
@@ -474,6 +476,8 @@
               class="col-md-4 mb-4"
               data-price="15000"
               data-brand="ElegantButtons"
+              data-date="2024-03-20"
+              data-sales="180"
             >
               <div class="card h-100">
                 <img
@@ -505,7 +509,7 @@
             </div>
 
             <!-- Sản phẩm 4 -->
-            <div class="col-md-4 mb-4" data-price="5000" data-brand="ButtonPro">
+            <div class="col-md-4 mb-4" data-price="5000" data-brand="ButtonPro" data-date="2024-04-05" data-sales="120">
               <div class="card h-100">
                 <img
                   src="images/nutaothanhtheocochai.jpg"
@@ -534,13 +538,13 @@
               </div>
             </div>
 
-            <!-- Thêm các sản phẩm cho trang 2 và 3 -->
-            <!-- Bạn có thể sao chép các sản phẩm trên và thay đổi thuộc tính data-price và data-brand phù hợp -->
             <!-- Sản phẩm 5 -->
             <div
               class="col-md-4 mb-4"
               data-price="7000"
               data-brand="StyleButtons"
+              data-date="2024-05-12"
+              data-sales="140"
             >
               <div class="card h-100">
                 <img
@@ -575,6 +579,8 @@
               class="col-md-4 mb-4"
               data-price="9000"
               data-brand="ElegantButtons"
+              data-date="2024-06-18"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
@@ -610,6 +616,8 @@
               class="col-md-4 mb-4"
               data-price="11000"
               data-brand="ButtonPro"
+              data-date="2024-07-22"
+              data-sales="170"
             >
               <div class="card h-100">
                 <img
@@ -644,6 +652,8 @@
               class="col-md-4 mb-4"
               data-price="6000"
               data-brand="StyleButtons"
+              data-date="2024-08-05"
+              data-sales="130"
             >
               <div class="card h-100">
                 <img
@@ -674,12 +684,13 @@
               </div>
             </div>
 
-            <!-- Tiếp tục thêm các sản phẩm tương tự cho các trang 2 và 3 -->
             <!-- Sản phẩm 9 -->
             <div
               class="col-md-4 mb-4"
               data-price="10000"
               data-brand="ElegantButtons"
+              data-date="2024-09-10"
+              data-sales="190"
             >
               <div class="card h-100">
                 <img
@@ -715,6 +726,8 @@
               class="col-md-4 mb-4"
               data-price="13000"
               data-brand="ButtonPro"
+              data-date="2024-10-15"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
@@ -750,6 +763,8 @@
               class="col-md-4 mb-4"
               data-price="9000"
               data-brand="StyleButtons"
+              data-date="2024-11-20"
+              data-sales="175"
             >
               <div class="card h-100">
                 <img
@@ -785,6 +800,8 @@
               class="col-md-4 mb-4"
               data-price="14000"
               data-brand="ElegantButtons"
+              data-date="2024-12-25"
+              data-sales="220"
             >
               <div class="card h-100">
                 <img
@@ -814,12 +831,14 @@
               </div>
             </div>
 
-            <!-- Tiếp tục thêm các sản phẩm tương tự cho các trang tiếp theo -->
+            <!-- Tiếp tục thêm các sản phẩm cho trang 2 và 3 -->
             <!-- Sản phẩm 13 -->
             <div
               class="col-md-4 mb-4"
               data-price="10000"
               data-brand="ButtonPro"
+              data-date="2025-01-05"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
@@ -854,6 +873,8 @@
               class="col-md-4 mb-4"
               data-price="8500"
               data-brand="StyleButtons"
+              data-date="2025-02-10"
+              data-sales="145"
             >
               <div class="card h-100">
                 <img
@@ -889,6 +910,8 @@
               class="col-md-4 mb-4"
               data-price="16000"
               data-brand="ElegantButtons"
+              data-date="2025-03-15"
+              data-sales="230"
             >
               <div class="card h-100">
                 <img
@@ -919,7 +942,7 @@
             </div>
 
             <!-- Sản phẩm 16 -->
-            <div class="col-md-4 mb-4" data-price="7500" data-brand="ButtonPro">
+            <div class="col-md-4 mb-4" data-price="7500" data-brand="ButtonPro" data-date="2025-04-20" data-sales="130">
               <div class="card h-100">
                 <img
                   src="images/nutaothanhtheoocochai.jpg"
@@ -953,6 +976,8 @@
               class="col-md-4 mb-4"
               data-price="9500"
               data-brand="StyleButtons"
+              data-date="2025-05-25"
+              data-sales="155"
             >
               <div class="card h-100">
                 <img
@@ -987,6 +1012,8 @@
               class="col-md-4 mb-4"
               data-price="13000"
               data-brand="ElegantButtons"
+              data-date="2025-06-30"
+              data-sales="240"
             >
               <div class="card h-100">
                 <img
@@ -1021,6 +1048,8 @@
               class="col-md-4 mb-4"
               data-price="11000"
               data-brand="ButtonPro"
+              data-date="2025-07-10"
+              data-sales="175"
             >
               <div class="card h-100">
                 <img
@@ -1056,6 +1085,8 @@
               class="col-md-4 mb-4"
               data-price="14000"
               data-brand="StyleButtons"
+              data-date="2025-08-15"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
@@ -1091,6 +1122,8 @@
               class="col-md-4 mb-4"
               data-price="7000"
               data-brand="ElegantButtons"
+              data-date="2025-09-20"
+              data-sales="180"
             >
               <div class="card h-100">
                 <img
@@ -1125,6 +1158,8 @@
               class="col-md-4 mb-4"
               data-price="16000"
               data-brand="ButtonPro"
+              data-date="2025-10-25"
+              data-sales="240"
             >
               <div class="card h-100">
                 <img
@@ -1160,6 +1195,8 @@
               class="col-md-4 mb-4"
               data-price="8000"
               data-brand="StyleButtons"
+              data-date="2025-11-30"
+              data-sales="185"
             >
               <div class="card h-100">
                 <img
@@ -1194,10 +1231,12 @@
               class="col-md-4 mb-4"
               data-price="17000"
               data-brand="ElegantButtons"
+              data-date="2025-12-05"
+              data-sales="250"
             >
               <div class="card h-100">
                 <img
-                  src="images/nutaoelegantpurple.jpg"
+                  src="images/nutaaoelegantpurple.jpg"
                   class="card-img-top"
                   alt="Nút Áo Elegant - Màu Tím"
                 />
@@ -1225,7 +1264,13 @@
             </div>
 
             <!-- Sản phẩm 25 -->
-            <div class="col-md-4 mb-4" data-price="9500" data-brand="ButtonPro">
+            <div
+              class="col-md-4 mb-4"
+              data-price="9500"
+              data-brand="ButtonPro"
+              data-date="2026-01-10"
+              data-sales="195"
+            >
               <div class="card h-100">
                 <img
                   src="images/nutaothanhtheoocochai4.jpg"
@@ -1259,6 +1304,8 @@
               class="col-md-4 mb-4"
               data-price="18000"
               data-brand="StyleButtons"
+              data-date="2026-02-15"
+              data-sales="260"
             >
               <div class="card h-100">
                 <img
@@ -1293,10 +1340,12 @@
               class="col-md-4 mb-4"
               data-price="16000"
               data-brand="ElegantButtons"
+              data-date="2026-03-20"
+              data-sales="270"
             >
               <div class="card h-100">
                 <img
-                  src="images/nutaoelegantwhite2.jpg"
+                  src="images/nutaaoelegantwhite2.jpg"
                   class="card-img-top"
                   alt="Nút Áo Elegant - Màu Trắng 2"
                 />
@@ -1358,273 +1407,275 @@
       crossorigin="anonymous"
     ></script>
 
-  <!-- JavaScript to Handle Filtering, Sorting, and Pagination -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const productGrid = document.querySelector(".product-grid");
-    const sortSelect = document.getElementById("sortSelect");
-    const paginationTop = document.getElementById("paginationTop");
-    const paginationBottom = document.getElementById("paginationBottom");
-    const priceFilters = document.querySelectorAll(".price-filter");
-    const brandFilters = document.querySelectorAll(".brand-filter");
+    <!-- JavaScript to Handle Filtering, Sorting, and Pagination -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const productGrid = document.querySelector(".product-grid");
+        const sortSelect = document.getElementById("sortSelect");
+        const paginationTop = document.getElementById("paginationTop");
+        const paginationBottom = document.getElementById("paginationBottom");
+        const priceFilters = document.querySelectorAll(".price-filter");
+        const brandFilters = document.querySelectorAll(".brand-filter");
 
-    let currentPage = parseInt(localStorage.getItem("currentPage")) || 1;
-    const productsPerPage = 9;
-    let filteredProducts = [];
+        let currentPage = parseInt(localStorage.getItem("currentPage")) || 1;
+        const productsPerPage = 9;
+        let filteredProducts = [];
 
-    // Retrieve all product cards
-    const allProducts = Array.from(document.querySelectorAll(".product-grid .col-md-4"));
+        // Retrieve all product cards
+        const allProducts = Array.from(document.querySelectorAll(".product-grid .col-md-4"));
 
-    // Utility function to parse price string to integer
-    function parsePrice(priceStr) {
-      return parseInt(priceStr.replace(/[^0-9]/g, ""));
-    }
-
-    // Function to filter products based on selected price and brand filters
-    function filterProducts() {
-      const checkedPriceFilters = Array.from(priceFilters).filter(filter => filter.checked);
-      const priceRanges = checkedPriceFilters.map(filter => {
-        const min = parseInt(filter.getAttribute("data-min")) || 0;
-        const maxAttr = filter.getAttribute("data-max");
-        const max = maxAttr ? parseInt(maxAttr) : Number.MAX_SAFE_INTEGER;
-        return { min, max };
-      });
-
-      const checkedBrandFilters = Array.from(brandFilters).filter(filter => filter.checked);
-      const brands = checkedBrandFilters.map(filter => filter.getAttribute("data-brand"));
-
-      // Filter products based on price and brand
-      filteredProducts = allProducts.filter(card => {
-        const discountedPriceEl = card.querySelector(".discounted-price");
-        const brand = card.getAttribute("data-brand");
-        if (!discountedPriceEl) return false;
-
-        const priceText = discountedPriceEl.textContent.trim();
-        const price = parsePrice(priceText);
-
-        // Check price range
-        const isPriceMatch = priceRanges.length === 0 || priceRanges.some(range => price >= range.min && price <= range.max);
-
-        // Check brand
-        const isBrandMatch = brands.length === 0 || brands.includes(brand);
-
-        return isPriceMatch && isBrandMatch;
-      });
-
-      // Sort the filtered products
-      sortFilteredProducts();
-
-      // Reset to first page after filtering
-      currentPage = 1;
-      localStorage.setItem("currentPage", "1");
-      renderPagination();
-    }
-
-    // Function to sort the filtered products based on selected sort option
-    function sortFilteredProducts() {
-      const sortValue = sortSelect.value;
-
-      filteredProducts.sort((a, b) => {
-        const priceA = parsePrice(a.querySelector(".discounted-price").textContent.trim());
-        const priceB = parsePrice(b.querySelector(".discounted-price").textContent.trim());
-
-        const nameA = a.querySelector(".card-title").textContent.trim().toLowerCase();
-        const nameB = b.querySelector(".card-title").textContent.trim().toLowerCase();
-
-        if (sortValue === "name-asc") {
-          return nameA.localeCompare(nameB);
-        } else if (sortValue === "name-desc") {
-          return nameB.localeCompare(nameA);
-        } else if (sortValue === "price-asc") {
-          return priceA - priceB;
-        } else if (sortValue === "price-desc") {
-          return priceB - priceA;
-        } else {
-          return 0;
+        // Utility function to parse price string to integer
+        function parsePrice(priceStr) {
+          return parseInt(priceStr.replace(/[^0-9]/g, ""));
         }
-      });
-    }
 
-    // Function to render products for the current page
-    function renderProducts() {
-      // Clear the current product grid
-      productGrid.innerHTML = "";
+        // Function to filter products based on selected price and brand filters
+        function filterProducts() {
+          const checkedPriceFilters = Array.from(priceFilters).filter(filter => filter.checked);
+          const priceRanges = checkedPriceFilters.map(filter => {
+            const min = parseInt(filter.getAttribute("data-min")) || 0;
+            const maxAttr = filter.getAttribute("data-max");
+            const max = maxAttr ? parseInt(maxAttr) : Number.MAX_SAFE_INTEGER;
+            return { min, max };
+          });
 
-      const start = (currentPage - 1) * productsPerPage;
-      const end = start + productsPerPage;
-      const productsToShow = filteredProducts.slice(start, end);
+          const checkedBrandFilters = Array.from(brandFilters).filter(filter => filter.checked);
+          const brands = checkedBrandFilters.map(filter => filter.getAttribute("data-brand"));
 
-      productsToShow.forEach(card => {
-        productGrid.appendChild(card);
-      });
+          // Filter products based on price and brand
+          filteredProducts = allProducts.filter(card => {
+            const discountedPriceEl = card.querySelector(".discounted-price");
+            const brand = card.getAttribute("data-brand");
+            if (!discountedPriceEl) return false;
 
-      // If no products to show, display a message
-      if (productsToShow.length === 0) {
-        const noProductMsg = document.createElement("p");
-        noProductMsg.textContent = "Không có sản phẩm nào phù hợp với bộ lọc của bạn.";
-        noProductMsg.classList.add("text-center", "mt-4");
-        productGrid.appendChild(noProductMsg);
-      }
-    }
+            const priceText = discountedPriceEl.textContent.trim();
+            const price = parsePrice(priceText);
 
-    // Function to update pagination controls
-    function updatePagination(totalPages) {
-      const paginations = [paginationTop, paginationBottom];
+            // Check price range
+            const isPriceMatch = priceRanges.length === 0 || priceRanges.some(range => price >= range.min && price <= range.max);
 
-      paginations.forEach(pagination => {
-        // Remove existing page numbers except 'prev' and 'next'
-        pagination.querySelectorAll(".page-item:not([data-page='prev']):not([data-page='next'])").forEach(item => item.remove());
+            // Check brand
+            const isBrandMatch = brands.length === 0 || brands.includes(brand);
 
-        // Dynamically create page number buttons
-        for (let i = 1; i <= totalPages; i++) {
-          const li = document.createElement("li");
-          li.classList.add("page-item");
-          li.setAttribute("data-page", i);
+            return isPriceMatch && isBrandMatch;
+          });
 
-          if (i === currentPage) {
-            li.classList.add("active");
-            li.setAttribute("aria-current", "page");
+          // Sort the filtered products
+          sortFilteredProducts();
+
+          // Reset to first page after filtering
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        }
+
+        // Function to sort the filtered products based on selected sort option
+        function sortFilteredProducts() {
+          const sortValue = sortSelect.value;
+
+          filteredProducts.sort((a, b) => {
+            if (sortValue === "newest") {
+              const dateA = new Date(a.getAttribute("data-date"));
+              const dateB = new Date(b.getAttribute("data-date"));
+              return dateB - dateA; // Newest first
+            } else if (sortValue === "best-selling") {
+              const salesA = parseInt(a.getAttribute("data-sales")) || 0;
+              const salesB = parseInt(b.getAttribute("data-sales")) || 0;
+              return salesB - salesA; // Best selling first
+            } else if (sortValue === "price-asc") {
+              const priceA = parseInt(a.getAttribute("data-price")) || 0;
+              const priceB = parseInt(b.getAttribute("data-price")) || 0;
+              return priceA - priceB;
+            } else if (sortValue === "price-desc") {
+              const priceA = parseInt(a.getAttribute("data-price")) || 0;
+              const priceB = parseInt(b.getAttribute("data-price")) || 0;
+              return priceB - priceA;
+            } else {
+              return 0;
+            }
+          });
+        }
+
+        // Function to render products for the current page
+        function renderProducts() {
+          // Clear the current product grid
+          productGrid.innerHTML = "";
+
+          const start = (currentPage - 1) * productsPerPage;
+          const end = start + productsPerPage;
+          const productsToShow = filteredProducts.slice(start, end);
+
+          productsToShow.forEach(card => {
+            productGrid.appendChild(card);
+          });
+
+          // If no products to show, display a message
+          if (productsToShow.length === 0) {
+            const noProductMsg = document.createElement("p");
+            noProductMsg.textContent = "Không có sản phẩm nào phù hợp với bộ lọc của bạn.";
+            noProductMsg.classList.add("text-center", "mt-4");
+            productGrid.appendChild(noProductMsg);
+          }
+        }
+
+        // Function to update pagination controls
+        function updatePagination(totalPages) {
+          const paginations = [paginationTop, paginationBottom];
+
+          paginations.forEach(pagination => {
+            // Remove existing page numbers except 'prev' and 'next'
+            pagination.querySelectorAll(".page-item:not([data-page='prev']):not([data-page='next'])").forEach(item => item.remove());
+
+            // Dynamically create page number buttons
+            for (let i = 1; i <= totalPages; i++) {
+              const li = document.createElement("li");
+              li.classList.add("page-item");
+              li.setAttribute("data-page", i);
+
+              if (i === currentPage) {
+                li.classList.add("active");
+                li.setAttribute("aria-current", "page");
+              }
+
+              const a = document.createElement("a");
+              a.classList.add("page-link");
+              a.href = "#";
+              a.textContent = i;
+
+              li.appendChild(a);
+              pagination.insertBefore(li, pagination.querySelector("[data-page='next']"));
+            }
+
+            // Update 'prev' button state
+            const prev = pagination.querySelector(".page-item[data-page='prev']");
+            if (currentPage === 1) {
+              prev.classList.add("disabled");
+            } else {
+              prev.classList.remove("disabled");
+            }
+
+            // Update 'next' button state
+            const next = pagination.querySelector(".page-item[data-page='next']");
+            if (currentPage === totalPages) {
+              next.classList.add("disabled");
+            } else {
+              next.classList.remove("disabled");
+            }
+          });
+        }
+
+        // Function to handle pagination click events
+        function handlePaginationClick(event) {
+          event.preventDefault();
+          const parentLi = event.target.closest(".page-item");
+          if (!parentLi) return; // If not a page item, exit
+
+          if (parentLi.classList.contains("disabled") || parentLi.classList.contains("active")) {
+            return; // Do nothing if disabled or active
           }
 
-          const a = document.createElement("a");
-          a.classList.add("page-link");
-          a.href = "#";
-          a.textContent = i;
+          const page = parentLi.getAttribute("data-page");
+          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
 
-          li.appendChild(a);
-          pagination.insertBefore(li, pagination.querySelector("[data-page='next']"));
+          if (page === "prev") {
+            if (currentPage > 1) {
+              currentPage--;
+            }
+          } else if (page === "next") {
+            if (currentPage < totalPages) {
+              currentPage++;
+            }
+          } else {
+            currentPage = parseInt(page);
+          }
+
+          localStorage.setItem("currentPage", currentPage.toString());
+          renderPagination();
         }
 
-        // Update 'prev' button state
-        const prev = pagination.querySelector(".page-item[data-page='prev']");
-        if (currentPage === 1) {
-          prev.classList.add("disabled");
-        } else {
-          prev.classList.remove("disabled");
+        // Function to render pagination based on filtered products
+        function renderPagination() {
+          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+
+          // Ensure currentPage is within bounds
+          if (currentPage > totalPages) {
+            currentPage = totalPages;
+            localStorage.setItem("currentPage", currentPage.toString());
+          }
+
+          // Update pagination controls
+          updatePagination(totalPages);
+
+          // Render products for the current page
+          renderProducts();
         }
 
-        // Update 'next' button state
-        const next = pagination.querySelector(".page-item[data-page='next']");
-        if (currentPage === totalPages) {
-          next.classList.add("disabled");
-        } else {
-          next.classList.remove("disabled");
+        // Function to attach event listeners to pagination controls
+        function attachPaginationEventListeners() {
+          const paginations = [paginationTop, paginationBottom];
+          paginations.forEach(pagination => {
+            pagination.addEventListener("click", handlePaginationClick);
+          });
         }
+
+        // Event listener for sort selection change
+        sortSelect.addEventListener("change", () => {
+          sortFilteredProducts();
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        });
+
+        // Event listeners for price and brand filters
+        priceFilters.forEach(filter => {
+          filter.addEventListener("change", filterProducts);
+        });
+
+        brandFilters.forEach(filter => {
+          filter.addEventListener("change", filterProducts);
+        });
+
+        // Event delegation for Add to Cart and Favorite buttons
+        productGrid.addEventListener("click", (e) => {
+          if (e.target.closest(".btn-add-to-cart")) {
+            e.preventDefault();
+            alert("Đã thêm sản phẩm vào giỏ hàng!");
+          }
+
+          if (e.target.closest(".btn-favorite")) {
+            e.preventDefault();
+            const button = e.target.closest(".btn-favorite");
+            button.classList.toggle("active");
+            if (button.classList.contains("active")) {
+              button.style.backgroundColor = "rgba(220, 53, 69, 1)";
+              alert("Đã thêm sản phẩm vào danh sách yêu thích!");
+            } else {
+              button.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
+              alert("Đã loại bỏ sản phẩm khỏi danh sách yêu thích!");
+            }
+          }
+        });
+
+        // Initialize pagination event listeners
+        attachPaginationEventListeners();
+
+        // Ensure product grid is in grid view
+        productGrid.classList.remove("list-view");
+
+        // Initial filtering and rendering
+        filterProducts();
       });
-    }
 
-    // Function to handle pagination click events
-    function handlePaginationClick(event) {
-      event.preventDefault();
-      const parentLi = event.target.closest(".page-item");
-      if (!parentLi) return; // If not a page item, exit
-
-      if (parentLi.classList.contains("disabled") || parentLi.classList.contains("active")) {
-        return; // Do nothing if disabled or active
+      // Function to send the page height to the parent (for embedding purposes)
+      function sendHeight() {
+        const height = document.body.scrollHeight;
+        window.parent.postMessage(height, "*"); // In production, replace '*' with the specific origin
       }
 
-      const page = parentLi.getAttribute("data-page");
-      const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
-
-      if (page === "prev") {
-        if (currentPage > 1) {
-          currentPage--;
-        }
-      } else if (page === "next") {
-        if (currentPage < totalPages) {
-          currentPage++;
-        }
-      } else {
-        currentPage = parseInt(page);
-      }
-
-      localStorage.setItem("currentPage", currentPage.toString());
-      renderPagination();
-    }
-
-    // Function to render pagination based on filtered products
-    function renderPagination() {
-      const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
-
-      // Ensure currentPage is within bounds
-      if (currentPage > totalPages) {
-        currentPage = totalPages;
-        localStorage.setItem("currentPage", currentPage.toString());
-      }
-
-      // Update pagination controls
-      updatePagination(totalPages);
-
-      // Render products for the current page
-      renderProducts();
-    }
-
-    // Function to attach event listeners to pagination controls
-    function attachPaginationEventListeners() {
-      const paginations = [paginationTop, paginationBottom];
-      paginations.forEach(pagination => {
-        pagination.addEventListener("click", handlePaginationClick);
-      });
-    }
-
-    // Event listener for sort selection change
-    sortSelect.addEventListener("change", () => {
-      sortFilteredProducts();
-      currentPage = 1;
-      localStorage.setItem("currentPage", "1");
-      renderPagination();
-    });
-
-    // Event listeners for price and brand filters
-    priceFilters.forEach(filter => {
-      filter.addEventListener("change", filterProducts);
-    });
-
-    brandFilters.forEach(filter => {
-      filter.addEventListener("change", filterProducts);
-    });
-
-    // Event delegation for Add to Cart and Favorite buttons
-    productGrid.addEventListener("click", (e) => {
-      if (e.target.closest(".btn-add-to-cart")) {
-        e.preventDefault();
-        alert("Đã thêm sản phẩm vào giỏ hàng!");
-      }
-
-      if (e.target.closest(".btn-favorite")) {
-        e.preventDefault();
-        const button = e.target.closest(".btn-favorite");
-        button.classList.toggle("active");
-        if (button.classList.contains("active")) {
-          button.style.backgroundColor = "rgba(220, 53, 69, 1)";
-          alert("Đã thêm sản phẩm vào danh sách yêu thích!");
-        } else {
-          button.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
-          alert("Đã loại bỏ sản phẩm khỏi danh sách yêu thích!");
-        }
-      }
-    });
-
-    // Initialize pagination event listeners
-    attachPaginationEventListeners();
-
-    // Ensure product grid is in grid view
-    productGrid.classList.remove("list-view");
-
-    // Initial filtering and rendering
-    filterProducts();
-  });
-
-  // Function to send the page height to the parent (for embedding purposes)
-  function sendHeight() {
-    const height = document.body.scrollHeight;
-    window.parent.postMessage(height, "*"); // In production, replace '*' with the specific origin
-  }
-
-  // Send height on page load and resize
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
-</script>
+      // Send height on page load and resize
+      window.addEventListener("load", sendHeight);
+      window.addEventListener("resize", sendHeight);
+    </script>
 
   </body>
 </html>
