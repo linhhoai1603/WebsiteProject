@@ -1,0 +1,76 @@
+ /* General styling for a more polished look */
+ body, html {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f3f4f6;
+}
+
+.container-fluid iframe {
+	margin-bottom: 0;
+}
+
+/* Styling the poster background */
+.poster {
+	position: relative;
+	background-image: url('images/poster.png');
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	overflow: hidden;
+}
+
+/* Center the login card vertically and make it cover the right side text */
+.login-card {
+	max-width: 400px;
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	padding: 30px;
+	opacity: 0.95;
+}
+
+/* Styling the form elements */
+.login-card .form-control {
+	border-radius: 20px;
+}
+
+.login-card h2 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.btn-custom {
+	background-color: #28a745;
+	color: white;
+	font-weight: bold;
+	border-radius: 20px;
+}
+
+.btn-custom:hover {
+	background-color: #218838;
+}
+
+/* Forgot Password and Sign up links */
+.login-card a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+.login-card a:hover {
+	text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+	.login-card {
+			width: 90%;
+	}
+}
