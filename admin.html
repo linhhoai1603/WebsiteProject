@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
-        body {
+      body {
             overflow-x: hidden;
             background-color: #f8f9fa;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,24 +21,26 @@
             top: 0;
             left: 0;
             padding-top: 60px;
-            background-color: #2C3E50; /* Đổi màu từ #343a40 sang #2C3E50 */
+            background-color: #1C313A; /* Dark green shade */
             color: white;
             width: 250px;
             transition: width 0.3s;
+            z-index: 999;
         }
         .sidebar.collapsed {
             width: 80px;
         }
         .sidebar a {
-            color: white;
+            color: #A3D2CA; /* Light teal shade */
             padding: 15px;
             display: flex;
             align-items: center;
             text-decoration: none;
             transition: background-color 0.2s;
+            position: relative;
         }
         .sidebar a:hover {
-            background-color: #1A252F; /* Đổi màu hover cho sidebar */
+            background-color: #274E63; /* Darker teal shade */
             text-decoration: none;
         }
         .sidebar a i {
@@ -48,6 +50,27 @@
         }
         .sidebar.collapsed a .link-text {
             display: none;
+        }
+        .sidebar a .tooltiptext {
+            visibility: hidden;
+            width: 140px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            left: 100%;
+            margin-left: 10px;
+            bottom: 50%;
+            transform: translateY(50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .sidebar a:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
         .content {
             margin-left: 250px;
@@ -108,20 +131,42 @@
             width: calc(100% - 80px);
         }
         .btn-primary {
-            background-color: #28A745;
-            border-color: #28A745;
+            background-color: #FFB74D; /* Button color */
+            border-color: #FFB74D;
+            transition: background-color 0.3s, border-color 0.3s;
         }
         .btn-primary:hover {
-            background-color: #218838;
-            border-color: #1e7e34;
+            background-color: #FF9800; /* Darker button hover color */
+            border-color: #FF9800;
+        }
+        .btn-export-excel {
+            background-color: #66BB6A; /* Green for Excel button */
+            border-color: #66BB6A;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .btn-export-excel:hover {
+            background-color: #4CAF50;
+        }
+        .btn-export-pdf {
+            background-color: #EF5350; /* Red for PDF button */
+            border-color: #EF5350;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+        .btn-export-pdf:hover {
+            background-color: #E53935;
         }
         .table thead th {
             cursor: pointer;
+            position: relative;
+            user-select: none;
         }
         .table thead th .fa-sort {
             margin-left: 5px;
             font-size: 0.8em;
             color: #6c757d;
+            transition: transform 0.2s;
         }
         .table thead th.asc .fa-sort {
             transform: rotate(180deg);
@@ -134,13 +179,7 @@
             border: none;
             border-right: 1px solid #ced4da;
         }
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 80px;
-            }
-            .sidebar.collapsed {
-                width: 0;
-            }
+        @media (max-width: 992px) {
             .content {
                 margin-left: 80px;
             }
@@ -155,6 +194,23 @@
                 left: 0;
                 width: 100%;
             }
+            .sidebar.collapsed a .tooltiptext {
+                left: 100%;
+                margin-left: 10px;
+                transform: translateY(-50%);
+            }
+        }
+        @media (max-width: 576px) {
+            .header h5 {
+                font-size: 1rem;
+            }
+            .btn-export-excel, .btn-export-pdf {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .search-input {
+                max-width: 200px;
+            }
         }
     </style>
 </head>
@@ -163,7 +219,11 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <h4 class="text-center mb-4">Admin Panel</h4>
-        <a href="#"><i class="fa fa-shopping-cart"></i> <span class="link-text">Phân Tích Đơn Hàng</span></a>
+        <a href="#">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="link-text">Phân Tích Đơn Hàng</span>
+            <span class="tooltiptext">Phân Tích Đơn Hàng</span>
+        </a>
         <!-- Thêm các liên kết khác nếu cần -->
     </div>
 
@@ -179,18 +239,21 @@
         <!-- Header -->
         <div class="header d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <button class="btn btn-outline-secondary btn-sm me-3" id="toggleSidebar"><i class="fa fa-bars"></i></button>
+                <button class="btn btn-outline-secondary btn-sm me-3" id="toggleSidebar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Thu gọn Sidebar">
+                    <i class="fa fa-bars"></i>
+                </button>
                 <h5 class="mb-0">Lấy Thông Tin Đơn Hàng Theo Tháng và Năm</h5>
             </div>
+            <!-- Bạn có thể thêm nút "Đăng Xuất" ở đây nếu cần -->
         </div>
 
         <!-- Main Content -->
         <div class="mt-5 pt-4">
-            <!-- Bộ Lọc Thời Gian -->
+            <!-- Bộ Lọc Thời Gian và Các Bộ Lọc Bổ Sung -->
             <div class="card">
                 <div class="card-body">
                     <form id="filterForm" class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="monthSelect" class="form-label">Chọn Tháng</label>
                             <select id="monthSelect" class="form-select">
                                 <option value="1">Tháng 1</option>
@@ -207,7 +270,7 @@
                                 <option value="12">Tháng 12</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label for="yearSelect" class="form-label">Chọn Năm</label>
                             <select id="yearSelect" class="form-select">
                                 <option value="2023">2023</option>
@@ -216,8 +279,53 @@
                                 <option value="2026">2026</option>
                             </select>
                         </div>
-                        <div class="col-md-4 d-flex align-items-end">
+                        <div class="col-md-3">
+                            <label for="statusSelect" class="form-label">Trạng Thái Đơn Hàng</label>
+                            <select id="statusSelect" class="form-select">
+                                <option value="">Tất cả</option>
+                                <option value="Đã Giao Hàng">Đã Giao Hàng</option>
+                                <option value="Đang Xử Lý">Đang Xử Lý</option>
+                                <option value="Đã Hủy">Đã Hủy</option>
+                                <!-- Thêm các trạng thái khác nếu cần -->
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="productSelect" class="form-label">Sản Phẩm</label>
+                            <select id="productSelect" class="form-select">
+                                <option value="">Tất cả</option>
+                                <option value="Sản Phẩm 1">Sản Phẩm 1</option>
+                                <option value="Sản Phẩm 2">Sản Phẩm 2</option>
+                                <option value="Sản Phẩm 3">Sản Phẩm 3</option>
+                                <!-- Thêm các sản phẩm khác nếu cần -->
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customerSelect" class="form-label">Khách Hàng</label>
+                            <select id="customerSelect" class="form-select">
+                                <option value="">Tất cả</option>
+                                <option value="Nguyễn Văn A">Nguyễn Văn A</option>
+                                <option value="Trần Thị B">Trần Thị B</option>
+                                <option value="Lê Thị C">Lê Thị C</option>
+                                <!-- Thêm các khách hàng khác nếu cần -->
+                            </select>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end">
                             <button type="submit" class="btn btn-primary w-100">Lọc Dữ Liệu</button>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-end">
+                            <!-- Export Buttons -->
+                            <button type="button" class="btn btn-export-excel me-2" id="exportExcel" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất dữ liệu dưới dạng Excel">
+                                <i class="fa fa-file-excel"></i> Xuất Excel
+                            </button>
+                            <button type="button" class="btn btn-export-pdf" id="exportPDF" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất dữ liệu dưới dạng PDF">
+                                <i class="fa fa-file-pdf"></i> Xuất PDF
+                            </button>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-end">
+                            <!-- Biểu mẫu đặt lịch báo cáo tự động -->
+                            <button type="button" class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#scheduleReportModal">
+                                <i class="fa fa-calendar-alt"></i> Đặt Lịch Báo Cáo Tự Động
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -263,12 +371,52 @@
         </div>
     </div>
 
+    <!-- Modal Đặt Lịch Báo Cáo Tự Động -->
+    <div class="modal fade" id="scheduleReportModal" tabindex="-1" aria-labelledby="scheduleReportModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="scheduleReportModalLabel">Đặt Lịch Báo Cáo Tự Động</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="scheduleReportForm">
+                <div class="mb-3">
+                    <label for="reportFrequency" class="form-label">Tần Suất Báo Cáo</label>
+                    <select id="reportFrequency" class="form-select" required>
+                        <option value="">Chọn tần suất</option>
+                        <option value="monthly">Hàng Tháng</option>
+                        <option value="yearly">Hàng Năm</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="reportEmail" class="form-label">Địa Chỉ Email Nhận Báo Cáo</label>
+                    <input type="email" class="form-control" id="reportEmail" placeholder="user@example.com" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Đặt Lịch</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS và các thư viện phụ trợ -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- SheetJS để xuất Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- jsPDF để xuất PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         $(document).ready(function() {
+            // Initialize Bootstrap tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+              return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
+
             // Biến toàn cục cho phân trang
             let currentPage = 1;
             const rowsPerPage = 10;
@@ -286,7 +434,7 @@
             }
 
             // Hàm khởi tạo dữ liệu mẫu (thay thế bằng dữ liệu thực tế từ backend)
-            function initializeData(month, year) {
+            function initializeData(month, year, status = '', product = '', customer = '') {
                 // Hiển thị spinner
                 showSpinner();
 
@@ -302,7 +450,18 @@
                             // Thêm các đơn hàng mẫu khác...
                         ]
                     };
-                    allOrders = data.orders;
+
+                    // Lọc dữ liệu mẫu theo các tiêu chí
+                    let filteredOrders = data.orders.filter(order => {
+                        const orderMonth = new Date(order.time_order).getMonth() + 1;
+                        const orderYear = new Date(order.time_order).getFullYear();
+                        const statusMatch = status ? order.status_order === status : true;
+                        const productMatch = product ? order.product_name === product : true; // Cần thêm thông tin product_name trong dữ liệu mẫu
+                        const customerMatch = customer ? order.full_name === customer : true;
+                        return orderMonth == month && orderYear == year && statusMatch && productMatch && customerMatch;
+                    });
+
+                    allOrders = filteredOrders;
                     originalOrders = [...allOrders];
                     renderTable();
                     renderPagination();
@@ -336,6 +495,16 @@
                     </tr>`;
                     ordersTable.append(row);
                 });
+
+                // Highlight hovered row
+                $('table tbody tr').hover(
+                    function() {
+                        $(this).addClass('table-primary');
+                    },
+                    function() {
+                        $(this).removeClass('table-primary');
+                    }
+                );
             }
 
             // Hàm render phân trang
@@ -386,7 +555,7 @@
                 pagination.append(lastPage);
 
                 // Xử lý sự kiện khi nhấn vào trang
-                $('.page-item:not(.disabled) .page-link').on('click', function(e) {
+                $('.page-item:not(.disabled) .page-link').off('click').on('click', function(e) {
                     e.preventDefault();
                     const ariaLabel = $(this).attr('aria-label');
                     if (ariaLabel === 'First') {
@@ -411,16 +580,19 @@
                 currentPage = 1;
                 const selectedMonth = $('#monthSelect').val();
                 const selectedYear = $('#yearSelect').val();
-                fetchOrderData(selectedMonth, selectedYear);
+                const selectedStatus = $('#statusSelect').val();
+                const selectedProduct = $('#productSelect').val();
+                const selectedCustomer = $('#customerSelect').val();
+                initializeData(selectedMonth, selectedYear, selectedStatus, selectedProduct, selectedCustomer);
             });
 
             // Hàm gọi API để lấy dữ liệu đơn hàng
-            function fetchOrderData(month, year) {
+            function fetchOrderData(month, year, status, product, customer) {
                 // Hiển thị spinner
                 showSpinner();
 
                 $.ajax({
-                    url: `/api/orders?month=${month}&year=${year}`, // Cập nhật URL API theo cấu trúc backend của bạn
+                    url: `/api/orders?month=${month}&year=${year}&status=${status}&product=${product}&customer=${customer}`, // Cập nhật URL API theo cấu trúc backend của bạn
                     method: 'GET',
                     success: function(data) {
                         // Giả sử API trả về dạng { orders: [...] }
@@ -504,12 +676,86 @@
                 $('#sidebar').toggleClass('collapsed');
                 $('.content').toggleClass('collapsed');
                 $('#spinnerOverlay').toggleClass('collapsed');
+
+                // Cập nhật tooltip cho nút toggle
+                const tooltipInstance = bootstrap.Tooltip.getInstance(this);
+                if ($('#sidebar').hasClass('collapsed')) {
+                    tooltipInstance.setContent({ '.tooltip-inner': 'Mở Sidebar' });
+                } else {
+                    tooltipInstance.setContent({ '.tooltip-inner': 'Thu gọn Sidebar' });
+                }
+            });
+
+            // Hàm xuất Excel
+            $('#exportExcel').on('click', function() {
+                if (allOrders.length === 0) {
+                    alert("Không có dữ liệu để xuất.");
+                    return;
+                }
+                const wb = XLSX.utils.book_new();
+                const ws = XLSX.utils.table_to_sheet(document.querySelector('table'));
+                XLSX.utils.book_append_sheet(wb, ws, "Orders");
+                XLSX.writeFile(wb, "Orders_Report.xlsx");
+            });
+
+            // Hàm xuất PDF
+            $('#exportPDF').on('click', function() {
+                if (allOrders.length === 0) {
+                    alert("Không có dữ liệu để xuất.");
+                    return;
+                }
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+
+                doc.setFontSize(16);
+                doc.text("Báo Cáo Đơn Hàng", 14, 20);
+                doc.setFontSize(12);
+                doc.autoTable({ 
+                    html: '#ordersTable', 
+                    startY: 25,
+                    headStyles: { fillColor: [52, 58, 64] },
+                    styles: { fontSize: 10 }
+                });
+                doc.save('Orders_Report.pdf');
+            });
+
+            // Xử lý biểu mẫu đặt lịch báo cáo tự động
+            $('#scheduleReportForm').on('submit', function(e) {
+                e.preventDefault();
+                const frequency = $('#reportFrequency').val();
+                const email = $('#reportEmail').val();
+
+                if (!frequency || !email) {
+                    alert("Vui lòng chọn tần suất và nhập email nhận báo cáo.");
+                    return;
+                }
+
+                // Gọi API để đặt lịch báo cáo (Cần tích hợp backend)
+                $.ajax({
+                    url: `/api/schedule-report`,
+                    method: 'POST',
+                    data: JSON.stringify({ frequency, email }),
+                    contentType: 'application/json',
+                    success: function(response) {
+                        alert("Đặt lịch báo cáo thành công!");
+                        $('#scheduleReportModal').modal('hide');
+                        // Reset biểu mẫu
+                        $('#scheduleReportForm')[0].reset();
+                    },
+                    error: function(error) {
+                        console.error("Lỗi khi đặt lịch báo cáo:", error);
+                        alert("Đã xảy ra lỗi khi đặt lịch báo cáo. Vui lòng thử lại sau.");
+                    }
+                });
             });
 
             // Khởi tạo dữ liệu ban đầu
             let selectedMonth = $('#monthSelect').val();
             let selectedYear = $('#yearSelect').val();
-            initializeData(selectedMonth, selectedYear);
+            let selectedStatus = $('#statusSelect').val();
+            let selectedProduct = $('#productSelect').val();
+            let selectedCustomer = $('#customerSelect').val();
+            initializeData(selectedMonth, selectedYear, selectedStatus, selectedProduct, selectedCustomer);
         });
     </script>
 </body>
