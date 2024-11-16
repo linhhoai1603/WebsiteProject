@@ -58,16 +58,6 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.page-btn:hover {
-  background-color: #e0e0e0;
-}
-
-.page-btn.active {
-  background-color: #4a6583; /* Màu nền khi được chọn */
-  color: #fff; /* Màu chữ khi được chọn */
-  border-color: #4a6583;
-}
-
 .product-container {
   max-width: 100%;
 }
