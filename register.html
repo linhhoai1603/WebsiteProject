@@ -1,292 +1,360 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Đăng ký tài khoản - Bán Vải Online</title>
-    <link
-        crossorigin="anonymous"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-        rel="stylesheet"
-    />
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
     <style>
         body {
-            font-family: "Arial", sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f9f9f9;
             margin: 0;
-            padding: 20px 0;
+            padding: 20px 0; /* Top và Bottom padding */
+            /* Scrollbar styles... */
+            scrollbar-width: auto; /* Firefox */
+            scrollbar-color: #888 #f1f1f1; /* Firefox */
         }
+
+        /* Webkit scrollbar cho toàn bộ trang */
+        body::-webkit-scrollbar {
+            width: 16px; /* Tăng chiều rộng của scrollbar */
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #f1f1f1; /* Màu nền của track */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #888; /* Màu nền của thumb */
+            border-radius: 8px; /* Bo góc cho thumb */
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Màu nền của thumb khi hover */
+        }
+
         .form-section {
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 20px auto 60px;
+            padding: 40px; /* Giảm padding từ 140px xuống 40px */
+            background-color: #fff; /* Thêm màu nền */
+            border-radius: 10px; /* Thêm bo góc */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ */
+            max-width: 700px;
+            margin: 20px auto 60px; /* Top: 20px, Left & Right: auto, Bottom: 60px */
+            animation: fadeIn 1s ease-in-out;
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .form-section h2 {
-            margin-bottom: 20px;
-            font-size: 2rem;
+            margin-bottom: 20px; /* Tăng margin từ 15px lên 20px */
+            font-size: 2rem; /* Tăng kích thước font từ 1.8rem lên 2rem */
             font-weight: bold;
             color: #333;
             text-align: center;
         }
-        .btn-custom {
+
+        .form-control {
+            margin-bottom: 15px; /* Tăng margin từ 12px lên 15px */
+            border-radius: 5px;
+            padding: 12px; /* Tăng padding từ 10px lên 12px */
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        .btn-primary {
             background-color: #007bff;
             color: #fff;
             border: none;
-            padding: 12px 20px;
+            padding: 12px 20px; /* Tăng padding từ 10px 18px lên 12px 20px */
             width: 100%;
             border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             cursor: pointer;
             font-size: 16px;
-            transition: background-color 0.3s ease;
         }
-        .btn-custom:hover {
+
+        .btn-primary:hover, .btn-primary:focus {
             background-color: #0056b3;
+            transform: translateY(-2px);
         }
+
         .social-login {
-            margin-top: 20px;
+            margin-top: 20px; /* Tăng margin từ 15px lên 20px */
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 10px; /* Tăng gap từ 8px lên 10px */
         }
+
         .social-login button {
             flex: 1;
-            padding: 10px;
+            padding: 10px; /* Tăng padding từ 8px lên 10px */
             border: none;
             border-radius: 5px;
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 16px; /* Tăng kích thước font từ 15px lên 16px */
         }
+
+        .social-login button i {
+            margin-right: 8px; /* Tăng margin từ 6px lên 8px */
+            font-size: 18px; /* Tăng kích thước icon từ 16px lên 18px */
+        }
+
         .btn-facebook {
             background-color: #3b5998;
         }
-        .btn-facebook:hover {
+
+        .btn-facebook:hover, .btn-facebook:focus {
             background-color: #334d84;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(59, 89, 152, 0.4);
         }
+
         .btn-google {
             background-color: #db4437;
         }
-        .btn-google:hover {
+
+        .btn-google:hover, .btn-google:focus {
             background-color: #c23321;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(219, 68, 55, 0.4);
         }
-        .alert-message {
+
+        .breadcrumb {
+            background-color: transparent;
+            padding-left: 0;
+            margin-bottom: 15px; /* Giảm margin từ 20px xuống 15px */
+            font-size: 14px;
+        }
+
+        .breadcrumb-item a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .breadcrumb-item a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb-item.active {
+            color: #6c757d;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            min-height: 1.2em; /* Đảm bảo không gian được giữ cố định */
+            visibility: hidden; /* Ẩn lỗi nhưng giữ không gian */
+        }
+
+        .error-message.visible {
+            visibility: visible; /* Hiển thị lỗi */
+        }
+
+        .success-message {
+            color: #28a745;
+            font-size: 1rem;
             text-align: center;
             display: none;
             margin-bottom: 15px;
         }
-        .alert-success {
-            color: #28a745;
-        }
-        .alert-danger {
-            color: #dc3545;
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .social-login {
+                flex-direction: column;
+            }
+            .social-login button {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Đăng ký tài khoản</li>
+            </ol>
+        </nav>
         <div class="form-section">
             <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
-            <p class="text-center">Vui lòng nhập Email và Mật khẩu để đăng ký tài khoản</p>
-            <div class="alert alert-success alert-message" id="successMessage">Đăng ký thành công!</div>
-            <div class="alert alert-danger alert-message" id="submissionError">Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau.</div>
+            <p class="text-center">Nếu chưa có tài khoản vui lòng đăng ký tại đây</p>
+            <div class="success-message" id="successMessage">Đăng ký thành công!</div>
             <form id="registrationForm" novalidate>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email *</label>
-                    <input class="form-control" id="email" placeholder="Email *" required type="email" aria-describedby="emailHelp" />
-                    <div class="invalid-feedback" id="emailError">Vui lòng nhập một địa chỉ email hợp lệ.</div>
+                    <input class="form-control" id="firstName" placeholder="Họ *" required type="text" aria-label="Họ"/>
+                    <div class="error-message" id="firstNameError">Vui lòng nhập họ của bạn.</div>
                 </div>
                 <div class="mb-3">
-                    <label for="confirmEmail" class="form-label">Xác nhận Email *</label>
-                    <input class="form-control" id="confirmEmail" placeholder="Xác nhận Email *" required type="email" aria-describedby="confirmEmailHelp" />
-                    <div class="invalid-feedback" id="confirmEmailError">Email xác nhận không khớp.</div>
+                    <input class="form-control" id="lastName" placeholder="Tên *" required type="text" aria-label="Tên"/>
+                    <div class="error-message" id="lastNameError">Vui lòng nhập tên của bạn.</div>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Mật khẩu *</label>
-                    <input class="form-control" id="password" placeholder="Mật khẩu *" required type="password" aria-describedby="passwordHelp" />
-                    <div class="invalid-feedback" id="passwordError">Vui lòng nhập mật khẩu (ít nhất 6 ký tự).</div>
+                    <input class="form-control" id="email" placeholder="Email *" required type="email" aria-label="Email"/>
+                    <div class="error-message" id="emailError">Vui lòng nhập một địa chỉ email hợp lệ.</div>
                 </div>
                 <div class="mb-3">
-                    <label for="confirmPassword" class="form-label">Xác nhận Mật khẩu *</label>
-                    <input class="form-control" id="confirmPassword" placeholder="Xác nhận Mật khẩu *" required type="password" aria-describedby="confirmPasswordHelp" />
-                    <div class="invalid-feedback" id="confirmPasswordError">Mật khẩu xác nhận không khớp.</div>
+                    <input class="form-control" id="phone" placeholder="Số điện thoại *" required type="tel" aria-label="Số điện thoại"/>
+                    <div class="error-message" id="phoneError">Vui lòng nhập số điện thoại hợp lệ.</div>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" id="password" placeholder="Mật khẩu *" required type="password" aria-label="Mật khẩu"/>
+                    <div class="error-message" id="passwordError">Vui lòng nhập mật khẩu (ít nhất 6 ký tự).</div>
                 </div>
                 <div class="text-center">
-                    <button class="btn-custom" type="submit">ĐĂNG KÝ</button>
+                    <button class="btn btn-primary" type="submit">ĐĂNG KÝ</button>
                 </div>
             </form>
             <div class="social-login">
-                <button class="btn-facebook" id="facebookLogin">
-                    <i class="fab fa-facebook-f me-2"></i> Facebook
+                <button class="btn btn-facebook" id="facebookLogin" aria-label="Đăng nhập bằng Facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
                 </button>
-                <button class="btn-google" id="googleLogin">
-                    <i class="fab fa-google me-2"></i> Google
+                <button class="btn btn-google" id="googleLogin" aria-label="Đăng nhập bằng Google">
+                    <i class="fab fa-google"></i> Google
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Modal for Loading Indicator -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background: transparent; border: none; box-shadow: none;">
+                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3vI0Txkzl5M7G7rvB/JF9QFJzUawmGJlfyep7EJiF" crossorigin="anonymous"></script>
     <!-- Font Awesome -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
-      integrity="sha512-OL1e4xdQXY+MCAuXqudI+VwVkljheAPp34zqzM1Ee3x/NmFJRmVw3t3ZpVJ4t0k9uSnho/0Iae/BmL2uC7s3FQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-
-    <!-- Bootstrap JS -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const registrationForm = document.getElementById("registrationForm");
-            const successMessage = document.getElementById("successMessage");
-            const submissionError = document.getElementById("submissionError");
+        document.addEventListener('DOMContentLoaded', () => {
+            const registrationForm = document.getElementById('registrationForm');
+            const successMessage = document.getElementById('successMessage');
 
-            registrationForm.addEventListener("submit", async (e) => {
-                e.preventDefault(); // Ngăn chặn hành động mặc định của form
-
-                // Reset các trạng thái trước đó
-                resetValidation();
-
+            registrationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
                 if (validateForm()) {
-                    // Thu thập dữ liệu form
-                    const formData = {
-                        email: document.getElementById("email").value.trim(),
-                        password: document.getElementById("password").value.trim(),
-                    };
+                    // Show loading indicator
+                    const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+                    loadingModal.show();
 
-                    try {
-                        // Hiển thị loader hoặc disable nút submit nếu cần
-                        const submitButton = registrationForm.querySelector('button[type="submit"]');
-                        submitButton.disabled = true;
-                        submitButton.textContent = "Đang xử lý...";
-
-                        // Gọi API thực tế ở đây
-                        // Ví dụ:
-                        // const response = await fetch('/api/register', {
-                        //     method: 'POST',
-                        //     headers: { 'Content-Type': 'application/json' },
-                        //     body: JSON.stringify(formData)
-                        // });
-                        // if (!response.ok) throw new Error('Network response was not ok');
-
-                        // Giả lập API call thành công với setTimeout
-                        await new Promise((resolve) => setTimeout(resolve, 2000));
-
-                        // Hiển thị thông báo thành công
-                        successMessage.style.display = "block";
+                    // Simulate form submission
+                    setTimeout(() => {
+                        loadingModal.hide();
+                        successMessage.style.display = 'block';
                         registrationForm.reset();
-                    } catch (error) {
-                        console.error("Error during registration:", error);
-                        submissionError.style.display = "block";
-                    } finally {
-                        // Kích hoạt lại nút submit
-                        const submitButton = registrationForm.querySelector('button[type="submit"]');
-                        submitButton.disabled = false;
-                        submitButton.textContent = "ĐĂNG KÝ";
-                    }
-                } else {
-                    submissionError.style.display = "none"; // Ẩn thông báo lỗi chung nếu có
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 3000);
+                    }, 2000);
                 }
             });
 
             function validateForm() {
                 let isValid = true;
 
+                // First Name
+                const firstName = document.getElementById('firstName');
+                const firstNameError = document.getElementById('firstNameError');
+                if (firstName.value.trim() === '') {
+                    firstNameError.classList.add('visible');
+                    isValid = false;
+                } else {
+                    firstNameError.classList.remove('visible');
+                }
+
+                // Last Name
+                const lastName = document.getElementById('lastName');
+                const lastNameError = document.getElementById('lastNameError');
+                if (lastName.value.trim() === '') {
+                    lastNameError.classList.add('visible');
+                    isValid = false;
+                } else {
+                    lastNameError.classList.remove('visible');
+                }
+
                 // Email
-                const email = document.getElementById("email");
-                const emailError = document.getElementById("emailError");
+                const email = document.getElementById('email');
+                const emailError = document.getElementById('emailError');
                 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailPattern.test(email.value.trim())) {
-                    email.classList.add("is-invalid");
-                    emailError.textContent = "Vui lòng nhập một địa chỉ email hợp lệ.";
+                    emailError.classList.add('visible');
                     isValid = false;
                 } else {
-                    email.classList.remove("is-invalid");
-                    email.classList.add("is-valid");
+                    emailError.classList.remove('visible');
                 }
 
-                // Xác nhận Email
-                const confirmEmail = document.getElementById("confirmEmail");
-                const confirmEmailError = document.getElementById("confirmEmailError");
-                if (confirmEmail.value.trim() === "") {
-                    confirmEmail.classList.add("is-invalid");
-                    confirmEmailError.textContent = "Vui lòng xác nhận email của bạn.";
-                    isValid = false;
-                } else if (confirmEmail.value.trim() !== email.value.trim()) {
-                    confirmEmail.classList.add("is-invalid");
-                    confirmEmailError.textContent = "Email xác nhận không khớp.";
+                // Phone
+                const phone = document.getElementById('phone');
+                const phoneError = document.getElementById('phoneError');
+                const phonePattern = /^[0-9]{10,15}$/;
+                if (!phonePattern.test(phone.value.trim())) {
+                    phoneError.classList.add('visible');
                     isValid = false;
                 } else {
-                    confirmEmail.classList.remove("is-invalid");
-                    confirmEmail.classList.add("is-valid");
+                    phoneError.classList.remove('visible');
                 }
 
-                // Mật khẩu
-                const password = document.getElementById("password");
-                const passwordError = document.getElementById("passwordError");
+                // Password
+                const password = document.getElementById('password');
+                const passwordError = document.getElementById('passwordError');
                 if (password.value.trim().length < 6) {
-                    password.classList.add("is-invalid");
-                    passwordError.textContent = "Vui lòng nhập mật khẩu (ít nhất 6 ký tự).";
+                    passwordError.classList.add('visible');
                     isValid = false;
                 } else {
-                    password.classList.remove("is-invalid");
-                    password.classList.add("is-valid");
-                }
-
-                // Xác nhận Mật khẩu
-                const confirmPassword = document.getElementById("confirmPassword");
-                const confirmPasswordError = document.getElementById("confirmPasswordError");
-                if (confirmPassword.value.trim() === "") {
-                    confirmPassword.classList.add("is-invalid");
-                    confirmPasswordError.textContent = "Vui lòng xác nhận mật khẩu của bạn.";
-                    isValid = false;
-                } else if (confirmPassword.value.trim() !== password.value.trim()) {
-                    confirmPassword.classList.add("is-invalid");
-                    confirmPasswordError.textContent = "Mật khẩu xác nhận không khớp.";
-                    isValid = false;
-                } else {
-                    confirmPassword.classList.remove("is-invalid");
-                    confirmPassword.classList.add("is-valid");
+                    passwordError.classList.remove('visible');
                 }
 
                 return isValid;
             }
 
-            function resetValidation() {
-                const inputs = registrationForm.querySelectorAll(".form-control");
-                inputs.forEach(input => {
-                    input.classList.remove("is-invalid");
-                    input.classList.remove("is-valid");
-                });
-                successMessage.style.display = "none";
-                submissionError.style.display = "none";
-            }
+            // Social Login Buttons
+            const facebookLogin = document.getElementById('facebookLogin');
+            const googleLogin = document.getElementById('googleLogin');
 
-            // Sự kiện cho nút Facebook
-            const facebookLogin = document.getElementById("facebookLogin");
-            facebookLogin.addEventListener("click", () => {
-                console.log("Đăng nhập bằng Facebook");
-                alert("Đăng nhập qua Facebook thành công!");
+            facebookLogin.addEventListener('click', () => {
+                // Show loading indicator
+                const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+                loadingModal.show();
+
+                // Simulate Facebook login
+                setTimeout(() => {
+                    loadingModal.hide();
+                    alert('Đăng nhập qua Facebook thành công!');
+                }, 2000);
             });
 
-            // Sự kiện cho nút Google
-            const googleLogin = document.getElementById("googleLogin");
-            googleLogin.addEventListener("click", () => {
-                console.log("Đăng nhập bằng Google");
-                alert("Đăng nhập qua Google thành công!");
+            googleLogin.addEventListener('click', () => {
+                // Show loading indicator
+                const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+                loadingModal.show();
+
+                // Simulate Google login
+                setTimeout(() => {
+                    loadingModal.hide();
+                    alert('Đăng nhập qua Google thành công!');
+                }, 2000);
             });
         });
     </script>

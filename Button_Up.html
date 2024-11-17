@@ -16,9 +16,10 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/navbar.css">
     <style>
-      /* Các kiểu chung */
-      body {
+        /* Các kiểu chung */
+        body {
         font-family: "Arial", sans-serif;
         background-color: #f5f5f5;
       }
@@ -42,12 +43,15 @@
         color: #fff; /* Màu chữ trắng cho mục active */
       }
 
+      /* Sidebar Styles */
       .sidebar {
         background-color: #fff;
         padding: 20px;
         border-right: 1px solid #ddd;
         border-radius: 5px;
         margin-bottom: 20px;
+        /* Đảm bảo căn chỉnh đúng */
+        margin-left: 0;
       }
       .sidebar h5 {
         font-size: 18px;
@@ -61,7 +65,7 @@
       .sidebar a {
         color: #333;
         text-decoration: none;
-        display: block;
+        display: block; /* Đảm bảo mỗi link nằm trên một dòng */
         padding: 5px 0;
         transition: color 0.3s;
       }
@@ -226,23 +230,183 @@
         margin-top: 20px; /* Khoảng cách trên tiêu đề "Thương hiệu" */
         margin-bottom: 20px; /* Khoảng cách dưới tiêu đề "Thương hiệu" */
       }
+
+      .sidebar {
+  text-align: left;
+}
+
+.sidebar h5 {
+  text-align: left;
+}
+
+.sidebar a {
+  text-align: left;
+}
+
     </style>
   </head>
   <body>
-    <!-- Container chính -->
-    <div class="container">
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-          <li class="breadcrumb-item">
-            <a href="#">Nút Áo</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Phụ Kiện Nút Áo 2024
-          </li>
-        </ol>
+    <!-- header -->
+     <div class="container-fluid">
+        <iframe src="header.html" frameborder="0" scrolling="no" width="100%" height="120px"></iframe>
+     </div>
+    <!-- end header-->
+    <!-- navbar -->
+    <div class="container-fluid">
+      <!--navbar for page-->
+      <nav class="navbar navbar-expand-lg" style="background-color: #4FD0B6; height: 40px;">
+          <div class="container-fluid">
+              <a class="navbar-brand text-white" href="index.html">Trang chủ</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <div class="dropdown">
+                              <a class="nav-link dropdown-toggle text-white" href="Lace_Haven.html" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Sản phẩm
+                              </a>
+                              <ul class="dropdown-menu custom-dropdown" aria-labelledby="dropdownMenuLink">
+                                  <div class="dropdown-item">
+                                      <div class="container">
+                                          <div class="row">
+                                              <h4>Sản phẩm nổi bật</h4>
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar1.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải lụa</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar2.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải kaki</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar3.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải nhung</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar4.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải Linen</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                     </div>
+                                  </div>
+                                  <div class="dropdown-item">
+                                      <div class="row">
+                                          <div class="col-md-2">
+                                              <h4>Bán chạy</h4>
+                                              <a href="...">Vải Cotton</a><br>
+                                              <a href="...">Vải Linen</a><br>
+                                              <a href="...">Vải Silk</a><br>
+                                              <a href="...">Polyester</a><br>
+                                              <a href="...">Denim</a><br>
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Mùa đông</h4>
+                                              <a href="...">Vải len</a><br>
+                                              <a href="...">Vải nhung</a><br>
+                                              <a href="...">Vải lanh</a><br>
+                                              <a href="...">Vải da</a><br>
+                                              <a href="...">Vải dù</a>
+                                              
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Mùa hè</h4>
+                                              <a href="...">Vải Cotton</a><br>
+                                              <a href="...">Vải Linen </a><br>
+                                              <a href="...">Vải Rayon</a><br>
+                                              <a href="...">Vải Bamboo </a><br>
+                                              <a href="...">Vải Chambray</a><br>
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Mùa thu</h4>
+                                              <a href="...">Vải Cotton</a>   <br> 
+                                              <a href="...">Vải Wool </a><br>
+                                              <a href="...">Vải Tweed</a><br>
+                                              <a href="...">Vải Flannel</a><br>
+                                              <a href="...">Vải Corduroy</a><br>
+                                              <a href="...">Vải Denim</a><br>
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Đồng phục</h4>
+                                              <a href="...">Polyester</a><br>
+                                              <a href="...">Cotton-PVC</a><br>
+                                              <a href="...">Nỉ </a><br>
+                                              <a href="...">Kaki</a><br>
+                                              <a href="...">Lanh </a><br>
+
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Nội thất</h4>
+                                              <a href="...">Vải Cotton</a><br>
+                                              <a href="...">Vải Microfiber</a><br>
+                                              <a href="...">Vải Velvet</a><br>
+                                              <a href="...">Vải Polyester</a><br>
+                                              <a href="...">Vải Tweed</a><br>
+                                              <a href="...">Vải Canvas</a><br>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  
+                              </ul>
+                          </div>
+                      </li>
+                      <li class="nav-item">
+                          <!-- create dropdown with bootstrap-->
+                          <li class="nav-item">
+                              <a class="nav-link text-white" href="product.html">Vải may mặc</a>
+                          </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="fabric_blog.html">Vải nội thất</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="">Phụ kiện may mặc</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-white" href="policyReturn.html">Chính sách đổi trả</a>
+                      </li>
+                    </li>
+                  </ul>
+              </div>
+          </div>
       </nav>
+      <!--end navbar for page-->
+  </div>
+    <!-- end navbar-->
+    <!-- Container chính -->
+    <div class="container mt-3">
+      <!-- Breadcrumb -->
+     
       <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3">
@@ -363,9 +527,9 @@
               <!-- Loại bỏ view-toggle -->
               <select class="form-select d-inline-block w-auto" id="sortSelect">
                 <option value="newest" selected>Mới Nhất</option>
-                <option value="best-selling">Bán Chạy Nhất</option>
-                <option value="price-asc">Giá tăng dần</option>
-                <option value="price-desc">Giá giảm dần</option>
+                <option value="best-selling">Bán chạy Nhất</option>
+                <option value="price-asc">Từ thấp đến cao</option>
+                <option value="price-desc">Từ cao đến thấp</option>
               </select>
               <!-- Phân trang ở trên bên phải -->
               <nav aria-label="Page navigation example" class="ms-3">
@@ -403,7 +567,7 @@
           <!-- Product Grid -->
           <div class="row product-grid">
             <!-- Sản phẩm 1 -->
-            <div class="col-md-4 mb-4" data-price="8000" data-brand="ButtonPro" data-sales="150">
+            <div class="col-md-4 mb-4" data-price="8000" data-brand="ButtonPro" data-date="2024-04-01" data-sales="150">
               <div class="card h-100">
                 <img
                   src="images/nutaothantienmautrang.jpg"
@@ -439,6 +603,7 @@
               class="col-md-4 mb-4"
               data-price="12000"
               data-brand="StyleButtons"
+              data-date="2024-03-15"
               data-sales="200"
             >
               <div class="card h-100">
@@ -475,7 +640,8 @@
               class="col-md-4 mb-4"
               data-price="15000"
               data-brand="ElegantButtons"
-              data-sales="180"
+              data-date="2024-02-20"
+              data-sales="250"
             >
               <div class="card h-100">
                 <img
@@ -507,7 +673,7 @@
             </div>
 
             <!-- Sản phẩm 4 -->
-            <div class="col-md-4 mb-4" data-price="5000" data-brand="ButtonPro" data-sales="80">
+            <div class="col-md-4 mb-4" data-price="5000" data-brand="ButtonPro" data-date="2024-05-10" data-sales="100">
               <div class="card h-100">
                 <img
                   src="images/nutaothanhtheocochai.jpg"
@@ -541,7 +707,8 @@
               class="col-md-4 mb-4"
               data-price="7000"
               data-brand="StyleButtons"
-              data-sales="120"
+              data-date="2024-04-18"
+              data-sales="180"
             >
               <div class="card h-100">
                 <img
@@ -576,7 +743,8 @@
               class="col-md-4 mb-4"
               data-price="9000"
               data-brand="ElegantButtons"
-              data-sales="170"
+              data-date="2024-03-25"
+              data-sales="220"
             >
               <div class="card h-100">
                 <img
@@ -612,7 +780,8 @@
               class="col-md-4 mb-4"
               data-price="11000"
               data-brand="ButtonPro"
-              data-sales="140"
+              data-date="2024-02-05"
+              data-sales="300"
             >
               <div class="card h-100">
                 <img
@@ -647,7 +816,8 @@
               class="col-md-4 mb-4"
               data-price="6000"
               data-brand="StyleButtons"
-              data-sales="90"
+              data-date="2024-04-10"
+              data-sales="130"
             >
               <div class="card h-100">
                 <img
@@ -683,7 +853,8 @@
               class="col-md-4 mb-4"
               data-price="10000"
               data-brand="ElegantButtons"
-              data-sales="160"
+              data-date="2024-05-05"
+              data-sales="180"
             >
               <div class="card h-100">
                 <img
@@ -719,7 +890,8 @@
               class="col-md-4 mb-4"
               data-price="13000"
               data-brand="ButtonPro"
-              data-sales="130"
+              data-date="2024-01-30"
+              data-sales="220"
             >
               <div class="card h-100">
                 <img
@@ -755,7 +927,8 @@
               class="col-md-4 mb-4"
               data-price="9000"
               data-brand="StyleButtons"
-              data-sales="110"
+              data-date="2024-02-18"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
@@ -791,7 +964,8 @@
               class="col-md-4 mb-4"
               data-price="14000"
               data-brand="ElegantButtons"
-              data-sales="190"
+              data-date="2024-03-10"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
@@ -821,12 +995,14 @@
               </div>
             </div>
 
+            <!-- Tiếp tục thêm các sản phẩm cho trang 2 và 3 -->
             <!-- Sản phẩm 13 -->
             <div
               class="col-md-4 mb-4"
               data-price="10000"
               data-brand="ButtonPro"
-              data-sales="100"
+              data-date="2024-04-25"
+              data-sales="190"
             >
               <div class="card h-100">
                 <img
@@ -861,7 +1037,8 @@
               class="col-md-4 mb-4"
               data-price="8500"
               data-brand="StyleButtons"
-              data-sales="95"
+              data-date="2024-05-15"
+              data-sales="170"
             >
               <div class="card h-100">
                 <img
@@ -897,7 +1074,8 @@
               class="col-md-4 mb-4"
               data-price="16000"
               data-brand="ElegantButtons"
-              data-sales="210"
+              data-date="2024-03-05"
+              data-sales="240"
             >
               <div class="card h-100">
                 <img
@@ -928,7 +1106,7 @@
             </div>
 
             <!-- Sản phẩm 16 -->
-            <div class="col-md-4 mb-4" data-price="7500" data-brand="ButtonPro" data-sales="85">
+            <div class="col-md-4 mb-4" data-price="7500" data-brand="ButtonPro" data-date="2024-04-22" data-sales="140">
               <div class="card h-100">
                 <img
                   src="images/nutaothanhtheoocochai.jpg"
@@ -962,7 +1140,8 @@
               class="col-md-4 mb-4"
               data-price="9500"
               data-brand="StyleButtons"
-              data-sales="175"
+              data-date="2024-05-08"
+              data-sales="190"
             >
               <div class="card h-100">
                 <img
@@ -997,7 +1176,8 @@
               class="col-md-4 mb-4"
               data-price="13000"
               data-brand="ElegantButtons"
-              data-sales="220"
+              data-date="2024-02-28"
+              data-sales="230"
             >
               <div class="card h-100">
                 <img
@@ -1032,7 +1212,8 @@
               class="col-md-4 mb-4"
               data-price="11000"
               data-brand="ButtonPro"
-              data-sales="160"
+              data-date="2024-03-12"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
@@ -1068,7 +1249,8 @@
               class="col-md-4 mb-4"
               data-price="14000"
               data-brand="StyleButtons"
-              data-sales="190"
+              data-date="2024-04-05"
+              data-sales="200"
             >
               <div class="card h-100">
                 <img
@@ -1104,7 +1286,8 @@
               class="col-md-4 mb-4"
               data-price="7000"
               data-brand="ElegantButtons"
-              data-sales="140"
+              data-date="2024-05-20"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
@@ -1139,7 +1322,8 @@
               class="col-md-4 mb-4"
               data-price="16000"
               data-brand="ButtonPro"
-              data-sales="200"
+              data-date="2024-03-22"
+              data-sales="240"
             >
               <div class="card h-100">
                 <img
@@ -1175,7 +1359,8 @@
               class="col-md-4 mb-4"
               data-price="8000"
               data-brand="StyleButtons"
-              data-sales="130"
+              data-date="2024-05-18"
+              data-sales="170"
             >
               <div class="card h-100">
                 <img
@@ -1210,13 +1395,14 @@
               class="col-md-4 mb-4"
               data-price="17000"
               data-brand="ElegantButtons"
-              data-sales="220"
+              data-date="2024-02-10"
+              data-sales="260"
             >
               <div class="card h-100">
                 <img
-                  src="images/nutaoelegantpurple.jpg"
+                  src="images/nutaostylegray.jpg"
                   class="card-img-top"
-                  alt="Nút Áo Elegant - Màu Tím"
+                  alt="Nút Áo Style - Màu Xám"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1227,27 +1413,21 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Nút Áo Elegant - Màu Tím</h5>
+                  <h5 class="card-title">Nút Áo Style - Màu Xám</h5>
                   <p class="card-text description">
-                    Nút áo màu tím, sang trọng và phù hợp với các loại áo dạ
-                    hội.
+                    Nút áo màu xám, phù hợp với các loại áo vest và áo khoác.
                   </p>
                   <div class="pricing mt-auto">
                     <span class="discount-badge">-20%</span>
-                    <span class="discounted-price">17,000đ</span>
-                    <span class="original-price">21,250đ</span>
+                    <span class="discounted-price">18,000đ</span>
+                    <span class="original-price">22,500đ</span>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Sản phẩm 25 -->
-            <div
-              class="col-md-4 mb-4"
-              data-price="9500"
-              data-brand="ButtonPro"
-              data-sales="105"
-            >
+            <div class="col-md-4 mb-4" data-price="10000" data-brand="ButtonPro" data-date="2024-05-25" data-sales="180">
               <div class="card h-100">
                 <img
                   src="images/nutaothanhtheoocochai4.jpg"
@@ -1281,7 +1461,8 @@
               class="col-md-4 mb-4"
               data-price="18000"
               data-brand="StyleButtons"
-              data-sales="195"
+              data-date="2024-03-30"
+              data-sales="250"
             >
               <div class="card h-100">
                 <img
@@ -1316,13 +1497,14 @@
               class="col-md-4 mb-4"
               data-price="16000"
               data-brand="ElegantButtons"
-              data-sales="210"
+              data-date="2024-04-12"
+              data-sales="240"
             >
               <div class="card h-100">
                 <img
-                  src="images/nutaoelegantwhite2.jpg"
+                  src="images/nutaothanhtheoocochai4.jpg"
                   class="card-img-top"
-                  alt="Nút Áo Elegant - Màu Trắng 2"
+                  alt="Nút Áo Thần Thiết - Cổ Chai 4"
                 />
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
@@ -1333,7 +1515,7 @@
                   </button>
                 </div>
                 <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Nút Áo Elegant - Màu Trắng 2</h5>
+                  <h5 class="card-title">Nút Áo Thần Thiết - Cổ Chai 4</h5>
                   <p class="card-text description">
                     Nút áo màu trắng, tinh tế và phù hợp với các loại áo formal.
                   </p>
@@ -1374,7 +1556,10 @@
     </div>
 
     <!-- Footer (nếu có) -->
-
+      <div class="footer">
+          <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="450px">  </iframe>
+      </div>
+    <!-- end footer-->
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -1382,181 +1567,196 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- JavaScript to Handle Filtering, Sorting, and Pagination -->
+    <!-- JavaScript để xử lý phân trang, lọc giá và các nút hành động -->
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
         const productGrid = document.querySelector(".product-grid");
         const sortSelect = document.getElementById("sortSelect");
         const paginationTop = document.getElementById("paginationTop");
         const paginationBottom = document.getElementById("paginationBottom");
         const priceFilters = document.querySelectorAll(".price-filter");
         const brandFilters = document.querySelectorAll(".brand-filter");
+        const addToCartButtons = document.querySelectorAll(".btn-add-to-cart");
+        const favoriteButtons = document.querySelectorAll(".btn-favorite");
 
-        let currentPage = parseInt(localStorage.getItem("currentPage")) || 1;
+        let currentPage = 1;
         const productsPerPage = 9;
         let filteredProducts = [];
 
-        // Retrieve all product cards
-        const allProducts = Array.from(document.querySelectorAll(".product-grid .col-md-4"));
-
-        // Utility function to parse price string to integer
+        // Hàm chuyển đổi chuỗi giá thành số nguyên
         function parsePrice(priceStr) {
           return parseInt(priceStr.replace(/[^0-9]/g, ""));
         }
 
-        // Function to filter products based on selected price and brand filters
+        // Hàm chuyển đổi chuỗi ngày thành đối tượng Date
+        function parseDate(dateStr) {
+          return new Date(dateStr);
+        }
+
+        // Hàm lọc sản phẩm theo giá và thương hiệu
         function filterProducts() {
-          const checkedPriceFilters = Array.from(priceFilters).filter(filter => filter.checked);
-          const priceRanges = checkedPriceFilters.map(filter => {
+          const checkedPriceFilters = Array.from(priceFilters).filter(
+            (filter) => filter.checked
+          );
+          const priceRanges = checkedPriceFilters.map((filter) => {
             const min = parseInt(filter.getAttribute("data-min")) || 0;
-            const maxAttr = filter.getAttribute("data-max");
-            const max = maxAttr ? parseInt(maxAttr) : Number.MAX_SAFE_INTEGER;
+            const max =
+              parseInt(filter.getAttribute("data-max")) ||
+              Number.MAX_SAFE_INTEGER;
             return { min, max };
           });
 
-          const checkedBrandFilters = Array.from(brandFilters).filter(filter => filter.checked);
-          const brands = checkedBrandFilters.map(filter => filter.getAttribute("data-brand"));
+          const checkedBrandFilters = Array.from(brandFilters).filter(
+            (filter) => filter.checked
+          );
+          const brands = checkedBrandFilters.map((filter) =>
+            filter.getAttribute("data-brand")
+          );
 
-          // Filter products based on price and brand
-          filteredProducts = allProducts.filter(card => {
+          const allProducts = Array.from(
+            document.querySelectorAll(".product-grid .col-md-4")
+          );
+
+          // Lọc sản phẩm dựa trên giá và thương hiệu
+          filteredProducts = allProducts.filter((card) => {
             const discountedPriceEl = card.querySelector(".discounted-price");
             const brand = card.getAttribute("data-brand");
             if (!discountedPriceEl) return false;
-
             const priceText = discountedPriceEl.textContent.trim();
             const price = parsePrice(priceText);
 
-            // Check price range
-            const isPriceMatch = priceRanges.length === 0 || priceRanges.some(range => price >= range.min && price <= range.max);
+            // Kiểm tra giá
+            const isPriceMatch =
+              priceRanges.length === 0 ||
+              priceRanges.some(
+                (range) => price >= range.min && price <= range.max
+              );
 
-            // Check brand
+            // Kiểm tra thương hiệu
             const isBrandMatch = brands.length === 0 || brands.includes(brand);
 
             return isPriceMatch && isBrandMatch;
           });
 
-          // Sort the filtered products
+          // Sắp xếp lại sản phẩm theo lựa chọn sắp xếp
           sortFilteredProducts();
 
-          // Reset to first page after filtering
+          // Reset về trang 1 sau khi lọc
           currentPage = 1;
-          localStorage.setItem("currentPage", "1");
           renderPagination();
         }
 
-        // Function to sort the filtered products based on selected sort option
+        // Hàm để sắp xếp sản phẩm đã lọc
         function sortFilteredProducts() {
-          const sortValue = sortSelect.value;
+  const sortValue = sortSelect.value;
 
-          if (sortValue === "newest") {
-            // Sort by newest first, assuming original allProducts array is in the order of HTML
-            filteredProducts = filteredProducts.sort((a, b) => {
-              return allProducts.indexOf(b) - allProducts.indexOf(a);
-            });
-          } else if (sortValue === "best-selling") {
-            // Sort by data-sales descending
-            filteredProducts = filteredProducts.sort((a, b) => {
-              const salesA = parseInt(a.getAttribute("data-sales")) || 0;
-              const salesB = parseInt(b.getAttribute("data-sales")) || 0;
-              return salesB - salesA;
-            });
-          } else {
-            // Existing sorting by price
-            filteredProducts.sort((a, b) => {
-              const priceA = parsePrice(a.querySelector(".discounted-price").textContent.trim());
-              const priceB = parsePrice(b.querySelector(".discounted-price").textContent.trim());
+  filteredProducts.sort((a, b) => {
+    const priceA = parsePrice(a.querySelector(".discounted-price").textContent.trim());
+    const priceB = parsePrice(b.querySelector(".discounted-price").textContent.trim());
+    
+    if (sortValue === "price-asc") {
+      return priceA - priceB; // Sắp xếp tăng dần theo giá
+    } else if (sortValue === "price-desc") {
+      return priceB - priceA; // Sắp xếp giảm dần theo giá
+    } else if (sortValue === "newest") {
+      const dateA = parseDate(a.getAttribute("data-date"));
+      const dateB = parseDate(b.getAttribute("data-date"));
+      return dateB - dateA; // Sắp xếp theo ngày, sản phẩm mới nhất trước
+    } else if (sortValue === "best-selling") {
+      const salesA = parseInt(a.getAttribute("data-sales")) || 0;
+      const salesB = parseInt(b.getAttribute("data-sales")) || 0;
+      return salesB - salesA; // Sắp xếp sản phẩm bán chạy trước
+    } else {
+      return 0; // Giữ nguyên thứ tự nếu không chọn sắp xếp
+    }
+  });
+}
 
-              if (sortValue === "price-asc") {
-                return priceA - priceB;
-              } else if (sortValue === "price-desc") {
-                return priceB - priceA;
-              } else {
-                return 0;
-              }
-            });
-          }
-        }
 
-        // Function to render products for the current page
+        // Hàm để hiển thị sản phẩm của một trang cụ thể
         function renderProducts() {
-          // Clear the current product grid
-          productGrid.innerHTML = "";
+  // Ẩn tất cả các sản phẩm
+  productGrid.innerHTML = ''; // Xóa toàn bộ sản phẩm hiện có
 
-          const start = (currentPage - 1) * productsPerPage;
-          const end = start + productsPerPage;
-          const productsToShow = filteredProducts.slice(start, end);
+  // Tính toán các sản phẩm cần hiển thị
+  const start = (currentPage - 1) * productsPerPage;
+  const end = start + productsPerPage;
+  const productsToShow = filteredProducts.slice(start, end);
 
-          productsToShow.forEach(card => {
-            productGrid.appendChild(card);
-          });
+  // Hiển thị các sản phẩm cần hiển thị
+  productsToShow.forEach((card) => {
+    productGrid.appendChild(card);
+  });
 
-          // If no products to show, display a message
-          if (productsToShow.length === 0) {
-            const noProductMsg = document.createElement("p");
-            noProductMsg.textContent = "Không có sản phẩm nào phù hợp với bộ lọc của bạn.";
-            noProductMsg.classList.add("text-center", "mt-4");
-            productGrid.appendChild(noProductMsg);
-          }
-        }
+  // Hiển thị thông báo nếu không có sản phẩm nào phù hợp
+  if (filteredProducts.length === 0) {
+    // Kiểm tra xem thông báo đã tồn tại chưa
+    if (!document.querySelector(".no-products-message")) {
+      const noProductMessage = document.createElement("div");
+      noProductMessage.classList.add("col-12", "text-center", "no-products-message");
+      noProductMessage.innerHTML = "<h5>Không có sản phẩm nào phù hợp với lựa chọn của bạn.</h5>";
+      productGrid.appendChild(noProductMessage);
+    }
+  } else {
+    // Xóa thông báo nếu có
+    const existingMessage = document.querySelector(".no-products-message");
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+  }
+}
 
-        // Function to update pagination controls
+
+        // Hàm để cập nhật trạng thái phân trang
         function updatePagination(totalPages) {
           const paginations = [paginationTop, paginationBottom];
 
-          paginations.forEach(pagination => {
-            // Remove existing page numbers except 'prev' and 'next'
-            pagination.querySelectorAll(".page-item:not([data-page='prev']):not([data-page='next'])").forEach(item => item.remove());
+          paginations.forEach((pagination) => {
+            const pageItems = pagination.querySelectorAll(".page-item");
 
-            // Dynamically create page number buttons
-            for (let i = 1; i <= totalPages; i++) {
-              const li = document.createElement("li");
-              li.classList.add("page-item");
-              li.setAttribute("data-page", i);
+            pageItems.forEach((item) => {
+              const page = item.getAttribute("data-page");
 
-              if (i === currentPage) {
-                li.classList.add("active");
-                li.setAttribute("aria-current", "page");
+              if (page === "prev") {
+                if (currentPage === 1) {
+                  item.classList.add("disabled");
+                } else {
+                  item.classList.remove("disabled");
+                }
+              } else if (page === "next") {
+                if (currentPage === totalPages) {
+                  item.classList.add("disabled");
+                } else {
+                  item.classList.remove("disabled");
+                }
+              } else {
+                const pageNumber = parseInt(page);
+                if (pageNumber === currentPage) {
+                  item.classList.add("active");
+                } else {
+                  item.classList.remove("active");
+                }
               }
-
-              const a = document.createElement("a");
-              a.classList.add("page-link");
-              a.href = "#";
-              a.textContent = i;
-
-              li.appendChild(a);
-              pagination.insertBefore(li, pagination.querySelector("[data-page='next']"));
-            }
-
-            // Update 'prev' button state
-            const prev = pagination.querySelector(".page-item[data-page='prev']");
-            if (currentPage === 1) {
-              prev.classList.add("disabled");
-            } else {
-              prev.classList.remove("disabled");
-            }
-
-            // Update 'next' button state
-            const next = pagination.querySelector(".page-item[data-page='next']");
-            if (currentPage === totalPages) {
-              next.classList.add("disabled");
-            } else {
-              next.classList.remove("disabled");
-            }
+            });
           });
         }
 
-        // Function to handle pagination click events
+        // Hàm để xử lý khi nhấn vào các liên kết phân trang
         function handlePaginationClick(event) {
           event.preventDefault();
           const parentLi = event.target.closest(".page-item");
-          if (!parentLi) return; // If not a page item, exit
+          if (!parentLi) return; // Nếu không phải phần tử li, thoát
 
-          if (parentLi.classList.contains("disabled") || parentLi.classList.contains("active")) {
-            return; // Do nothing if disabled or active
+          if (
+            parentLi.classList.contains("disabled") ||
+            parentLi.classList.contains("active")
+          ) {
+            return; // Không làm gì nếu nút bị vô hiệu hóa hoặc đang active
           }
 
           const page = parentLi.getAttribute("data-page");
-          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+          const totalPages =
+            Math.ceil(filteredProducts.length / productsPerPage) || 1;
 
           if (page === "prev") {
             if (currentPage > 1) {
@@ -1570,62 +1770,64 @@
             currentPage = parseInt(page);
           }
 
-          localStorage.setItem("currentPage", currentPage.toString());
           renderPagination();
         }
 
-        // Function to render pagination based on filtered products
+        // Hàm để render phân trang dựa trên số lượng sản phẩm sau khi lọc
         function renderPagination() {
-          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+          const totalPages =
+            Math.ceil(filteredProducts.length / productsPerPage) || 1;
 
-          // Ensure currentPage is within bounds
+          // Giới hạn currentPage không vượt quá totalPages
           if (currentPage > totalPages) {
             currentPage = totalPages;
-            localStorage.setItem("currentPage", currentPage.toString());
           }
 
-          // Update pagination controls
+          // Cập nhật phân trang
           updatePagination(totalPages);
 
-          // Render products for the current page
+          // Hiển thị sản phẩm
           renderProducts();
         }
 
-        // Function to attach event listeners to pagination controls
-        function attachPaginationEventListeners() {
-          const paginations = [paginationTop, paginationBottom];
-          paginations.forEach(pagination => {
-            pagination.addEventListener("click", handlePaginationClick);
-          });
-        }
+        // Thêm sự kiện cho các liên kết phân trang (trên và dưới)
+        const allPaginationLinks = document.querySelectorAll(
+          ".pagination .page-item a"
+        );
+        allPaginationLinks.forEach((link) => {
+          link.addEventListener("click", handlePaginationClick);
+        });
 
-        // Event listener for sort selection change
+        // Thêm sự kiện cho chọn sắp xếp
         sortSelect.addEventListener("change", () => {
-          sortFilteredProducts();
-          currentPage = 1;
-          localStorage.setItem("currentPage", "1");
-          renderPagination();
-        });
+  sortFilteredProducts();
+  currentPage = 1;
+  renderPagination();
+});
 
-        // Event listeners for price and brand filters
-        priceFilters.forEach(filter => {
+
+        // Thêm sự kiện cho các checkbox giá và thương hiệu
+        priceFilters.forEach((filter) => {
           filter.addEventListener("change", filterProducts);
         });
 
-        brandFilters.forEach(filter => {
+        brandFilters.forEach((filter) => {
           filter.addEventListener("change", filterProducts);
         });
 
-        // Event delegation for Add to Cart and Favorite buttons
-        productGrid.addEventListener("click", (e) => {
-          if (e.target.closest(".btn-add-to-cart")) {
+        // Thêm sự kiện cho các nút Thêm vào Giỏ và Yêu Thích
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
             e.preventDefault();
+            // Thực hiện chức năng thêm vào giỏ hàng
             alert("Đã thêm sản phẩm vào giỏ hàng!");
-          }
+          });
+        });
 
-          if (e.target.closest(".btn-favorite")) {
+        favoriteButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
             e.preventDefault();
-            const button = e.target.closest(".btn-favorite");
+            // Thực hiện chức năng thêm vào yêu thích
             button.classList.toggle("active");
             if (button.classList.contains("active")) {
               button.style.backgroundColor = "rgba(220, 53, 69, 1)";
@@ -1634,28 +1836,29 @@
               button.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
               alert("Đã loại bỏ sản phẩm khỏi danh sách yêu thích!");
             }
-          }
+          });
         });
 
-        // Initialize pagination event listeners
-        attachPaginationEventListeners();
-
-        // Ensure product grid is in grid view
+        // Khởi tạo khi tải trang
+        // Đảm bảo không có lớp 'list-view' trên product-grid
         productGrid.classList.remove("list-view");
 
-        // Initial filtering and rendering
+        // Lọc sản phẩm ban đầu
         filterProducts();
       });
 
-      // Function to send the page height to the parent (for embedding purposes)
       function sendHeight() {
         const height = document.body.scrollHeight;
-        window.parent.postMessage(height, "*"); // In production, replace '*' with the specific origin
+        window.parent.postMessage(height, "*"); // Trong sản xuất, thay '*' bằng origin cụ thể
       }
 
-      // Send height on page load and resize
+      // Gửi chiều cao khi tải trang
       window.addEventListener("load", sendHeight);
+
+      // Gửi chiều cao khi kích thước cửa sổ thay đổi
       window.addEventListener("resize", sendHeight);
+
     </script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

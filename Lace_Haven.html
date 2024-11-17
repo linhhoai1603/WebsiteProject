@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Thai Tuan</title>
+    <title>Sản phẩm</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -41,7 +41,7 @@
       .breadcrumb-item.active {
         color: #fff; /* Màu chữ trắng cho mục active */
       }
-
+      /* Sidebar Styles */
       .sidebar {
         background-color: #fff;
         padding: 20px;
@@ -214,39 +214,251 @@
         margin-top: 20px; /* Khoảng cách trên tiêu đề "Thương hiệu" */
         margin-bottom: 20px; /* Khoảng cách dưới tiêu đề "Thương hiệu" */
       }
+
+      .sidebar {
+        text-align: left;
+      }
+
+      .sidebar h5 {
+        text-align: left;
+      }
+
+      .sidebar a {
+        text-align: left;
+      }
     </style>
+    <link rel="stylesheet" href="css/navbar.css" />
   </head>
   <body>
-    <!-- Container chính -->
-    <div class="container">
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-          <li class="breadcrumb-item">
-            <a href="#">REN Cao Cấp Vô Vàn Vải</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Phụ Kiện REN 2024
-          </li>
-        </ol>
+    <!-- Header -->
+    <div class="container-fluid">
+      <iframe
+        src="header.html"
+        frameborder="0"
+        width="100%"
+        height="120px"
+      ></iframe>
+    </div>
+    <!-- End Header -->
+
+    <!-- Navbar -->
+    <div class="container-fluid">
+      <!-- Navbar for page -->
+      <nav
+        class="navbar navbar-expand-lg"
+        style="background-color: #4fd0b6; height: 40px"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="index.html">Trang chủ</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <!-- Dropdown Sản phẩm -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sản phẩm
+                </a>
+                <ul
+                  class="dropdown-menu custom-dropdown"
+                  aria-labelledby="dropdownMenuLink"
+                >
+                  <div class="dropdown-item">
+                    <div class="container">
+                      <div class="row">
+                        <h4>Sản phẩm nổi bật</h4>
+                        <!-- Thêm các sản phẩm nổi bật ở đây nếu cần -->
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar1.jpg"
+                              class="card-img-top"
+                              alt="Vải lụa"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải lụa</h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar2.jpg"
+                              class="card-img-top"
+                              alt="Vải kaki"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải kaki</h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar3.jpg"
+                              class="card-img-top"
+                              alt="Vải nhung"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải nhung</h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar4.jpg"
+                              class="card-img-top"
+                              alt="Vải Linen"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải Linen</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Các danh mục sản phẩm -->
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <h4>Bán chạy nhất</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Linen</a><br />
+                        <a href="#">Vải Silk</a><br />
+                        <a href="#">Polyester</a><br />
+                        <a href="#">Denim</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Mới nhất</h4>
+                        <a href="#">Vải len</a><br />
+                        <a href="#">Vải nhung</a><br />
+                        <a href="#">Vải lanh</a><br />
+                        <a href="#">Vải da</a><br />
+                        <a href="#">Vải dù</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Từ thấp đến cao</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Linen</a><br />
+                        <a href="#">Vải Rayon</a><br />
+                        <a href="#">Vải Bamboo</a><br />
+                        <a href="#">Vải Chambray</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Từ cao đến thấp</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Wool</a><br />
+                        <a href="#">Vải Tweed</a><br />
+                        <a href="#">Vải Flannel</a><br />
+                        <a href="#">Vải Corduroy</a><br />
+                        <a href="#">Vải Denim</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Đồng phục</h4>
+                        <a href="#">Polyester</a><br />
+                        <a href="#">Cotton-PVC</a><br />
+                        <a href="#">Nỉ</a><br />
+                        <a href="#">Kaki</a><br />
+                        <a href="#">Lanh</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Nội thất</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Microfiber</a><br />
+                        <a href="#">Vải Velvet</a><br />
+                        <a href="#">Vải Polyester</a><br />
+                        <a href="#">Vải Tweed</a><br />
+                        <a href="#">Vải Canvas</a><br />
+                      </div>
+                    </div>
+                  </div>
+                </ul>
+              </li>
+              <!-- Các mục khác trong navbar -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="product.html"
+                  >Vải may mặc</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="fabric_blog.html"
+                  >Vải nội thất</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="Button_Up.html"
+                  >Phụ kiện may mặc</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="designProduct.html"
+                  >Các mẫu thiết kế</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="policyReturn.html"
+                  >Chính sách đổi trả</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
+      <!-- End Navbar for page -->
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Container chính -->
+    <div class="container mt-3">
       <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3">
           <div class="sidebar">
             <h5>Danh mục</h5>
             <ul class="list-unstyled mb-4">
-              <li><a href="https://invaiphuonghoang.com/">Vải In</a></li>
-              <li><a href="https://haitrieu.com/blogs/vai-gam-la-gi/">Vải Gấm</a></li>
-              <li><a href="https://lamia.com.vn/blog/vai-to-tam-la-gi#:~:text=V%E1%BA%A3i%20t%C6%A1%20t%E1%BA%B1m%20l%C3%A0%20g%C3%AC%3F%20V%E1%BA%A3i%20t%C6%A1%20t%E1%BA%B1m,b%C3%B3ng%2C%20m%E1%BB%81m%2C%20m%E1%BB%8Bn%20v%C3%A0%20gi%C3%A1%20th%C3%A0nh%20kh%C3%A1%20cao.">Vải Tơ Tằm</a></li>
-              <li><a href="https://shopee.vn/search?keyword=v%E1%BA%A3i%20th%C3%B4%20hoa%20s%E1%BB%89">Vải Họa Sĩ</a></li>
-              <li><a href="https://yame.vn/bai-viet/chat-lieu-vai-tao-nen-su-khac-biet-trong-phong-cach-nhu-the-nao/3e6d32ea-a5b7-4501-90b6-7b8d38c5ff79?srsltid=AfmBOooqr1auCyviVbcVm_blOeJ2jFiGxko27cbnFTpfxAK7OIRxPw2K">Vô Vàn Vải Premium</a></li>
-              <li><a href="https://levents.asia/blogs/kien-thuc-thoi-trang/vai-satin-la-vai-gi?srsltid=AfmBOorcIGnePV-avr3yt7QSA2sxGoevUdvhflv_LO0IqrDS5eJ47ko2">Vải Satin</a></li>
-              <li><a href="https://www.maisononline.vn/blogs/kien-thuc-thoi-trang/vai-lua-la-vai-gi?srsltid=AfmBOoogYSWrmJhr-N5lfEIVtZZAO3s5ydw0KZA-w0rvFQmzDtGTeAvx">Vải Lụa</a></li>
-              <li><a href="https://levents.asia/blogs/kien-thuc-thoi-trang/vai-voan-la-gi?srsltid=AfmBOorpL_aQcWOUEdqkZnpy8JonfPFbJehzHq2QSQK_WOGUO1VOcKE-">Vải Voan</a></li>
-              <li><a href="https://routine.vn/tin-thoi-trang/chat-lieu-jeans-denim-la-gi?srsltid=AfmBOoqRpblaKDeI8v4WvTpwXuXfzZEZGPKUOyqV6cxTMzDPs5VxkPC8">Vải Jean</a></li>
-              <li><a href="https://www.vestonduynguyen.com/kaki-denim/vai-denim-mau-den-nhc33-nhc33">Vải Denim</a></li>
+              <li><a href="#">Vải In</a></li>
+              <li><a href="#">Vải Gấm</a></li>
+              <li><a href="#">Vải Tơ Tằm</a></li>
+              <li><a href="#">Vải Họa Sĩ</a></li>
+              <li><a href="#">Thái Tuấn Premium</a></li>
+              <li><a href="#">Vải Satin</a></li>
+              <li><a href="#">Vải Lụa</a></li>
+              <li><a href="#">Vải Voan</a></li>
+              <li><a href="#">Vải Jean</a></li>
+              <li><a href="#">Vải Denim</a></li>
             </ul>
             <h5>Giá</h5>
             <div class="form-check mb-2">
@@ -340,6 +552,8 @@
             </div>
           </div>
         </div>
+        <!-- End Sidebar -->
+
         <!-- Nội dung chính -->
         <div class="col-md-9">
           <!-- Header Controls: Title, Sort, Pagination -->
@@ -350,12 +564,12 @@
               <h5 class="mb-0">REN CAO CẤP Vô Vàn Vải</h5>
             </div>
             <div class="header-right d-flex align-items-center">
-              <!-- Loại bỏ view-toggle -->
+              <!-- Bộ lọc sắp xếp -->
               <select class="form-select d-inline-block w-auto" id="sortSelect">
-                <option value="newest" selected>Mới Nhất</option>
-                <option value="best-selling">Bán Chạy Nhất</option>
-                <option value="price-asc">Giá tăng dần</option>
-                <option value="price-desc">Giá giảm dần</option>
+                <option value="newest" selected>Mới nhất</option>
+                <option value="best-selling">Bán chạy nhất</option>
+                <option value="price-asc">Từ thấp đến cao</option>
+                <option value="price-desc">Từ cao đến thấp</option>
               </select>
               <!-- Phân trang ở trên bên phải -->
               <nav aria-label="Page navigation example" class="ms-3">
@@ -392,19 +606,23 @@
 
           <!-- Product Grid -->
           <div class="row product-grid">
+            <!-- Duyệt từ Sản phẩm 1 đến Sản phẩm 26 -->
+            <!-- Mỗi sản phẩm có thuộc tính data-price, data-brand, data-date, data-sales -->
+            <!-- Ví dụ cho Sản phẩm 1 đến Sản phẩm 26 -->
             <!-- Sản phẩm 1 -->
             <div
               class="col-md-4 mb-4"
               data-price="549500"
               data-brand="REN Chính Hãng"
-              data-date="2024-10-01"
-              data-sales="150"
+              data-date="2024-05-10"
+              data-sales="200"
             >
               <div class="card h-100">
                 <img
                   src="images/vairenthantienmautrang.jpg"
                   class="card-img-top"
                   alt="REN Thần Tiên"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
                 <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
@@ -435,15 +653,17 @@
               class="col-md-4 mb-4"
               data-price="699500"
               data-brand="REN Giảm Giá"
-              data-date="2024-09-15"
-              data-sales="200"
+              data-date="2024-04-15"
+              data-sales="180"
             >
               <div class="card h-100">
                 <img
                   src="images/renthaitrangxanhdam.jpg"
                   class="card-img-top"
                   alt="REN Thái Trang"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -472,15 +692,17 @@
               class="col-md-4 mb-4"
               data-price="749000"
               data-brand="REN Chính Hãng"
-              data-date="2024-08-20"
-              data-sales="120"
+              data-date="2024-06-20"
+              data-sales="220"
             >
               <div class="card h-100">
                 <img
                   src="images/vairensangthantienmaudo.jpg"
                   class="card-img-top"
                   alt="REN Sang Tiên"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -505,13 +727,21 @@
             </div>
 
             <!-- Sản phẩm 4 -->
-            <div class="col-md-4 mb-4" data-price="899000" data-brand="REN Mới" data-date="2024-07-10" data-sales="180">
+            <div
+              class="col-md-4 mb-4"
+              data-price="899000"
+              data-brand="REN Mới"
+              data-date="2024-07-05"
+              data-sales="150"
+            >
               <div class="card h-100">
                 <img
                   src="images/vairenuocmomauhong.jpg"
                   class="card-img-top"
                   alt="REN Mơ Ước"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -534,20 +764,23 @@
               </div>
             </div>
 
-            <!-- Sản phẩm 5 -->
+            <!-- Tiếp tục tương tự cho các sản phẩm 5 đến 26 -->
+            <!-- Ví dụ cho Sản phẩm 5 -->
             <div
               class="col-md-4 mb-4"
               data-price="499000"
               data-brand="REN Giảm Giá"
-              data-date="2024-06-05"
-              data-sales="250"
+              data-date="2024-03-25"
+              data-sales="300"
             >
               <div class="card h-100">
                 <img
                   src="images/rennangdongmauvang.jpg"
                   class="card-img-top"
                   alt="REN Năng Động"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -575,15 +808,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Chính Hãng"
-              data-date="2024-05-18"
-              data-sales="130"
+              data-date="2024-02-18"
+              data-sales="250"
             >
               <div class="card h-100">
                 <img
                   src="images/renthanhlichmauden.jpg"
                   class="card-img-top"
                   alt="REN Thanh Lịch"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -607,13 +842,21 @@
             </div>
 
             <!-- Sản phẩm 7 -->
-            <div class="col-md-4 mb-4" data-price="649000" data-brand="REN Mới" data-date="2024-04-22" data-sales="220">
+            <div
+              class="col-md-4 mb-4"
+              data-price="649000"
+              data-brand="REN Mới"
+              data-date="2024-08-12"
+              data-sales="180"
+            >
               <div class="card h-100">
                 <img
                   src="images/rensangtaomauxam.jpg"
                   class="card-img-top"
                   alt="REN Sáng Tạo"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -642,15 +885,17 @@
               class="col-md-4 mb-4"
               data-price="1499000"
               data-brand="REN Giảm Giá"
-              data-date="2024-03-30"
-              data-sales="140"
+              data-date="2024-01-30"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
                   src="images/rencodienmaunau.jpg"
                   class="card-img-top"
                   alt="REN Cổ Điển"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -678,15 +923,17 @@
               class="col-md-4 mb-4"
               data-price="599000"
               data-brand="REN Giảm Giá"
-              data-date="2024-02-14"
-              data-sales="300"
+              data-date="2024-09-05"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
                   src="images/renhiendaimauxanhla.jpg"
                   class="card-img-top"
                   alt="REN Hiện Đại"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -710,22 +957,22 @@
               </div>
             </div>
 
-            <!-- Thêm các sản phẩm cho trang 2 và 3 -->
-            <!-- Bạn có thể sao chép các sản phẩm trên và thay đổi thuộc tính data-price, data-brand, data-date và data-sales phù hợp -->
             <!-- Sản phẩm 10 -->
             <div
               class="col-md-4 mb-4"
               data-price="1599000"
               data-brand="REN Chính Hãng"
-              data-date="2024-01-25"
-              data-sales="160"
+              data-date="2024-10-01"
+              data-sales="190"
             >
               <div class="card h-100">
                 <img
                   src="images/renluatotam.jpg"
                   class="card-img-top"
                   alt="REN Lụa Tơ Tằm"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -750,13 +997,21 @@
             </div>
 
             <!-- Sản phẩm 11 -->
-            <div class="col-md-4 mb-4" data-price="799000" data-brand="REN Mới" data-date="2023-12-05" data-sales="210">
+            <div
+              class="col-md-4 mb-4"
+              data-price="799000"
+              data-brand="REN Mới"
+              data-date="2024-11-12"
+              data-sales="175"
+            >
               <div class="card h-100">
                 <img
                   src="images/renvailoanmautrang.jpg"
                   class="card-img-top"
                   alt="REN Vải Voan"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -785,15 +1040,17 @@
               class="col-md-4 mb-4"
               data-price="1249000"
               data-brand="REN Giảm Giá"
-              data-date="2023-11-18"
-              data-sales="170"
+              data-date="2024-07-22"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_polyester_xanhlacay.jpg"
                   class="card-img-top"
                   alt="REN Vải Polyester"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -824,7 +1081,7 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
-              data-date="2023-10-30"
+              data-date="2024-06-08"
               data-sales="190"
             >
               <div class="card h-100">
@@ -832,7 +1089,9 @@
                   src="images/RenVaijean.jpg"
                   class="card-img-top"
                   alt="REN Vải Jean"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -861,15 +1120,17 @@
               class="col-md-4 mb-4"
               data-price="1199000"
               data-brand="REN Mới"
-              data-date="2023-10-10"
-              data-sales="160"
+              data-date="2024-08-30"
+              data-sales="170"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaisatin.jpg"
                   class="card-img-top"
                   alt="REN Vải Satin"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -898,15 +1159,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
-              data-date="2023-09-25"
-              data-sales="230"
+              data-date="2024-07-19"
+              data-sales="185"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaihoasi.jpg"
                   class="card-img-top"
                   alt="REN Vải Họa Sĩ"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -935,15 +1198,17 @@
               class="col-md-4 mb-4"
               data-price="1499000"
               data-brand="REN Giảm Giá"
-              data-date="2023-09-05"
-              data-sales="180"
+              data-date="2024-05-25"
+              data-sales="195"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaitoluavangngoc.jpg"
                   class="card-img-top"
                   alt="REN Vải Tơ Lụa"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -972,15 +1237,17 @@
               class="col-md-4 mb-4"
               data-price="899000"
               data-brand="REN Chính Hãng"
-              data-date="2023-08-15"
-              data-sales="190"
+              data-date="2024-09-18"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
                   src="images/Renvailinenmaunau.jpg"
                   class="card-img-top"
                   alt="REN Vải Linen"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1009,15 +1276,17 @@
               class="col-md-4 mb-4"
               data-price="1149000"
               data-brand="REN Giảm Giá"
-              data-date="2023-07-20"
-              data-sales="160"
+              data-date="2024-04-22"
+              data-sales="140"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_cashmere_timnhat.jpg"
                   class="card-img-top"
                   alt="REN Vải Cashmere"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1046,15 +1315,17 @@
               class="col-md-4 mb-4"
               data-price="1899000"
               data-brand="REN Mới"
-              data-date="2023-06-10"
-              data-sales="140"
+              data-date="2024-10-10"
+              data-sales="220"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_rayon_cam_sang.jpg"
                   class="card-img-top"
                   alt="REN Vải Rayon"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1079,13 +1350,21 @@
             </div>
 
             <!-- Sản phẩm 20 -->
-            <div class="col-md-4 mb-4" data-price="999000" data-brand="REN Mới" data-date="2023-05-05" data-sales="240">
+            <div
+              class="col-md-4 mb-4"
+              data-price="999000"
+              data-brand="REN Mới"
+              data-date="2024-11-01"
+              data-sales="230"
+            >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_spandex_den.jpg"
                   class="card-img-top"
                   alt="REN Vải Spandex"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1114,15 +1393,17 @@
               class="col-md-4 mb-4"
               data-price="1149000"
               data-brand="REN Mới"
-              data-date="2023-04-15"
-              data-sales="175"
+              data-date="2024-06-15"
+              data-sales="195"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_chambray_navy.jpg"
                   class="card-img-top"
                   alt="REN Vải Chambray"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1151,15 +1432,17 @@
               class="col-md-4 mb-4"
               data-price="899000"
               data-brand="REN Chính Hãng"
-              data-date="2023-03-10"
-              data-sales="130"
+              data-date="2024-07-28"
+              data-sales="155"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_flannel_nausam.jpg"
                   class="card-img-top"
                   alt="REN Vải Flannel"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1188,15 +1471,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
-              data-date="2023-02-20"
-              data-sales="160"
+              data-date="2024-05-18"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_fleece_xamnhat.jpg"
                   class="card-img-top"
                   alt="REN Vải Fleece"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1225,15 +1510,17 @@
               class="col-md-4 mb-4"
               data-price="2399000"
               data-brand="REN Mới"
-              data-date="2023-01-15"
-              data-sales="190"
+              data-date="2024-03-10"
+              data-sales="140"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_brocade_vanggold.jpg"
                   class="card-img-top"
                   alt="REN Vải Brocade"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1258,13 +1545,21 @@
             </div>
 
             <!-- Sản phẩm 25 -->
-            <div class="col-md-4 mb-4" data-price="999000" data-brand="REN Mới" data-date="2023-01-05" data-sales="210">
+            <div
+              class="col-md-4 mb-4"
+              data-price="999000"
+              data-brand="REN Mới"
+              data-date="2024-04-05"
+              data-sales="205"
+            >
               <div class="card h-100">
                 <img
                   src="images/renvaiintrangden.jpg"
                   class="card-img-top"
                   alt="REN Vải In"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1293,15 +1588,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
-              data-date="2022-12-25"
-              data-sales="200"
+              data-date="2024-02-28"
+              data-sales="175"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaitoluavangngoc.jpg"
                   class="card-img-top"
                   alt="REN Vải Tơ Lụa"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1351,8 +1648,19 @@
         </div>
       </div>
     </div>
+    <!-- End Container chính -->
 
     <!-- Footer (nếu có) -->
+    <div class="footer mt-3">
+      <iframe
+        src="footer.html"
+        frameborder="0"
+        scrolling="no"
+        width="100%"
+        height="450px"
+      ></iframe>
+    </div>
+    <!-- End Footer -->
 
     <!-- Bootstrap JS -->
     <script
@@ -1361,7 +1669,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- JavaScript to Handle Filtering, Sorting, and Pagination -->
+    <!-- JavaScript để xử lý phân trang, lọc giá và các nút hành động -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const productGrid = document.querySelector(".product-grid");
@@ -1370,174 +1678,196 @@
         const paginationBottom = document.getElementById("paginationBottom");
         const priceFilters = document.querySelectorAll(".price-filter");
         const brandFilters = document.querySelectorAll(".brand-filter");
+        const addToCartButtons = document.querySelectorAll(".btn-add-to-cart");
+        const favoriteButtons = document.querySelectorAll(".btn-favorite");
 
         let currentPage = parseInt(localStorage.getItem("currentPage")) || 1;
         const productsPerPage = 9;
         let filteredProducts = [];
 
-        // Retrieve all product cards
-        const allProducts = Array.from(document.querySelectorAll(".product-grid .col-md-4"));
-
-        // Utility function to parse price string to integer
+        // Hàm chuyển đổi chuỗi giá thành số nguyên
         function parsePrice(priceStr) {
           return parseInt(priceStr.replace(/[^0-9]/g, ""));
         }
 
-        // Function to filter products based on selected price and brand filters
+        // Hàm lọc sản phẩm theo giá và thương hiệu
         function filterProducts() {
-          const checkedPriceFilters = Array.from(priceFilters).filter(filter => filter.checked);
-          const priceRanges = checkedPriceFilters.map(filter => {
+          const checkedPriceFilters = Array.from(priceFilters).filter(
+            (filter) => filter.checked
+          );
+          const priceRanges = checkedPriceFilters.map((filter) => {
             const min = parseInt(filter.getAttribute("data-min")) || 0;
-            const maxAttr = filter.getAttribute("data-max");
-            const max = maxAttr ? parseInt(maxAttr) : Number.MAX_SAFE_INTEGER;
+            const maxStr = filter.getAttribute("data-max");
+            const max = maxStr ? parseInt(maxStr) : Number.MAX_SAFE_INTEGER;
             return { min, max };
           });
 
-          const checkedBrandFilters = Array.from(brandFilters).filter(filter => filter.checked);
-          const brands = checkedBrandFilters.map(filter => filter.getAttribute("data-brand"));
+          const checkedBrandFilters = Array.from(brandFilters).filter(
+            (filter) => filter.checked
+          );
+          const brands = checkedBrandFilters.map((filter) =>
+            filter.getAttribute("data-brand")
+          );
 
-          // Filter products based on price and brand
-          filteredProducts = allProducts.filter(card => {
+          const allProducts = Array.from(
+            document.querySelectorAll(".product-grid .col-md-4")
+          );
+
+          // Lọc sản phẩm dựa trên giá và thương hiệu
+          filteredProducts = allProducts.filter((card) => {
             const discountedPriceEl = card.querySelector(".discounted-price");
             const brand = card.getAttribute("data-brand");
             if (!discountedPriceEl) return false;
-
             const priceText = discountedPriceEl.textContent.trim();
             const price = parsePrice(priceText);
 
-            // Check price range
-            const isPriceMatch = priceRanges.length === 0 || priceRanges.some(range => price >= range.min && price <= range.max);
+            // Kiểm tra giá
+            const isPriceMatch =
+              priceRanges.length === 0 ||
+              priceRanges.some(
+                (range) => price >= range.min && price <= range.max
+              );
 
-            // Check brand
+            // Kiểm tra thương hiệu
             const isBrandMatch = brands.length === 0 || brands.includes(brand);
 
             return isPriceMatch && isBrandMatch;
           });
 
-          console.log(`Total Filtered Products: ${filteredProducts.length}`); // Debugging
-
-          // Sort the filtered products
+          // Sắp xếp lại sản phẩm theo lựa chọn sắp xếp
           sortFilteredProducts();
 
-          // Reset to first page after filtering
+          // Reset về trang 1 sau khi lọc
           currentPage = 1;
           localStorage.setItem("currentPage", "1");
           renderPagination();
         }
 
-        // Function to sort the filtered products based on selected sort option
+        // Hàm để sắp xếp sản phẩm đã lọc
         function sortFilteredProducts() {
           const sortValue = sortSelect.value;
 
           filteredProducts.sort((a, b) => {
-            if (sortValue === "newest") {
-              const dateA = new Date(a.getAttribute("data-date"));
-              const dateB = new Date(b.getAttribute("data-date"));
-              return dateB - dateA; // Newest first
-            } else if (sortValue === "best-selling") {
-              const salesA = parseInt(a.getAttribute("data-sales")) || 0;
-              const salesB = parseInt(b.getAttribute("data-sales")) || 0;
-              return salesB - salesA; // Highest sales first
+            const priceA = parsePrice(
+              a.querySelector(".discounted-price").textContent.trim()
+            );
+            const priceB = parsePrice(
+              b.querySelector(".discounted-price").textContent.trim()
+            );
+
+            if (sortValue === "price-asc") {
+              return priceA - priceB;
+            } else if (sortValue === "price-desc") {
+              return priceB - priceA;
             } else {
-              const priceA = parsePrice(a.querySelector(".discounted-price").textContent.trim());
-              const priceB = parsePrice(b.querySelector(".discounted-price").textContent.trim());
-
-              const nameA = a.querySelector(".card-title").textContent.trim().toLowerCase();
-              const nameB = b.querySelector(".card-title").textContent.trim().toLowerCase();
-
-              if (sortValue === "price-asc") {
-                return priceA - priceB;
-              } else if (sortValue === "price-desc") {
-                return priceB - priceA;
-              } else {
-                return 0;
-              }
+              return 0;
             }
           });
+
+          // Sắp xếp lại sản phẩm để hiển thị theo thứ tự trên từng dòng
+          for (let i = 0; i < filteredProducts.length; i++) {
+            const row = Math.floor(i / 3); // Mỗi hàng có 3 sản phẩm
+            filteredProducts[i].setAttribute("data-row", row);
+          }
         }
 
-        // Function to render products for the current page
+        // Hàm để hiển thị sản phẩm của một trang cụ thể
         function renderProducts() {
-          // Clear the current product grid
-          productGrid.innerHTML = "";
+          // Ẩn tất cả sản phẩm
+          const productCards = document.querySelectorAll(
+            ".product-grid .col-md-4"
+          );
+          productCards.forEach((card) => {
+            card.classList.add("d-none");
+          });
 
+          // Hiển thị sản phẩm theo trang hiện tại
           const start = (currentPage - 1) * productsPerPage;
           const end = start + productsPerPage;
           const productsToShow = filteredProducts.slice(start, end);
 
-          console.log(`Rendering products from index ${start} to ${end - 1}`); // Debugging
-
-          productsToShow.forEach(card => {
-            productGrid.appendChild(card);
+          productsToShow.forEach((card, index) => {
+            const row = Math.floor(index / 3);
+            card.classList.remove("d-none");
+            card.style.order = row * 3 + (index % 3); // Thiết lập thứ tự trên từng dòng
           });
-
-          // If no products to show, display a message
-          if (productsToShow.length === 0) {
-            const noProductMsg = document.createElement("p");
-            noProductMsg.textContent = "Không có sản phẩm nào phù hợp với bộ lọc của bạn.";
-            noProductMsg.classList.add("text-center", "mt-4");
-            productGrid.appendChild(noProductMsg);
-          }
         }
 
-        // Function to update pagination controls
+        // Thêm sự kiện cho chọn sắp xếp
+        sortSelect.addEventListener("change", () => {
+          sortFilteredProducts();
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        });
+
+        // Hàm để cập nhật trạng thái phân trang
         function updatePagination(totalPages) {
           const paginations = [paginationTop, paginationBottom];
 
-          paginations.forEach(pagination => {
-            // Remove existing page numbers except 'prev' and 'next'
-            pagination.querySelectorAll(".page-item:not([data-page='prev']):not([data-page='next'])").forEach(item => item.remove());
+          paginations.forEach((pagination) => {
+            const pageItems = pagination.querySelectorAll(".page-item");
 
-            // Dynamically create page number buttons
+            // Xóa các trang cũ (trừ prev và next)
+            pageItems.forEach((item) => {
+              const page = item.getAttribute("data-page");
+              if (page !== "prev" && page !== "next") {
+                item.remove();
+              }
+            });
+
+            // Thêm các trang mới
             for (let i = 1; i <= totalPages; i++) {
               const li = document.createElement("li");
               li.classList.add("page-item");
-              li.setAttribute("data-page", i);
-
               if (i === currentPage) {
                 li.classList.add("active");
                 li.setAttribute("aria-current", "page");
               }
-
+              li.setAttribute("data-page", i);
               const a = document.createElement("a");
               a.classList.add("page-link");
               a.href = "#";
               a.textContent = i;
-
               li.appendChild(a);
-              pagination.insertBefore(li, pagination.querySelector("[data-page='next']"));
+              // Insert before the "next" button
+              const nextBtn = pagination.querySelector('li[data-page="next"]');
+              pagination.insertBefore(li, nextBtn);
             }
 
-            // Update 'prev' button state
-            const prev = pagination.querySelector(".page-item[data-page='prev']");
+            // Cập nhật trạng thái nút "Trước" và "Sau"
+            const prevBtn = pagination.querySelector('li[data-page="prev"]');
             if (currentPage === 1) {
-              prev.classList.add("disabled");
+              prevBtn.classList.add("disabled");
             } else {
-              prev.classList.remove("disabled");
+              prevBtn.classList.remove("disabled");
             }
 
-            // Update 'next' button state
-            const next = pagination.querySelector(".page-item[data-page='next']");
-            if (currentPage === totalPages) {
-              next.classList.add("disabled");
+            const nextBtn = pagination.querySelector('li[data-page="next"]');
+            if (currentPage === totalPages || totalPages === 0) {
+              nextBtn.classList.add("disabled");
             } else {
-              next.classList.remove("disabled");
+              nextBtn.classList.remove("disabled");
             }
           });
         }
 
-        // Function to handle pagination click events
+        // Hàm để xử lý khi nhấn vào các liên kết phân trang
         function handlePaginationClick(event) {
           event.preventDefault();
           const parentLi = event.target.closest(".page-item");
-          if (!parentLi) return; // If not a page item, exit
+          if (!parentLi) return; // Nếu không phải phần tử li, thoát
 
-          if (parentLi.classList.contains("disabled") || parentLi.classList.contains("active")) {
-            return; // Do nothing if disabled or active
+          if (
+            parentLi.classList.contains("disabled") ||
+            parentLi.classList.contains("active")
+          ) {
+            return; // Không làm gì nếu nút bị vô hiệu hóa hoặc đang active
           }
 
           const page = parentLi.getAttribute("data-page");
-          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+          const totalPages =
+            Math.ceil(filteredProducts.length / productsPerPage) || 1;
 
           if (page === "prev") {
             if (currentPage > 1) {
@@ -1551,40 +1881,37 @@
             currentPage = parseInt(page);
           }
 
-          console.log(`Navigating to page ${currentPage}`); // Debugging
-
           localStorage.setItem("currentPage", currentPage.toString());
           renderPagination();
         }
 
-        // Function to render pagination based on filtered products
+        // Hàm để render phân trang dựa trên số lượng sản phẩm sau khi lọc
         function renderPagination() {
-          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+          const totalPages =
+            Math.ceil(filteredProducts.length / productsPerPage) || 1;
 
-          // Ensure currentPage is within bounds
+          // Giới hạn currentPage không vượt quá totalPages
           if (currentPage > totalPages) {
             currentPage = totalPages;
             localStorage.setItem("currentPage", currentPage.toString());
           }
 
-          console.log(`Total Pages: ${totalPages}`); // Debugging
-
-          // Update pagination controls
+          // Cập nhật phân trang
           updatePagination(totalPages);
 
-          // Render products for the current page
+          // Hiển thị sản phẩm
           renderProducts();
         }
 
-        // Function to attach event listeners to pagination controls
-        function attachPaginationEventListeners() {
-          const paginations = [paginationTop, paginationBottom];
-          paginations.forEach(pagination => {
-            pagination.addEventListener("click", handlePaginationClick);
-          });
-        }
+        // Thêm sự kiện cho các liên kết phân trang (trên và dưới)
+        const allPaginationLinks = document.querySelectorAll(
+          ".pagination .page-item a"
+        );
+        allPaginationLinks.forEach((link) => {
+          link.addEventListener("click", handlePaginationClick);
+        });
 
-        // Event listener for sort selection change
+        // Thêm sự kiện cho chọn sắp xếp
         sortSelect.addEventListener("change", () => {
           sortFilteredProducts();
           currentPage = 1;
@@ -1592,25 +1919,28 @@
           renderPagination();
         });
 
-        // Event listeners for price and brand filters
-        priceFilters.forEach(filter => {
+        // Thêm sự kiện cho các checkbox giá và thương hiệu
+        priceFilters.forEach((filter) => {
           filter.addEventListener("change", filterProducts);
         });
 
-        brandFilters.forEach(filter => {
+        brandFilters.forEach((filter) => {
           filter.addEventListener("change", filterProducts);
         });
 
-        // Event delegation for Add to Cart and Favorite buttons
-        productGrid.addEventListener("click", (e) => {
-          if (e.target.closest(".btn-add-to-cart")) {
+        // Thêm sự kiện cho các nút Thêm vào Giỏ và Yêu Thích
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
             e.preventDefault();
+            // Thực hiện chức năng thêm vào giỏ hàng
             alert("Đã thêm sản phẩm vào giỏ hàng!");
-          }
+          });
+        });
 
-          if (e.target.closest(".btn-favorite")) {
+        favoriteButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
             e.preventDefault();
-            const button = e.target.closest(".btn-favorite");
+            // Thực hiện chức năng thêm vào yêu thích
             button.classList.toggle("active");
             if (button.classList.contains("active")) {
               button.style.backgroundColor = "rgba(220, 53, 69, 1)";
@@ -1619,28 +1949,17 @@
               button.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
               alert("Đã loại bỏ sản phẩm khỏi danh sách yêu thích!");
             }
-          }
+          });
         });
 
-        // Initialize pagination event listeners
-        attachPaginationEventListeners();
-
-        // Ensure product grid is in grid view
+        // Khởi tạo khi tải trang
+        // Thiết lập mặc định là Grid View
+        // Đảm bảo không có lớp 'list-view' trên product-grid
         productGrid.classList.remove("list-view");
 
-        // Initial filtering and rendering
+        // Lọc sản phẩm ban đầu
         filterProducts();
       });
-
-      // Function to send the page height to the parent (for embedding purposes)
-      function sendHeight() {
-        const height = document.body.scrollHeight;
-        window.parent.postMessage(height, "*"); // In production, replace '*' with the specific origin
-      }
-
-      // Send height on page load and resize
-      window.addEventListener("load", sendHeight);
-      window.addEventListener("resize", sendHeight);
     </script>
   </body>
 </html>
