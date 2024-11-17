@@ -1,645 +1,830 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin - Quản lý sản phẩm và Đơn Hàng</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <!-- Custom CSS -->
     <style>
-        body {
-            overflow-x: hidden;
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .sidebar {
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 60px;
-            background-color: #1C313A; /* Dark green shade */
-            color: white;
-            width: 250px;
-            transition: width 0.3s;
-            z-index: 999;
-        }
-        .sidebar.collapsed {
-            width: 80px;
-        }
-        .sidebar a {
-            color: #A3D2CA; /* Light teal shade */
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            transition: background-color 0.2s;
-            position: relative;
-        }
-        .sidebar a:hover {
-            background-color: #274E63; /* Darker teal shade */
-            text-decoration: none;
-        }
-        .sidebar a i {
-            margin-right: 10px;
-            min-width: 20px;
-            text-align: center;
-        }
-        .sidebar.collapsed a .link-text {
-            display: none;
-        }
-        .sidebar a .tooltiptext {
-            visibility: hidden;
-            width: 140px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            left: 100%;
-            margin-left: 10px;
-            bottom: 50%;
-            transform: translateY(50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .sidebar a:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
+      body {
+        overflow-x: hidden;
+        background-color: #f8f9fa;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .sidebar {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding-top: 60px;
+        background-color: #1c313a; /* Dark green shade */
+        color: white;
+        width: 250px;
+        transition: width 0.3s;
+        z-index: 999;
+      }
+      .sidebar.collapsed {
+        width: 80px;
+      }
+      .sidebar a {
+        color: #a3d2ca; /* Light teal shade */
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        position: relative;
+      }
+      .sidebar a:hover {
+        background-color: #274e63; /* Darker teal shade */
+        text-decoration: none;
+      }
+      .sidebar a i {
+        margin-right: 10px;
+        min-width: 20px;
+        text-align: center;
+      }
+      .sidebar.collapsed a .link-text {
+        display: none;
+      }
+      .sidebar a .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        left: 100%;
+        margin-left: 10px;
+        bottom: 50%;
+        transform: translateY(50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+      .sidebar a:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+      .content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: margin-left 0.3s;
+      }
+      .sidebar.collapsed + .content {
+        margin-left: 80px;
+      }
+      .header {
+        height: 60px;
+        background-color: #ffffff;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between; /* Căn đều hai bên */
+        align-items: center;
+        position: fixed;
+        width: calc(100% - 250px);
+        top: 0;
+        left: 250px;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s, width 0.3s;
+      }
+      .sidebar.collapsed + .content .header {
+        left: 80px;
+        width: calc(100% - 80px);
+      }
+      .card {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        border: none;
+      }
+      .card-body {
+        background-color: #ffffff;
+      }
+      .table-responsive {
+        max-height: 500px;
+        overflow-y: auto;
+      }
+      .spinner-overlay {
+        position: fixed;
+        top: 0;
+        left: 250px;
+        width: calc(100% - 250px);
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        display: none;
+        transition: left 0.3s, width 0.3s;
+      }
+      .sidebar.collapsed ~ .spinner-overlay {
+        left: 80px;
+        width: calc(100% - 80px);
+      }
+      .btn-primary {
+        background-color: #ffb74d; /* Button color */
+        border-color: #ffb74d;
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+      .btn-primary:hover {
+        background-color: #ff9800; /* Darker button hover color */
+        border-color: #ff9800;
+      }
+      .btn-export-excel {
+        background-color: #66bb6a; /* Green for Excel button */
+        border-color: #66bb6a;
+        color: #fff;
+        transition: background-color 0.3s;
+      }
+      .btn-export-excel:hover {
+        background-color: #4caf50;
+      }
+      .btn-export-pdf {
+        background-color: #ef5350; /* Red for PDF button */
+        border-color: #ef5350;
+        color: #fff;
+        transition: background-color 0.3s;
+      }
+      .btn-export-pdf:hover {
+        background-color: #e53935;
+      }
+      .table thead th {
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+      }
+      .table thead th .fa-sort {
+        margin-left: 5px;
+        font-size: 0.8em;
+        color: #6c757d;
+        transition: transform 0.2s;
+      }
+      .table thead th.asc .fa-sort {
+        transform: rotate(180deg);
+      }
+      .search-input {
+        max-width: 300px;
+      }
+      .input-group-text {
+        background-color: #ffffff;
+        border: none;
+        border-right: 1px solid #ced4da;
+      }
+      .form-addProduct {
+        margin-top: 20px;
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 5px;
+        border-top: 5px blue solid;
+        display: none;
+      }
+      .table-container {
+        margin-top: 20px;
+      }
+      .btn-add {
+        margin-top: 20px;
+      }
+      @media (max-width: 992px) {
         .content {
-            margin-left: 250px;
-            padding: 20px;
-            transition: margin-left 0.3s;
+          margin-left: 80px;
         }
         .sidebar.collapsed + .content {
-            margin-left: 80px;
+          margin-left: 0;
         }
         .header {
-            height: 60px;
-            background-color: #ffffff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between; /* Căn đều hai bên */
-            align-items: center;
-            position: fixed;
-            width: calc(100% - 250px);
-            top: 0;
-            left: 250px;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: left 0.3s, width 0.3s;
+          width: calc(100% - 80px);
+          left: 80px;
         }
         .sidebar.collapsed + .content .header {
-            left: 80px;
-            width: calc(100% - 80px);
+          left: 0;
+          width: 100%;
         }
-        .card {
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            border: none;
+        .sidebar.collapsed a .tooltiptext {
+          left: 100%;
+          margin-left: 10px;
+          transform: translateY(-50%);
         }
-        .card-body {
-            background-color: #ffffff;
+      }
+      @media (max-width: 576px) {
+        .header h5 {
+          font-size: 1rem;
         }
-        .table-responsive {
-            max-height: 500px;
-            overflow-y: auto;
-        }
-        .spinner-overlay {
-            position: fixed;
-            top: 0;
-            left: 250px;
-            width: calc(100% - 250px);
-            height: 100%;
-            background: rgba(255, 255, 255, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            display: none;
-            transition: left 0.3s, width 0.3s;
-        }
-        .sidebar.collapsed ~ .spinner-overlay {
-            left: 80px;
-            width: calc(100% - 80px);
-        }
-        .btn-primary {
-            background-color: #FFB74D; /* Button color */
-            border-color: #FFB74D;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        .btn-primary:hover {
-            background-color: #FF9800; /* Darker button hover color */
-            border-color: #FF9800;
-        }
-        .btn-export-excel {
-            background-color: #66BB6A; /* Green for Excel button */
-            border-color: #66BB6A;
-            color: #fff;
-            transition: background-color 0.3s;
-        }
-        .btn-export-excel:hover {
-            background-color: #4CAF50;
-        }
+        .btn-export-excel,
         .btn-export-pdf {
-            background-color: #EF5350; /* Red for PDF button */
-            border-color: #EF5350;
-            color: #fff;
-            transition: background-color 0.3s;
-        }
-        .btn-export-pdf:hover {
-            background-color: #E53935;
-        }
-        .table thead th {
-            cursor: pointer;
-            position: relative;
-            user-select: none;
-        }
-        .table thead th .fa-sort {
-            margin-left: 5px;
-            font-size: 0.8em;
-            color: #6c757d;
-            transition: transform 0.2s;
-        }
-        .table thead th.asc .fa-sort {
-            transform: rotate(180deg);
+          padding: 8px 16px;
+          font-size: 0.8rem;
         }
         .search-input {
-            max-width: 300px;
+          max-width: 200px;
         }
-        .input-group-text {
-            background-color: #ffffff;
-            border: none;
-            border-right: 1px solid #ced4da;
-        }
-        .form-addProduct {
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid black;
-            border-radius: 5px;
-            border-top: 5px blue solid;
-            display: none;
-        }
-        .table-container {
-            margin-top: 20px;
-        }
-        .btn-add {
-            margin-top: 20px;
-        }
-        @media (max-width: 992px) {
-            .content {
-                margin-left: 80px;
-            }
-            .sidebar.collapsed + .content {
-                margin-left: 0;
-            }
-            .header {
-                width: calc(100% - 80px);
-                left: 80px;
-            }
-            .sidebar.collapsed + .content .header {
-                left: 0;
-                width: 100%;
-            }
-            .sidebar.collapsed a .tooltiptext {
-                left: 100%;
-                margin-left: 10px;
-                transform: translateY(-50%);
-            }
-        }
-        @media (max-width: 576px) {
-            .header h5 {
-                font-size: 1rem;
-            }
-            .btn-export-excel, .btn-export-pdf {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
-            .search-input {
-                max-width: 200px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <h4 class="text-center mb-4">Admin Panel</h4>
-        <a href="#">
-            <i class="fa fa-tachometer-alt"></i>
-            <span class="link-text">Bảng Điều Khiển</span>
-        </a>
-        <a href="#product-management">
-            <i class="fa fa-box"></i>
-            <span class="link-text">Quản Lý Sản Phẩm</span>
-        </a>
-        <a href="#order-analysis">
-            <i class="fa fa-shopping-cart"></i>
-            <span class="link-text">Phân Tích Đơn Hàng</span>
-        </a>
-        <a href="#">
-            <i class="fa fa-users"></i>
-            <span class="link-text">Quản Lý Người Dùng</span>
-        </a>
-        <a href="#">
-            <i class="fa fa-sign-out-alt"></i>
-            <span class="link-text">Đăng Xuất</span>
-        </a>
+      <h4 class="text-center mb-4">Admin Panel</h4>
+      <a href="#">
+        <i class="fa fa-tachometer-alt"></i>
+        <span class="link-text">Bảng Điều Khiển</span>
+      </a>
+      <a href="#product-management">
+        <i class="fa fa-box"></i>
+        <span class="link-text">Quản Lý Sản Phẩm</span>
+      </a>
+      <a href="#order-analysis">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="link-text">Phân Tích Đơn Hàng</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-users"></i>
+        <span class="link-text">Quản Lý Người Dùng</span>
+      </a>
+      <a href="#inventory-management">
+        <i class="fa fa-warehouse"></i>
+        <span class="link-text">Quản Lý Kho</span>
+      </a>
+      <a href="#">
+        <i class="fa fa-sign-out-alt"></i>
+        <span class="link-text">Đăng Xuất</span>
+      </a>
     </div>
 
     <!-- Spinner Overlay -->
     <div class="spinner-overlay" id="spinnerOverlay">
-        <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Đang tải...</span>
-        </div>
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Đang tải...</span>
+      </div>
     </div>
 
     <!-- Content -->
     <div class="content">
-        <!-- Header -->
-        <div class="header d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-                <button class="btn btn-outline-secondary btn-sm me-3" id="toggleSidebar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Thu gọn Sidebar">
-                    <i class="fa fa-bars"></i>
+      <!-- Header -->
+      <div class="header d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <button
+            class="btn btn-outline-secondary btn-sm me-3"
+            id="toggleSidebar"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Thu gọn Sidebar"
+          >
+            <i class="fa fa-bars"></i>
+          </button>
+          <h5 class="mb-0">Admin Panel</h5>
+        </div>
+        <!-- Nút Đăng Xuất -->
+        <a href="#" class="btn btn-outline-danger btn-sm">
+          <i class="fa fa-sign-out-alt"></i> Đăng Xuất
+        </a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="mt-5 pt-4">
+        <!-- Quản lý sản phẩm Section -->
+        <div class="container-fluid" id="product-management">
+          <h2 class="text-center mb-4">Quản lý sản phẩm</h2>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <h3>Danh sách sản phẩm</h3>
+            </div>
+            <div class="col-md-4 mt-2">
+              <form action="search">
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Nhập mã sản phẩm"
+                    name="search"
+                  />
+                  <button class="btn btn-primary" type="submit">
+                    Tìm kiếm
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-warning btn-add">Thêm sản phẩm</button>
+            </div>
+          </div>
+          <!-- Form thêm sản phẩm -->
+          <div class="row">
+            <div class="col-md-12 form-addProduct">
+              <h3 class="text-center">Thêm sản phẩm mới</h3>
+              <!-- Form thêm sản phẩm -->
+              <form class="product-form">
+                <!-- Mã sản phẩm -->
+                <div class="mb-3">
+                  <label for="product-id" class="form-label">Mã sản phẩm</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="product-id"
+                    name="product-id"
+                    required
+                  />
+                </div>
+
+                <!-- Tên sản phẩm -->
+                <div class="mb-3">
+                  <label for="product-name" class="form-label"
+                    >Tên sản phẩm</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="product-name"
+                    name="product-name"
+                    required
+                  />
+                </div>
+
+                <!-- Hình ảnh -->
+                <div class="mb-3">
+                  <label for="product-image" class="form-label">Hình ảnh</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="product-image"
+                    name="product-image"
+                    accept="image/*"
+                    required
+                  />
+                </div>
+
+                <!-- Mô tả -->
+                <div class="mb-3">
+                  <label for="product-description" class="form-label"
+                    >Mô tả</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="product-description"
+                    name="product-description"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+
+                <!-- Giá tiền -->
+                <div class="mb-3">
+                  <label for="product-price" class="form-label">Giá tiền</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="product-price"
+                    name="product-price"
+                    required
+                  />
+                </div>
+
+                <!-- Số lượng -->
+                <div class="mb-3">
+                  <label for="product-quantity" class="form-label"
+                    >Số lượng</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="product-quantity"
+                    name="product-quantity"
+                    required
+                  />
+                </div>
+
+                <!-- Thông số kỹ thuật -->
+                <div class="mb-3">
+                  <label for="product-specifications" class="form-label"
+                    >Thông số kỹ thuật</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="product-specifications"
+                    name="product-specifications"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+
+                <!-- Ngày sản xuất -->
+                <div class="mb-3">
+                  <label for="product-manufacture-date" class="form-label"
+                    >Ngày sản xuất</label
+                  >
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="product-manufacture-date"
+                    name="product-manufacture-date"
+                    required
+                  />
+                </div>
+
+                <!-- Chính sách bảo hành -->
+                <div class="mb-3">
+                  <label for="product-warranty" class="form-label"
+                    >Chính sách bảo hành</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="product-warranty"
+                    name="product-warranty"
+                    required
+                  />
+                </div>
+
+                <!-- Loại sản phẩm -->
+                <div class="mb-3">
+                  <label for="product-category" class="form-label"
+                    >Loại sản phẩm</label
+                  >
+                  <select
+                    class="form-select"
+                    id="product-category"
+                    name="product-category"
+                    required
+                  >
+                    <option value="fabricDefault">Vải may mặc</option>
+                    <option value="fabricInterior">Vải nội thất</option>
+                    <option value="garmentAccessories">Phụ kiện may mặc</option>
+                    <option value="interiorAccessories">
+                      Phụ kiện nội thất
+                    </option>
+                  </select>
+                </div>
+
+                <!-- Nút thêm sản phẩm -->
+                <button type="submit" class="btn btn-primary">
+                  Thêm sản phẩm
                 </button>
-                <h5 class="mb-0">Admin Panel</h5>
+              </form>
             </div>
-            <!-- Nút Đăng Xuất -->
-            <a href="#" class="btn btn-outline-danger btn-sm">
-                <i class="fa fa-sign-out-alt"></i> Đăng Xuất
-            </a>
+          </div>
+          <!-- Bảng sản phẩm -->
+          <div class="row">
+            <div class="table-container">
+              <!-- Bảng sản phẩm -->
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Mã sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Giá tiền</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Thông số kỹ thuật</th>
+                    <th scope="col">Ngày sản xuất</th>
+                    <th scope="col">Chính sách bảo hành</th>
+                    <th scope="col">Loại sản phẩm</th>
+                    <th scope="col">Hành động</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Dòng sản phẩm 1 -->
+                  <tr>
+                    <td>P001</td>
+                    <td>Vải trơn</td>
+                    <td>
+                      <img src="images/vai1.jpg" alt="Vải trơn" height="50px" />
+                    </td>
+                    <td>Vải trơn phong cách</td>
+                    <td>200,000 VND</td>
+                    <td>50</td>
+                    <td>Vải trơn phong cách màu be</td>
+                    <td>2023-06-01</td>
+                    <td>12 tháng</td>
+                    <td>Vải may mặc</td>
+                    <td>
+                      <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
+                      <button class="btn btn-danger btn-sm">Xóa</button>
+                    </td>
+                  </tr>
+                  <!-- Dòng sản phẩm 2 -->
+                  <tr>
+                    <td>P002</td>
+                    <td>Vải kaki</td>
+                    <td>
+                      <img src="images/vai2.jpg" alt="Vải kaki" height="50px" />
+                    </td>
+                    <td>Vải kaki sang trọng 2 màu xanh rêu và đà</td>
+                    <td>100,000 VND</td>
+                    <td>100</td>
+                    <td>Chất liệu: 100% kaki</td>
+                    <td>2023-05-10</td>
+                    <td>6 tháng</td>
+                    <td>Vải may mặc</td>
+                    <td>
+                      <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
+                      <button class="btn btn-danger btn-sm">Xóa</button>
+                    </td>
+                  </tr>
+                  <!-- Dòng sản phẩm 3 -->
+                  <tr>
+                    <td>P003</td>
+                    <td>Xấp vải truyền thống</td>
+                    <td>
+                      <img
+                        src="images/vai3.jpg"
+                        alt="Xấp vải truyền thống"
+                        height="50px"
+                      />
+                    </td>
+                    <td>
+                      Vải truyền thống với nhiều mẫu mã, màu sắc khác nhau
+                    </td>
+                    <td>150,000 VND</td>
+                    <td>30</td>
+                    <td>Chất liệu từ thiên nhiên</td>
+                    <td>2022-12-15</td>
+                    <td>12 tháng</td>
+                    <td>Vải nội thất</td>
+                    <td>
+                      <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
+                      <button class="btn btn-danger btn-sm">Xóa</button>
+                    </td>
+                  </tr>
+                  <!-- Dòng sản phẩm 4 -->
+                  <tr>
+                    <td>P004</td>
+                    <td>Phụ kiện may mặc</td>
+                    <td>
+                      <img
+                        src="images/phukien1.jpg"
+                        alt="Phụ kiện may mặc"
+                        height="50px"
+                      />
+                    </td>
+                    <td>Bộ phụ kiện may mặc đa năng</td>
+                    <td>80,000 VND</td>
+                    <td>150</td>
+                    <td>Kim, chỉ, khuy áo, dây kéo</td>
+                    <td>2023-01-20</td>
+                    <td>6 tháng</td>
+                    <td>Phụ kiện may mặc</td>
+                    <td>
+                      <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
+                      <button class="btn btn-danger btn-sm">Xóa</button>
+                    </td>
+                  </tr>
+                  <!-- Dòng sản phẩm 5 -->
+                  <tr>
+                    <td>P005</td>
+                    <td>Vải nội thất cao cấp</td>
+                    <td>
+                      <img
+                        src="images/vai_noithat.jpg"
+                        alt="Vải nội thất cao cấp"
+                        height="50px"
+                      />
+                    </td>
+                    <td>Vải nội thất cho sofa và rèm cửa</td>
+                    <td>500,000 VND</td>
+                    <td>20</td>
+                    <td>Chất liệu bền đẹp, đa dạng màu sắc</td>
+                    <td>2023-03-10</td>
+                    <td>24 tháng</td>
+                    <td>Vải nội thất</td>
+                    <td>
+                      <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
+                      <button class="btn btn-danger btn-sm">Xóa</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="mt-5 pt-4">
-            <!-- Quản lý sản phẩm Section -->
-            <div class="container-fluid" id="product-management">
-                <h2 class="text-center mb-4">Quản lý sản phẩm</h2>
-                <div class="row mt-3">
-                    <div class="col-md-6">
-                        <h3>Danh sách sản phẩm</h3>
-                    </div>
-                    <div class="col-md-4 mt-2">
-                        <form action="search">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Nhập mã sản phẩm" name="search">
-                                <button class="btn btn-primary" type="submit">Tìm kiếm</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-warning btn-add">Thêm sản phẩm</button>
-                    </div>
+        <!-- Lấy Thông Tin Đơn Hàng Section -->
+        <div class="mt-5" id="order-analysis">
+          <h2 class="text-center mb-4">
+            Lấy Thông Tin Đơn Hàng Theo Tháng và Năm
+          </h2>
+          <!-- Bộ Lọc Thời Gian và Các Bộ Lọc Bổ Sung -->
+          <div class="card">
+            <div class="card-body">
+              <form id="filterForm" class="row g-3">
+                <div class="col-md-3">
+                  <label for="monthSelect" class="form-label">Chọn Tháng</label>
+                  <select id="monthSelect" class="form-select">
+                    <option value="1">Tháng 1</option>
+                    <option value="2">Tháng 2</option>
+                    <option value="3">Tháng 3</option>
+                    <option value="4">Tháng 4</option>
+                    <option value="5">Tháng 5</option>
+                    <option value="6">Tháng 6</option>
+                    <option value="7">Tháng 7</option>
+                    <option value="8">Tháng 8</option>
+                    <option value="9">Tháng 9</option>
+                    <option value="10" selected>Tháng 10</option>
+                    <option value="11">Tháng 11</option>
+                    <option value="12">Tháng 12</option>
+                  </select>
                 </div>
-                <!-- Form thêm sản phẩm -->
-                <div class="row">
-                    <div class="col-md-12 form-addProduct">
-                        <h3 class="text-center">Thêm sản phẩm mới</h3>
-                        <!-- Form thêm sản phẩm -->
-                        <form class="product-form">
-                            <!-- Mã sản phẩm -->
-                            <div class="mb-3">
-                                <label for="product-id" class="form-label">Mã sản phẩm</label>
-                                <input type="text" class="form-control" id="product-id" name="product-id" required>
-                            </div>
-
-                            <!-- Tên sản phẩm -->
-                            <div class="mb-3">
-                                <label for="product-name" class="form-label">Tên sản phẩm</label>
-                                <input type="text" class="form-control" id="product-name" name="product-name" required>
-                            </div>
-
-                            <!-- Hình ảnh -->
-                            <div class="mb-3">
-                                <label for="product-image" class="form-label">Hình ảnh</label>
-                                <input type="file" class="form-control" id="product-image" name="product-image" accept="image/*" required>
-                            </div>
-
-                            <!-- Mô tả -->
-                            <div class="mb-3">
-                                <label for="product-description" class="form-label">Mô tả</label>
-                                <textarea class="form-control" id="product-description" name="product-description" rows="4" required></textarea>
-                            </div>
-
-                            <!-- Giá tiền -->
-                            <div class="mb-3">
-                                <label for="product-price" class="form-label">Giá tiền</label>
-                                <input type="number" class="form-control" id="product-price" name="product-price" required>
-                            </div>
-
-                            <!-- Số lượng -->
-                            <div class="mb-3">
-                                <label for="product-quantity" class="form-label">Số lượng</label>
-                                <input type="number" class="form-control" id="product-quantity" name="product-quantity" required>
-                            </div>
-
-                            <!-- Thông số kỹ thuật -->
-                            <div class="mb-3">
-                                <label for="product-specifications" class="form-label">Thông số kỹ thuật</label>
-                                <textarea class="form-control" id="product-specifications" name="product-specifications" rows="4" required></textarea>
-                            </div>
-
-                            <!-- Ngày sản xuất -->
-                            <div class="mb-3">
-                                <label for="product-manufacture-date" class="form-label">Ngày sản xuất</label>
-                                <input type="date" class="form-control" id="product-manufacture-date" name="product-manufacture-date" required>
-                            </div>
-
-                            <!-- Chính sách bảo hành -->
-                            <div class="mb-3">
-                                <label for="product-warranty" class="form-label">Chính sách bảo hành</label>
-                                <input type="text" class="form-control" id="product-warranty" name="product-warranty" required>
-                            </div>
-
-                            <!-- Loại sản phẩm -->
-                            <div class="mb-3">
-                                <label for="product-category" class="form-label">Loại sản phẩm</label>
-                                <select class="form-select" id="product-category" name="product-category" required>
-                                    <option value="fabricDefault">Vải may mặc</option>
-                                    <option value="fabricInterior">Vải nội thất</option>
-                                    <option value="garmentAccessories">Phụ kiện may mặc</option>
-                                    <option value="interiorAccessories">Phụ kiện nội thất</option>
-                                </select>
-                            </div>
-
-                            <!-- Nút thêm sản phẩm -->
-                            <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
-                        </form>
-                    </div>
+                <div class="col-md-3">
+                  <label for="yearSelect" class="form-label">Chọn Năm</label>
+                  <select id="yearSelect" class="form-select">
+                    <option value="2023">2023</option>
+                    <option value="2024" selected>2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                  </select>
                 </div>
-                <!-- Bảng sản phẩm -->
-                <div class="row">
-                    <div class="table-container">
-                        <!-- Bảng sản phẩm -->
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Mã sản phẩm</th>
-                                    <th scope="col">Tên sản phẩm</th>
-                                    <th scope="col">Hình ảnh</th>
-                                    <th scope="col">Mô tả</th>
-                                    <th scope="col">Giá tiền</th>
-                                    <th scope="col">Số lượng</th>
-                                    <th scope="col">Thông số kỹ thuật</th>
-                                    <th scope="col">Ngày sản xuất</th>
-                                    <th scope="col">Chính sách bảo hành</th>
-                                    <th scope="col">Loại sản phẩm</th>
-                                    <th scope="col">Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- Dòng sản phẩm 1 -->
-                                <tr>
-                                    <td>P001</td>
-                                    <td>Vải trơn</td>
-                                    <td><img src="images/vai1.jpg" alt="Vải trơn" height="50px"></td>
-                                    <td>Vải trơn phong cách</td>
-                                    <td>200,000 VND</td>
-                                    <td>50</td>
-                                    <td>Vải trơn phong cách màu be</td>
-                                    <td>2023-06-01</td>
-                                    <td>12 tháng</td>
-                                    <td>Vải may mặc</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
-                                        <button class="btn btn-danger btn-sm">Xóa</button>
-                                    </td>
-                                </tr>
-                                <!-- Dòng sản phẩm 2 -->
-                                <tr>
-                                    <td>P002</td>
-                                    <td>Vải kaki</td>
-                                    <td><img src="images/vai2.jpg" alt="Vải kaki" height="50px"></td>
-                                    <td>Vải kaki sang trọng 2 màu xanh rêu và đà</td>
-                                    <td>100,000 VND</td>
-                                    <td>100</td>
-                                    <td>Chất liệu: 100% kaki</td>
-                                    <td>2023-05-10</td>
-                                    <td>6 tháng</td>
-                                    <td>Vải may mặc</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
-                                        <button class="btn btn-danger btn-sm">Xóa</button>
-                                    </td>
-                                </tr>
-                                <!-- Dòng sản phẩm 3 -->
-                                <tr>
-                                    <td>P003</td>
-                                    <td>Xấp vải truyền thống</td>
-                                    <td><img src="images/vai3.jpg" alt="Xấp vải truyền thống" height="50px"></td>
-                                    <td>Vải truyền thống với nhiều mẫu mã, màu sắc khác nhau</td>
-                                    <td>150,000 VND</td>
-                                    <td>30</td>
-                                    <td>Chất liệu từ thiên nhiên</td>
-                                    <td>2022-12-15</td>
-                                    <td>12 tháng</td>
-                                    <td>Vải nội thất</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
-                                        <button class="btn btn-danger btn-sm">Xóa</button>
-                                    </td>
-                                </tr>
-                                <!-- Dòng sản phẩm 4 -->
-                                <tr>
-                                    <td>P004</td>
-                                    <td>Phụ kiện may mặc</td>
-                                    <td><img src="images/phukien1.jpg" alt="Phụ kiện may mặc" height="50px"></td>
-                                    <td>Bộ phụ kiện may mặc đa năng</td>
-                                    <td>80,000 VND</td>
-                                    <td>150</td>
-                                    <td>Kim, chỉ, khuy áo, dây kéo</td>
-                                    <td>2023-01-20</td>
-                                    <td>6 tháng</td>
-                                    <td>Phụ kiện may mặc</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
-                                        <button class="btn btn-danger btn-sm">Xóa</button>
-                                    </td>
-                                </tr>
-                                <!-- Dòng sản phẩm 5 -->
-                                <tr>
-                                    <td>P005</td>
-                                    <td>Vải nội thất cao cấp</td>
-                                    <td><img src="images/vai_noithat.jpg" alt="Vải nội thất cao cấp" height="50px"></td>
-                                    <td>Vải nội thất cho sofa và rèm cửa</td>
-                                    <td>500,000 VND</td>
-                                    <td>20</td>
-                                    <td>Chất liệu bền đẹp, đa dạng màu sắc</td>
-                                    <td>2023-03-10</td>
-                                    <td>24 tháng</td>
-                                    <td>Vải nội thất</td>
-                                    <td>
-                                        <button class="btn btn-warning btn-sm">Chỉnh sửa</button>
-                                        <button class="btn btn-danger btn-sm">Xóa</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-md-3">
+                  <label for="statusSelect" class="form-label"
+                    >Trạng Thái Đơn Hàng</label
+                  >
+                  <select id="statusSelect" class="form-select">
+                    <option value="">Tất cả</option>
+                    <option value="Đã Giao Hàng">Đã Giao Hàng</option>
+                    <option value="Đang Xử Lý">Đang Xử Lý</option>
+                    <option value="Đã Hủy">Đã Hủy</option>
+                  </select>
                 </div>
+                <div class="col-md-3">
+                  <label for="productSelect" class="form-label">Sản Phẩm</label>
+                  <select id="productSelect" class="form-select">
+                    <option value="">Tất cả</option>
+                    <option value="Vải trơn">Vải trơn</option>
+                    <option value="Vải kaki">Vải kaki</option>
+                    <option value="Xấp vải truyền thống">
+                      Xấp vải truyền thống
+                    </option>
+                    <option value="Phụ kiện may mặc">Phụ kiện may mặc</option>
+                    <option value="Vải nội thất cao cấp">
+                      Vải nội thất cao cấp
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label for="customerSelect" class="form-label"
+                    >Khách Hàng</label
+                  >
+                  <select id="customerSelect" class="form-select">
+                    <option value="">Tất cả</option>
+                    <option value="Nguyễn Văn A">Nguyễn Văn A</option>
+                    <option value="Trần Thị B">Trần Thị B</option>
+                    <option value="Lê Thị C">Lê Thị C</option>
+                    <option value="Phạm Văn D">Phạm Văn D</option>
+                    <option value="Hoàng Thị E">Hoàng Thị E</option>
+                  </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <button type="submit" class="btn btn-primary w-100">
+                    Lọc Dữ Liệu
+                  </button>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <!-- Export Buttons -->
+                  <button
+                    type="button"
+                    class="btn btn-export-excel me-2"
+                    id="exportExcel"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Xuất dữ liệu dưới dạng Excel"
+                  >
+                    <i class="fa fa-file-excel"></i> Xuất Excel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-export-pdf"
+                    id="exportPDF"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Xuất dữ liệu dưới dạng PDF"
+                  >
+                    <i class="fa fa-file-pdf"></i> Xuất PDF
+                  </button>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                  <!-- Biểu mẫu đặt lịch báo cáo tự động -->
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary w-100"
+                    data-bs-toggle="modal"
+                    data-bs-target="#scheduleReportModal"
+                  >
+                    <i class="fa fa-calendar-alt"></i> Đặt Lịch Báo Cáo Tự Động
+                  </button>
+                </div>
+              </form>
             </div>
+          </div>
 
-            <!-- Lấy Thông Tin Đơn Hàng Section -->
-            <div class="mt-5" id="order-analysis">
-                <h2 class="text-center mb-4">Lấy Thông Tin Đơn Hàng Theo Tháng và Năm</h2>
-                <!-- Bộ Lọc Thời Gian và Các Bộ Lọc Bổ Sung -->
-                <div class="card">
-                    <div class="card-body">
-                        <form id="filterForm" class="row g-3">
-                            <div class="col-md-3">
-                                <label for="monthSelect" class="form-label">Chọn Tháng</label>
-                                <select id="monthSelect" class="form-select">
-                                    <option value="1">Tháng 1</option>
-                                    <option value="2">Tháng 2</option>
-                                    <option value="3">Tháng 3</option>
-                                    <option value="4">Tháng 4</option>
-                                    <option value="5">Tháng 5</option>
-                                    <option value="6">Tháng 6</option>
-                                    <option value="7">Tháng 7</option>
-                                    <option value="8">Tháng 8</option>
-                                    <option value="9">Tháng 9</option>
-                                    <option value="10" selected>Tháng 10</option>
-                                    <option value="11">Tháng 11</option>
-                                    <option value="12">Tháng 12</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="yearSelect" class="form-label">Chọn Năm</label>
-                                <select id="yearSelect" class="form-select">
-                                    <option value="2023">2023</option>
-                                    <option value="2024" selected>2024</option>
-                                    <option value="2025">2025</option>
-                                    <option value="2026">2026</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="statusSelect" class="form-label">Trạng Thái Đơn Hàng</label>
-                                <select id="statusSelect" class="form-select">
-                                    <option value="">Tất cả</option>
-                                    <option value="Đã Giao Hàng">Đã Giao Hàng</option>
-                                    <option value="Đang Xử Lý">Đang Xử Lý</option>
-                                    <option value="Đã Hủy">Đã Hủy</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="productSelect" class="form-label">Sản Phẩm</label>
-                                <select id="productSelect" class="form-select">
-                                    <option value="">Tất cả</option>
-                                    <option value="Vải trơn">Vải trơn</option>
-                                    <option value="Vải kaki">Vải kaki</option>
-                                    <option value="Xấp vải truyền thống">Xấp vải truyền thống</option>
-                                    <option value="Phụ kiện may mặc">Phụ kiện may mặc</option>
-                                    <option value="Vải nội thất cao cấp">Vải nội thất cao cấp</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="customerSelect" class="form-label">Khách Hàng</label>
-                                <select id="customerSelect" class="form-select">
-                                    <option value="">Tất cả</option>
-                                    <option value="Nguyễn Văn A">Nguyễn Văn A</option>
-                                    <option value="Trần Thị B">Trần Thị B</option>
-                                    <option value="Lê Thị C">Lê Thị C</option>
-                                    <option value="Phạm Văn D">Phạm Văn D</option>
-                                    <option value="Hoàng Thị E">Hoàng Thị E</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 d-flex align-items-end">
-                                <button type="submit" class="btn btn-primary w-100">Lọc Dữ Liệu</button>
-                            </div>
-                            <div class="col-md-3 d-flex align-items-end">
-                                <!-- Export Buttons -->
-                                <button type="button" class="btn btn-export-excel me-2" id="exportExcel" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất dữ liệu dưới dạng Excel">
-                                    <i class="fa fa-file-excel"></i> Xuất Excel
-                                </button>
-                                <button type="button" class="btn btn-export-pdf" id="exportPDF" data-bs-toggle="tooltip" data-bs-placement="top" title="Xuất dữ liệu dưới dạng PDF">
-                                    <i class="fa fa-file-pdf"></i> Xuất PDF
-                                </button>
-                            </div>
-                            <div class="col-md-6 d-flex align-items-end">
-                                <!-- Biểu mẫu đặt lịch báo cáo tự động -->
-                                <button type="button" class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#scheduleReportModal">
-                                    <i class="fa fa-calendar-alt"></i> Đặt Lịch Báo Cáo Tự Động
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+          <!-- Bảng Chi Tiết Đơn Hàng -->
+          <div class="card mt-4">
+            <div class="card-body">
+              <h5 class="card-title">Danh Sách Đơn Hàng</h5>
+              <div class="d-flex justify-content-between mb-3">
+                <div class="input-group">
+                  <span class="input-group-text" id="search-icon"
+                    ><i class="fa fa-search"></i
+                  ></span>
+                  <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control search-input"
+                    placeholder="Tìm kiếm đơn hàng..."
+                    aria-label="Search"
+                    aria-describedby="search-icon"
+                  />
                 </div>
-
-                <!-- Bảng Chi Tiết Đơn Hàng -->
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Danh Sách Đơn Hàng</h5>
-                        <div class="d-flex justify-content-between mb-3">
-                            <div class="input-group">
-                                <span class="input-group-text" id="search-icon"><i class="fa fa-search"></i></span>
-                                <input type="text" id="searchInput" class="form-control search-input" placeholder="Tìm kiếm đơn hàng..." aria-label="Search" aria-describedby="search-icon">
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>ID Đơn Hàng <i class="fa fa-sort"></i></th>
-                                        <th>Tên Khách Hàng <i class="fa fa-sort"></i></th>
-                                        <th>Ngày Đặt <i class="fa fa-sort"></i></th>
-                                        <th>Tổng Tiền <i class="fa fa-sort"></i></th>
-                                        <th>Trạng Thái Thanh Toán <i class="fa fa-sort"></i></th>
-                                        <th>Trạng Thái Đơn Hàng <i class="fa fa-sort"></i></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="ordersTable">
-                                    <!-- Dữ liệu đơn hàng sẽ được chèn vào đây -->
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Phân Trang -->
-                        <nav>
-                            <ul class="pagination justify-content-center" id="pagination">
-                                <!-- Các trang sẽ được chèn vào đây -->
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-
+              </div>
+              <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>ID Đơn Hàng <i class="fa fa-sort"></i></th>
+                      <th>Tên Khách Hàng <i class="fa fa-sort"></i></th>
+                      <th>Ngày Đặt <i class="fa fa-sort"></i></th>
+                      <th>Tổng Tiền <i class="fa fa-sort"></i></th>
+                      <th>Trạng Thái Thanh Toán <i class="fa fa-sort"></i></th>
+                      <th>Trạng Thái Đơn Hàng <i class="fa fa-sort"></i></th>
+                    </tr>
+                  </thead>
+                  <tbody id="ordersTable">
+                    <!-- Dữ liệu đơn hàng sẽ được chèn vào đây -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- Phân Trang -->
+              <nav>
+                <ul class="pagination justify-content-center" id="pagination">
+                  <!-- Các trang sẽ được chèn vào đây -->
+                </ul>
+              </nav>
             </div>
-
+          </div>
         </div>
-
+      </div>
     </div>
 
     <!-- Modal Đặt Lịch Báo Cáo Tự Động -->
-    <div class="modal fade" id="scheduleReportModal" tabindex="-1" aria-labelledby="scheduleReportModalLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="scheduleReportModal"
+      tabindex="-1"
+      aria-labelledby="scheduleReportModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="scheduleReportModalLabel">Đặt Lịch Báo Cáo Tự Động</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title" id="scheduleReportModalLabel">
+              Đặt Lịch Báo Cáo Tự Động
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <div class="modal-body">
             <form id="scheduleReportForm">
-                <div class="mb-3">
-                    <label for="reportFrequency" class="form-label">Tần Suất Báo Cáo</label>
-                    <select id="reportFrequency" class="form-select" required>
-                        <option value="">Chọn tần suất</option>
-                        <option value="monthly">Hàng Tháng</option>
-                        <option value="yearly">Hàng Năm</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="reportEmail" class="form-label">Địa Chỉ Email Nhận Báo Cáo</label>
-                    <input type="email" class="form-control" id="reportEmail" placeholder="user@example.com" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Đặt Lịch</button>
+              <div class="mb-3">
+                <label for="reportFrequency" class="form-label"
+                  >Tần Suất Báo Cáo</label
+                >
+                <select id="reportFrequency" class="form-select" required>
+                  <option value="">Chọn tần suất</option>
+                  <option value="monthly">Hàng Tháng</option>
+                  <option value="yearly">Hàng Năm</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="reportEmail" class="form-label"
+                  >Địa Chỉ Email Nhận Báo Cáo</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="reportEmail"
+                  placeholder="user@example.com"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Đặt Lịch</button>
             </form>
           </div>
         </div>
@@ -657,330 +842,422 @@
 
     <!-- Custom scripts -->
     <script>
-        $(document).ready(function(){
-            // Xử lý sự kiện cho nút thêm sản phẩm
-            $('.btn-add').click(function(){
-                $('.form-addProduct').slideToggle();
+      $(document).ready(function () {
+        // Xử lý sự kiện cho nút thêm sản phẩm
+        $(".btn-add").click(function () {
+          $(".form-addProduct").slideToggle();
+        });
+
+        // Khởi tạo Bootstrap tooltips
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Biến toàn cục cho phân trang
+        let currentPage = 1;
+        const rowsPerPage = 10;
+        let allOrders = [];
+        let originalOrders = []; // Để lưu trữ dữ liệu gốc khi tìm kiếm
+
+        // Hàm hiển thị spinner
+        function showSpinner() {
+          $("#spinnerOverlay").fadeIn();
+        }
+
+        // Hàm ẩn spinner
+        function hideSpinner() {
+          $("#spinnerOverlay").fadeOut();
+        }
+
+        // Hàm khởi tạo dữ liệu mẫu (thay thế bằng dữ liệu thực tế từ backend)
+        function initializeData(
+          month,
+          year,
+          status = "",
+          product = "",
+          customer = ""
+        ) {
+          // Hiển thị spinner
+          showSpinner();
+
+          // Giả lập dữ liệu mẫu sau 1 giây
+          setTimeout(() => {
+            const data = {
+              orders: [
+                {
+                  id_order: "ORD001",
+                  full_name: "Nguyễn Văn A",
+                  time_order: "2024-10-05",
+                  amount: 1000000,
+                  status_pay: "Đã Thanh Toán",
+                  status_order: "Đã Giao Hàng",
+                  product_name: "Vải trơn",
+                },
+                {
+                  id_order: "ORD002",
+                  full_name: "Trần Thị B",
+                  time_order: "2024-10-10",
+                  amount: 2000000,
+                  status_pay: "Chưa Thanh Toán",
+                  status_order: "Đang Xử Lý",
+                  product_name: "Vải kaki",
+                },
+                {
+                  id_order: "ORD003",
+                  full_name: "Lê Thị C",
+                  time_order: "2024-10-15",
+                  amount: 1500000,
+                  status_pay: "Đã Thanh Toán",
+                  status_order: "Đã Giao Hàng",
+                  product_name: "Xấp vải truyền thống",
+                },
+                {
+                  id_order: "ORD004",
+                  full_name: "Phạm Văn D",
+                  time_order: "2024-10-20",
+                  amount: 2500000,
+                  status_pay: "Chưa Thanh Toán",
+                  status_order: "Đang Xử Lý",
+                  product_name: "Phụ kiện may mặc",
+                },
+                {
+                  id_order: "ORD005",
+                  full_name: "Hoàng Thị E",
+                  time_order: "2024-10-25",
+                  amount: 3000000,
+                  status_pay: "Đã Thanh Toán",
+                  status_order: "Đã Giao Hàng",
+                  product_name: "Vải nội thất cao cấp",
+                },
+                // Thêm các đơn hàng mẫu khác...
+              ],
+            };
+
+            // Lọc dữ liệu mẫu theo các tiêu chí
+            let filteredOrders = data.orders.filter((order) => {
+              const orderMonth = new Date(order.time_order).getMonth() + 1;
+              const orderYear = new Date(order.time_order).getFullYear();
+              const statusMatch = status ? order.status_order === status : true;
+              const productMatch = product
+                ? order.product_name === product
+                : true;
+              const customerMatch = customer
+                ? order.full_name === customer
+                : true;
+              return (
+                orderMonth == month &&
+                orderYear == year &&
+                statusMatch &&
+                productMatch &&
+                customerMatch
+              );
             });
 
-            // Khởi tạo Bootstrap tooltips
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-              return new bootstrap.Tooltip(tooltipTriggerEl)
-            })
+            allOrders = filteredOrders;
+            originalOrders = [...allOrders];
+            renderTable();
+            renderPagination();
+            hideSpinner();
+          }, 1000);
+        }
 
-            // Biến toàn cục cho phân trang
-            let currentPage = 1;
-            const rowsPerPage = 10;
-            let allOrders = [];
-            let originalOrders = []; // Để lưu trữ dữ liệu gốc khi tìm kiếm
+        // Hàm render bảng đơn hàng
+        function renderTable() {
+          const ordersTable = $("#ordersTable");
+          ordersTable.empty();
 
-            // Hàm hiển thị spinner
-            function showSpinner() {
-                $('#spinnerOverlay').fadeIn();
-            }
+          // Tính toán phân trang
+          const start = (currentPage - 1) * rowsPerPage;
+          const end = start + rowsPerPage;
+          const paginatedOrders = allOrders.slice(start, end);
 
-            // Hàm ẩn spinner
-            function hideSpinner() {
-                $('#spinnerOverlay').fadeOut();
-            }
+          if (paginatedOrders.length === 0) {
+            ordersTable.append(
+              '<tr><td colspan="6" class="text-center">Không có đơn hàng nào.</td></tr>'
+            );
+            return;
+          }
 
-            // Hàm khởi tạo dữ liệu mẫu (thay thế bằng dữ liệu thực tế từ backend)
-            function initializeData(month, year, status = '', product = '', customer = '') {
-                // Hiển thị spinner
-                showSpinner();
-
-                // Giả lập dữ liệu mẫu sau 1 giây
-                setTimeout(() => {
-                    const data = {
-                        orders: [
-                            {id_order: "ORD001", full_name: "Nguyễn Văn A", time_order: "2024-10-05", amount: 1000000, status_pay: "Đã Thanh Toán", status_order: "Đã Giao Hàng", product_name: "Vải trơn"},
-                            {id_order: "ORD002", full_name: "Trần Thị B", time_order: "2024-10-10", amount: 2000000, status_pay: "Chưa Thanh Toán", status_order: "Đang Xử Lý", product_name: "Vải kaki"},
-                            {id_order: "ORD003", full_name: "Lê Thị C", time_order: "2024-10-15", amount: 1500000, status_pay: "Đã Thanh Toán", status_order: "Đã Giao Hàng", product_name: "Xấp vải truyền thống"},
-                            {id_order: "ORD004", full_name: "Phạm Văn D", time_order: "2024-10-20", amount: 2500000, status_pay: "Chưa Thanh Toán", status_order: "Đang Xử Lý", product_name: "Phụ kiện may mặc"},
-                            {id_order: "ORD005", full_name: "Hoàng Thị E", time_order: "2024-10-25", amount: 3000000, status_pay: "Đã Thanh Toán", status_order: "Đã Giao Hàng", product_name: "Vải nội thất cao cấp"},
-                            // Thêm các đơn hàng mẫu khác...
-                        ]
-                    };
-
-                    // Lọc dữ liệu mẫu theo các tiêu chí
-                    let filteredOrders = data.orders.filter(order => {
-                        const orderMonth = new Date(order.time_order).getMonth() + 1;
-                        const orderYear = new Date(order.time_order).getFullYear();
-                        const statusMatch = status ? order.status_order === status : true;
-                        const productMatch = product ? order.product_name === product : true;
-                        const customerMatch = customer ? order.full_name === customer : true;
-                        return orderMonth == month && orderYear == year && statusMatch && productMatch && customerMatch;
-                    });
-
-                    allOrders = filteredOrders;
-                    originalOrders = [...allOrders];
-                    renderTable();
-                    renderPagination();
-                    hideSpinner();
-                }, 1000);
-            }
-
-            // Hàm render bảng đơn hàng
-            function renderTable() {
-                const ordersTable = $('#ordersTable');
-                ordersTable.empty();
-
-                // Tính toán phân trang
-                const start = (currentPage - 1) * rowsPerPage;
-                const end = start + rowsPerPage;
-                const paginatedOrders = allOrders.slice(start, end);
-
-                if (paginatedOrders.length === 0) {
-                    ordersTable.append('<tr><td colspan="6" class="text-center">Không có đơn hàng nào.</td></tr>');
-                    return;
-                }
-
-                paginatedOrders.forEach(order => {
-                    const row = `<tr>
+          paginatedOrders.forEach((order) => {
+            const row = `<tr>
                         <td>${order.id_order}</td>
                         <td>${order.full_name}</td>
                         <td>${order.time_order}</td>
-                        <td>${order.amount.toLocaleString('vi-VN')} VND</td>
+                        <td>${order.amount.toLocaleString("vi-VN")} VND</td>
                         <td>${order.status_pay}</td>
                         <td>${order.status_order}</td>
                     </tr>`;
-                    ordersTable.append(row);
-                });
+            ordersTable.append(row);
+          });
 
-                // Highlight hovered row
-                $('table tbody tr').hover(
-                    function() {
-                        $(this).addClass('table-primary');
-                    },
-                    function() {
-                        $(this).removeClass('table-primary');
-                    }
-                );
+          // Highlight hovered row
+          $("table tbody tr").hover(
+            function () {
+              $(this).addClass("table-primary");
+            },
+            function () {
+              $(this).removeClass("table-primary");
             }
+          );
+        }
 
-            // Hàm render phân trang
-            function renderPagination() {
-                const totalPages = Math.ceil(allOrders.length / rowsPerPage);
-                const pagination = $('#pagination');
-                pagination.empty();
+        // Hàm render phân trang
+        function renderPagination() {
+          const totalPages = Math.ceil(allOrders.length / rowsPerPage);
+          const pagination = $("#pagination");
+          pagination.empty();
 
-                if (totalPages <= 1) return;
+          if (totalPages <= 1) return;
 
-                // Nút trang đầu
-                const firstPage = `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+          // Nút trang đầu
+          const firstPage = `<li class="page-item ${
+            currentPage === 1 ? "disabled" : ""
+          }">
                     <a class="page-link" href="#" aria-label="First">
                         <span aria-hidden="true">&laquo;&laquo;</span>
                     </a>
                 </li>`;
-                pagination.append(firstPage);
+          pagination.append(firstPage);
 
-                // Nút trang trước
-                const prevPage = `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+          // Nút trang trước
+          const prevPage = `<li class="page-item ${
+            currentPage === 1 ? "disabled" : ""
+          }">
                     <a class="page-link" href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>`;
-                pagination.append(prevPage);
+          pagination.append(prevPage);
 
-                // Các nút trang
-                for (let i = 1; i <= totalPages; i++) {
-                    const activeClass = i === currentPage ? 'active' : '';
-                    const pageItem = `<li class="page-item ${activeClass}"><a class="page-link" href="#">${i}</a></li>`;
-                    pagination.append(pageItem);
-                }
+          // Các nút trang
+          for (let i = 1; i <= totalPages; i++) {
+            const activeClass = i === currentPage ? "active" : "";
+            const pageItem = `<li class="page-item ${activeClass}"><a class="page-link" href="#">${i}</a></li>`;
+            pagination.append(pageItem);
+          }
 
-                // Nút trang sau
-                const nextPage = `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+          // Nút trang sau
+          const nextPage = `<li class="page-item ${
+            currentPage === totalPages ? "disabled" : ""
+          }">
                     <a class="page-link" href="#" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>`;
-                pagination.append(nextPage);
+          pagination.append(nextPage);
 
-                // Nút trang cuối
-                const lastPage = `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+          // Nút trang cuối
+          const lastPage = `<li class="page-item ${
+            currentPage === totalPages ? "disabled" : ""
+          }">
                     <a class="page-link" href="#" aria-label="Last">
                         <span aria-hidden="true">&raquo;&raquo;</span>
                     </a>
                 </li>`;
-                pagination.append(lastPage);
+          pagination.append(lastPage);
 
-                // Xử lý sự kiện khi nhấn vào trang
-                $('.page-item:not(.disabled) .page-link').off('click').on('click', function(e) {
-                    e.preventDefault();
-                    const ariaLabel = $(this).attr('aria-label');
-                    if (ariaLabel === 'First') {
-                        currentPage = 1;
-                    } else if (ariaLabel === 'Previous') {
-                        if (currentPage > 1) currentPage--;
-                    } else if (ariaLabel === 'Next') {
-                        if (currentPage < totalPages) currentPage++;
-                    } else if (ariaLabel === 'Last') {
-                        currentPage = totalPages;
-                    } else {
-                        currentPage = parseInt($(this).text());
-                    }
-                    renderTable();
-                    renderPagination();
-                });
-            }
-
-            // Xử lý sự kiện lọc dữ liệu
-            $('#filterForm').on('submit', function(e) {
-                e.preventDefault();
+          // Xử lý sự kiện khi nhấn vào trang
+          $(".page-item:not(.disabled) .page-link")
+            .off("click")
+            .on("click", function (e) {
+              e.preventDefault();
+              const ariaLabel = $(this).attr("aria-label");
+              if (ariaLabel === "First") {
                 currentPage = 1;
-                const selectedMonth = $('#monthSelect').val();
-                const selectedYear = $('#yearSelect').val();
-                const selectedStatus = $('#statusSelect').val();
-                const selectedProduct = $('#productSelect').val();
-                const selectedCustomer = $('#customerSelect').val();
-                initializeData(selectedMonth, selectedYear, selectedStatus, selectedProduct, selectedCustomer);
+              } else if (ariaLabel === "Previous") {
+                if (currentPage > 1) currentPage--;
+              } else if (ariaLabel === "Next") {
+                if (currentPage < totalPages) currentPage++;
+              } else if (ariaLabel === "Last") {
+                currentPage = totalPages;
+              } else {
+                currentPage = parseInt($(this).text());
+              }
+              renderTable();
+              renderPagination();
             });
+        }
 
-            // Tìm kiếm đơn hàng
-            $('#searchInput').on('input', function() {
-                const query = $(this).val().toLowerCase();
-                if (query === "") {
-                    allOrders = [...originalOrders];
-                } else {
-                    allOrders = originalOrders.filter(order =>
-                        order.id_order.toLowerCase().includes(query) ||
-                        order.full_name.toLowerCase().includes(query) ||
-                        order.time_order.includes(query) ||
-                        order.status_pay.toLowerCase().includes(query) ||
-                        order.status_order.toLowerCase().includes(query)
-                    );
-                }
-                currentPage = 1;
-                renderTable();
-                renderPagination();
-            });
-
-            // Sắp xếp cột
-            $('th').on('click', function() {
-                const index = $(this).index();
-                const keyMap = {
-                    0: 'id_order',
-                    1: 'full_name',
-                    2: 'time_order',
-                    3: 'amount',
-                    4: 'status_pay',
-                    5: 'status_order'
-                };
-                const key = keyMap[index];
-                const isAsc = $(this).hasClass('asc');
-
-                // Xóa tất cả các lớp sắp xếp
-                $('th').removeClass('asc desc');
-                $('.fa-sort').css('transform', 'none');
-
-                // Thêm lớp sắp xếp cho cột hiện tại
-                if (isAsc) {
-                    $(this).addClass('desc');
-                    $(this).find('.fa-sort').css('transform', 'rotate(180deg)');
-                } else {
-                    $(this).addClass('asc');
-                    $(this).find('.fa-sort').css('transform', 'rotate(0deg)');
-                }
-
-                // Sắp xếp mảng orders
-                allOrders.sort((a, b) => {
-                    if (a[key] < b[key]) return isAsc ? 1 : -1;
-                    if (a[key] > b[key]) return isAsc ? -1 : 1;
-                    return 0;
-                });
-
-                currentPage = 1;
-                renderTable();
-                renderPagination();
-            });
-
-            // Toggle Sidebar
-            $('#toggleSidebar').on('click', function() {
-                $('#sidebar').toggleClass('collapsed');
-                $('.content').toggleClass('collapsed');
-                $('#spinnerOverlay').toggleClass('collapsed');
-
-                // Cập nhật tooltip cho nút toggle
-                const tooltipInstance = bootstrap.Tooltip.getInstance(this);
-                if ($('#sidebar').hasClass('collapsed')) {
-                    tooltipInstance.setContent({ '.tooltip-inner': 'Mở Sidebar' });
-                } else {
-                    tooltipInstance.setContent({ '.tooltip-inner': 'Thu gọn Sidebar' });
-                }
-            });
-
-            // Hàm xuất Excel
-            $('#exportExcel').on('click', function() {
-                if (allOrders.length === 0) {
-                    alert("Không có dữ liệu để xuất.");
-                    return;
-                }
-                const wb = XLSX.utils.book_new();
-                const ws = XLSX.utils.json_to_sheet(allOrders);
-                XLSX.utils.book_append_sheet(wb, ws, "Orders");
-                XLSX.writeFile(wb, "Orders_Report.xlsx");
-            });
-
-            // Hàm xuất PDF
-            $('#exportPDF').on('click', function() {
-                if (allOrders.length === 0) {
-                    alert("Không có dữ liệu để xuất.");
-                    return;
-                }
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-
-                doc.setFontSize(16);
-                doc.text("Báo Cáo Đơn Hàng", 14, 20);
-                doc.setFontSize(12);
-                doc.autoTable({
-                    head: [['ID Đơn Hàng', 'Tên Khách Hàng', 'Ngày Đặt', 'Tổng Tiền', 'Trạng Thái Thanh Toán', 'Trạng Thái Đơn Hàng']],
-                    body: allOrders.map(order => [
-                        order.id_order,
-                        order.full_name,
-                        order.time_order,
-                        order.amount.toLocaleString('vi-VN') + ' VND',
-                        order.status_pay,
-                        order.status_order
-                    ]),
-                    startY: 25,
-                    headStyles: { fillColor: [52, 58, 64] },
-                    styles: { fontSize: 10 }
-                });
-                doc.save('Orders_Report.pdf');
-            });
-
-            // Xử lý biểu mẫu đặt lịch báo cáo tự động
-            $('#scheduleReportForm').on('submit', function(e) {
-                e.preventDefault();
-                const frequency = $('#reportFrequency').val();
-                const email = $('#reportEmail').val();
-
-                if (!frequency || !email) {
-                    alert("Vui lòng chọn tần suất và nhập email nhận báo cáo.");
-                    return;
-                }
-
-                // Gọi API để đặt lịch báo cáo (Cần tích hợp backend)
-                // Giả lập thành công
-                setTimeout(() => {
-                    alert("Đặt lịch báo cáo thành công!");
-                    $('#scheduleReportModal').modal('hide');
-                    // Reset biểu mẫu
-                    $('#scheduleReportForm')[0].reset();
-                }, 500);
-            });
-
-            // Khởi tạo dữ liệu ban đầu
-            let selectedMonth = $('#monthSelect').val();
-            let selectedYear = $('#yearSelect').val();
-            let selectedStatus = $('#statusSelect').val();
-            let selectedProduct = $('#productSelect').val();
-            let selectedCustomer = $('#customerSelect').val();
-            initializeData(selectedMonth, selectedYear, selectedStatus, selectedProduct, selectedCustomer);
+        // Xử lý sự kiện lọc dữ liệu
+        $("#filterForm").on("submit", function (e) {
+          e.preventDefault();
+          currentPage = 1;
+          const selectedMonth = $("#monthSelect").val();
+          const selectedYear = $("#yearSelect").val();
+          const selectedStatus = $("#statusSelect").val();
+          const selectedProduct = $("#productSelect").val();
+          const selectedCustomer = $("#customerSelect").val();
+          initializeData(
+            selectedMonth,
+            selectedYear,
+            selectedStatus,
+            selectedProduct,
+            selectedCustomer
+          );
         });
+
+        // Tìm kiếm đơn hàng
+        $("#searchInput").on("input", function () {
+          const query = $(this).val().toLowerCase();
+          if (query === "") {
+            allOrders = [...originalOrders];
+          } else {
+            allOrders = originalOrders.filter(
+              (order) =>
+                order.id_order.toLowerCase().includes(query) ||
+                order.full_name.toLowerCase().includes(query) ||
+                order.time_order.includes(query) ||
+                order.status_pay.toLowerCase().includes(query) ||
+                order.status_order.toLowerCase().includes(query)
+            );
+          }
+          currentPage = 1;
+          renderTable();
+          renderPagination();
+        });
+
+        // Sắp xếp cột
+        $("th").on("click", function () {
+          const index = $(this).index();
+          const keyMap = {
+            0: "id_order",
+            1: "full_name",
+            2: "time_order",
+            3: "amount",
+            4: "status_pay",
+            5: "status_order",
+          };
+          const key = keyMap[index];
+          const isAsc = $(this).hasClass("asc");
+
+          // Xóa tất cả các lớp sắp xếp
+          $("th").removeClass("asc desc");
+          $(".fa-sort").css("transform", "none");
+
+          // Thêm lớp sắp xếp cho cột hiện tại
+          if (isAsc) {
+            $(this).addClass("desc");
+            $(this).find(".fa-sort").css("transform", "rotate(180deg)");
+          } else {
+            $(this).addClass("asc");
+            $(this).find(".fa-sort").css("transform", "rotate(0deg)");
+          }
+
+          // Sắp xếp mảng orders
+          allOrders.sort((a, b) => {
+            if (a[key] < b[key]) return isAsc ? 1 : -1;
+            if (a[key] > b[key]) return isAsc ? -1 : 1;
+            return 0;
+          });
+
+          currentPage = 1;
+          renderTable();
+          renderPagination();
+        });
+
+        // Toggle Sidebar
+        $("#toggleSidebar").on("click", function () {
+          $("#sidebar").toggleClass("collapsed");
+          $(".content").toggleClass("collapsed");
+          $("#spinnerOverlay").toggleClass("collapsed");
+
+          // Cập nhật tooltip cho nút toggle
+          const tooltipInstance = bootstrap.Tooltip.getInstance(this);
+          if ($("#sidebar").hasClass("collapsed")) {
+            tooltipInstance.setContent({ ".tooltip-inner": "Mở Sidebar" });
+          } else {
+            tooltipInstance.setContent({ ".tooltip-inner": "Thu gọn Sidebar" });
+          }
+        });
+
+        // Hàm xuất Excel
+        $("#exportExcel").on("click", function () {
+          if (allOrders.length === 0) {
+            alert("Không có dữ liệu để xuất.");
+            return;
+          }
+          const wb = XLSX.utils.book_new();
+          const ws = XLSX.utils.json_to_sheet(allOrders);
+          XLSX.utils.book_append_sheet(wb, ws, "Orders");
+          XLSX.writeFile(wb, "Orders_Report.xlsx");
+        });
+
+        // Hàm xuất PDF
+        $("#exportPDF").on("click", function () {
+          if (allOrders.length === 0) {
+            alert("Không có dữ liệu để xuất.");
+            return;
+          }
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF();
+
+          doc.setFontSize(16);
+          doc.text("Báo Cáo Đơn Hàng", 14, 20);
+          doc.setFontSize(12);
+          doc.autoTable({
+            head: [
+              [
+                "ID Đơn Hàng",
+                "Tên Khách Hàng",
+                "Ngày Đặt",
+                "Tổng Tiền",
+                "Trạng Thái Thanh Toán",
+                "Trạng Thái Đơn Hàng",
+              ],
+            ],
+            body: allOrders.map((order) => [
+              order.id_order,
+              order.full_name,
+              order.time_order,
+              order.amount.toLocaleString("vi-VN") + " VND",
+              order.status_pay,
+              order.status_order,
+            ]),
+            startY: 25,
+            headStyles: { fillColor: [52, 58, 64] },
+            styles: { fontSize: 10 },
+          });
+          doc.save("Orders_Report.pdf");
+        });
+
+        // Xử lý biểu mẫu đặt lịch báo cáo tự động
+        $("#scheduleReportForm").on("submit", function (e) {
+          e.preventDefault();
+          const frequency = $("#reportFrequency").val();
+          const email = $("#reportEmail").val();
+
+          if (!frequency || !email) {
+            alert("Vui lòng chọn tần suất và nhập email nhận báo cáo.");
+            return;
+          }
+
+          // Gọi API để đặt lịch báo cáo (Cần tích hợp backend)
+          // Giả lập thành công
+          setTimeout(() => {
+            alert("Đặt lịch báo cáo thành công!");
+            $("#scheduleReportModal").modal("hide");
+            // Reset biểu mẫu
+            $("#scheduleReportForm")[0].reset();
+          }, 500);
+        });
+
+        // Khởi tạo dữ liệu ban đầu
+        let selectedMonth = $("#monthSelect").val();
+        let selectedYear = $("#yearSelect").val();
+        let selectedStatus = $("#statusSelect").val();
+        let selectedProduct = $("#productSelect").val();
+        let selectedCustomer = $("#customerSelect").val();
+        initializeData(
+          selectedMonth,
+          selectedYear,
+          selectedStatus,
+          selectedProduct,
+          selectedCustomer
+        );
+      });
     </script>
-</body>
+  </body>
 </html>
