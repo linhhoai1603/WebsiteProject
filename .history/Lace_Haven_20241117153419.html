@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ - Thai Tuan</title>
+    
+    <!-- Bootstrap CSS (Version 4.5.2) -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-MEc1OqJkOmzxE3D3reOqjSh8hc6E9tSgkCtm1AaMfn2fXfVYZQF3nYDz+H4oKqZQ"
+      crossorigin="anonymous"
+    />
+    
+    <!-- Font Awesome (Version 6.6.0) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <style>
+      /* Existing styles from the first page */
+      .bg {
+        background-color: #4fd0b6;
+      }
+
+      .btn:hover {
+        background-color: #4fd0b6;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      .intro {
+        height: 25px;
+      }
+
+      .btn-bg {
+        background-color: #339c87 !important;
+        color: white;
+      }
+
+      /* Custom styles for dropdown hover */
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Custom size for the dropdown menu */
+      .dropdown-menu.custom-dropdown {
+        width: 1000px; /* Set width */
+        height: auto; /* Set height to auto to allow content to define height */
+        max-height: 600px; /* Optional: set max height */
+        overflow-y: auto; /* Enable scrolling if content overflows */
+      }
+
+      .card {
+        width: 100%;
+        cursor: pointer;
+        max-width: 100%; /* Giới hạn chiều rộng */
+        margin: auto; /* Căn giữa trong trường hợp kích thước iframe thay đổi */
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+        position: relative; /* Để chứa các nút hành động */
+        overflow: hidden; /* Ẩn phần tràn */
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-img-top {
+        max-height: 150px; /* Giới hạn chiều cao của hình ảnh để không chiếm quá nhiều không gian */
+        object-fit: cover; /* Giữ tỉ lệ mà không bị méo hình */
+        width: 100%;
+        height: 200px; /* Đặt chiều cao cố định */
+      }
+
+      a {
+        text-decoration: none;
+        color: black !important;
+        text-align: center;
+      }
+
+      .dropdown-item .row .col-md-2 h4 {
+        font-size: 20px;
+      }
+
+      .slide-container {
+        width: 70%;
+        height: 100vh;
+      }
+
+      .ad-section {
+        width: 30%;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .ad-section img {
+        width: 100%;
+        padding: 3px;
+      }
+
+      .active {
+        font-size: 19px;
+      }
+
+      .active:hover {
+        text-decoration: none;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden; /* Ngăn chặn cuộn ngang */
+      }
+
+      /* Đặt giới hạn chiều rộng cho phần chính */
+      .container-fluid {
+        max-width: 100%;
+        padding: 0 10px; /* Giảm padding để phù hợp với iframe */
+      }
+
+      /* Giảm chiều rộng của các card sản phẩm để phù hợp với iframe */
+      .sidebar {
+        max-height: 600px; /* Giới hạn chiều cao của sidebar */
+        overflow-y: auto; /* Bật thanh cuộn nếu vượt quá chiều cao */
+      }
+
+      /* Ẩn sidebar khi ở chế độ iframe nếu thấy không cần thiết */
+      @media (max-width: 768px) {
+        .sidebar {
+          display: none;
+        }
+      }
+
+      /* Styles from the second page */
+      /* Chỉnh sửa breadcrumb */
+      .breadcrumb {
+        background-color: #4fd0b6; /* Màu nền mới */
+        margin-bottom: 20px;
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+      .breadcrumb-item a,
+      .breadcrumb-item.active {
+        color: #fff; /* Màu chữ trắng */
+        text-decoration: none;
+      }
+      .breadcrumb-item a:hover {
+        text-decoration: underline;
+        color: #fff; /* Giữ màu chữ trắng khi hover */
+      }
+      .breadcrumb-item.active {
+        color: #fff; /* Màu chữ trắng cho mục active */
+      }
+
+      .sidebar-content {
+        background-color: #fff;
+        padding: 20px;
+        border-right: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .sidebar-content h5 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+      }
+      .sidebar-content .form-check-label {
+        font-size: 14px;
+      }
+      .sidebar-content a {
+        color: #333;
+        text-decoration: none;
+        display: block;
+        padding: 5px 0;
+        transition: color 0.3s;
+      }
+      .sidebar-content a:hover {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .pagination {
+        justify-content: flex-end;
+      }
+
+      /* Các kiểu cho Grid View */
+      .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Khoảng cách giữa các card */
+      }
+      .product-grid .col-md-4 {
+        flex: 0 0 calc(33.33% - 20px); /* Điều chỉnh để mỗi card chiếm đều không gian */
+        max-width: calc(33.33% - 20px);
+      }
+      .description {
+        display: -webkit-box;
+        --webkit-line-clamp: 3; /* Giới hạn 3 dòng */
+        --webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #555;
+      }
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+      .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+      }
+      .pricing {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .discount-badge {
+        background-color: red;
+        color: white;
+        padding: 2px 6px;
+        font-size: 12px;
+        border-radius: 4px;
+      }
+      .discounted-price {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #28a745;
+      }
+      .original-price {
+        font-size: 0.9rem;
+        text-decoration: line-through;
+        color: #6c757d;
+      }
+
+      /* Nút hành động trên card */
+      .card-actions {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .card:hover .card-actions {
+        opacity: 1;
+      }
+      .btn-add-to-cart {
+        background-color: rgba(40, 167, 69, 0.9); /* Màu xanh lá */
+        border: none;
+        padding: 8px;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-add-to-cart:hover {
+        background-color: rgba(40, 167, 69, 1);
+      }
+      .btn-favorite {
+        background-color: rgba(220, 53, 69, 0.9); /* Màu đỏ */
+        border: none;
+        padding: 8px;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-favorite:hover {
+        background-color: rgba(220, 53, 69, 1);
+      }
+      .card-actions .btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+      }
+
+      /* Giới hạn độ dài văn bản */
+      .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .description {
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Giới hạn 3 dòng */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .sidebar-content .brand-section {
+        margin-top: 20px; /* Khoảng cách trên tiêu đề "Thương hiệu" */
+        margin-bottom: 20px; /* Khoảng cách dưới tiêu đề "Thương hiệu" */
+      }
+
+      /* Additional styles can be added here */
+    </style>
+  </head>
+  <body>
+    <!-- Header from the first page -->
+    <div class="container-fluid">
+      <div class="row intro text-white bg">
+        <div class="col-md-12">
+          <p class="text-center">Vô Vàn Vải - Vô vàn sáng tạo</p>
+        </div>
+      </div>
+      <div class="header">
+        <div class="row">
+          <div class="col-md-2 text-center">
+            <img
+              src="images/logo.jpg"
+              alt="Logo"
+              style="width: 100%; height: 100%"
+            />
+          </div>
+          <div class="col-md-5 text-center pt-4">
+            <form action="/user?method=search" method="post">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Tìm kiếm sản phẩm"
+                  name="search"
+                  id="searchInput"
+                />
+                <button class="btn text-white btn-bg" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>&nbsp;Tìm kiếm
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-5 text-center pt-4">
+            <a href="/user?method=cart" class="btn text-white btn-bg">
+              <i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng
+            </a>
+            <a href="/user?method=login" class="btn text-white btn-bg">
+              <i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập
+            </a>
+            <a href="/user?method=register" class="btn text-white btn-bg">
+              <i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar from the first page -->
+    <div class="container-fluid">
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="background-color: #4fd0b6; height: 40px"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand text-white active" href="">Trang chủ</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <!-- Các mục khác -->
+              <li class="nav-item">
+                <div class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Sản phẩm
+                  </a>
+                  <ul
+                    class="dropdown-menu custom-dropdown"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <!-- Nội dung Dropdown hiện tại -->
+                    <!-- Thêm các mục dropdown nếu cần -->
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Mục Phụ kiện may mặc đã được chuyển thành Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  id="phukienDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Phụ kiện may mặc
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="phukienDropdown">
+                  <li><a class="dropdown-item" href="test2.html">REN</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="test3.html">NÚT ÁO</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="test.html">DÂY KÉO</a></li>
+                </ul>
+              </li>
+
+              <!-- Các mục khác -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="\user?method=blog">Vải may mặc</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="\user?method=blog">Vải nội thất</a>
+              </li>
+              <!-- Các mục còn lại -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="test4.html">Liên hệ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="\user?method=about">Chính sách đổi trả</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Main Content from the Second Page -->
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="#">REN Cao Cấp Vô Vàn Vải</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Phụ Kiện REN 2024</li>
+        </ol>
+      </nav>
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+          <div class="sidebar-content">
+            <h5>Danh mục</h5>
+            <ul class="list-unstyled mb-4">
+              <li><a href="https://invaiphuonghoang.com/">Vải In</a></li>
+              <li><a href="https://haitrieu.com/blogs/vai-gam-la-gi/">Vải Gấm</a></li>
+              <li><a href="https://lamia.com.vn/blog/vai-to-tam-la-gi#:~:text=V%E1%BA%A3i%20t%C6%A1%20t%E1%BA%B1m%20l%C3%A0%20g%C3%AC%3F%20V%E1%BA%A3i%20t%C6%A1%20t%E1%BA%B1m,b%C3%B3ng%2C%20m%E1%BB%81m%2C%20m%E1%BB%8Bn%20v%C3%A0%20gi%C3%A1%20th%C3%A0nh%20kh%C3%A1%20cao.">Vải Tơ Tằm</a></li>
+              <li><a href="https://shopee.vn/search?keyword=v%E1%BA%A3i%20th%C3%B4%20hoa%20s%E1%BB%89">Vải Họa Sĩ</a></li>
+              <li><a href="https://yame.vn/bai-viet/chat-lieu-vai-tao-nen-su-khac-biet-trong-phong-cach-nhu-the-nao/3e6d32ea-a5b7-4501-90b6-7b8d38c5ff79?srsltid=AfmBOooqr1auCyviVbcVm_blOeJ2jFiGxko27cbnFTpfxAK7OIRxPw2K">Vô Vàn Vải Premium</a></li>
+              <li><a href="https://levents.asia/blogs/kien-thuc-thoi-trang/vai-satin-la-vai-gi?srsltid=AfmBOorcIGnePV-avr3yt7QSA2sxGoevUdvhflv_LO0IqrDS5eJ47ko2">Vải Satin</a></li>
+              <li><a href="https://www.maisononline.vn/blogs/kien-thuc-thoi-trang/vai-lua-la-vai-gi?srsltid=AfmBOoogYSWrmJhr-N5lfEIVtZZAO3s5ydw0KZA-w0rvFQmzDtGTeAvx">Vải Lụa</a></li>
+              <li><a href="https://levents.asia/blogs/kien-thuc-thoi-trang/vai-voan-la-gi?srsltid=AfmBOorpL_aQcWOUEdqkZnpy8JonfPFbJehzHq2QSQK_WOGUO1VOcKE-">Vải Voan</a></li>
+              <li><a href="https://routine.vn/tin-thoi-trang/chat-lieu-jeans-denim-la-gi?srsltid=AfmBOoqRpblaKDeI8v4WvTpwXuXfzZEZGPKUOyqV6cxTMzDPs5VxkPC8">Vải Jean</a></li>
+              <li><a href="https://www.vestonduynguyen.com/kaki-denim/vai-denim-mau-den-nhc33-nhc33">Vải Denim</a></li>
+            </ul>
+            <h5>Giá</h5>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price1"
+                type="checkbox"
+                data-min="0"
+                data-max="500000"
+              />
+              <label class="form-check-label" for="price1">Dưới 500.000đ</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price2"
+                type="checkbox"
+                data-min="500000"
+                data-max="1000000"
+              />
+              <label class="form-check-label" for="price2">500.000đ - 1.000.000đ</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price3"
+                type="checkbox"
+                data-min="1000000"
+                data-max="2000000"
+              />
+              <label class="form-check-label" for="price3">1.000.000đ - 2.000.000đ</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price4"
+                type="checkbox"
+                data-min="2000000"
+                data-max="4000000"
+              />
+              <label class="form-check-label" for="price4">2.000.000đ - 4.000.000đ</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price5"
+                type="checkbox"
+                data-min="4000000"
+                data-max=""
+              />
+              <label class="form-check-label" for="price5">Trên 4.000.000đ</label>
+            </div>
+
+            <h5 class="brand-section">Thương hiệu</h5>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input brand-filter"
+                id="brand1"
+                type="checkbox"
+                data-brand="REN Chính Hãng"
+              />
+              <label class="form-check-label" for="brand1">REN Chính Hãng</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input brand-filter"
+                id="brand2"
+                type="checkbox"
+                data-brand="REN Giảm Giá"
+              />
+              <label class="form-check-label" for="brand2">REN Giảm Giá</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input brand-filter"
+                id="brand3"
+                type="checkbox"
+                data-brand="REN Mới"
+              />
+              <label class="form-check-label" for="brand3">REN Mới</label>
+            </div>
+          </div>
+        </div>
+        <!-- Nội dung chính -->
+        <div class="col-md-9">
+          <!-- Header Controls: Title, Sort, Pagination -->
+          <div class="d-flex justify-content-between align-items-center mb-3 header-controls">
+            <div class="header-left">
+              <h5 class="mb-0">REN CAO CẤP Vô Vàn Vải</h5>
+            </div>
+            <div class="header-right d-flex align-items-center">
+              <!-- Loại bỏ view-toggle -->
+              <select class="form-control d-inline-block w-auto" id="sortSelect">
+                <option value="newest" selected>Mới Nhất</option>
+                <option value="best-selling">Bán Chạy Nhất</option>
+                <option value="price-asc">Giá tăng dần</option>
+                <option value="price-desc">Giá giảm dần</option>
+              </select>
+              <!-- Phân trang ở trên bên phải -->
+              <nav aria-label="Page navigation example" class="ml-3">
+                <ul class="pagination mb-0" id="paginationTop">
+                  <li class="page-item disabled" data-page="prev">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+                  </li>
+                  <li class="page-item active" aria-current="page" data-page="1">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item" data-page="2">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item" data-page="3">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item" data-page="next">
+                    <a class="page-link" href="#">Sau</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="row product-grid">
+            <!-- Example Product 1 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="549500"
+              data-brand="REN Chính Hãng"
+              data-date="2024-10-01"
+              data-sales="150"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/vairenthantienmautrang.jpg"
+                  class="card-img-top"
+                  alt="REN Thần Tiên"
+                />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Thần Tiên - Màu Trắng</h5>
+                  <p class="card-text description">
+                    Chất liệu vải cao cấp, mềm mại và bền bỉ, phù hợp cho mọi
+                    loại trang phục.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-50%</span>
+                    <span class="discounted-price">549,500đ</span>
+                    <span class="original-price">1,099,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thêm các sản phẩm khác theo cùng cấu trúc -->
+            <!-- ... -->
+          </div>
+
+          <!-- Phân trang ở dưới bên phải -->
+          <nav aria-label="Page navigation example" class="mt-3">
+            <ul class="pagination" id="paginationBottom">
+              <li class="page-item disabled" data-page="prev">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Trước</a>
+              </li>
+              <li class="page-item active" aria-current="page" data-page="1">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item" data-page="2">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item" data-page="3">
+                <a class="page-link" href="#">3</a>
+              </li>
+              <li class="page-item" data-page="next">
+                <a class="page-link" href="#">Sau</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer from the first page -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #4fd0b6">
+      <div class="container text-md-left">
+        <div class="row text-md-left">
+          <!-- Liên hệ -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Liên hệ</h5>
+            <p>Địa chỉ: KĐT Linh Đàm, Quận Hoàng Mai, TP Hà Nội</p>
+            <p>Hotline: 0243 0000 111 - 039 5555 119</p>
+            <p>Email: myphamchinhhang@gmail.com</p>
+            <p>
+              Website:
+              <a
+                href="https://thoitrang9.vnwordpress.net"
+                target="_blank"
+                class="text-white"
+                >thoitrang9.vnwordpress.net</a
+              >
+            </p>
+          </div>
+
+          <!-- Chính sách chung -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">
+              Chính sách chung
+            </h5>
+            <p><a href="#" class="text-white">Chính sách quy định chung</a></p>
+            <p><a href="#" class="text-white">Chính sách vận chuyển</a></p>
+            <p><a href="#" class="text-white">Chính sách bảo hành</a></p>
+            <p>
+              <a href="#" class="text-white">Chính sách đổi trả và hoàn tiền</a>
+            </p>
+            <p>
+              <a href="#" class="text-white">Chính sách cho doanh nghiệp</a>
+            </p>
+            <p><a href="#" class="text-white">Chính sách hàng chính hãng</a></p>
+          </div>
+
+          <!-- Hướng dẫn dịch vụ -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">
+              Hướng dẫn dịch vụ
+            </h5>
+            <p>
+              <a href="#" class="text-white">Hướng dẫn mua hàng trực tuyến</a>
+            </p>
+            <p><a href="#" class="text-white">Hướng dẫn thanh toán</a></p>
+            <p><a href="#" class="text-white">Hướng dẫn mua hàng trả góp</a></p>
+            <p><a href="#" class="text-white">In hóa đơn điện tử</a></p>
+            <p><a href="#" class="text-white">Gửi yêu cầu bảo hành</a></p>
+            <p><a href="#" class="text-white">Góp ý, khiếu nại</a></p>
+          </div>
+
+          <!-- Giờ làm việc -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Giờ làm việc</h5>
+            <p>Gọi mua: 1800.1111 (7:30 - 22:00)</p>
+            <p>Kỹ thuật: 1800.2222 (7:30 - 22:00)</p>
+            <p>Khiếu nại: 1800.3333 (8:00 - 21:30)</p>
+            <p>Bảo hành: 1800.4444 (8:00 - 21:00)</p>
+          </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Social Media Icons -->
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-8">
+            <p>
+              &copy; 2024 Bản quyền thuộc về
+              <a
+                href="https://thoitrang9.vnwordpress.net"
+                target="_blank"
+                class="text-white"
+                >thoitrang9.vnwordpress.net</a
+              >
+            </p>
+          </div>
+
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-facebook"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-tiktok"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-zalo"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white"><i class="fab fa-youtube"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript để điều chỉnh chiều cao iframe (Removed as iframe is no longer used) -->
+
+    <!-- Bootstrap JS (Version 4.5.2) -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"
+      integrity="sha384-LtrjvnR4Twt/qOuYx4Py0DNeE9Vx3StF20phak0paQX49Tc27qV6cOZjV0CZo3LZ"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JavaScript to Handle Filtering, Sorting, and Pagination -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const productGrid = document.querySelector(".product-grid");
+        const sortSelect = document.getElementById("sortSelect");
+        const paginationTop = document.getElementById("paginationTop");
+        const paginationBottom = document.getElementById("paginationBottom");
+        const priceFilters = document.querySelectorAll(".price-filter");
+        const brandFilters = document.querySelectorAll(".brand-filter");
+
+        let currentPage = parseInt(localStorage.getItem("currentPage")) || 1;
+        const productsPerPage = 9;
+        let filteredProducts = [];
+
+        // Retrieve all product cards
+        const allProducts = Array.from(document.querySelectorAll(".product-grid .col-md-4"));
+
+        // Utility function to parse price string to integer
+        function parsePrice(priceStr) {
+          return parseInt(priceStr.replace(/[^0-9]/g, ""));
+        }
+
+        // Function to filter products based on selected price and brand filters
+        function filterProducts() {
+          const checkedPriceFilters = Array.from(priceFilters).filter(filter => filter.checked);
+          const priceRanges = checkedPriceFilters.map(filter => {
+            const min = parseInt(filter.getAttribute("data-min")) || 0;
+            const maxAttr = filter.getAttribute("data-max");
+            const max = maxAttr ? parseInt(maxAttr) : Number.MAX_SAFE_INTEGER;
+            return { min, max };
+          });
+
+          const checkedBrandFilters = Array.from(brandFilters).filter(filter => filter.checked);
+          const brands = checkedBrandFilters.map(filter => filter.getAttribute("data-brand"));
+
+          // Filter products based on price and brand
+          filteredProducts = allProducts.filter(card => {
+            const discountedPriceEl = card.querySelector(".discounted-price");
+            const brand = card.getAttribute("data-brand");
+            if (!discountedPriceEl) return false;
+
+            const priceText = discountedPriceEl.textContent.trim();
+            const price = parsePrice(priceText);
+
+            // Check price range
+            const isPriceMatch = priceRanges.length === 0 || priceRanges.some(range => price >= range.min && price <= range.max);
+
+            // Check brand
+            const isBrandMatch = brands.length === 0 || brands.includes(brand);
+
+            return isPriceMatch && isBrandMatch;
+          });
+
+          console.log(`Total Filtered Products: ${filteredProducts.length}`); // Debugging
+
+          // Sort the filtered products
+          sortFilteredProducts();
+
+          // Reset to first page after filtering
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        }
+
+        // Function to sort the filtered products based on selected sort option
+        function sortFilteredProducts() {
+          const sortValue = sortSelect.value;
+
+          filteredProducts.sort((a, b) => {
+            if (sortValue === "newest") {
+              const dateA = new Date(a.getAttribute("data-date"));
+              const dateB = new Date(b.getAttribute("data-date"));
+              return dateB - dateA; // Newest first
+            } else if (sortValue === "best-selling") {
+              const salesA = parseInt(a.getAttribute("data-sales")) || 0;
+              const salesB = parseInt(b.getAttribute("data-sales")) || 0;
+              return salesB - salesA; // Highest sales first
+            } else {
+              const priceA = parsePrice(a.querySelector(".discounted-price").textContent.trim());
+              const priceB = parsePrice(b.querySelector(".discounted-price").textContent.trim());
+
+              if (sortValue === "price-asc") {
+                return priceA - priceB;
+              } else if (sortValue === "price-desc") {
+                return priceB - priceA;
+              } else {
+                return 0;
+              }
+            }
+          });
+        }
+
+        // Function to render products for the current page
+        function renderProducts() {
+          // Clear the current product grid
+          productGrid.innerHTML = "";
+
+          const start = (currentPage - 1) * productsPerPage;
+          const end = start + productsPerPage;
+          const productsToShow = filteredProducts.slice(start, end);
+
+          console.log(`Rendering products from index ${start} to ${end - 1}`); // Debugging
+
+          productsToShow.forEach(card => {
+            productGrid.appendChild(card);
+          });
+
+          // If no products to show, display a message
+          if (productsToShow.length === 0) {
+            const noProductMsg = document.createElement("p");
+            noProductMsg.textContent = "Không có sản phẩm nào phù hợp với bộ lọc của bạn.";
+            noProductMsg.classList.add("text-center", "mt-4");
+            productGrid.appendChild(noProductMsg);
+          }
+        }
+
+        // Function to update pagination controls
+        function updatePagination(totalPages) {
+          const paginations = [paginationTop, paginationBottom];
+
+          paginations.forEach(pagination => {
+            // Remove existing page numbers except 'prev' and 'next'
+            pagination.querySelectorAll(".page-item:not([data-page='prev']):not([data-page='next'])").forEach(item => item.remove());
+
+            // Dynamically create page number buttons
+            for (let i = 1; i <= totalPages; i++) {
+              const li = document.createElement("li");
+              li.classList.add("page-item");
+              li.setAttribute("data-page", i);
+
+              if (i === currentPage) {
+                li.classList.add("active");
+                li.setAttribute("aria-current", "page");
+              }
+
+              const a = document.createElement("a");
+              a.classList.add("page-link");
+              a.href = "#";
+              a.textContent = i;
+
+              li.appendChild(a);
+              pagination.insertBefore(li, pagination.querySelector("[data-page='next']"));
+            }
+
+            // Update 'prev' button state
+            const prev = pagination.querySelector(".page-item[data-page='prev']");
+            if (currentPage === 1) {
+              prev.classList.add("disabled");
+            } else {
+              prev.classList.remove("disabled");
+            }
+
+            // Update 'next' button state
+            const next = pagination.querySelector(".page-item[data-page='next']");
+            if (currentPage === totalPages) {
+              next.classList.add("disabled");
+            } else {
+              next.classList.remove("disabled");
+            }
+          });
+        }
+
+        // Function to handle pagination click events
+        function handlePaginationClick(event) {
+          event.preventDefault();
+          const parentLi = event.target.closest(".page-item");
+          if (!parentLi) return; // If not a page item, exit
+
+          if (parentLi.classList.contains("disabled") || parentLi.classList.contains("active")) {
+            return; // Do nothing if disabled or active
+          }
+
+          const page = parentLi.getAttribute("data-page");
+          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+
+          if (page === "prev") {
+            if (currentPage > 1) {
+              currentPage--;
+            }
+          } else if (page === "next") {
+            if (currentPage < totalPages) {
+              currentPage++;
+            }
+          } else {
+            currentPage = parseInt(page);
+          }
+
+          console.log(`Navigating to page ${currentPage}`); // Debugging
+
+          localStorage.setItem("currentPage", currentPage.toString());
+          renderPagination();
+        }
+
+        // Function to render pagination based on filtered products
+        function renderPagination() {
+          const totalPages = Math.ceil(filteredProducts.length / productsPerPage) || 1;
+
+          // Ensure currentPage is within bounds
+          if (currentPage > totalPages) {
+            currentPage = totalPages;
+            localStorage.setItem("currentPage", currentPage.toString());
+          }
+
+          console.log(`Total Pages: ${totalPages}`); // Debugging
+
+          // Update pagination controls
+          updatePagination(totalPages);
+
+          // Render products for the current page
+          renderProducts();
+        }
+
+        // Function to attach event listeners to pagination controls
+        function attachPaginationEventListeners() {
+          const paginations = [paginationTop, paginationBottom];
+          paginations.forEach(pagination => {
+            pagination.addEventListener("click", handlePaginationClick);
+          });
+        }
+
+        // Event listener for sort selection change
+        sortSelect.addEventListener("change", () => {
+          sortFilteredProducts();
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        });
+
+        // Event listeners for price and brand filters
+        priceFilters.forEach(filter => {
+          filter.addEventListener("change", filterProducts);
+        });
+
+        brandFilters.forEach(filter => {
+          filter.addEventListener("change", filterProducts);
+        });
+
+        // Event delegation for Add to Cart and Favorite buttons
+        productGrid.addEventListener("click", (e) => {
+          if (e.target.closest(".btn-add-to-cart")) {
+            e.preventDefault();
+            alert("Đã thêm sản phẩm vào giỏ hàng!");
+          }
+
+          if (e.target.closest(".btn-favorite")) {
+            e.preventDefault();
+            const button = e.target.closest(".btn-favorite");
+            button.classList.toggle("active");
+            if (button.classList.contains("active")) {
+              button.style.backgroundColor = "rgba(220, 53, 69, 1)";
+              alert("Đã thêm sản phẩm vào danh sách yêu thích!");
+            } else {
+              button.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
+              alert("Đã loại bỏ sản phẩm khỏi danh sách yêu thích!");
+            }
+          }
+        });
+
+        // Initialize pagination event listeners
+        attachPaginationEventListeners();
+
+        // Ensure product grid is in grid view
+        productGrid.classList.remove("list-view");
+
+        // Initial filtering and rendering
+        filterProducts();
+      });
+    </script>
+  </body>
+</html>
