@@ -1,139 +1,540 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Đăng ký tài khoản - Bán Vải Online</title>
+    <!-- Bootstrap CSS (Phiên bản 5.3.2) -->
     <link
-        crossorigin="anonymous"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-        rel="stylesheet"
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-..."
+      crossorigin="anonymous"
     />
-    <style>
-        body {
-            font-family: "Arial", sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 20px 0;
-        }
-        .form-section {
-            padding: 40px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 20px auto 60px;
-        }
-        .form-section h2 {
-            margin-bottom: 20px;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-        }
-        .btn-custom {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .btn-custom:hover {
-            background-color: #0056b3;
-        }
-        .social-login {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        .social-login button {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s ease;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .btn-facebook {
-            background-color: #3b5998;
-        }
-        .btn-facebook:hover {
-            background-color: #334d84;
-        }
-        .btn-google {
-            background-color: #db4437;
-        }
-        .btn-google:hover {
-            background-color: #c23321;
-        }
-        .alert-message {
-            text-align: center;
-            display: none;
-            margin-bottom: 15px;
-        }
-        .alert-success {
-            color: #28a745;
-        }
-        .alert-danger {
-            color: #dc3545;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="form-section">
-            <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
-            <p class="text-center">Vui lòng nhập Email và Mật khẩu để đăng ký tài khoản</p>
-            <div class="alert alert-success alert-message" id="successMessage">Đăng ký thành công!</div>
-            <div class="alert alert-danger alert-message" id="submissionError">Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau.</div>
-            <form id="registrationForm" novalidate>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email *</label>
-                    <input class="form-control" id="email" placeholder="Email *" required type="email" aria-describedby="emailHelp" />
-                    <div class="invalid-feedback" id="emailError">Vui lòng nhập một địa chỉ email hợp lệ.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="confirmEmail" class="form-label">Xác nhận Email *</label>
-                    <input class="form-control" id="confirmEmail" placeholder="Xác nhận Email *" required type="email" aria-describedby="confirmEmailHelp" />
-                    <div class="invalid-feedback" id="confirmEmailError">Email xác nhận không khớp.</div>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Mật khẩu *</label>
-                    <input class="form-control" id="password" placeholder="Mật khẩu *" required type="password" aria-describedby="passwordHelp" />
-                    <div class="invalid-feedback" id="passwordError">Vui lòng nhập mật khẩu (ít nhất 6 ký tự).</div>
-                </div>
-                <div class="mb-3">
-                    <label for="confirmPassword" class="form-label">Xác nhận Mật khẩu *</label>
-                    <input class="form-control" id="confirmPassword" placeholder="Xác nhận Mật khẩu *" required type="password" aria-describedby="confirmPasswordHelp" />
-                    <div class="invalid-feedback" id="confirmPasswordError">Mật khẩu xác nhận không khớp.</div>
-                </div>
-                <div class="text-center">
-                    <button class="btn-custom" type="submit">ĐĂNG KÝ</button>
-                </div>
-            </form>
-            <div class="social-login">
-                <button class="btn-facebook" id="facebookLogin">
-                    <i class="fab fa-facebook-f me-2"></i> Facebook
-                </button>
-                <button class="btn-google" id="googleLogin">
-                    <i class="fab fa-google me-2"></i> Google
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/index.css" />
+
+    <style>
+      /* Điều chỉnh CSS cho html và body */
+      html,
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f9f9f9;
+        /* Thay thế height: 100% bằng min-height: 100% để cho phép nội dung mở rộng */
+        min-height: 100%;
+        margin: 0;
+      }
+
+      /* Phần tử chính của form đăng ký */
+      .form-section {
+        padding: 40px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 20px auto 60px;
+      }
+
+      .form-section h2 {
+        margin-bottom: 20px;
+        font-size: 2rem;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+      }
+
+      /* Nút Đăng ký tùy chỉnh */
+      .btn-custom {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-custom:hover {
+        background-color: #0056b3;
+      }
+
+      /* Các nút đăng nhập xã hội */
+      .social-login {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .social-login button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .social-login button i {
+        margin-right: 12px; /* Tăng khoảng cách giữa icon và text */
+      }
+
+      .btn-facebook {
+        background-color: #3b5998;
+      }
+
+      .btn-facebook:hover {
+        background-color: #334d84;
+      }
+
+      .btn-google {
+        background-color: #db4437;
+      }
+
+      .btn-google:hover {
+        background-color: #c23321;
+      }
+
+      /* Thông báo */
+      .alert-message {
+        text-align: center;
+        display: none;
+        margin-bottom: 15px;
+      }
+
+      .alert-success {
+        color: #28a745;
+      }
+
+      .alert-danger {
+        color: #dc3545;
+      }
+
+      /* Nút Back to Top */
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 9999;
+        pointer-events: none; /* Ban đầu không cho phép click */
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        pointer-events: all; /* Cho phép click khi hiển thị */
+      }
+
+      /* Các nút biểu tượng cố định */
+      .icon-buttons {
+        position: fixed;
+        bottom: 80px; /* Cách đáy 80px */
+        right: 20px; /* Cách phải 20px */
+        display: flex; /* Sắp xếp các nút theo cột */
+        flex-direction: column;
+        gap: 15px; /* Khoảng cách giữa các nút */
+        z-index: 9999; /* Đặt lên trên các thành phần khác */
+      }
+
+      .icon-btn {
+        display: flex; /* Căn giữa icon trong nút */
+        justify-content: center;
+        align-items: center;
+        width: 55px; /* Kích thước nút 55x55px */
+        height: 55px;
+        border-radius: 50%; /* Tạo nút tròn */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+        transition: transform 0.3s; /* Hiệu ứng thay đổi kích thước khi hover */
+        opacity: 0.85; /* Độ mờ ban đầu */
+      }
+
+      .facebook-btn {
+        background-color: #1877f2; /* Màu xanh của Facebook */
+        color: #ffffff; /* Màu trắng cho biểu tượng */
+      }
+
+      .call-btn {
+        background-color: #e53935; /* Màu đỏ của nút gọi điện */
+        color: #ffffff; /* Màu trắng cho biểu tượng */
+      }
+
+      .icon-btn:hover {
+        transform: scale(1.1); /* Tăng kích thước khi hover */
+        opacity: 1; /* Hiện rõ hơn khi hover */
+      }
+
+      /* Loại bỏ các quy định CSS cũ cho #back-to-top */
+      /* #back-to-top {
+        opacity: 1 !important;
+        pointer-events: all !important;
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="container-fluid">
+      <iframe
+        src="header.html"
+        frameborder="0"
+        width="100%"
+        height="120px"
+        title="Header"
+      ></iframe>
+    </div>
+    <!-- End Header -->
+
+    <!-- Navbar -->
+    <div class="container-fluid">
+      <!-- Navbar for page -->
+      <nav
+        class="navbar navbar-expand-lg"
+        style="background-color: #4fd0b6; height: 40px"
+      >
+        <div class="container-fluid">
+          <a class="navbar-item text-white active" href="index.html">Trang chủ</a>
+          <!-- Navbar Toggler for Mobile -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Navbar Links -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <!-- Dropdown Sản phẩm -->
+              <li class="nav-item">
+                <div class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Sản phẩm
+                  </a>
+                  <ul
+                    class="dropdown-menu custom-dropdown"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <!-- Phần hình ảnh sản phẩm -->
+                    <div class="dropdown-item">
+                      <div class="container">
+                        <div class="row">
+                          <!-- Vải lụa -->
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar1.jpg"
+                                class="card-img-top"
+                                alt="Vải lụa"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">Vải lụa</h4>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Vải kaki -->
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar2.jpg"
+                                class="card-img-top"
+                                alt="Vải kaki"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">Vải kaki</h4>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Vải nhung -->
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar3.jpg"
+                                class="card-img-top"
+                                alt="Vải nhung"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">Vải nhung</h4>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Vải Linen -->
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar4.jpg"
+                                class="card-img-top"
+                                alt="Vải Linen"
+                              />
+                              <div class="card-body">
+                                <h4 class="card-title text-center">Vải Linen</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Phần danh sách sản phẩm -->
+                    <div class="dropdown-item">
+                      <div class="row">
+                        <!-- Bán chạy -->
+                        <div class="col-md-2">
+                          <h4>Bán chạy</h4>
+                          <a href="product.html">Vải Cotton</a><br />
+                          <a href="product.html">Vải Linen</a><br />
+                          <a href="product.html">Vải Silk</a><br />
+                          <a href="product.html">Polyester</a><br />
+                          <a href="product.html">Denim</a><br />
+                        </div>
+                        <!-- Mùa đông -->
+                        <div class="col-md-2">
+                          <h4>Mùa đông</h4>
+                          <a href="product.html">Vải len</a><br />
+                          <a href="product.html">Vải nhung</a><br />
+                          <a href="product.html">Vải lanh</a><br />
+                          <a href="product.html">Vải da</a><br />
+                          <a href="product.html">Vải dù</a><br />
+                        </div>
+                        <!-- Mùa hè -->
+                        <div class="col-md-2">
+                          <h4>Mùa hè</h4>
+                          <a href="product.html">Vải Cotton</a><br />
+                          <a href="product.html">Vải Linen</a><br />
+                          <a href="product.html">Vải Rayon</a><br />
+                          <a href="product.html">Vải Bamboo</a><br />
+                          <a href="product.html">Vải Chambray</a><br />
+                        </div>
+                        <!-- Mùa thu -->
+                        <div class="col-md-2">
+                          <h4>Mùa thu</h4>
+                          <a href="product.html">Vải Cotton</a><br />
+                          <a href="product.html">Vải Wool</a><br />
+                          <a href="product.html">Vải Tweed</a><br />
+                          <a href="product.html">Vải Flannel</a><br />
+                          <a href="product.html">Vải Corduroy</a><br />
+                          <a href="product.html">Vải Denim</a><br />
+                        </div>
+                        <!-- Đồng phục -->
+                        <div class="col-md-2">
+                          <h4>Đồng phục</h4>
+                          <a href="product.html">Polyester</a><br />
+                          <a href="product.html">Cotton-PVC</a><br />
+                          <a href="product.html">Nỉ</a><br />
+                          <a href="product.html">Kaki</a><br />
+                          <a href="product.html">Lanh</a><br />
+                        </div>
+                        <!-- Nội thất -->
+                        <div class="col-md-2">
+                          <h4>Nội thất</h4>
+                          <a href="product.html">Vải Cotton</a><br />
+                          <a href="product.html">Vải Microfiber</a><br />
+                          <a href="product.html">Vải Velvet</a><br />
+                          <a href="product.html">Vải Polyester</a><br />
+                          <a href="product.html">Vải Tweed</a><br />
+                          <a href="product.html">Vải Canvas</a><br />
+                        </div>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+              </li>
+              <!-- Các mục khác trong navbar -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="fabric_blog.html">Vải may mặc</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="fabric_blog.html">Vải nội thất</a>
+              </li>
+              <!-- Dropdown Phụ kiện may mặc -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  id="accessoryDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Phụ kiện may mặc
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="accessoryDropdown">
+                  <li>
+                    <a class="dropdown-item" href="Lace_Haven.html">REN</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="Button_Up.html">NÚT ÁO</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="ZipStar.html">DÂY KÉO</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="policyReturn.html">Chính sách đổi trả</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar for page -->
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Nội Dung Chính: Form Đăng Ký -->
+    <div class="container">
+      <div class="form-section">
+        <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
+        <p class="text-center">
+          Vui lòng nhập Email và Mật khẩu để đăng ký tài khoản
+        </p>
+        <!-- Thông báo thành công -->
+        <div class="alert alert-success alert-message" id="successMessage">
+          Đăng ký thành công!
+        </div>
+        <!-- Thông báo lỗi -->
+        <div class="alert alert-danger alert-message" id="submissionError">
+          Đã xảy ra lỗi khi đăng ký. Vui lòng thử lại sau.
+        </div>
+        <!-- Form Đăng Ký -->
+        <form id="registrationForm" novalidate>
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email *</label>
+            <input
+              class="form-control"
+              id="email"
+              placeholder="Email *"
+              required
+              type="email"
+              aria-describedby="emailHelp"
+            />
+            <div class="invalid-feedback" id="emailError">
+              Vui lòng nhập một địa chỉ email hợp lệ.
+            </div>
+          </div>
+          <!-- Xác nhận Email -->
+          <div class="mb-3">
+            <label for="confirmEmail" class="form-label">Xác nhận Email *</label>
+            <input
+              class="form-control"
+              id="confirmEmail"
+              placeholder="Xác nhận Email *"
+              required
+              type="email"
+              aria-describedby="confirmEmailHelp"
+            />
+            <div class="invalid-feedback" id="confirmEmailError">
+              Email xác nhận không khớp.
+            </div>
+          </div>
+          <!-- Mật khẩu -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu *</label>
+            <input
+              class="form-control"
+              id="password"
+              placeholder="Mật khẩu *"
+              required
+              type="password"
+              aria-describedby="passwordHelp"
+            />
+            <div class="invalid-feedback" id="passwordError">
+              Vui lòng nhập mật khẩu (ít nhất 6 ký tự).
+            </div>
+          </div>
+          <!-- Xác nhận Mật khẩu -->
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Xác nhận Mật khẩu *</label>
+            <input
+              class="form-control"
+              id="confirmPassword"
+              placeholder="Xác nhận Mật khẩu *"
+              required
+              type="password"
+              aria-describedby="confirmPasswordHelp"
+            />
+            <div class="invalid-feedback" id="confirmPasswordError">
+              Mật khẩu xác nhận không khớp.
+            </div>
+          </div>
+          <!-- Nút Đăng Ký -->
+          <div class="text-center">
+            <button class="btn-custom" type="submit">ĐĂNG KÝ</button>
+          </div>
+        </form>
+        <!-- Đăng Nhập Xã Hội -->
+        <div class="social-login">
+          <button class="btn-facebook" id="facebookLogin">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </button>
+          <button class="btn-google" id="googleLogin">
+            <i class="fab fa-google"></i> Google
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer mt-3">
+      <iframe
+        src="footer.html"
+        frameborder="0"
+        scrolling="no"
+        width="100%"
+        height="450px"
+        title="Footer"
+      ></iframe>
+    </div>
+    <!-- End Footer -->
+
+    <!-- Font Awesome JS -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
       integrity="sha512-OL1e4xdQXY+MCAuXqudI+VwVkljheAPp34zqzM1Ee3x/NmFJRmVw3t3ZpVJ4t0k9uSnho/0Iae/BmL2uC7s3FQ=="
@@ -141,154 +542,212 @@
       referrerpolicy="no-referrer"
     ></script>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS (Phiên bản 5.3.2) -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
 
+    <!-- Custom JavaScript -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const registrationForm = document.getElementById("registrationForm");
-            const successMessage = document.getElementById("successMessage");
-            const submissionError = document.getElementById("submissionError");
+      document.addEventListener("DOMContentLoaded", () => {
+        const registrationForm = document.getElementById("registrationForm");
+        const successMessage = document.getElementById("successMessage");
+        const submissionError = document.getElementById("submissionError");
 
-            registrationForm.addEventListener("submit", async (e) => {
-                e.preventDefault(); // Ngăn chặn hành động mặc định của form
+        // Hàm reset trạng thái validation
+        function resetValidation() {
+          const inputs = registrationForm.querySelectorAll(".form-control");
+          inputs.forEach((input) => {
+            input.classList.remove("is-invalid");
+            input.classList.remove("is-valid");
+          });
+          successMessage.style.display = "none";
+          submissionError.style.display = "none";
+        }
 
-                // Reset các trạng thái trước đó
-                resetValidation();
+        // Hàm kiểm tra validation của form
+        function validateForm() {
+          let isValid = true;
 
-                if (validateForm()) {
-                    // Thu thập dữ liệu form
-                    const formData = {
-                        email: document.getElementById("email").value.trim(),
-                        password: document.getElementById("password").value.trim(),
-                    };
+          // Email
+          const email = document.getElementById("email");
+          const emailError = document.getElementById("emailError");
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(email.value.trim())) {
+            email.classList.add("is-invalid");
+            emailError.textContent = "Vui lòng nhập một địa chỉ email hợp lệ.";
+            isValid = false;
+          } else {
+            email.classList.remove("is-invalid");
+            email.classList.add("is-valid");
+          }
 
-                    try {
-                        // Hiển thị loader hoặc disable nút submit nếu cần
-                        const submitButton = registrationForm.querySelector('button[type="submit"]');
-                        submitButton.disabled = true;
-                        submitButton.textContent = "Đang xử lý...";
+          // Xác nhận Email
+          const confirmEmail = document.getElementById("confirmEmail");
+          const confirmEmailError = document.getElementById("confirmEmailError");
+          if (confirmEmail.value.trim() === "") {
+            confirmEmail.classList.add("is-invalid");
+            confirmEmailError.textContent = "Vui lòng xác nhận email của bạn.";
+            isValid = false;
+          } else if (confirmEmail.value.trim() !== email.value.trim()) {
+            confirmEmail.classList.add("is-invalid");
+            confirmEmailError.textContent = "Email xác nhận không khớp.";
+            isValid = false;
+          } else {
+            confirmEmail.classList.remove("is-invalid");
+            confirmEmail.classList.add("is-valid");
+          }
 
-                        // Gọi API thực tế ở đây
-                        // Ví dụ:
-                        // const response = await fetch('/api/register', {
-                        //     method: 'POST',
-                        //     headers: { 'Content-Type': 'application/json' },
-                        //     body: JSON.stringify(formData)
-                        // });
-                        // if (!response.ok) throw new Error('Network response was not ok');
+          // Mật khẩu
+          const password = document.getElementById("password");
+          const passwordError = document.getElementById("passwordError");
+          if (password.value.trim().length < 6) {
+            password.classList.add("is-invalid");
+            passwordError.textContent =
+              "Vui lòng nhập mật khẩu (ít nhất 6 ký tự).";
+            isValid = false;
+          } else {
+            password.classList.remove("is-invalid");
+            password.classList.add("is-valid");
+          }
 
-                        // Giả lập API call thành công với setTimeout
-                        await new Promise((resolve) => setTimeout(resolve, 2000));
+          // Xác nhận Mật khẩu
+          const confirmPassword = document.getElementById("confirmPassword");
+          const confirmPasswordError = document.getElementById(
+            "confirmPasswordError"
+          );
+          if (confirmPassword.value.trim() === "") {
+            confirmPassword.classList.add("is-invalid");
+            confirmPasswordError.textContent =
+              "Vui lòng xác nhận mật khẩu của bạn.";
+            isValid = false;
+          } else if (confirmPassword.value.trim() !== password.value.trim()) {
+            confirmPassword.classList.add("is-invalid");
+            confirmPasswordError.textContent = "Mật khẩu xác nhận không khớp.";
+            isValid = false;
+          } else {
+            confirmPassword.classList.remove("is-invalid");
+            confirmPassword.classList.add("is-valid");
+          }
 
-                        // Hiển thị thông báo thành công
-                        successMessage.style.display = "block";
-                        registrationForm.reset();
-                    } catch (error) {
-                        console.error("Error during registration:", error);
-                        submissionError.style.display = "block";
-                    } finally {
-                        // Kích hoạt lại nút submit
-                        const submitButton = registrationForm.querySelector('button[type="submit"]');
-                        submitButton.disabled = false;
-                        submitButton.textContent = "ĐĂNG KÝ";
-                    }
-                } else {
-                    submissionError.style.display = "none"; // Ẩn thông báo lỗi chung nếu có
-                }
-            });
+          return isValid;
+        }
 
-            function validateForm() {
-                let isValid = true;
+        // Xử lý sự kiện submit form
+        registrationForm.addEventListener("submit", async (e) => {
+          e.preventDefault(); // Ngăn chặn hành động mặc định của form
 
-                // Email
-                const email = document.getElementById("email");
-                const emailError = document.getElementById("emailError");
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(email.value.trim())) {
-                    email.classList.add("is-invalid");
-                    emailError.textContent = "Vui lòng nhập một địa chỉ email hợp lệ.";
-                    isValid = false;
-                } else {
-                    email.classList.remove("is-invalid");
-                    email.classList.add("is-valid");
-                }
+          // Reset các trạng thái trước đó
+          resetValidation();
 
-                // Xác nhận Email
-                const confirmEmail = document.getElementById("confirmEmail");
-                const confirmEmailError = document.getElementById("confirmEmailError");
-                if (confirmEmail.value.trim() === "") {
-                    confirmEmail.classList.add("is-invalid");
-                    confirmEmailError.textContent = "Vui lòng xác nhận email của bạn.";
-                    isValid = false;
-                } else if (confirmEmail.value.trim() !== email.value.trim()) {
-                    confirmEmail.classList.add("is-invalid");
-                    confirmEmailError.textContent = "Email xác nhận không khớp.";
-                    isValid = false;
-                } else {
-                    confirmEmail.classList.remove("is-invalid");
-                    confirmEmail.classList.add("is-valid");
-                }
+          if (validateForm()) {
+            // Thu thập dữ liệu form
+            const formData = {
+              email: document.getElementById("email").value.trim(),
+              password: document.getElementById("password").value.trim(),
+            };
 
-                // Mật khẩu
-                const password = document.getElementById("password");
-                const passwordError = document.getElementById("passwordError");
-                if (password.value.trim().length < 6) {
-                    password.classList.add("is-invalid");
-                    passwordError.textContent = "Vui lòng nhập mật khẩu (ít nhất 6 ký tự).";
-                    isValid = false;
-                } else {
-                    password.classList.remove("is-invalid");
-                    password.classList.add("is-valid");
-                }
+            try {
+              // Hiển thị loader hoặc disable nút submit nếu cần
+              const submitButton = registrationForm.querySelector(
+                'button[type="submit"]'
+              );
+              submitButton.disabled = true;
+              submitButton.textContent = "Đang xử lý...";
 
-                // Xác nhận Mật khẩu
-                const confirmPassword = document.getElementById("confirmPassword");
-                const confirmPasswordError = document.getElementById("confirmPasswordError");
-                if (confirmPassword.value.trim() === "") {
-                    confirmPassword.classList.add("is-invalid");
-                    confirmPasswordError.textContent = "Vui lòng xác nhận mật khẩu của bạn.";
-                    isValid = false;
-                } else if (confirmPassword.value.trim() !== password.value.trim()) {
-                    confirmPassword.classList.add("is-invalid");
-                    confirmPasswordError.textContent = "Mật khẩu xác nhận không khớp.";
-                    isValid = false;
-                } else {
-                    confirmPassword.classList.remove("is-invalid");
-                    confirmPassword.classList.add("is-valid");
-                }
+              // Gọi API thực tế ở đây
+              // Ví dụ:
+              // const response = await fetch('/api/register', {
+              //     method: 'POST',
+              //     headers: { 'Content-Type': 'application/json' },
+              //     body: JSON.stringify(formData)
+              // });
+              // if (!response.ok) throw new Error('Network response was not ok');
 
-                return isValid;
+              // Giả lập API call thành công với setTimeout
+              await new Promise((resolve) => setTimeout(resolve, 2000));
+
+              // Hiển thị thông báo thành công
+              successMessage.style.display = "block";
+              registrationForm.reset();
+            } catch (error) {
+              console.error("Error during registration:", error);
+              submissionError.style.display = "block";
+            } finally {
+              // Kích hoạt lại nút submit
+              const submitButton = registrationForm.querySelector(
+                'button[type="submit"]'
+              );
+              submitButton.disabled = false;
+              submitButton.textContent = "ĐĂNG KÝ";
             }
-
-            function resetValidation() {
-                const inputs = registrationForm.querySelectorAll(".form-control");
-                inputs.forEach(input => {
-                    input.classList.remove("is-invalid");
-                    input.classList.remove("is-valid");
-                });
-                successMessage.style.display = "none";
-                submissionError.style.display = "none";
-            }
-
-            // Sự kiện cho nút Facebook
-            const facebookLogin = document.getElementById("facebookLogin");
-            facebookLogin.addEventListener("click", () => {
-                console.log("Đăng nhập bằng Facebook");
-                alert("Đăng nhập qua Facebook thành công!");
-            });
-
-            // Sự kiện cho nút Google
-            const googleLogin = document.getElementById("googleLogin");
-            googleLogin.addEventListener("click", () => {
-                console.log("Đăng nhập bằng Google");
-                alert("Đăng nhập qua Google thành công!");
-            });
+          } else {
+            submissionError.style.display = "none"; // Ẩn thông báo lỗi chung nếu có
+          }
         });
+
+        // Sự kiện cho nút Facebook
+        const facebookLogin = document.getElementById("facebookLogin");
+        facebookLogin.addEventListener("click", () => {
+          console.log("Đăng nhập bằng Facebook");
+          alert("Đăng nhập qua Facebook thành công!");
+        });
+
+        // Sự kiện cho nút Google
+        const googleLogin = document.getElementById("googleLogin");
+        googleLogin.addEventListener("click", () => {
+          console.log("Đăng nhập bằng Google");
+          alert("Đăng nhập qua Google thành công!");
+        });
+
+        // Nút Back to Top
+        const backToTopButton = document.getElementById("back-to-top");
+
+        // Hàm kiểm tra và toggle hiển thị nút Back to Top
+        function toggleBackToTopButton() {
+          if (window.scrollY > 200) {
+            backToTopButton.classList.add("show");
+          } else {
+            backToTopButton.classList.remove("show");
+          }
+        }
+
+        // Lắng nghe sự kiện scroll để hiển thị hoặc ẩn nút Back to Top
+        window.addEventListener("scroll", toggleBackToTopButton);
+
+        // Xử lý sự kiện click vào nút Back to Top
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+
+        // Kiểm tra trạng thái nút khi tải trang
+        toggleBackToTopButton();
+      });
     </script>
-</body>
+
+    <!-- Nút Biểu Tượng -->
+    <div class="icon-buttons">
+      <a
+        href="https://facebook.com"
+        class="icon-btn facebook-btn"
+        target="_blank"
+        aria-label="Facebook"
+      >
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="tel:+84123456789" class="icon-btn call-btn" aria-label="Call">
+        <i class="fas fa-phone"></i>
+      </a>
+    </div>
+
+    <!-- Nút Back to Top -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </body>
 </html>
