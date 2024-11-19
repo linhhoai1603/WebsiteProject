@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sản phẩm</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Các kiểu chung */
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f5f5f5;
+      }
+      /* Chỉnh sửa breadcrumb */
+      .breadcrumb {
+        background-color: #4fd0b6; /* Màu nền mới */
+        margin-bottom: 20px;
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+      .breadcrumb-item a,
+      .breadcrumb-item.active {
+        color: #fff; /* Màu chữ trắng */
+        text-decoration: none;
+      }
+      .breadcrumb-item a:hover {
+        text-decoration: underline;
+        color: #fff; /* Giữ màu chữ trắng khi hover */
+      }
+      .breadcrumb-item.active {
+        color: #fff; /* Màu chữ trắng cho mục active */
+      }
+
+      .sidebar {
+        background-color: #fff;
+        padding: 20px;
+        border-right: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      .sidebar h5 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+      }
+      .sidebar .form-check-label {
+        font-size: 14px;
+      }
+      .sidebar a {
+        color: #333;
+        text-decoration: none;
+        display: block;
+        padding: 5px 0;
+        transition: color 0.3s;
+      }
+      .sidebar a:hover {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .pagination {
+        justify-content: flex-end;
+      }
+
+      /* Các kiểu cho Grid View */
+      .product-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Khoảng cách giữa các card */
+      }
+      .product-grid .col-md-4 {
+        flex: 0 0 calc(33.33% - 20px); /* Điều chỉnh để mỗi card chiếm đều không gian */
+        max-width: calc(33.33% - 20px);
+      }
+      .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+        height: 100%;
+        position: relative; /* Để chứa các nút hành động */
+        overflow: hidden; /* Ẩn phần tràn */
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      .card-img-top {
+        width: 100%;
+        height: 200px; /* Đặt chiều cao cố định */
+        object-fit: cover;
+      }
+      .description {
+        display: -webkit-box;
+        --webkit-line-clamp: 3; /* Giới hạn 3 dòng */
+        --webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #555;
+      }
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+      }
+      .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+      }
+      .pricing {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .discount-badge {
+        background-color: red;
+        color: white;
+        padding: 2px 6px;
+        font-size: 12px;
+        border-radius: 4px;
+      }
+      .discounted-price {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #28a745;
+      }
+      .original-price {
+        font-size: 0.9rem;
+        text-decoration: line-through;
+        color: #6c757d;
+      }
+
+      /* Nút hành động trên card */
+      .card-actions {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .card:hover .card-actions {
+        opacity: 1;
+      }
+      .btn-add-to-cart {
+        background-color: rgba(40, 167, 69, 0.9); /* Màu xanh lá */
+        border: none;
+        padding: 8px;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-add-to-cart:hover {
+        background-color: rgba(40, 167, 69, 1);
+      }
+      .btn-favorite {
+        background-color: rgba(220, 53, 69, 0.9); /* Màu đỏ */
+        border: none;
+        padding: 8px;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .btn-favorite:hover {
+        background-color: rgba(220, 53, 69, 1);
+      }
+      .card-actions .btn {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+      }
+
+      /* Responsive điều chỉnh cho List View (đã loại bỏ vì không sử dụng) */
+      /* Loại bỏ các kiểu CSS liên quan đến List View */
+
+      /* Giới hạn độ dài văn bản */
+      .card-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .description {
+        display: -webkit-box;
+        --webkit-line-clamp: 3; /* Giới hạn 3 dòng */
+        --webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .sidebar .brand-section {
+        margin-top: 20px; /* Khoảng cách trên tiêu đề "Thương hiệu" */
+        margin-bottom: 20px; /* Khoảng cách dưới tiêu đề "Thương hiệu" */
+      }
+    </style>
+    <link rel="stylesheet" href="css/navbar.css">
+  </head>
+  <body>
+    
+      <!-- header -->
+<div class="container-fluid">
+  <iframe src="header.html" frameborder="0" width="100%" height="120px"></iframe>
+</div>
+<!-- end header-->
+<!-- navbar -->
+  <!-- navbar -->
+  <div class="container-fluid">
+      <!--navbar for page-->
+      <nav class="navbar navbar-expand-lg" style="background-color: #4FD0B6; height: 40px;">
+          <div class="container-fluid">
+              <a class="navbar-brand text-white" href="index.html">Trang chủ</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <div class="dropdown">
+                              <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Sản phẩm
+                              </a>
+                              <ul class="dropdown-menu custom-dropdown" aria-labelledby="dropdownMenuLink">
+                                  <div class="dropdown-item">
+                                      <div class="container">
+                                          <div class="row">
+                                              <h4>Sản phẩm nổi bật</h4>
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar1.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải lụa</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar2.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải kaki</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar3.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải nhung</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col-md-3">
+                                                  <div class="card">
+                                                      <img src="images/navbar4.jpg" class="card-img-top" alt="...">
+                                                      <div class="card-body">
+                                                          <h4 class="card-title" style="text-align: center;">Vải Linen</h4>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                     </div>
+                                  </div>
+                                  <div class="dropdown-item">
+                                      <div class="row">
+                                          <div class="col-md-2">
+                                              <h4>Bán chạy</h4>
+                                              <a href="...">Vải Cotton</a><br>
+                                              <a href="...">Vải Linen</a><br>
+                                              <a href="...">Vải Silk</a><br>
+                                              <a href="...">Polyester</a><br>
+                                              <a href="...">Denim</a><br>
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Mùa đông</h4>
+                                              <a href="...">Vải len</a><br>
+                                              <a href="...">Vải nhung</a><br>
+                                              <a href="...">Vải lanh</a><br>
+                                              <a href="...">Vải da</a><br>
+                                              <a href="...">Vải dù</a>
+                                              
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Mùa hè</h4>
+                                              <a href="...">Vải Cotton</a><br>
+                                              <a href="...">Vải Linen </a><br>
+                                              <a href="...">Vải Rayon</a><br>
+                                              <a href="...">Vải Bamboo </a><br>
+                                              <a href="...">Vải Chambray</a><br>
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Mùa thu</h4>
+                                              <a href="...">Vải Cotton</a>   <br> 
+                                              <a href="...">Vải Wool </a><br>
+                                              <a href="...">Vải Tweed</a><br>
+                                              <a href="...">Vải Flannel</a><br>
+                                              <a href="...">Vải Corduroy</a><br>
+                                              <a href="...">Vải Denim</a><br>
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Đồng phục</h4>
+                                              <a href="...">Polyester</a><br>
+                                              <a href="...">Cotton-PVC</a><br>
+                                              <a href="...">Nỉ </a><br>
+                                              <a href="...">Kaki</a><br>
+                                              <a href="...">Lanh </a><br>
+
+                                          </div>
+
+                                          <div class="col-md-2">
+                                              <h4>Nội thất</h4>
+                                              <a href="...">Vải Cotton</a><br>
+                                              <a href="...">Vải Microfiber</a><br>
+                                              <a href="...">Vải Velvet</a><br>
+                                              <a href="...">Vải Polyester</a><br>
+                                              <a href="...">Vải Tweed</a><br>
+                                              <a href="...">Vải Canvas</a><br>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  
+                              </ul>
+                          </div>
+                      </li>
+                      <li class="nav-item">
+                        <!-- create dropdown with bootstrap-->
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="product.html">Vải may mặc</a>
+                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="fabric_blog.html">Vải nội thất</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="Button_Up.html">Phụ kiện may mặc</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="policyReturn.html">Chính sách đổi trả</a>
+                    </li>
+                  </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <!--end navbar for page-->
+  </div>
+    <!-- end navbar-->
+<!-- end navbar -->
+    <!-- Container chính -->
+    <div class="container mt-3">
+     
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3">
+          <div class="sidebar">
+            <h5>Danh mục</h5>
+            <ul class="list-unstyled mb-4">
+              <li><a href="#">Vải In</a></li>
+              <li><a href="#">Vải Gấm</a></li>
+              <li><a href="#">Vải Tơ Tằm</a></li>
+              <li><a href="#">Vải Họa Sĩ</a></li>
+              <li><a href="#">Thái Tuấn Premium</a></li>
+              <li><a href="#">Vải Satin</a></li>
+              <li><a href="#">Vải Lụa</a></li>
+              <li><a href="#">Vải Voan</a></li>
+              <li><a href="#">Vải Jean</a></li>
+              <li><a href="#">Vải Denim</a></li>
+            </ul>
+            <h5>Giá</h5>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price1"
+                type="checkbox"
+                data-min="0"
+                data-max="500000"
+              />
+              <label class="form-check-label" for="price1">Dưới 500.000đ</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price2"
+                type="checkbox"
+                data-min="500000"
+                data-max="1000000"
+              />
+              <label class="form-check-label" for="price2"
+                >500.000đ - 1.000.000đ</label
+              >
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price3"
+                type="checkbox"
+                data-min="1000000"
+                data-max="2000000"
+              />
+              <label class="form-check-label" for="price3"
+                >1.000.000đ - 2.000.000đ</label
+              >
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price4"
+                type="checkbox"
+                data-min="2000000"
+                data-max="4000000"
+              />
+              <label class="form-check-label" for="price4"
+                >2.000.000đ - 4.000.000đ</label
+              >
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input price-filter"
+                id="price5"
+                type="checkbox"
+                data-min="4000000"
+                data-max=""
+              />
+              <label class="form-check-label" for="price5"
+                >Trên 4.000.000đ</label
+              >
+            </div>
+
+            <h5 class="brand-section">Thương hiệu</h5>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input brand-filter"
+                id="brand1"
+                type="checkbox"
+                data-brand="REN Chính Hãng"
+              />
+              <label class="form-check-label" for="brand1"
+                >REN Chính Hãng</label
+              >
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input brand-filter"
+                id="brand2"
+                type="checkbox"
+                data-brand="REN Giảm Giá"
+              />
+              <label class="form-check-label" for="brand2">REN Giảm Giá</label>
+            </div>
+            <div class="form-check mb-2">
+              <input
+                class="form-check-input brand-filter"
+                id="brand3"
+                type="checkbox"
+                data-brand="REN Mới"
+              />
+              <label class="form-check-label" for="brand3">REN Mới</label>
+            </div>
+          </div>
+        </div>
+        <!-- Nội dung chính -->
+        <div class="col-md-9">
+          <!-- Header Controls: Title, Sort, Pagination -->
+          <div
+            class="d-flex justify-content-between align-items-center mb-3 header-controls"
+          >
+            <div class="header-left">
+              <h5 class="mb-0">REN CAO CẤP Vô Vàn Vải</h5>
+            </div>
+            <div class="header-right d-flex align-items-center">
+              <!-- Loại bỏ view-toggle -->
+              <select class="form-select d-inline-block w-auto" id="sortSelect">
+                <option value="name-asc" selected>Sắp xếp theo: Tên A-Z</option>
+                <option value="name-desc">Tên Z-A</option>
+                <option value="price-asc">Giá tăng dần</option>
+                <option value="price-desc">Giá giảm dần</option>
+              </select>
+              <!-- Phân trang ở trên bên phải -->
+              <nav aria-label="Page navigation example" class="ms-3">
+                <ul class="pagination mb-0" id="paginationTop">
+                  <li class="page-item disabled" data-page="prev">
+                    <a
+                      class="page-link"
+                      href="#"
+                      tabindex="-1"
+                      aria-disabled="true"
+                      >Trước</a
+                    >
+                  </li>
+                  <li
+                    class="page-item active"
+                    aria-current="page"
+                    data-page="1"
+                  >
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item" data-page="2">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item" data-page="3">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item" data-page="next">
+                    <a class="page-link" href="#">Sau</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="row product-grid">
+            <!-- Sản phẩm 1 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="549500"
+              data-brand="REN Chính Hãng"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/vairenthantienmautrang.jpg"
+                  class="card-img-top"
+                  alt="REN Thần Tiên"
+                />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Thần Tiên - Màu Trắng</h5>
+                  <p class="card-text description">
+                    Chất liệu vải cao cấp, mềm mại và bền bỉ, phù hợp cho mọi
+                    loại trang phục.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-50%</span>
+                    <span class="discounted-price">549,500đ</span>
+                    <span class="original-price">1,099,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 2 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="699500"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renthaitrangxanhdam.jpg"
+                  class="card-img-top"
+                  alt="REN Thái Trang"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Thái Trang - Màu Xanh Đậm</h5>
+                  <p class="card-text description">
+                    Chất liệu vải cao cấp, mềm mại và bền bỉ, phù hợp cho mọi
+                    loại trang phục.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-50%</span>
+                    <span class="discounted-price">699,500đ</span>
+                    <span class="original-price">1,399,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 3 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="749000"
+              data-brand="REN Chính Hãng"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/vairensangthantienmaudo.jpg"
+                  class="card-img-top"
+                  alt="REN Sang Tiên"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Sang Tiên - Màu Đỏ</h5>
+                  <p class="card-text description">
+                    Vải chất lượng cao, đảm bảo sự thoải mái và phong cách cho
+                    bạn.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-30%</span>
+                    <span class="discounted-price">749,000đ</span>
+                    <span class="original-price">1,070,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 4 -->
+            <div class="col-md-4 mb-4" data-price="899000" data-brand="REN Mới">
+              <div class="card h-100">
+                <img
+                  src="images/vairenuocmomauhong.jpg"
+                  class="card-img-top"
+                  alt="REN Mơ Ước"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Mơ Ước - Màu Hồng</h5>
+                  <p class="card-text description">
+                    Vải mềm mại, thích hợp cho các thiết kế thời trang nữ tính.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">899,000đ</span>
+                    <span class="original-price">1,124,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 5 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="499000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/rennangdongmauvang.jpg"
+                  class="card-img-top"
+                  alt="REN Năng Động"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Năng Động - Màu Vàng</h5>
+                  <p class="card-text description">
+                    Vải bền chắc, thích hợp cho các trang phục thường ngày.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">499,000đ</span>
+                    <span class="original-price">554,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 6 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1299000"
+              data-brand="REN Chính Hãng"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renthanhlichmauden.jpg"
+                  class="card-img-top"
+                  alt="REN Thanh Lịch"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Thanh Lịch - Màu Đen</h5>
+                  <p class="card-text description">
+                    Vải cao cấp, phù hợp cho các bộ vest và trang phục công sở.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-40%</span>
+                    <span class="discounted-price">1,299,000đ</span>
+                    <span class="original-price">2,165,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 7 -->
+            <div class="col-md-4 mb-4" data-price="649000" data-brand="REN Mới">
+              <div class="card h-100">
+                <img
+                  src="images/rensangtaomauxam.jpg"
+                  class="card-img-top"
+                  alt="REN Sáng Tạo"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Sáng Tạo - Màu Xám</h5>
+                  <p class="card-text description">
+                    Vải đa năng, dễ dàng phối hợp với nhiều màu sắc và kiểu
+                    dáng.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-25%</span>
+                    <span class="discounted-price">649,000đ</span>
+                    <span class="original-price">866,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 8 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1499000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/rencodienmaunau.jpg"
+                  class="card-img-top"
+                  alt="REN Cổ Điển"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Cổ Điển - Màu Nâu</h5>
+                  <p class="card-text description">
+                    Vải chất lượng, mang lại vẻ đẹp truyền thống và sang trọng.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-35%</span>
+                    <span class="discounted-price">1,299,000đ</span>
+                    <span class="original-price">1,857,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 9 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="599000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renhiendaimauxanhla.jpg"
+                  class="card-img-top"
+                  alt="REN Hiện Đại"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Hiện Đại - Màu Xanh Lá</h5>
+                  <p class="card-text description">
+                    Vải mới, phù hợp với xu hướng thời trang hiện đại và năng
+                    động.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-15%</span>
+                    <span class="discounted-price">599,000đ</span>
+                    <span class="original-price">705,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thêm các sản phẩm cho trang 2 và 3 -->
+            <!-- Bạn có thể sao chép các sản phẩm trên và thay đổi thuộc tính data-price và data-brand phù hợp -->
+            <!-- Sản phẩm 10 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1599000"
+              data-brand="REN Chính Hãng"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renluatotam.jpg"
+                  class="card-img-top"
+                  alt="REN Lụa Tơ Tằm"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Lụa Tơ Tằm - Màu Xanh Biển</h5>
+                  <p class="card-text description">
+                    Vải lụa tự nhiên, mềm mịn và bóng bẩy, lý tưởng cho trang
+                    phục sang trọng.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">1,599,000đ</span>
+                    <span class="original-price">2,000,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 11 -->
+            <div class="col-md-4 mb-4" data-price="799000" data-brand="REN Mới">
+              <div class="card h-100">
+                <img
+                  src="images/renvailoanmautrang.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Voan"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Voan - Màu Trắng Sữa</h5>
+                  <p class="card-text description">
+                    Vải voan nhẹ nhàng, thoáng mát, phù hợp cho trang phục mùa
+                    hè.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-15%</span>
+                    <span class="discounted-price">799,000đ</span>
+                    <span class="original-price">940,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 12 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1249000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_polyester_xanhlacay.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Polyester"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">
+                    REN Vải Polyester - Màu Xanh Lá Cây
+                  </h5>
+                  <p class="card-text description">
+                    Vải polyester bền đẹp, chống nhăn và dễ bảo quản, phù hợp
+                    cho nhiều loại trang phục.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-15%</span>
+                    <span class="discounted-price">1,149,000đ</span>
+                    <span class="original-price">1,350,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 13 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1299000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/RenVaijean.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Jean"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Jean - Màu Đen Classic</h5>
+                  <p class="card-text description">
+                    Vải jean đen cổ điển, phù hợp cho nhiều phong cách thời
+                    trang.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-30%</span>
+                    <span class="discounted-price">1,299,000đ</span>
+                    <span class="original-price">1,857,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 14 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1199000"
+              data-brand="REN Mới"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renvaisatin.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Satin"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Satin - Màu Hồng Pastel</h5>
+                  <p class="card-text description">
+                    Vải satin mềm mượt, lấp lánh, lý tưởng cho trang phục dạ
+                    hội.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">1,199,000đ</span>
+                    <span class="original-price">1,499,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 15 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1299000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renvaihoasi.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Họa Sĩ"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Họa Sĩ - Mẫu Hoa Đỏ</h5>
+                  <p class="card-text description">
+                    Vải họa sĩ với họa tiết hoa đỏ nổi bật, tạo điểm nhấn cho
+                    trang phục.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-25%</span>
+                    <span class="discounted-price">1,299,000đ</span>
+                    <span class="original-price">1,732,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 16 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1499000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renvaitoluavangngoc.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Tơ Lụa"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Tơ Lụa - Màu Vàng Ngọc</h5>
+                  <p class="card-text description">
+                    Vải tơ lụa cao cấp, mang lại cảm giác mềm mại và bóng bẩy
+                    cho trang phục.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-30%</span>
+                    <span class="discounted-price">1,299,000đ</span>
+                    <span class="original-price">1,857,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 17 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="899000"
+              data-brand="REN Chính Hãng"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/Renvailinenmaunau.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Linen"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Linen - Màu Be Nâu</h5>
+                  <p class="card-text description">
+                    Vải linen tự nhiên, thoáng mát và thấm hút tốt, phù hợp cho
+                    trang phục mùa hè.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">899,000đ</span>
+                    <span class="original-price">999,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 18 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1149000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_cashmere_timnhat.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Cashmere"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Cashmere - Màu Tím Nhạt</h5>
+                  <p class="card-text description">
+                    Vải cashmere cao cấp, mềm mịn và ấm áp, lý tưởng cho áo
+                    khoác và sweater.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">2,399,000đ</span>
+                    <span class="original-price">3,000,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 19 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1899000"
+              data-brand="REN Mới"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_rayon_cam_sang.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Rayon"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Rayon - Màu Cam Sáng</h5>
+                  <p class="card-text description">
+                    Vải rayon mềm mại và mát mẻ, thích hợp cho các trang phục
+                    mùa xuân và hè.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-25%</span>
+                    <span class="discounted-price">1,899,000đ</span>
+                    <span class="original-price">2,529,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 20 -->
+            <div class="col-md-4 mb-4" data-price="999000" data-brand="REN Mới">
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_spandex_den.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Spandex"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Spandex - Màu Đen Bóng</h5>
+                  <p class="card-text description">
+                    Vải spandex co giãn tốt, mang lại sự thoải mái và linh hoạt
+                    cho người mặc.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">1,199,000đ</span>
+                    <span class="original-price">1,499,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 21 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1149000"
+              data-brand="REN Mới"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_chambray_navy.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Chambray"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Chambray - Màu Xanh Navy</h5>
+                  <p class="card-text description">
+                    Vải chambray nhẹ nhàng, thích hợp cho áo sơ mi và váy mùa
+                    hè.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-15%</span>
+                    <span class="discounted-price">1,149,000đ</span>
+                    <span class="original-price">1,349,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 22 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="899000"
+              data-brand="REN Chính Hãng"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_flannel_nausam.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Flannel"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Flannel - Màu Nâu Sẫm</h5>
+                  <p class="card-text description">
+                    Vải flannel ấm áp, phù hợp cho áo khoác và trang phục mùa
+                    đông.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-10%</span>
+                    <span class="discounted-price">899,000đ</span>
+                    <span class="original-price">999,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 23 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1299000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_fleece_xamnhat.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Fleece"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Fleece - Màu Xám Nhạt</h5>
+                  <p class="card-text description">
+                    Vải fleece mềm mại, giữ ấm tốt, thích hợp cho trang phục thể
+                    thao.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">1,299,000đ</span>
+                    <span class="original-price">1,624,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 24 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="2399000"
+              data-brand="REN Mới"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/ren_vai_brocade_vanggold.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Brocade"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Brocade - Màu Vàng Gold</h5>
+                  <p class="card-text description">
+                    Vải brocade đậm chất nghệ thuật, thích hợp cho trang phục dạ
+                    hội và sự kiện.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-25%</span>
+                    <span class="discounted-price">2,399,000đ</span>
+                    <span class="original-price">3,199,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 25 -->
+            <div class="col-md-4 mb-4" data-price="999000" data-brand="REN Mới">
+              <div class="card h-100">
+                <img
+                  src="images/renvaiintrangden.jpg"
+                  class="card-img-top"
+                  alt="REN Vải In"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải In - Mẫu Trắng Đen</h5>
+                  <p class="card-text description">
+                    Vải in họa tiết trắng đen tinh tế, phù hợp cho nhiều phong
+                    cách thời trang.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-20%</span>
+                    <span class="discounted-price">999,000đ</span>
+                    <span class="original-price">1,249,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sản phẩm 26 -->
+            <div
+              class="col-md-4 mb-4"
+              data-price="1299000"
+              data-brand="REN Giảm Giá"
+            >
+              <div class="card h-100">
+                <img
+                  src="images/renvaitoluavangngoc.jpg"
+                  class="card-img-top"
+                  alt="REN Vải Tơ Lụa"
+                />
+                <div class="card-actions">
+                  <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
+                    <i class="fas fa-shopping-cart"></i>
+                  </button>
+                  <button class="btn btn-favorite" title="Yêu thích">
+                    <i class="fas fa-heart"></i>
+                  </button>
+                </div>
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title">REN Vải Tơ Lụa - Màu Vàng Ngọc</h5>
+                  <p class="card-text description">
+                    Vải tơ lụa cao cấp, mang lại cảm giác mềm mại và bóng bẩy
+                    cho trang phục.
+                  </p>
+                  <div class="pricing mt-auto">
+                    <span class="discount-badge">-30%</span>
+                    <span class="discounted-price">1,299,000đ</span>
+                    <span class="original-price">1,857,000đ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phân trang ở dưới bên phải -->
+          <nav aria-label="Page navigation example" class="mt-3">
+            <ul class="pagination" id="paginationBottom">
+              <li class="page-item disabled" data-page="prev">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true"
+                  >Trước</a
+                >
+              </li>
+              <li class="page-item active" aria-current="page" data-page="1">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item" data-page="2">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item" data-page="3">
+                <a class="page-link" href="#">3</a>
+              </li>
+              <li class="page-item" data-page="next">
+                <a class="page-link" href="#">Sau</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer (nếu có) -->
+    <div class="footer mt-3">
+      <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="450px">  </iframe>
+  </div>
+<!-- end footer-->
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JavaScript để xử lý phân trang, lọc giá và các nút hành động -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const productGrid = document.querySelector(".product-grid");
+        const sortSelect = document.getElementById("sortSelect");
+        const paginationTop = document.getElementById("paginationTop");
+        const paginationBottom = document.getElementById("paginationBottom");
+        const priceFilters = document.querySelectorAll(".price-filter");
+        const brandFilters = document.querySelectorAll(".brand-filter");
+        const addToCartButtons = document.querySelectorAll(".btn-add-to-cart");
+        const favoriteButtons = document.querySelectorAll(".btn-favorite");
+
+        let currentPage = parseInt(localStorage.getItem("currentPage")) || 1;
+        const productsPerPage = 9;
+        let filteredProducts = [];
+
+        // Hàm chuyển đổi chuỗi giá thành số nguyên
+        function parsePrice(priceStr) {
+          return parseInt(priceStr.replace(/[^0-9]/g, ""));
+        }
+
+        // Hàm lọc sản phẩm theo giá và thương hiệu
+        function filterProducts() {
+          const checkedPriceFilters = Array.from(priceFilters).filter(
+            (filter) => filter.checked
+          );
+          const priceRanges = checkedPriceFilters.map((filter) => {
+            const min = parseInt(filter.getAttribute("data-min")) || 0;
+            const max =
+              parseInt(filter.getAttribute("data-max")) ||
+              Number.MAX_SAFE_INTEGER;
+            return { min, max };
+          });
+
+          const checkedBrandFilters = Array.from(brandFilters).filter(
+            (filter) => filter.checked
+          );
+          const brands = checkedBrandFilters.map((filter) =>
+            filter.getAttribute("data-brand")
+          );
+
+          const allProducts = Array.from(
+            document.querySelectorAll(".product-grid .col-md-4")
+          );
+
+          // Lọc sản phẩm dựa trên giá và thương hiệu
+          filteredProducts = allProducts.filter((card) => {
+            const discountedPriceEl = card.querySelector(".discounted-price");
+            const brand = card.getAttribute("data-brand");
+            if (!discountedPriceEl) return false;
+            const priceText = discountedPriceEl.textContent.trim();
+            const price = parsePrice(priceText);
+
+            // Kiểm tra giá
+            const isPriceMatch =
+              priceRanges.length === 0 ||
+              priceRanges.some(
+                (range) => price >= range.min && price <= range.max
+              );
+
+            // Kiểm tra thương hiệu
+            const isBrandMatch = brands.length === 0 || brands.includes(brand);
+
+            return isPriceMatch && isBrandMatch;
+          });
+
+          // Sắp xếp lại sản phẩm theo lựa chọn sắp xếp
+          sortFilteredProducts();
+
+          // Reset về trang 1 sau khi lọc
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        }
+
+        // Hàm để sắp xếp sản phẩm đã lọc
+        function sortFilteredProducts() {
+          const sortValue = sortSelect.value;
+
+          filteredProducts.sort((a, b) => {
+            const priceA = parsePrice(
+              a.querySelector(".discounted-price").textContent.trim()
+            );
+            const priceB = parsePrice(
+              b.querySelector(".discounted-price").textContent.trim()
+            );
+
+            const nameA = a
+              .querySelector(".card-title")
+              .textContent.trim()
+              .toLowerCase();
+            const nameB = b
+              .querySelector(".card-title")
+              .textContent.trim()
+              .toLowerCase();
+
+            if (sortValue === "name-asc") {
+              return nameA.localeCompare(nameB);
+            } else if (sortValue === "name-desc") {
+              return nameB.localeCompare(nameA);
+            } else if (sortValue === "price-asc") {
+              return priceA - priceB;
+            } else if (sortValue === "price-desc") {
+              return priceB - priceA;
+            } else {
+              return 0;
+            }
+          });
+        }
+
+        // Hàm để hiển thị sản phẩm của một trang cụ thể
+        function renderProducts() {
+          const productCards = document.querySelectorAll(
+            ".product-grid .col-md-4"
+          );
+          productCards.forEach((card) => {
+            card.classList.add("d-none");
+          });
+
+          const start = (currentPage - 1) * productsPerPage;
+          const end = start + productsPerPage;
+          const productsToShow = filteredProducts.slice(start, end);
+
+          productsToShow.forEach((card) => {
+            card.classList.remove("d-none");
+          });
+        }
+
+        // Hàm để cập nhật trạng thái phân trang
+        function updatePagination(totalPages) {
+          const paginations = [paginationTop, paginationBottom];
+
+          paginations.forEach((pagination) => {
+            const pageItems = pagination.querySelectorAll(".page-item");
+
+            pageItems.forEach((item) => {
+              const page = item.getAttribute("data-page");
+
+              if (page === "prev") {
+                if (currentPage === 1) {
+                  item.classList.add("disabled");
+                } else {
+                  item.classList.remove("disabled");
+                }
+              } else if (page === "next") {
+                if (currentPage === totalPages) {
+                  item.classList.add("disabled");
+                } else {
+                  item.classList.remove("disabled");
+                }
+              } else {
+                const pageNumber = parseInt(page);
+                if (pageNumber === currentPage) {
+                  item.classList.add("active");
+                } else {
+                  item.classList.remove("active");
+                }
+              }
+            });
+          });
+        }
+
+        // Hàm để xử lý khi nhấn vào các liên kết phân trang
+        function handlePaginationClick(event) {
+          event.preventDefault();
+          const parentLi = event.target.closest(".page-item");
+          if (!parentLi) return; // Nếu không phải phần tử li, thoát
+
+          if (
+            parentLi.classList.contains("disabled") ||
+            parentLi.classList.contains("active")
+          ) {
+            return; // Không làm gì nếu nút bị vô hiệu hóa hoặc đang active
+          }
+
+          const page = parentLi.getAttribute("data-page");
+          const totalPages =
+            Math.ceil(filteredProducts.length / productsPerPage) || 1;
+
+          if (page === "prev") {
+            if (currentPage > 1) {
+              currentPage--;
+            }
+          } else if (page === "next") {
+            if (currentPage < totalPages) {
+              currentPage++;
+            }
+          } else {
+            currentPage = parseInt(page);
+          }
+
+          localStorage.setItem("currentPage", currentPage.toString());
+          renderPagination();
+        }
+
+        // Hàm để render phân trang dựa trên số lượng sản phẩm sau khi lọc
+        function renderPagination() {
+          const totalPages =
+            Math.ceil(filteredProducts.length / productsPerPage) || 1;
+
+          // Giới hạn currentPage không vượt quá totalPages
+          if (currentPage > totalPages) {
+            currentPage = totalPages;
+            localStorage.setItem("currentPage", currentPage.toString());
+          }
+
+          // Cập nhật phân trang
+          updatePagination(totalPages);
+
+          // Hiển thị sản phẩm
+          renderProducts();
+        }
+
+        // Thêm sự kiện cho các liên kết phân trang (trên và dưới)
+        const allPaginationLinks = document.querySelectorAll(
+          ".pagination .page-item a"
+        );
+        allPaginationLinks.forEach((link) => {
+          link.addEventListener("click", handlePaginationClick);
+        });
+
+        // Thêm sự kiện cho chọn sắp xếp
+        sortSelect.addEventListener("change", () => {
+          sortFilteredProducts();
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        });
+
+        // Thêm sự kiện cho các checkbox giá và thương hiệu
+        priceFilters.forEach((filter) => {
+          filter.addEventListener("change", filterProducts);
+        });
+
+        brandFilters.forEach((filter) => {
+          filter.addEventListener("change", filterProducts);
+        });
+
+        // Thêm sự kiện cho các nút Thêm vào Giỏ và Yêu Thích
+        addToCartButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Thực hiện chức năng thêm vào giỏ hàng
+            alert("Đã thêm sản phẩm vào giỏ hàng!");
+          });
+        });
+
+        favoriteButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            // Thực hiện chức năng thêm vào yêu thích
+            button.classList.toggle("active");
+            if (button.classList.contains("active")) {
+              button.style.backgroundColor = "rgba(220, 53, 69, 1)";
+              alert("Đã thêm sản phẩm vào danh sách yêu thích!");
+            } else {
+              button.style.backgroundColor = "rgba(220, 53, 69, 0.9)";
+              alert("Đã loại bỏ sản phẩm khỏi danh sách yêu thích!");
+            }
+          });
+        });
+
+        // Khởi tạo khi tải trang
+        // Thiết lập mặc định là Grid View
+        // Đảm bảo không có lớp 'list-view' trên product-grid
+        productGrid.classList.remove("list-view");
+
+        // Lọc sản phẩm ban đầu
+        filterProducts();
+      });
+    </script>
+  </body>
+</html>
