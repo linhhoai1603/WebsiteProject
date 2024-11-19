@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Trang chủ</title>
+    <style>
+      /* Các style hiện tại của bạn */
+      .bg {
+        background-color: #4fd0b6;
+      }
+
+      .btn:hover {
+        background-color: #4fd0b6;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        /* Tùy chỉnh scrollbar cho Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
+      }
+
+      .intro {
+        height: 25px;
+      }
+
+      .btn-bg {
+        background-color: #339c87 !important;
+        color: white;
+      }
+
+      /* Custom styles for dropdown hover */
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Custom size for the dropdown menu */
+      .dropdown-menu.custom-dropdown {
+        width: 1000px; /* Set width */
+        height: 450px; /* Set height */
+        overflow: auto; /* Enable scrolling if content overflows */
+      }
+
+      .card {
+        width: 100%;
+        height: 200px;
+        cursor: pointer;
+      }
+
+      a {
+        text-decoration: none;
+        color: black !important;
+        text-align: center;
+      }
+
+      .dropdown-item .row .col-md-2 h4 {
+        font-size: 20px;
+      }
+
+      .slide-container {
+        width: 70%;
+        height: 100vh;
+      }
+
+      .ad-section {
+        width: 30%;
+        height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .ad-section img {
+        width: 100%;
+        padding: 3px;
+      }
+
+      .active {
+        font-size: 19px;
+      }
+
+      .active:hover {
+        text-decoration: none;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden; /* Ngăn chặn cuộn ngang */
+      }
+
+      /* Tùy chỉnh scrollbar cho trình duyệt WebKit (Chrome, Safari) */
+      ::-webkit-scrollbar {
+        width: 8px; /* Độ rộng của scrollbar */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.5); /* Màu của thanh cuộn */
+        border-radius: 4px; /* Bo góc cho thanh cuộn */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="container-fluid">
+      <div class="row intro text-white bg">
+        <div class="col-md-12">
+          <p class="text-center">Vô Vàn Vải - Vô vàn sáng tạo</p>
+        </div>
+      </div>
+      <div class="header">
+        <div class="row">
+          <div class="col-md-2 text-center">
+            <img
+              src="images/logo.jpg"
+              alt="Logo"
+              style="width: 100%; height: 100%"
+            />
+          </div>
+          <div class="col-md-5 text-center pt-4">
+            <form action="\user?method=search" method="post">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Tìm kiếm sản phẩm"
+                  name="search"
+                  id="searchInput"
+                />
+                <button class="btn text-white btn-bg" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>&nbsp;Tìm kiếm
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-5 text-center pt-4">
+            <a href="\user?method=cart" class="btn text-white btn-bg">
+              <i class="fa-solid fa-cart-shopping"></i>&nbsp;Giỏ hàng
+            </a>
+            <a href="\user?method=login" class="btn text-white btn-bg">
+              <i class="fa-solid fa-right-to-bracket"></i>&nbsp;Đăng nhập
+            </a>
+            <a href="\user?method=register" class="btn text-white btn-bg">
+              <i class="fa-solid fa-pen-to-square"></i>&nbsp;Đăng ký
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <div class="container-fluid">
+      <!--navbar for page-->
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="background-color: #4fd0b6; height: 40px"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand text-white active" href="">Trang chủ</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <!-- Các mục khác -->
+              <li class="nav-item">
+                <div class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Sản phẩm
+                  </a>
+                  <ul
+                    class="dropdown-menu custom-dropdown"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <!-- Nội dung Dropdown hiện tại -->
+                    <!-- ... -->
+                  </ul>
+                </div>
+              </li>
+
+              <!-- Mục Phụ kiện may mặc đã được chuyển thành Dropdown -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  id="phukienDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Phụ kiện may mặc
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="phukienDropdown">
+                  <li><a class="dropdown-item" href="test2.html">REN</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="test3.html">NÚT ÁO</a></li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="test.html">DÂY KÉO</a></li>
+                </ul>
+              </li>
+
+              <!-- Các mục khác -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="\user?method=blog"
+                  >Vải may mặc</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="\user?method=blog"
+                  >Vải nội thất</a
+                >
+              </li>
+              <!-- Các mục còn lại -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="designProduct.html"
+                  >Các mẫu thiết kế</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="test4.html"
+                  >Liên hệ</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="\user?method=about"
+                  >Chính sách đổi trả</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--end navbar for page-->
+    </div>
+    <!-- End Navbar -->
+
+    <!-- Slide -->
+    <div class="container-fluid">
+      <iframe
+        src="slide.html"
+        scrolling="no"
+        frameborder="0"
+        style="width: 100%; height: 546px; margin-top: 10px"
+      ></iframe>
+    </div>
+    <!-- Content -->
+    <div class="container-fluid" style="margin-top: -200px">
+      <iframe
+        id="iframe__content"
+        src="contact.html"
+        scrolling="no"
+        frameborder="0"
+        style="width: 100%; height: 1600px; overflow: hidden"
+      ></iframe>
+    </div>
+    <!-- footer -->
+    <footer class="text-white pt-5 pb-4" style="background-color: #4fd0b6">
+      <div class="container text-md-left">
+        <div class="row text-md-left">
+          <!-- Liên hệ -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Liên hệ</h5>
+            <p>Địa chỉ: KĐT Linh Đàm, Quận Hoàng Mai, TP Hà Nội</p>
+            <p>Hotline: 0243 0000 111 - 039 5555 119</p>
+            <p>Email: myphamchinhhang@gmail.com</p>
+            <p>Website: thoitrang9.vnwordpress.net</p>
+          </div>
+
+          <!-- Chính sách chung -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">
+              Chính sách chung
+            </h5>
+            <p>Chính sách quy định chung</p>
+            <p>Chính sách vận chuyển</p>
+            <p>Chính sách bảo hành</p>
+            <p>Chính sách đổi trả và hoàn tiền</p>
+            <p>Chính sách cho doanh nghiệp</p>
+            <p>Chính sách hàng chính hãng</p>
+          </div>
+
+          <!-- Hướng dẫn dịch vụ -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">
+              Hướng dẫn dịch vụ
+            </h5>
+            <p>Hướng dẫn mua hàng trực tuyến</p>
+            <p>Hướng dẫn thanh toán</p>
+            <p>Hướng dẫn mua hàng trả góp</p>
+            <p>In hóa đơn điện tử</p>
+            <p>Gửi yêu cầu bảo hành</p>
+            <p>Góp ý, khiếu nại</p>
+          </div>
+
+          <!-- Giờ làm việc -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h5 class="text-uppercase mb-4 font-weight-bold">Giờ làm việc</h5>
+            <p>Gọi mua: 1800.1111 (7:30 - 22:00)</p>
+            <p>Kỹ thuật: 1800.2222 (7:30 - 22:00)</p>
+            <p>Khiếu nại: 1800.3333 (8:00 - 21:30)</p>
+            <p>Bảo hành: 1800.4444 (8:00 - 21:00)</p>
+          </div>
+        </div>
+
+        <hr class="mb-4" />
+
+        <!-- Social Media Icons -->
+        <div class="row align-items-center">
+          <div class="col-md-7 col-lg-8">
+            <p>&copy; 2024 Bản quyền thuộc về thoitrang9.vnwordpress.net</p>
+          </div>
+
+          <div class="col-md-5 col-lg-4">
+            <div class="text-center text-md-right">
+              <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-tiktok"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-zalo"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#" class="btn-floating btn-sm text-white">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // set height for iframe__content
+      var iframe = document.getElementById("iframe__content");
+      // check width of screen < 768px
+      if (window.innerWidth < 768) {
+        iframe.style.height = "9600px";
+      } else {
+        iframe.style.height = "3200px";
+      }
+      // slide.html hidden when width of screen < 768px but still show content.html
+      document.addEventListener("DOMContentLoaded", () => {
+        const iframe = document.getElementById("iframe__content");
+
+        iframe.onload = function () {
+          // Điều chỉnh chiều cao của iframe dựa trên nội dung của nó
+          iframe.style.height =
+            iframe.contentWindow.document.body.scrollHeight + "px";
+        };
+      });
+    </script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
