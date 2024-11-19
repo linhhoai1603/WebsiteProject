@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Liên Hệ - Cửa Hàng Vải XYZ</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        scrollbar-width: none;
+        overflow-x: hidden;
+      }
+      .contact-section {
+        padding: 60px 0;
+      }
+      .breadcrumb {
+        background-color: #4fd0b6;
+        padding: 10px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        border-radius: 5px;
+      }
+      .breadcrumb a {
+        color: #ffffff;
+      }
+      .breadcrumb .breadcrumb-item.active {
+        color: #ffffff;
+      }
+      .breadcrumb-item + .breadcrumb-item::before {
+        content: ">";
+        color: #ffffff;
+      }
+      .contact-info,
+      .contact-form {
+        background-color: #37c9b0;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        min-height: 400px;
+      }
+      .contact-info h3,
+      .contact-form h3 {
+        color: #ffffff;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+      }
+      .contact-info h3 i,
+      .contact-form h3 i {
+        margin-right: 10px;
+        font-size: 28px;
+      }
+      .contact-info p {
+        margin-bottom: 15px;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+      }
+      .contact-info p i {
+        margin-right: 10px;
+        color: #ffffff;
+        width: 25px;
+        text-align: center;
+        font-size: 20px;
+      }
+      .map-container {
+        margin-top: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+      .form-control:focus {
+        border-color: #ffffff;
+        box-shadow: none;
+      }
+      .btn-submit {
+        background-color: #f7c72b;
+        color: #ffffff;
+        border: none;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+      .btn-submit:hover {
+        background-color: #e0b023;
+        transform: translateY(-2px);
+      }
+      .mb-4 {
+        margin-bottom: 1.5rem !important;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+      }
+      .section-title h2 {
+        font-size: 32px;
+        color: #333;
+        font-weight: 700;
+      }
+      .section-title .underline {
+        width: 100px;
+        height: 4px;
+        background-color: #f7c72b;
+        margin: 10px auto 0;
+      }
+      /* Ẩn Honeypot Field */
+      .honeypot-field {
+        position: absolute;
+        left: -10000px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      @media (max-width: 991.98px) {
+        .contact-info,
+        .contact-form {
+          margin-bottom: 20px;
+        }
+        .map-container iframe {
+          height: 250px;
+        }
+      }
+      @media (max-width: 575.98px) {
+        .contact-info p {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .contact-info p i {
+          margin-bottom: 5px;
+        }
+        .contact-info h3,
+        .contact-form h3 {
+          font-size: 20px;
+        }
+      }
+      /* Custom styles for dropdown hover */
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Custom size for the dropdown menu */
+      .dropdown-menu.custom-dropdown {
+        width: 1000px; /* Set width */
+        height: 450px; /* Set height */
+        overflow: auto; /* Enable scrolling if content overflows */
+      }
+      .card {
+        width: 100%;
+        height: 200px;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: black !important;
+        text-align: center;
+      }
+      .dropdown-item .row .col-md-2 h4 {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+   <!-- header -->
+   <div class="container-fluid">
+    <iframe src="header.html" frameborder="0" scrolling="no" width="100%" height="120px"></iframe>
+ </div>
+<!-- end header-->
+    <!-- navbar -->
+    <div class="container-fluid">
+      <!--navbar for page-->
+      <nav
+        class="navbar navbar-expand-lg"
+        style="background-color: #4fd0b6; height: 40px"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="index.html"
+            >Trang chủ</a
+          >
+          
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <div class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Sản phẩm
+                  </a>
+                  <ul
+                    class="dropdown-menu custom-dropdown"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <div class="dropdown-item">
+                      <div class="container">
+                        <div class="row">
+                          <h4>Sản phẩm nổi bật</h4>
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar1.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải lụa
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar2.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải kaki
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar3.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải nhung
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar4.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải Linen
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dropdown-item">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <h4>Bán chạy</h4>
+                          <a href="...">Vải Cotton</a><br />
+                          <a href="...">Vải Linen</a><br />
+                          <a href="...">Vải Silk</a><br />
+                          <a href="...">Polyester</a><br />
+                          <a href="...">Denim</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa đông</h4>
+                          <a href="...">Vải len</a><br />
+                          <a href="...">Vải nhung</a><br />
+                          <a href="...">Vải lanh</a><br />
+                          <a href="...">Vải da</a><br />
+                          <a href="...">Vải dù</a>
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa hè</h4>
+                          <a href="...">Vải Cotton</a><br />
+                          <a href="...">Vải Linen </a><br />
+                          <a href="...">Vải Rayon</a><br />
+                          <a href="...">Vải Bamboo </a><br />
+                          <a href="...">Vải Chambray</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa thu</h4>
+                          <a href="...">Vải Cotton</a> <br />
+                          <a href="...">Vải Wool </a><br />
+                          <a href="...">Vải Tweed</a><br />
+                          <a href="...">Vải Flannel</a><br />
+                          <a href="...">Vải Corduroy</a><br />
+                          <a href="...">Vải Denim</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Đồng phục</h4>
+                          <a href="...">Polyester</a><br />
+                          <a href="...">Cotton-PVC</a><br />
+                          <a href="...">Nỉ </a><br />
+                          <a href="...">Kaki</a><br />
+                          <a href="...">Lanh </a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Nội thất</h4>
+                          <a href="...">Vải Cotton</a><br />
+                          <a href="...">Vải Microfiber</a><br />
+                          <a href="...">Vải Velvet</a><br />
+                          <a href="...">Vải Polyester</a><br />
+                          <a href="...">Vải Tweed</a><br />
+                          <a href="...">Vải Canvas</a><br />
+                        </div>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <!-- create dropdown with bootstrap-->
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="product.html">Vải may mặc</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="fabric_blog.html">Vải nội thất</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="Button_Up.html">Phụ kiện may mặc</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="policyReturn.html">Chính sách đổi trả</a>
+            </li>
+          </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--end navbar for page-->
+    </div>
+    <!--end header-->
+    <section class="contact-section">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+
+        <!-- Section Title -->
+        <div class="section-title">
+          <h2>Thông tin liên hệ</h2>
+          <div class="underline"></div>
+        </div>
+
+        <div class="row">
+          <!-- Contact Information -->
+          <div class="col-lg-6 mb-4 d-flex">
+            <div class="contact-info w-100">
+              <h3><i class="fas fa-info-circle"></i> Thông tin liên hệ</h3>
+              <p>
+                <i class="fas fa-phone-alt"></i> Hotline:
+                <strong>0964 511 511 (VP HCM)</strong> -
+                <strong>0979 462 762 (VP Hà Nội)</strong>
+              </p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Văn Phòng HCM: Khu Phố 6,
+                Phường Linh Trung, Thành Phố Thủ Đức
+              </p>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Văn Phòng Hà Nội: Cầu Thắt
+                Đoài, Mỹ Tháng, Mỹ Lộc, Nam Định
+              </p>
+              <p>
+                <i class="fas fa-industry"></i> Xưởng dệt: 18/7 Đường 429, Ấp 1,
+                Xã Phước Vĩnh An, Củ Chi, Tp.HCM
+              </p>
+              <p>
+                <i class="fas fa-envelope"></i> Email:
+                <a
+                  href="mailto:vaihongngan@gmail.com"
+                  class="text-decoration-none text-light"
+                  >vaisovietan@gmail.com</a
+                >
+              </p>
+              <!-- Interactive Map -->
+              <div class="map-container">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.915026371668!2d106.800525!3d10.872012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752782e5826fdf%3A0x5cb7fba58e98c34e!2zVHLGsOG7nW5nIMSQ4bqhaSBOZ3V54buFbiBMw6Jt!5e0!3m2!1svi!2s!4v1695000000000!5m2!1svi!2s"
+                  width="100%"
+                  height="300"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div class="col-lg-6 d-flex">
+            <div class="contact-form w-100">
+              <h3>
+                <i class="fas fa-envelope"></i> Gửi tin nhắn cho chúng tôi
+              </h3>
+              <!-- Thông báo thành công và lỗi -->
+              <div
+                id="successMessage"
+                class="alert alert-success"
+                style="display: none"
+              >
+                Cảm ơn bạn đã liên hệ với chúng tôi!
+              </div>
+              <div
+                id="honeypotError"
+                class="alert alert-danger"
+                style="display: none"
+              >
+                Form không hợp lệ.
+              </div>
+              <div
+                id="formError"
+                class="alert alert-danger"
+                style="display: none"
+              >
+                Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại sau.
+              </div>
+              <form id="contactForm" novalidate>
+                <div class="form-floating mb-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Nhập họ và tên"
+                    required
+                  />
+                  <label for="name"
+                    >Họ và Tên <span class="text-danger">*</span></label
+                  >
+                  <div class="invalid-feedback">
+                    Vui lòng nhập họ và tên của bạn.
+                  </div>
+                </div>
+                <div class="form-floating mb-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    placeholder="Nhập địa chỉ"
+                  />
+                  <label for="address">Địa chỉ</label>
+                </div>
+                <div class="form-floating mb-4">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="phone"
+                    placeholder="Nhập số điện thoại"
+                    required
+                    pattern="^\d{10,15}$"
+                  />
+                  <label for="phone"
+                    >Điện thoại <span class="text-danger">*</span></label
+                  >
+                  <div class="invalid-feedback">
+                    Vui lòng nhập số điện thoại hợp lệ (10-15 chữ số).
+                  </div>
+                </div>
+                <div class="form-floating mb-4">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="Nhập email"
+                    required
+                  />
+                  <label for="email"
+                    >Email <span class="text-danger">*</span></label
+                  >
+                  <div class="invalid-feedback">
+                    Vui lòng nhập địa chỉ email hợp lệ.
+                  </div>
+                </div>
+                <div class="form-floating mb-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="subject"
+                    placeholder="Nhập tiêu đề"
+                    required
+                  />
+                  <label for="subject"
+                    >Tiêu đề <span class="text-danger">*</span></label
+                  >
+                  <div class="invalid-feedback">Vui lòng nhập tiêu đề.</div>
+                </div>
+                <div class="form-floating mb-4">
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    placeholder="Nhập nội dung"
+                    style="height: 150px"
+                    required
+                  ></textarea>
+                  <label for="message"
+                    >Nội dung <span class="text-danger">*</span></label
+                  >
+                  <div class="invalid-feedback">Vui lòng nhập nội dung.</div>
+                </div>
+                <!-- Honeypot Field -->
+                <div
+                  class="mb-4 honeypot-field"
+                  aria-hidden="true"
+                  tabindex="-1"
+                >
+                  <label for="contactTime"
+                    >Nếu bạn là người thật, hãy bỏ trống trường này:</label
+                  >
+                  <input
+                    type="text"
+                    id="contactTime"
+                    name="contactTime"
+                    class="form-control"
+                    autocomplete="off"
+                  />
+                </div>
+                <button type="submit" class="btn btn-submit w-100">
+                  Gửi yêu cầu
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <div>
+      <iframe src="footer.html" frameborder="0" width="100%" height="450px" scrolling="no"></iframe>
+    </div>
+    <!-- end footer-->
+    
+    <!-- Bootstrap JS and dependencies -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+3i5d5L5hb5g7v4l5Y5b5Y5b5Y5b5"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom JS for Form Validation -->
+    <script>
+      (function () {
+        "use strict";
+
+        const form = document.getElementById("contactForm");
+        const successMessage = document.getElementById("successMessage");
+        const honeypotError = document.getElementById("honeypotError");
+        const formError = document.getElementById("formError");
+
+        // Hàm ẩn tất cả các thông báo
+        function hideMessages() {
+          successMessage.style.display = "none";
+          honeypotError.style.display = "none";
+          formError.style.display = "none";
+        }
+
+        // Hàm kiểm tra Honeypot
+        function isHoneypotFilled() {
+          const honeypot = document.getElementById("contactTime").value;
+          return honeypot.trim() !== "";
+        }
+
+        // Hàm xử lý khi form hợp lệ
+        function handleValidForm() {
+          // Giả lập gửi form thành công
+          // Trong thực tế, bạn cần gửi dữ liệu đến server ở đây
+          successMessage.style.display = "block";
+          form.reset();
+          form.classList.remove("was-validated");
+        }
+
+        // Hàm xử lý khi form không hợp lệ
+        function handleInvalidForm() {
+          form.classList.add("was-validated");
+        }
+
+        // Xử lý sự kiện submit
+        form.addEventListener(
+          "submit",
+          function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            hideMessages();
+
+            if (isHoneypotFilled()) {
+              honeypotError.style.display = "block";
+              return;
+            }
+
+            if (form.checkValidity()) {
+              handleValidForm();
+            } else {
+              handleInvalidForm();
+            }
+          },
+          false
+        );
+
+        // Xử lý các sự kiện focus và blur cho các trường bắt buộc
+        const requiredFields = form.querySelectorAll("[required]");
+        requiredFields.forEach((field) => {
+          field.addEventListener("focus", () => {
+            field.classList.remove("is-invalid");
+          });
+
+          field.addEventListener("blur", () => {
+            if (!field.checkValidity()) {
+              field.classList.add("is-invalid");
+            }
+          });
+        });
+
+        // Xử lý các thay đổi trong các trường input để loại bỏ class 'is-invalid'
+        form.addEventListener("input", (event) => {
+          if (event.target.classList.contains("form-control")) {
+            event.target.classList.remove("is-invalid");
+          }
+        });
+      })();
+    </script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  </body>
+</html>
