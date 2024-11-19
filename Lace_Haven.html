@@ -41,7 +41,7 @@
       .breadcrumb-item.active {
         color: #fff; /* Màu chữ trắng cho mục active */
       }
-
+      /* Sidebar Styles */
       .sidebar {
         background-color: #fff;
         padding: 20px;
@@ -196,9 +196,6 @@
         padding: 0;
       }
 
-      /* Responsive điều chỉnh cho List View (đã loại bỏ vì không sử dụng) */
-      /* Loại bỏ các kiểu CSS liên quan đến List View */
-
       /* Giới hạn độ dài văn bản */
       .card-title {
         white-space: nowrap;
@@ -217,172 +214,324 @@
         margin-top: 20px; /* Khoảng cách trên tiêu đề "Thương hiệu" */
         margin-bottom: 20px; /* Khoảng cách dưới tiêu đề "Thương hiệu" */
       }
+
+      .sidebar {
+        text-align: left;
+      }
+
+      .sidebar h5 {
+        text-align: left;
+      }
+
+      .sidebar a {
+        text-align: left;
+      }
+
+      .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 9999;
+        pointer-events: none; /* Ban đầu không cho phép click */
+      }
+
+      .back-to-top.show {
+        opacity: 1;
+        pointer-events: all; /* Cho phép click khi hiển thị */
+      }
+
+      .icon-buttons {
+        position: fixed;
+        bottom: 80px; /* Cách đáy 80px */
+        right: 20px; /* Cách phải 20px */
+        display: flex; /* Sắp xếp các nút theo cột */
+        flex-direction: column;
+        gap: 15px; /* Khoảng cách giữa các nút */
+        z-index: 9999; /* Đặt lên trên các thành phần khác */
+      }
+
+      .icon-btn {
+        display: flex; /* Căn giữa icon trong nút */
+        justify-content: center;
+        align-items: center;
+        width: 55px; /* Kích thước nút 55x55px */
+        height: 55px;
+        border-radius: 50%; /* Tạo nút tròn */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
+        transition: transform 0.3s; /* Hiệu ứng thay đổi kích thước khi hover */
+        opacity: 0.85; /* Độ mờ ban đầu */
+      }
+
+      .facebook-btn {
+        background-color: #1877f2; /* Màu xanh của Facebook */
+        color: #ffffff; /* Màu trắng cho biểu tượng */
+      }
+
+      .call-btn {
+        background-color: #e53935; /* Màu đỏ của nút gọi điện */
+        color: #ffffff; /* Màu trắng cho biểu tượng */
+      }
+
+      .icon-btn:hover {
+        transform: scale(1.1); /* Tăng kích thước khi hover */
+        opacity: 1; /* Hiện rõ hơn khi hover */
+      }
+      #back-to-top {
+        opacity: 1 !important;
+        pointer-events: all !important;
+      }
     </style>
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/navbar.css" />
   </head>
   <body>
-    
-      <!-- header -->
-<div class="container-fluid">
-  <iframe src="header.html" frameborder="0" width="100%" height="120px"></iframe>
-</div>
-<!-- end header-->
-<!-- navbar -->
-  <!-- navbar -->
-  <div class="container-fluid">
-      <!--navbar for page-->
-      <nav class="navbar navbar-expand-lg" style="background-color: #4FD0B6; height: 40px;">
-          <div class="container-fluid">
-              <a class="navbar-brand text-white" href="index.html">Trang chủ</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                      <li class="nav-item">
-                          <div class="dropdown">
-                              <a class="nav-link dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Sản phẩm
-                              </a>
-                              <ul class="dropdown-menu custom-dropdown" aria-labelledby="dropdownMenuLink">
-                                  <div class="dropdown-item">
-                                      <div class="container">
-                                          <div class="row">
-                                              <h4>Sản phẩm nổi bật</h4>
-                                              <div class="col-md-3">
-                                                  <div class="card">
-                                                      <img src="images/navbar1.jpg" class="card-img-top" alt="...">
-                                                      <div class="card-body">
-                                                          <h4 class="card-title" style="text-align: center;">Vải lụa</h4>
-                                                      </div>
-                                                  </div>
-                                              </div>
+    <!-- Header -->
+    <div class="container-fluid">
+      <iframe
+        src="header.html"
+        frameborder="0"
+        width="100%"
+        height="120px"
+      ></iframe>
+    </div>
+    <!-- End Header -->
 
-                                              <div class="col-md-3">
-                                                  <div class="card">
-                                                      <img src="images/navbar2.jpg" class="card-img-top" alt="...">
-                                                      <div class="card-body">
-                                                          <h4 class="card-title" style="text-align: center;">Vải kaki</h4>
-                                                      </div>
-                                                  </div>
-                                              </div>
-
-                                              <div class="col-md-3">
-                                                  <div class="card">
-                                                      <img src="images/navbar3.jpg" class="card-img-top" alt="...">
-                                                      <div class="card-body">
-                                                          <h4 class="card-title" style="text-align: center;">Vải nhung</h4>
-                                                      </div>
-                                                  </div>
-                                              </div>
-
-                                              <div class="col-md-3">
-                                                  <div class="card">
-                                                      <img src="images/navbar4.jpg" class="card-img-top" alt="...">
-                                                      <div class="card-body">
-                                                          <h4 class="card-title" style="text-align: center;">Vải Linen</h4>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                     </div>
-                                  </div>
-                                  <div class="dropdown-item">
-                                      <div class="row">
-                                          <div class="col-md-2">
-                                              <h4>Bán chạy</h4>
-                                              <a href="...">Vải Cotton</a><br>
-                                              <a href="...">Vải Linen</a><br>
-                                              <a href="...">Vải Silk</a><br>
-                                              <a href="...">Polyester</a><br>
-                                              <a href="...">Denim</a><br>
-                                          </div>
-
-                                          <div class="col-md-2">
-                                              <h4>Mùa đông</h4>
-                                              <a href="...">Vải len</a><br>
-                                              <a href="...">Vải nhung</a><br>
-                                              <a href="...">Vải lanh</a><br>
-                                              <a href="...">Vải da</a><br>
-                                              <a href="...">Vải dù</a>
-                                              
-                                          </div>
-
-                                          <div class="col-md-2">
-                                              <h4>Mùa hè</h4>
-                                              <a href="...">Vải Cotton</a><br>
-                                              <a href="...">Vải Linen </a><br>
-                                              <a href="...">Vải Rayon</a><br>
-                                              <a href="...">Vải Bamboo </a><br>
-                                              <a href="...">Vải Chambray</a><br>
-                                          </div>
-
-                                          <div class="col-md-2">
-                                              <h4>Mùa thu</h4>
-                                              <a href="...">Vải Cotton</a>   <br> 
-                                              <a href="...">Vải Wool </a><br>
-                                              <a href="...">Vải Tweed</a><br>
-                                              <a href="...">Vải Flannel</a><br>
-                                              <a href="...">Vải Corduroy</a><br>
-                                              <a href="...">Vải Denim</a><br>
-                                          </div>
-
-                                          <div class="col-md-2">
-                                              <h4>Đồng phục</h4>
-                                              <a href="...">Polyester</a><br>
-                                              <a href="...">Cotton-PVC</a><br>
-                                              <a href="...">Nỉ </a><br>
-                                              <a href="...">Kaki</a><br>
-                                              <a href="...">Lanh </a><br>
-
-                                          </div>
-
-                                          <div class="col-md-2">
-                                              <h4>Nội thất</h4>
-                                              <a href="...">Vải Cotton</a><br>
-                                              <a href="...">Vải Microfiber</a><br>
-                                              <a href="...">Vải Velvet</a><br>
-                                              <a href="...">Vải Polyester</a><br>
-                                              <a href="...">Vải Tweed</a><br>
-                                              <a href="...">Vải Canvas</a><br>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  
-                              </ul>
+    <!-- Navbar -->
+    <div class="container-fluid">
+      <!-- Navbar for page -->
+      <nav
+        class="navbar navbar-expand-lg"
+        style="background-color: #4fd0b6; height: 40px"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="index.html">Trang chủ</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <!-- Dropdown Sản phẩm -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sản phẩm
+                </a>
+                <ul
+                  class="dropdown-menu custom-dropdown"
+                  aria-labelledby="dropdownMenuLink"
+                >
+                  <div class="dropdown-item">
+                    <div class="container">
+                      <div class="row">
+                        <h4>Sản phẩm nổi bật</h4>
+                        <!-- Thêm các sản phẩm nổi bật ở đây nếu cần -->
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar1.jpg"
+                              class="card-img-top"
+                              alt="Vải lụa"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải lụa</h4>
+                            </div>
                           </div>
-                      </li>
-                      <li class="nav-item">
-                        <!-- create dropdown with bootstrap-->
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="product.html">Vải may mặc</a>
-                        </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="fabric_blog.html">Vải nội thất</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="Button_Up.html">Phụ kiện may mặc</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="contact.html">Liên hệ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="policyReturn.html">Chính sách đổi trả</a>
-                    </li>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar2.jpg"
+                              class="card-img-top"
+                              alt="Vải kaki"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải kaki</h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar3.jpg"
+                              class="card-img-top"
+                              alt="Vải nhung"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải nhung</h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar4.jpg"
+                              class="card-img-top"
+                              alt="Vải Linen"
+                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
+                            />
+                            <div class="card-body">
+                              <h4 class="card-title text-center">Vải Linen</h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Các danh mục sản phẩm -->
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <h4>Bán chạy nhất</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Linen</a><br />
+                        <a href="#">Vải Silk</a><br />
+                        <a href="#">Polyester</a><br />
+                        <a href="#">Denim</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Mới nhất</h4>
+                        <a href="#">Vải len</a><br />
+                        <a href="#">Vải nhung</a><br />
+                        <a href="#">Vải lanh</a><br />
+                        <a href="#">Vải da</a><br />
+                        <a href="#">Vải dù</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Từ thấp đến cao</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Linen</a><br />
+                        <a href="#">Vải Rayon</a><br />
+                        <a href="#">Vải Bamboo</a><br />
+                        <a href="#">Vải Chambray</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Từ cao đến thấp</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Wool</a><br />
+                        <a href="#">Vải Tweed</a><br />
+                        <a href="#">Vải Flannel</a><br />
+                        <a href="#">Vải Corduroy</a><br />
+                        <a href="#">Vải Denim</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Đồng phục</h4>
+                        <a href="#">Polyester</a><br />
+                        <a href="#">Cotton-PVC</a><br />
+                        <a href="#">Nỉ</a><br />
+                        <a href="#">Kaki</a><br />
+                        <a href="#">Lanh</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Nội thất</h4>
+                        <a href="#">Vải Cotton</a><br />
+                        <a href="#">Vải Microfiber</a><br />
+                        <a href="#">Vải Velvet</a><br />
+                        <a href="#">Vải Polyester</a><br />
+                        <a href="#">Vải Tweed</a><br />
+                        <a href="#">Vải Canvas</a><br />
+                      </div>
+                    </div>
+                  </div>
+                </ul>
+              </li>
+              <!-- Các mục khác trong navbar -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="product.html"
+                  >Vải may mặc</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="fabric_blog.html"
+                  >Vải nội thất</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  id="accessoryDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Phụ kiện may mặc
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="accessoryDropdown">
+                  <li>
+                    <a class="dropdown-item" href="Lace_Haven.html">REN</a>
                   </li>
-                  </ul>
-              </div>
+                  <li><hr class="dropdown-divider" /></li>
+
+                  <li>
+                    <a class="dropdown-item" href="Button_Up.html">NÚT ÁO</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" href="ZipStar.html">DÂY KÉO</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="designProduct.html"
+                  >Các mẫu thiết kế</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="policyReturn.html"
+                  >Chính sách đổi trả</a
+                >
+              </li>
+            </ul>
           </div>
+        </div>
       </nav>
-      <!--end navbar for page-->
-  </div>
-    <!-- end navbar-->
+      <!-- End Navbar for page -->
+    </div>
+    <!-- End Navbar -->
+
     <!-- Container chính -->
     <div class="container mt-3">
-     
       <div class="row">
         <!-- Sidebar -->
         <div class="col-md-3">
@@ -492,6 +641,8 @@
             </div>
           </div>
         </div>
+        <!-- End Sidebar -->
+
         <!-- Nội dung chính -->
         <div class="col-md-9">
           <!-- Header Controls: Title, Sort, Pagination -->
@@ -502,12 +653,12 @@
               <h5 class="mb-0">REN CAO CẤP Vô Vàn Vải</h5>
             </div>
             <div class="header-right d-flex align-items-center">
-              <!-- Loại bỏ view-toggle -->
+              <!-- Bộ lọc sắp xếp -->
               <select class="form-select d-inline-block w-auto" id="sortSelect">
-                <option value="name-asc" selected>Sắp xếp theo: Tên A-Z</option>
-                <option value="name-desc">Tên Z-A</option>
-                <option value="price-asc">Giá tăng dần</option>
-                <option value="price-desc">Giá giảm dần</option>
+                <option value="newest" selected>Mới nhất</option>
+                <option value="best-selling">Bán chạy nhất</option>
+                <option value="price-asc">Từ thấp đến cao</option>
+                <option value="price-desc">Từ cao đến thấp</option>
               </select>
               <!-- Phân trang ở trên bên phải -->
               <nav aria-label="Page navigation example" class="ms-3">
@@ -544,17 +695,23 @@
 
           <!-- Product Grid -->
           <div class="row product-grid">
+            <!-- Duyệt từ Sản phẩm 1 đến Sản phẩm 26 -->
+            <!-- Mỗi sản phẩm có thuộc tính data-price, data-brand, data-date, data-sales -->
+            <!-- Ví dụ cho Sản phẩm 1 đến Sản phẩm 26 -->
             <!-- Sản phẩm 1 -->
             <div
               class="col-md-4 mb-4"
               data-price="549500"
               data-brand="REN Chính Hãng"
+              data-date="2024-05-10"
+              data-sales="200"
             >
               <div class="card h-100">
                 <img
                   src="images/vairenthantienmautrang.jpg"
                   class="card-img-top"
                   alt="REN Thần Tiên"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
                 <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
@@ -585,13 +742,17 @@
               class="col-md-4 mb-4"
               data-price="699500"
               data-brand="REN Giảm Giá"
+              data-date="2024-04-15"
+              data-sales="180"
             >
               <div class="card h-100">
                 <img
                   src="images/renthaitrangxanhdam.jpg"
                   class="card-img-top"
                   alt="REN Thái Trang"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -620,13 +781,17 @@
               class="col-md-4 mb-4"
               data-price="749000"
               data-brand="REN Chính Hãng"
+              data-date="2024-06-20"
+              data-sales="220"
             >
               <div class="card h-100">
                 <img
                   src="images/vairensangthantienmaudo.jpg"
                   class="card-img-top"
                   alt="REN Sang Tiên"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -651,13 +816,21 @@
             </div>
 
             <!-- Sản phẩm 4 -->
-            <div class="col-md-4 mb-4" data-price="899000" data-brand="REN Mới">
+            <div
+              class="col-md-4 mb-4"
+              data-price="899000"
+              data-brand="REN Mới"
+              data-date="2024-07-05"
+              data-sales="150"
+            >
               <div class="card h-100">
                 <img
                   src="images/vairenuocmomauhong.jpg"
                   class="card-img-top"
                   alt="REN Mơ Ước"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -680,18 +853,23 @@
               </div>
             </div>
 
-            <!-- Sản phẩm 5 -->
+            <!-- Tiếp tục tương tự cho các sản phẩm 5 đến 26 -->
+            <!-- Ví dụ cho Sản phẩm 5 -->
             <div
               class="col-md-4 mb-4"
               data-price="499000"
               data-brand="REN Giảm Giá"
+              data-date="2024-03-25"
+              data-sales="300"
             >
               <div class="card h-100">
                 <img
                   src="images/rennangdongmauvang.jpg"
                   class="card-img-top"
                   alt="REN Năng Động"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -719,13 +897,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Chính Hãng"
+              data-date="2024-02-18"
+              data-sales="250"
             >
               <div class="card h-100">
                 <img
                   src="images/renthanhlichmauden.jpg"
                   class="card-img-top"
                   alt="REN Thanh Lịch"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -749,13 +931,21 @@
             </div>
 
             <!-- Sản phẩm 7 -->
-            <div class="col-md-4 mb-4" data-price="649000" data-brand="REN Mới">
+            <div
+              class="col-md-4 mb-4"
+              data-price="649000"
+              data-brand="REN Mới"
+              data-date="2024-08-12"
+              data-sales="180"
+            >
               <div class="card h-100">
                 <img
                   src="images/rensangtaomauxam.jpg"
                   class="card-img-top"
                   alt="REN Sáng Tạo"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -784,13 +974,17 @@
               class="col-md-4 mb-4"
               data-price="1499000"
               data-brand="REN Giảm Giá"
+              data-date="2024-01-30"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
                   src="images/rencodienmaunau.jpg"
                   class="card-img-top"
                   alt="REN Cổ Điển"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -818,13 +1012,17 @@
               class="col-md-4 mb-4"
               data-price="599000"
               data-brand="REN Giảm Giá"
+              data-date="2024-09-05"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
                   src="images/renhiendaimauxanhla.jpg"
                   class="card-img-top"
                   alt="REN Hiện Đại"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -848,20 +1046,22 @@
               </div>
             </div>
 
-            <!-- Thêm các sản phẩm cho trang 2 và 3 -->
-            <!-- Bạn có thể sao chép các sản phẩm trên và thay đổi thuộc tính data-price và data-brand phù hợp -->
             <!-- Sản phẩm 10 -->
             <div
               class="col-md-4 mb-4"
               data-price="1599000"
               data-brand="REN Chính Hãng"
+              data-date="2024-10-01"
+              data-sales="190"
             >
               <div class="card h-100">
                 <img
                   src="images/renluatotam.jpg"
                   class="card-img-top"
                   alt="REN Lụa Tơ Tằm"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -886,13 +1086,21 @@
             </div>
 
             <!-- Sản phẩm 11 -->
-            <div class="col-md-4 mb-4" data-price="799000" data-brand="REN Mới">
+            <div
+              class="col-md-4 mb-4"
+              data-price="799000"
+              data-brand="REN Mới"
+              data-date="2024-11-12"
+              data-sales="175"
+            >
               <div class="card h-100">
                 <img
                   src="images/renvailoanmautrang.jpg"
                   class="card-img-top"
                   alt="REN Vải Voan"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -921,13 +1129,17 @@
               class="col-md-4 mb-4"
               data-price="1249000"
               data-brand="REN Giảm Giá"
+              data-date="2024-07-22"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_polyester_xanhlacay.jpg"
                   class="card-img-top"
                   alt="REN Vải Polyester"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -958,13 +1170,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
+              data-date="2024-06-08"
+              data-sales="190"
             >
               <div class="card h-100">
                 <img
                   src="images/RenVaijean.jpg"
                   class="card-img-top"
                   alt="REN Vải Jean"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -993,13 +1209,17 @@
               class="col-md-4 mb-4"
               data-price="1199000"
               data-brand="REN Mới"
+              data-date="2024-08-30"
+              data-sales="170"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaisatin.jpg"
                   class="card-img-top"
                   alt="REN Vải Satin"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1028,13 +1248,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
+              data-date="2024-07-19"
+              data-sales="185"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaihoasi.jpg"
                   class="card-img-top"
                   alt="REN Vải Họa Sĩ"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1063,13 +1287,17 @@
               class="col-md-4 mb-4"
               data-price="1499000"
               data-brand="REN Giảm Giá"
+              data-date="2024-05-25"
+              data-sales="195"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaitoluavangngoc.jpg"
                   class="card-img-top"
                   alt="REN Vải Tơ Lụa"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1098,13 +1326,17 @@
               class="col-md-4 mb-4"
               data-price="899000"
               data-brand="REN Chính Hãng"
+              data-date="2024-09-18"
+              data-sales="160"
             >
               <div class="card h-100">
                 <img
                   src="images/Renvailinenmaunau.jpg"
                   class="card-img-top"
                   alt="REN Vải Linen"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1133,13 +1365,17 @@
               class="col-md-4 mb-4"
               data-price="1149000"
               data-brand="REN Giảm Giá"
+              data-date="2024-04-22"
+              data-sales="140"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_cashmere_timnhat.jpg"
                   class="card-img-top"
                   alt="REN Vải Cashmere"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1168,13 +1404,17 @@
               class="col-md-4 mb-4"
               data-price="1899000"
               data-brand="REN Mới"
+              data-date="2024-10-10"
+              data-sales="220"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_rayon_cam_sang.jpg"
                   class="card-img-top"
                   alt="REN Vải Rayon"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1199,13 +1439,21 @@
             </div>
 
             <!-- Sản phẩm 20 -->
-            <div class="col-md-4 mb-4" data-price="999000" data-brand="REN Mới">
+            <div
+              class="col-md-4 mb-4"
+              data-price="999000"
+              data-brand="REN Mới"
+              data-date="2024-11-01"
+              data-sales="230"
+            >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_spandex_den.jpg"
                   class="card-img-top"
                   alt="REN Vải Spandex"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1234,13 +1482,17 @@
               class="col-md-4 mb-4"
               data-price="1149000"
               data-brand="REN Mới"
+              data-date="2024-06-15"
+              data-sales="195"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_chambray_navy.jpg"
                   class="card-img-top"
                   alt="REN Vải Chambray"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1269,13 +1521,17 @@
               class="col-md-4 mb-4"
               data-price="899000"
               data-brand="REN Chính Hãng"
+              data-date="2024-07-28"
+              data-sales="155"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_flannel_nausam.jpg"
                   class="card-img-top"
                   alt="REN Vải Flannel"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1304,13 +1560,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
+              data-date="2024-05-18"
+              data-sales="210"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_fleece_xamnhat.jpg"
                   class="card-img-top"
                   alt="REN Vải Fleece"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1339,13 +1599,17 @@
               class="col-md-4 mb-4"
               data-price="2399000"
               data-brand="REN Mới"
+              data-date="2024-03-10"
+              data-sales="140"
             >
               <div class="card h-100">
                 <img
                   src="images/ren_vai_brocade_vanggold.jpg"
                   class="card-img-top"
                   alt="REN Vải Brocade"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1370,13 +1634,21 @@
             </div>
 
             <!-- Sản phẩm 25 -->
-            <div class="col-md-4 mb-4" data-price="999000" data-brand="REN Mới">
+            <div
+              class="col-md-4 mb-4"
+              data-price="999000"
+              data-brand="REN Mới"
+              data-date="2024-04-05"
+              data-sales="205"
+            >
               <div class="card h-100">
                 <img
                   src="images/renvaiintrangden.jpg"
                   class="card-img-top"
                   alt="REN Vải In"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1405,13 +1677,17 @@
               class="col-md-4 mb-4"
               data-price="1299000"
               data-brand="REN Giảm Giá"
+              data-date="2024-02-28"
+              data-sales="175"
             >
               <div class="card h-100">
                 <img
                   src="images/renvaitoluavangngoc.jpg"
                   class="card-img-top"
                   alt="REN Vải Tơ Lụa"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
                 />
+                <!-- Các nút Thêm vào Giỏ và Yêu Thích -->
                 <div class="card-actions">
                   <button class="btn btn-add-to-cart" title="Thêm vào giỏ">
                     <i class="fas fa-shopping-cart"></i>
@@ -1461,12 +1737,39 @@
         </div>
       </div>
     </div>
+    <!-- End Container chính -->
 
     <!-- Footer (nếu có) -->
     <div class="footer mt-3">
-      <iframe src="footer.html" frameborder="0" scrolling="no" width="100%" height="450px">  </iframe>
-  </div>
-<!-- end footer-->
+      <iframe
+        src="footer.html"
+        frameborder="0"
+        scrolling="no"
+        width="100%"
+        height="450px"
+      ></iframe>
+    </div>
+    <!-- End Footer -->
+
+    <!-- Nút Biểu Tượng -->
+    <div class="icon-buttons">
+      <a
+        href="https://facebook.com"
+        class="icon-btn facebook-btn"
+        target="_blank"
+      >
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="tel:+84123456789" class="icon-btn call-btn">
+        <i class="fas fa-phone"></i>
+      </a>
+    </div>
+
+    <!-- Nút Back to Top -->
+    <button id="back-to-top" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -1502,9 +1805,8 @@
           );
           const priceRanges = checkedPriceFilters.map((filter) => {
             const min = parseInt(filter.getAttribute("data-min")) || 0;
-            const max =
-              parseInt(filter.getAttribute("data-max")) ||
-              Number.MAX_SAFE_INTEGER;
+            const maxStr = filter.getAttribute("data-max");
+            const max = maxStr ? parseInt(maxStr) : Number.MAX_SAFE_INTEGER;
             return { min, max };
           });
 
@@ -1561,20 +1863,7 @@
               b.querySelector(".discounted-price").textContent.trim()
             );
 
-            const nameA = a
-              .querySelector(".card-title")
-              .textContent.trim()
-              .toLowerCase();
-            const nameB = b
-              .querySelector(".card-title")
-              .textContent.trim()
-              .toLowerCase();
-
-            if (sortValue === "name-asc") {
-              return nameA.localeCompare(nameB);
-            } else if (sortValue === "name-desc") {
-              return nameB.localeCompare(nameA);
-            } else if (sortValue === "price-asc") {
+            if (sortValue === "price-asc") {
               return priceA - priceB;
             } else if (sortValue === "price-desc") {
               return priceB - priceA;
@@ -1582,10 +1871,17 @@
               return 0;
             }
           });
+
+          // Sắp xếp lại sản phẩm để hiển thị theo thứ tự trên từng dòng
+          for (let i = 0; i < filteredProducts.length; i++) {
+            const row = Math.floor(i / 3); // Mỗi hàng có 3 sản phẩm
+            filteredProducts[i].setAttribute("data-row", row);
+          }
         }
 
         // Hàm để hiển thị sản phẩm của một trang cụ thể
         function renderProducts() {
+          // Ẩn tất cả sản phẩm
           const productCards = document.querySelectorAll(
             ".product-grid .col-md-4"
           );
@@ -1593,14 +1889,25 @@
             card.classList.add("d-none");
           });
 
+          // Hiển thị sản phẩm theo trang hiện tại
           const start = (currentPage - 1) * productsPerPage;
           const end = start + productsPerPage;
           const productsToShow = filteredProducts.slice(start, end);
 
-          productsToShow.forEach((card) => {
+          productsToShow.forEach((card, index) => {
+            const row = Math.floor(index / 3);
             card.classList.remove("d-none");
+            card.style.order = row * 3 + (index % 3); // Thiết lập thứ tự trên từng dòng
           });
         }
+
+        // Thêm sự kiện cho chọn sắp xếp
+        sortSelect.addEventListener("change", () => {
+          sortFilteredProducts();
+          currentPage = 1;
+          localStorage.setItem("currentPage", "1");
+          renderPagination();
+        });
 
         // Hàm để cập nhật trạng thái phân trang
         function updatePagination(totalPages) {
@@ -1609,30 +1916,47 @@
           paginations.forEach((pagination) => {
             const pageItems = pagination.querySelectorAll(".page-item");
 
+            // Xóa các trang cũ (trừ prev và next)
             pageItems.forEach((item) => {
               const page = item.getAttribute("data-page");
-
-              if (page === "prev") {
-                if (currentPage === 1) {
-                  item.classList.add("disabled");
-                } else {
-                  item.classList.remove("disabled");
-                }
-              } else if (page === "next") {
-                if (currentPage === totalPages) {
-                  item.classList.add("disabled");
-                } else {
-                  item.classList.remove("disabled");
-                }
-              } else {
-                const pageNumber = parseInt(page);
-                if (pageNumber === currentPage) {
-                  item.classList.add("active");
-                } else {
-                  item.classList.remove("active");
-                }
+              if (page !== "prev" && page !== "next") {
+                item.remove();
               }
             });
+
+            // Thêm các trang mới
+            for (let i = 1; i <= totalPages; i++) {
+              const li = document.createElement("li");
+              li.classList.add("page-item");
+              if (i === currentPage) {
+                li.classList.add("active");
+                li.setAttribute("aria-current", "page");
+              }
+              li.setAttribute("data-page", i);
+              const a = document.createElement("a");
+              a.classList.add("page-link");
+              a.href = "#";
+              a.textContent = i;
+              li.appendChild(a);
+              // Insert before the "next" button
+              const nextBtn = pagination.querySelector('li[data-page="next"]');
+              pagination.insertBefore(li, nextBtn);
+            }
+
+            // Cập nhật trạng thái nút "Trước" và "Sau"
+            const prevBtn = pagination.querySelector('li[data-page="prev"]');
+            if (currentPage === 1) {
+              prevBtn.classList.add("disabled");
+            } else {
+              prevBtn.classList.remove("disabled");
+            }
+
+            const nextBtn = pagination.querySelector('li[data-page="next"]');
+            if (currentPage === totalPages || totalPages === 0) {
+              nextBtn.classList.add("disabled");
+            } else {
+              nextBtn.classList.remove("disabled");
+            }
           });
         }
 
@@ -1743,6 +2067,25 @@
 
         // Lọc sản phẩm ban đầu
         filterProducts();
+      });
+
+      // Hiển thị nút "Back to Top" khi cuộn xuống
+      window.addEventListener("scroll", () => {
+        const backToTopButton = document.getElementById("back-to-top");
+        if (window.scrollY > 200) {
+          // Hiển thị khi cuộn xuống hơn 200px
+          backToTopButton.classList.add("show");
+        } else {
+          backToTopButton.classList.remove("show");
+        }
+      });
+
+      // Thêm sự kiện click cho nút "Back to Top"
+      document.getElementById("back-to-top").addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // Cuộn về đầu trang một cách mượt mà
+        });
       });
     </script>
   </body>
