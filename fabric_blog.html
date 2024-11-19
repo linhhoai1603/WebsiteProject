@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Blog về nội thất</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS mà không có integrity -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet" />
+    <style>
+       /* Custom styles for dropdown hover */
+       .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
+      /* Custom size for the dropdown menu */
+      .dropdown-menu.custom-dropdown {
+        width: 1000px; /* Set width */
+        height: 450px; /* Set height */
+        overflow: auto; /* Enable scrolling if content overflows */
+      }
+      .card {
+        width: 100%;
+        height: 200px;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: black !important;
+        text-align: center;
+      }
+      .dropdown-item .row .col-md-2 h4 {
+        font-size: 20px;
+      }
+      /* Custom Styles */
+      .main-navbar {
+        background-color: #4fd0b6 !important; /* Đặt màu cho header */
+      }
+      .post-category {
+        background-color: #4fd0b6;
+        color: #ffffff; /* Màu chữ để nổi bật trên nền xanh */
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .post-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+      .post-meta a {
+        text-decoration: none;
+        color: #6c757d;
+      }
+      .image-caption {
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+      .section-title {
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+      /* Card sản phẩm chung */
+      .product-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 15px;
+        transition: transform 0.2s;
+        background-color: #fff;
+        position: relative;
+        height: 480px; /* Đặt chiều cao cố định cho tất cả các card */
+        width: 100%; /* Đảm bảo chiều rộng chiếm hết cột */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      /* Hình ảnh trong card */
+      .product-card img {
+        height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+        width: 100%; /* Chiều rộng bằng với card */
+        object-fit: cover; /* Đảm bảo hình ảnh giữ nguyên tỷ lệ và không bị méo */
+        border-radius: 10px;
+      }
+      .product-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .discount-badge {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background-color: #dc3545;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+      .price {
+        color: #28a745;
+        font-weight: bold;
+        margin-top: auto;
+      }
+      /* Giá gốc và giá giảm */
+      .original-price {
+        text-decoration: line-through;
+        color: #6c757d;
+        margin-top: 10px;
+      }
+      /* Giá sản phẩm */
+      .original-price,
+      .discounted-price {
+        text-align: center; /* Căn giữa giá */
+        font-size: 0.9rem;
+      }
+      .discounted-price {
+        color: #28a745;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+      .sidebar .list-group-item a {
+        text-decoration: none;
+        color: #343a40;
+      }
+      .recent-posts .card {
+        border: none;
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .recent-posts .card:last-child {
+        border-bottom: none;
+      }
+      .recent-posts .card-title {
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+      footer {
+        background-color: #f8f9fa;
+        border-top: 1px solid #e0e0e0;
+      }
+      /* Responsive adjustments */
+      @media (max-width: 992px) {
+        .sidebar {
+          margin-top: 30px;
+        }
+      }
+      /* Tiêu đề sản phẩm */
+      .product-title {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 1rem;
+        text-align: center; /* Căn giữa tiêu đề */
+      }
+      /* Additional Styles for Product Sections */
+      .product-section {
+        margin-top: 50px;
+      }
+
+      /* Thay đổi màu cho badge trong danh sách "CHUYÊN MỤC" */
+      .sidebar .badge {
+        background-color: #4fd0b6; /* Màu nền xanh */
+        color: #ffffff; /* Màu chữ trắng */
+      }
+
+      /* CSS cho nút biểu tượng */
+      .icon-buttons {
+        position: fixed;
+        bottom: 80px; /* Căn chỉnh cách đáy */
+        right: 20px; /* Vị trí từ phải */
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Khoảng cách giữa các nút */
+        z-index: 9999;
+      }
+
+      .icon-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 55px; /* Kích thước nút biểu tượng */
+        height: 55px;
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+        opacity: 0.85; /* Tạo hiệu ứng mờ */
+      }
+
+      .facebook-btn {
+        background-color: #1877f2; /* Màu xanh Facebook */
+        color: #ffffff;
+      }
+
+      .call-btn {
+        background-color: #e53935; /* Màu đỏ gọi điện */
+        color: #ffffff;
+      }
+
+      .icon-btn:hover {
+        transform: scale(1.1);
+        opacity: 1; /* Hiện rõ hơn khi hover */
+      }
+
+      /* CSS cho nút Back to Top */
+      .back-to-top {
+        position: fixed;
+        bottom: 20px; /* Căn chỉnh cách đáy */
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border: none;
+        border-radius: 50%;
+        background-color: #ffffff;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: 9999;
+      }
+
+      .back-to-top.show {
+        opacity: 0.85;
+      }
+
+      /* Định dạng cho các nút hành động trong card sản phẩm */
+      .product-actions {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        gap: 15px; /* Khoảng cách giữa các icon */
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      /* Card sản phẩm chung - hiển thị các nút khi hover */
+      .product-card:hover .product-actions {
+        opacity: 1; /* Hiển thị các nút khi hover */
+      }
+
+      /* Định dạng chung cho icon */
+      .product-actions i {
+        background-color: rgba(255, 255, 255, 0.9); /* Nền trắng mờ */
+        padding: 10px;
+        border-radius: 50%;
+        color: #333; /* Màu của icon */
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: transform 0.3s, background-color 0.3s;
+      }
+
+      /* Hiệu ứng khi hover vào icon */
+      .product-actions i:hover {
+        transform: scale(1.1);
+        background-color: rgba(255, 255, 255, 1); /* Nền rõ hơn khi hover */
+      }
+
+      /* CSS cho nút hành động */
+      .action-btn {
+        border: none;
+        padding: 8px 12px;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px; /* Khoảng cách giữa icon và text */
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      /* Thêm vào giỏ - màu xanh lá cây */
+      .add-to-cart {
+        background-color: #28a745; /* Màu xanh lá */
+      }
+
+      .add-to-cart:hover {
+        background-color: #218838; /* Màu đậm hơn khi hover */
+        transform: scale(1.05);
+      }
+
+      /* So sánh sản phẩm - màu xanh dương */
+      .compare-product {
+        background-color: #007bff; /* Màu xanh dương */
+      }
+
+      .compare-product:hover {
+        background-color: #0056b3; /* Màu đậm hơn khi hover */
+        transform: scale(1.05);
+      }
+
+
+        /* Styles từ phần liên quan tới Related Posts và Comment Section */
+        .post-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .post-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .post-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .post-date {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .post-content {
+            padding: 15px;
+        }
+
+        .category-badge {
+            background-color: #c2a36b;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .read-more {
+            color: #c2a36b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .carousel-indicators {
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: #ddd;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .carousel-indicators .active {
+            background-color: #333;
+        }
+
+        .tags {
+            margin-bottom: 15px;
+        }
+
+        .tags .btn {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .social-icons .icon {
+    margin-right: 10px;
+    color: white; /* Màu của biểu tượng bên trong */
+    width: 50px; /* Kích thước vòng tròn */
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+
+.facebook-icons .facebook {
+    background-color: #3b5998; /* Màu nền Facebook */
+}
+
+.social-icons .twitter {
+    background-color: #1da1f2; /* Màu nền Twitter */
+}
+
+.social-icons .pinterest {
+    background-color: #bd081c; /* Màu nền Pinterest */
+}
+
+.social-icons .linkedin {
+    background-color: #0077b5; /* Màu nền LinkedIn */
+}
+
+.social-icons .telegram {
+    background-color: #0088cc; /* Màu nền Telegram */
+}
+
+/* Hiệu ứng khi hover vào biểu tượng */
+.social-icons .icon:hover {
+    transform: scale(1.1); /* Tăng kích thước khi hover */
+    background-color: #555; /* Đổi màu nền khi hover, có thể tùy chỉnh */
+}
+
+
+        .comment-section textarea,
+        .comment-section input {
+            margin-bottom: 15px;
+        }
+
+      .btn-submit {
+    background-color: #4FD0B6; /* Màu nền xanh #4FD0B6 */
+    color: #ffffff; /* Màu chữ trắng */
+    border: none; /* Bỏ viền */
+  }
+
+        .btn-submit:hover {
+            background-color: #a68a5a;
+        }
+
+
+        .carousel-indicators button {
+    background-color: #000; /* Màu đen cho dấu chấm tròn */
+    width: 12px; /* Đường kính của dấu chấm tròn */
+    height: 12px;
+    border-radius: 50%; /* Làm dấu chấm tròn */
+    border: none; /* Bỏ viền */
+}
+
+.carousel-indicators .active {
+    background-color: #333; /* Màu đậm hơn cho dấu chấm đang được chọn */
+}
+
+
+.carousel-item img {
+    object-fit: cover;
+    width: 100%;
+    height: 400px; /* Đảm bảo chiều cao hợp lý cho hình ảnh */
+}
+
+.btn-green {
+    background-color: #28a745; /* Màu xanh lá cây */
+    color: white; /* Chữ màu trắng */
+    border: none; /* Loại bỏ đường viền */
+  }
+
+  .btn-green:hover {
+    background-color: #218838; /* Màu đậm hơn khi hover */
+  }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <div class="container-fluid">
+      <iframe src="header.html" frameborder="0" scrolling="no" width="100%" height="120px"></iframe>
+   </div>
+  <!-- end header-->
+   <!-- navbar -->
+   <div class="container-fluid">
+    <!--navbar for page-->
+    <nav
+      class="navbar navbar-expand-lg"
+      style="background-color: #4fd0b6; height: 40px"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="index.html"
+          >Trang chủ</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <div class="dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-white"
+                  href="#"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Sản phẩm
+                </a>
+                <ul
+                  class="dropdown-menu custom-dropdown"
+                  aria-labelledby="dropdownMenuLink"
+                >
+                  <div class="dropdown-item">
+                    <div class="container">
+                      <div class="row">
+                        <h4>Sản phẩm nổi bật</h4>
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar1.jpg"
+                              class="card-img-top"
+                              alt="..."
+                            />
+                            <div class="card-body">
+                              <h4
+                                class="card-title"
+                                style="text-align: center"
+                              >
+                                Vải lụa
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar2.jpg"
+                              class="card-img-top"
+                              alt="..."
+                            />
+                            <div class="card-body">
+                              <h4
+                                class="card-title"
+                                style="text-align: center"
+                              >
+                                Vải kaki
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar3.jpg"
+                              class="card-img-top"
+                              alt="..."
+                            />
+                            <div class="card-body">
+                              <h4
+                                class="card-title"
+                                style="text-align: center"
+                              >
+                                Vải nhung
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="card">
+                            <img
+                              src="images/navbar4.jpg"
+                              class="card-img-top"
+                              alt="..."
+                            />
+                            <div class="card-body">
+                              <h4
+                                class="card-title"
+                                style="text-align: center"
+                              >
+                                Vải Linen
+                              </h4>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dropdown-item">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <h4>Bán chạy</h4>
+                        <a href="...">Vải Cotton</a><br />
+                        <a href="...">Vải Linen</a><br />
+                        <a href="...">Vải Silk</a><br />
+                        <a href="...">Polyester</a><br />
+                        <a href="...">Denim</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Mùa đông</h4>
+                        <a href="...">Vải len</a><br />
+                        <a href="...">Vải nhung</a><br />
+                        <a href="...">Vải lanh</a><br />
+                        <a href="...">Vải da</a><br />
+                        <a href="...">Vải dù</a>
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Mùa hè</h4>
+                        <a href="...">Vải Cotton</a><br />
+                        <a href="...">Vải Linen </a><br />
+                        <a href="...">Vải Rayon</a><br />
+                        <a href="...">Vải Bamboo </a><br />
+                        <a href="...">Vải Chambray</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Mùa thu</h4>
+                        <a href="...">Vải Cotton</a> <br />
+                        <a href="...">Vải Wool </a><br />
+                        <a href="...">Vải Tweed</a><br />
+                        <a href="...">Vải Flannel</a><br />
+                        <a href="...">Vải Corduroy</a><br />
+                        <a href="...">Vải Denim</a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Đồng phục</h4>
+                        <a href="...">Polyester</a><br />
+                        <a href="...">Cotton-PVC</a><br />
+                        <a href="...">Nỉ </a><br />
+                        <a href="...">Kaki</a><br />
+                        <a href="...">Lanh </a><br />
+                      </div>
+
+                      <div class="col-md-2">
+                        <h4>Nội thất</h4>
+                        <a href="...">Vải Cotton</a><br />
+                        <a href="...">Vải Microfiber</a><br />
+                        <a href="...">Vải Velvet</a><br />
+                        <a href="...">Vải Polyester</a><br />
+                        <a href="...">Vải Tweed</a><br />
+                        <a href="...">Vải Canvas</a><br />
+                      </div>
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <!-- create dropdown with bootstrap-->
+              <li class="nav-item">
+                  <a class="nav-link text-white" href="product.html">Vải may mặc</a>
+              </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="fabric_blog.html">Vải nội thất</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="Button_Up.html">Phụ kiện may mặc</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="designProduct.html">Các mẫu thiết kế</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link text-white" href="policyReturn.html">Chính sách đổi trả</a>
+          </li>
+        </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--end navbar for page-->
+  </div>
+    <!-- Main Content -->
+    <main class="container my-4">
+      <div class="row">
+        <!-- Bài Viết Chính -->
+        <section class="col-lg-8">
+          <!-- Danh Mục Bài Viết -->
+          <div class="post-category text-center">
+            VẢI NỘI THẤT, THIẾT KẾ NỘI THẤT
+          </div>
+
+          <!-- Tiêu Đề Bài Viết -->
+          <h1 class="post-title text-center">
+            Top 6 Các Loại Vải Nội Thất Phổ Biến Và Cách Bảo Quản
+          </h1>
+
+          <!-- Thông Tin Bài Viết -->
+          <div class="post-meta text-center mb-4">
+            Đăng bởi <a href="#">Nguyễn Lê Hoàng Khang</a>
+          </div>
+
+          <!-- Hình Ảnh Bài Viết -->
+          <div class="text-center mb-4">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/YyoDFeQWhi3qMK7NNjYDo9HhAiAxc3E3B7YF8dIgqLda8G3JA.jpg"
+              alt="A cozy bed with a chevron-patterned blanket, a book, and a cup of coffee on a tray"
+              class="post-image img-fluid rounded"
+            />
+            <div class="image-caption text-center mt-2">
+              Một chiếc giường ấm cúng với chăn họa tiết zigzag
+            </div>
+          </div>
+
+          <!-- Nội Dung Bài Viết -->
+          <div class="post-content">
+            <p>
+              Có rất nhiều nỗ lực đằng sau việc tạo ra một ngôi nhà hoàn hảo. Và
+              một trong những yếu tố cần thiết của nó là Vải Nội Thất.
+            </p>
+            <p>
+              Bạn có thể có một chiếc ghế đẹp, nhưng toàn bộ không gian có thể
+              bị hỏng nếu chất liệu vải không hấp dẫn hoặc không thoải mái. Ngày
+              nay, khi quyết định sử dụng loại vải nào, bạn cần lưu ý đến kết
+              cấu, kiểu dáng, sự thoải mái và sang trọng. Một loại vải tốt sẽ
+              tạo nên sự thoải mái cho bạn ngồi nghỉ ngơi trong một thời gian
+              dài hơn.
+            </p>
+            <p>
+              Để giúp bạn hiểu thêm về ưu điểm và cách bảo quản các loại vải nội
+              thất, hãy cùng nhau tìm hiểu về các chất liệu vải dưới đây:
+            </p>
+          <!-- Nút Toggle -->
+<button class="btn btn-outline-secondary mb-4">MỤC LỤC BÀI VIẾT [Hiện]</button>
+
+<!-- Nội dung mục lục -->
+<div class="content-table" style="display: none;">
+  <!-- Nội dung mục lục -->
+  <h5 class="text-center">MỤC LỤC BÀI VIẾT [Ẩn]</h5>
+  <ul>
+    <li><strong>Vải Cotton</strong>
+      <ul>
+        <li>Bộ chăn ga gối Tencel họa tiết hoa anh đào JJ4408</li>
+        <li>Bộ chăn ga gối Tencel họa tiết người tuyết JJ1991</li>
+        <li>Bộ chăn ga vỏ gối kẻ caro màu xanh lá cây tươi ZH7039</li>
+        <li>Bộ chăn ga giường gối màu sắc hoàng gia ZH6537</li>
+      </ul>
+    </li>
+    <li><strong>Vải Nội Thất Polyester</strong>
+      <ul>
+        <li>Thảm trải phòng ngủ sợi tổng hợp êm ái YN-SGL09</li>
+        <li>Thảm trang trí Việt mẫu ảo nghệ thuật YN-SGL08</li>
+        <li>Thảm trải sàn sợi tổng hợp hoa văn hiện đại NXS66317</li>
+        <li>Thảm trải sàn văn phòng sọc nổi đa màu ZC3006</li>
+      </ul>
+    </li>
+    <li><strong>Vải len</strong></li>
+    <li><strong>Vải Acrylic</strong></li>
+    <li><strong>Vải Canvas</strong>
+      <ul>
+        <li>Vỏ gối tựa sofa họa tiết thêu nổi nhiều màu sắc HL1844</li>
+        <li>Gối tựa lưng sofa phong cách Nhật Bản FH4866</li>
+        <li>Ghế đôn hạt xốp trang trí phòng khách PCH4747</li>
+        <li>Đệm ghế tròn vải lông nhung hoạt hình BMH7290</li>
+      </ul>
+    </li>
+    <li><strong>Vải nhung</strong></li>
+  </ul>
+</div>
+
+          <!-- Các Phần Nội Dung Vải -->
+          <!-- Vải Cotton -->
+          <article class="content mb-5">
+            <h2>Vải Cotton</h2>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <img
+                  src="https://storage.googleapis.com/a1aa/image/6jvGZUq5cK7OJJBLRJeYZsG4wqwqZqnOlGqGRRzjDxL2CH3JA.jpg"
+                  alt="A neatly made bed with blue cotton sheets and pillows"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="col-md-6 mt-3 mt-md-0">
+                <img
+                  src="https://storage.googleapis.com/a1aa/image/xrH9agg4oYKAFlWWuQZwZAY6jrT4ZOmDvUONOd1aWIhahj7E.jpg"
+                  alt="Close-up of blue cotton fabric showing its texture"
+                  class="img-fluid rounded"
+                />
+              </div>
+            </div>
+            <div class="image-caption text-center mb-3">
+              Ga giường vải cotton
+            </div>
+            <p>
+              Chất vải cotton nguyên liệu chính là từ cây bông. Ngay từ xưa khi
+              trồng trọt phát triển, cây bông đã được tìm ra và trồng phổ biến
+              tại các quốc gia trên thế giới. Sau khi hái bông, người ta sẽ dùng
+              chúng để kéo và dệt thành từng sợi vải.
+            </p>
+            <div class="section-title">Ưu điểm của vải cotton:</div>
+            <ul>
+              <li>
+                Mang đến cho người dùng cảm giác thoải mái, dễ chịu nhờ khả năng
+                hút ẩm cao, thấm hút tốt.
+              </li>
+              <li>
+                Vải cotton có giá thành rẻ hơn so với các loại sợi pha khác do
+                nguyên liệu dễ kiếm, sẵn có.
+              </li>
+              <li>
+                Dễ bảo quản, nhanh khô, sử dụng được trong máy giặt và có thể
+                giặt với nhiều loại chất giặt tẩy khác.
+              </li>
+              <li>
+                Không gây kích ứng da, là tính năng vượt trội mà Cotton khác
+                biệt so với nhiều loại sợi trên thị trường, đặc biệt là sự chọn
+                lựa tốt nhất cho các bệnh nhân hen suyễn, phù hợp với sự dịu nhẹ
+                và sự thông thoáng của làn da.
+              </li>
+              <li>
+                Có thể nhuộm màu lên bông, tạo ra một trong những loại vải đa
+                dạng về màu sắc. Với tính thông dụng, dễ dàng tìm kiếm mà bền
+                đẹp, dễ “thởi” dễ dàng, mang đến cảm giác thoải mái, thoáng mát
+                cho người mặc, đồng thời giúp cho sản phẩm thoát khỏi mùi hôi
+                khó chịu.
+              </li>
+            </ul>
+            <div class="section-title">Cách bảo quản vải cotton:</div>
+            <ul>
+              <li>
+                Không nên ngâm vải trong nước quá lâu, chỉ ngâm trong nước giặt
+                vài phút và tiến hành giặt sạch ngay.
+              </li>
+              <li>
+                Trước khi giặt nên tiến hành thao tác phân loại áo, nên giặt
+                riêng áo màu trắng và áo màu để tránh bị bám màu với những bộ đồ
+                khác.
+              </li>
+              <li>Phơi tại nơi thông thoáng, tránh ánh nắng trực tiếp.</li>
+              <li>
+                Chỉ sử dụng những loại bột giặt có độ pH trung tính, độ tẩy rửa
+                nhẹ nhàng chất giặt mạnh sẽ làm cho độ bền của vải bị giảm sút
+                gây nên tình trạng hư hỏng, mài mòn áo bị phai và loang lổ khi
+                giặt.
+              </li>
+              <li>
+                Phơi quần áo cotton ở nơi khô ráo, thoáng mát tránh ánh nắng mặt
+                trời gắt. Điều này sẽ đảm bảo được độ bền tối đa cho người dùng
+                trong quá trình sử dụng.
+              </li>
+            </ul>
+
+            <!-- Di chuyển phần card của Danh mục sản phẩm Ga giường vải Cotton tại Flexhouse VN xuống đây -->
+            <h5 class="mt-4 mb-3">
+              Danh mục sản phẩm Ga giường vải Cotton tại Flexhouse VN
+            </h5>
+            <div class="row">
+              <!-- Sử dụng Card -->
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div class="product-card position-relative h-100 d-flex flex-column">
+                  <img
+                      src="images/Bọ-chan-ga-goi-Tencel-hoa-tiet-hoa-anh-dao-JJ4408-1.jpg"
+                      alt="Bộ chăn ga gối Tencel họa tiết hoa anh đào JJ4408"
+                      class="img-fluid rounded product-image"
+                  />
+                  <div class="product-title mt-2">
+                      Bộ chăn ga gối Tencel họa tiết hoa anh đào JJ4408
+                  </div>
+                  <div class="original-price">4,085,000 đ</div>
+                  <div class="discounted-price">2,941,000 đ</div>
+              
+                  <!-- Nút icon thêm vào giỏ và so sánh sản phẩm -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+              </div>
+            </div>
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div
+                  class="product-card position-relative h-100 d-flex flex-column"
+                >
+                  <div class="discount-badge">-28%</div>
+                  <img
+                    src="images/Bọ-chan-ga-goi-Tencel-hoa-tiet-nguoi-tuyet-JJ1991-4.jpg"
+                    alt="Bộ chăn ga gối Tencel họa tiết người tuyết JJ1991"
+                    class="img-fluid rounded product-image"
+                  />
+                  <div class="product-title mt-2">
+                    Bộ chăn ga gối Tencel họa tiết người tuyết JJ1991
+                  </div>
+                  <div class="original-price">4,378,000 đ</div>
+                  <div class="discounted-price">3,152,000 đ</div>
+                  
+                  <!-- Thêm product-actions -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div
+                  class="product-card position-relative h-100 d-flex flex-column"
+                >
+                  <div class="discount-badge">-28%</div>
+                  <img
+                    src="images/Bo-chan-ga-vo-goi-ke-caro-mau-xanh-la-cay-tuoi-ZH7039-5.jpg"
+                    alt="Bộ chăn ga vỏ gối kẻ caro màu xanh lá cây tươi ZH7039"
+                    class="img-fluid rounded product-image"
+                  />
+                  <div class="product-title mt-2">
+                    Bộ chăn ga vỏ gối kẻ caro màu xanh lá cây tươi ZH7039
+                  </div>
+                  <div class="original-price">3,296,000 đ</div>
+                  <div class="discounted-price">2,373,000 đ</div>
+                  
+                  <!-- Thêm product-actions -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div
+                  class="product-card position-relative h-100 d-flex flex-column"
+                >
+                  <div class="discount-badge">-28%</div>
+                  <img
+                    src="images/demghetronhoathing.jpg"
+                    alt="Đệm ghế tròn vải lông nhung hoạt hình BMF7200"
+                    class="img-fluid rounded product-image"
+                  />
+                  <div class="product-title mt-2">
+                    Đệm ghế tròn vải lông nhung hoạt hình BMF7200
+                  </div>
+                  <div class="original-price">385,000 đ</div>
+                  <div class="discounted-price">277,000 đ</div>
+                  
+                  <!-- Thêm product-actions -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Vải Nội Thất Polyester -->
+          <article class="content mb-5">
+            <h2>Vải Nội Thất Polyester</h2>
+            <p>
+              Bạn có muốn cảm giác đắt tiền trong phòng khách của bạn mà không
+              cần sử dụng vải đắt tiền? Polyester sẽ giúp bạn đạt được điều đó
+              một cách dễ dàng với tính chất mềm mại và thoải mái của nó. Nó có
+              thể được sử dụng để bọc đệm ghế và sofa. Loại vải này có thể thay
+              thế loại vải mỏng manh hơn nếu bạn có trẻ nhỏ trong nhà.
+            </p>
+            <p>
+              Vải polyester là một loại vải tổng hợp có thành phần từ dầu mỏ,
+              than đá và không khí được gọi là ethylene. Về cơ bản, polyester là
+              một loại nhựa và các sợi polyester này được tạo thành nhờ vào quá
+              trình hóa học trùng hợp cùng với 4 dạng sợi cơ bản đó là: sợi thô,
+              sợi xơ, sợi fiberfill và sợi filament.
+            </p>
+            <div class="text-center mb-3">
+              <img
+                src="https://storage.googleapis.com/a1aa/image/wd8Ug4ehfLs9XER53vNI0hujMf4RjMKSAV6QJcJqy5py1icnA.jpg"
+                alt="A cozy living room with a white fluffy rug, a dark wooden coffee table, and a beige sofa with cushions"
+                class="img-fluid rounded"
+              />
+              <div class="image-caption text-center mt-2">
+                Vải Nội Thất Polyester
+              </div>
+            </div>
+            <h3>Ưu điểm của vải Polyester</h3>
+            <ul>
+              <li>
+                <strong>Độ bền tốt:</strong> Vải Polyester có độ co giãn tốt
+                cùng với khả năng chống co rút sau thời gian sử dụng. Ngoài ra
+                vải Polyester còn có khả năng không bị bám mùi và chống nhăn
+                hiệu quả.
+              </li>
+              <li>
+                <strong>Chống nước tốt:</strong> Những sản phẩm có khả năng
+                chống nước tốt đều được sản xuất từ Polyester như áo khoác, lều
+                bạt và túi ngủ... Với đặc tính nổi bật là ít hút ẩm kém, không
+                bị phai màu theo thời gian mà rất dễ dàng gia công.
+              </li>
+              <li>
+                <strong>Dễ dàng giặt ủi:</strong> Polyester thường dễ bền và có
+                khả năng chịu được nhiều loại hóa chất. Với loại vải này, bạn có
+                thể giặt và sấy khô tại nhà mà không lo nhiệt độ làm hư vải cũng
+                như có thể giặt mạnh hơn so với các loại vải khác.
+              </li>
+              <li>
+                <strong>Giá thành rẻ:</strong> Vải polyester được sản xuất từ
+                nguyên liệu có chi phí thấp và quy trình sản xuất không phức tạp
+                nên có giá thành rẻ, phù hợp với người tiêu dùng.
+              </li>
+              <li>
+                <strong
+                  >Vải Polyester có khả năng chống nấm mốc và chống vi
+                  khuẩn:</strong
+                >
+                Quần áo của loại vải này có bề trơn, khi chạm vào nên rất dễ
+                chịu với làn da của người mặc và bề mặt vải lại không bám bẩn.
+              </li>
+            </ul>
+
+            <!-- Di chuyển phần Cách bảo quản vải polyester: vào đây -->
+            <div class="section-title">Cách bảo quản vải polyester:</div>
+            <ul>
+              <li>
+                Khi giặt đồ dùng màu trắng nên ngâm sản phẩm trước khi xử lý
+                trong nước ấm, sau đó ngâm qua đêm và giặt lại vào buổi sáng hôm
+                sau.
+              </li>
+              <li>
+                Để đảm bảo sạch đồ dùng nên giặt với nước ấm vì loại vải này có
+                tác dụng làm sạch rất tốt với chất polyester. Nên giặt bằng tay
+                để có hiệu quả tốt nhất.
+              </li>
+              <li>
+                Cách sử dụng để vải không bị nhăn là nên phơi ở nhiệt độ trung
+                bình như trong bóng mát, hơi là bằng máy là hơi với nhiệt độ
+                thấp.
+              </li>
+            </ul>
+
+            <!-- Danh mục sản phẩm Thảm Trải Sàn Phòng Khách -->
+            <section class="product-page-container mb-5">
+              <h5 class="mb-3">
+                Danh mục sản phẩm Thảm trải sàn phòng khách tại Flexhouse VN
+              </h5>
+              <div class="row">
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                  <div
+                    class="product-card position-relative h-100 d-flex flex-column"
+                  >
+                    <div class="discount-badge">-27%</div>
+                    <img
+                      src="images/thamtraiphongngudamau.jpg"
+                      alt="Thảm trải phòng ngủ sợi tổng hợp đa màu YN-SGL09"
+                      class="img-fluid rounded"
+                    />
+                    <div class="product-title mt-2">
+                      Thảm trải phòng ngủ sợi tổng hợp đa màu YN-SGL09
+                    </div>
+                    <div class="original-price">3,450,000 ₫</div>
+                    <div class="discounted-price">2,530,000 ₫</div>
+                    
+                    <!-- Thêm product-actions -->
+                    <div class="product-actions">
+                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                  <div
+                    class="product-card position-relative h-100 d-flex flex-column"
+                  >
+                    <div class="discount-badge">-27%</div>
+                    <img
+                      src="images/thamtrangtri.jpg"
+                      alt="Thảm trang trí Việt mẫu ảo nghệ thuật YN-SGL08"
+                      class="img-fluid rounded"
+                    />
+                    <div class="product-title mt-2">
+                      Thảm trang trí Việt mẫu ảo nghệ thuật YN-SGL08
+                    </div>
+                    <div class="original-price">3,450,000 ₫</div>
+                    <div class="discounted-price">2,530,000 ₫</div>
+                    
+                    <!-- Thêm product-actions -->
+                    <div class="product-actions">
+                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                  <div
+                    class="product-card position-relative h-100 d-flex flex-column"
+                  >
+                    <div class="discount-badge">-25%</div>
+                    <img
+                      src="images/thamtraitonghophoavanhd.png"
+                      alt="Thảm trải sàn sợi tổng hợp hoa văn hiện đại KNS08317"
+                      class="img-fluid rounded"
+                    />
+                    <div class="product-title mt-2">
+                      Thảm trải sàn sợi tổng hợp hoa văn hiện đại KNS08317
+                    </div>
+                    <div class="original-price">105,000 ₫</div>
+                    <div class="discounted-price">79,000 ₫</div>
+                    
+                    <!-- Thêm product-actions -->
+                    <div class="product-actions">
+                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                  <div
+                    class="product-card position-relative h-100 d-flex flex-column"
+                  >
+                    <div class="discount-badge">-20%</div>
+                    <img
+                      src="images/Tham-trai-san-van-phong-soc-noi-da-mau-ZC3006-19-430x430.jpg"
+                      alt="Thảm trải sàn văn phòng sọc nổi đa màu ZC3008"
+                      class="img-fluid rounded"
+                    />
+                    <div class="product-title mt-2">
+                      Thảm trải sàn văn phòng sọc nổi đa màu ZC3008
+                    </div>
+                    <div class="original-price">100,000 ₫</div>
+                    <div class="discounted-price">80,000 ₫</div>
+                    
+                    <!-- Thêm product-actions -->
+                    <div class="product-actions">
+                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </article>
+
+          <!-- Vải Len -->
+          <section class="wool-section mb-5">
+            <h2>Vải Len</h2>
+            <p>
+              Vải len được làm từ sợi tự nhiên và có nguồn gốc từ lông của một
+              số loài động vật như cừu, dê, thỏ, lạc đà... Nhờ vào đặc tính cách
+              nhiệt, cách điện tốt và khả năng giữ ấm, độ bền cao, nên vải len
+              thường được sử dụng phổ biến trong ngành thời trang may mặc và sản
+              xuất chăn ga gối đệm.
+            </p>
+
+            <div class="text-center mt-3">
+              <img
+                src="images/Top-6-Cac-Loai-Vai-Noi-That-Pho-Bien-Va-Cach-Bao-Quan-2.jpg"
+                alt="Tấm trải giường từ Vải len"
+                class="img-fluid rounded"
+              />
+              <div class="image-caption mt-2">Tấm trải giường từ Vải len</div>
+            </div>
+            <h3>Ưu điểm của vải len</h3>
+            <ul>
+              <li>
+                Vải len khi nhìn trực tiếp có thể thấy sợi len và kết cấu đan
+                dệt.
+              </li>
+              <li>Chất vải mềm mại, sờ khá xốp, ít nhăn.</li>
+              <li>Mặc lên tạo cảm giác nhẹ nhàng, thoải mái.</li>
+              <li>Có độ co giãn và độ đàn hồi cao.</li>
+              <li>Có khả năng hút ẩm.</li>
+              <li>Chịu nhiệt, cách nhiệt, cách điện tốt.</li>
+              <li>
+                Khả năng khó cháy, cháy rất chậm, tắt ngay khi lấy ra khỏi lửa.
+              </li>
+              <li>
+                Hấp thụ thuốc nhuộm trực tiếp mà không cần sử dụng hóa chất.
+              </li>
+            </ul>
+
+            <!-- Cách bảo quản vải len -->
+            <h3>Cách bảo quản vải len</h3>
+            <h4>Nên:</h4>
+            <ul>
+              <li>
+                Loại bỏ bớt bụi ra khỏi đồ len trước khi giặt bằng cách đập bụi.
+              </li>
+              <li>Cho thêm một ít giấm trung hòa nước giặt để giữ màu len.</li>
+              <li>Ủi bằng hơi nước không quá 150 độ C.</li>
+              <li>
+                Mặc một chiếc áo mỏng bên trong ngăn mồ hôi tiếp xúc với vải
+                len.
+              </li>
+              <li>
+                Để nơi khô thoáng, không ẩm mốc và tránh bị côn trùng cắn.
+              </li>
+            </ul>
+            <h4>Không nên:</h4>
+            <ul>
+              <li>Treo đồ len bằng móc treo làm chảy xệ, mất phom.</li>
+              <li>Tẩy trắng bằng chất chứa Clo và chỉ tẩy khi cần.</li>
+              <li>
+                Dùng nước nóng để giặt đồ gây giãn vải, xơ sợi, mất hình dáng
+                ban đầu.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Vải Acrylic -->
+          <article class="acrylic-section mb-5">
+            <h2>Vải Acrylic</h2>
+            <p>
+              Vải acrylic còn được biết đến tên gọi là len nhân tạo, sợi tổng
+              hợp acrylic, sợi len acrylic, là loại vải được tạo nên từ một loại
+              polymer tổng hợp có tên Acrylonitrile. Loại vải này được sản xuất
+              bằng cách cho hóa chất dầu mỏ hoặc than với một số hóa chất khác
+              nhau để cải thiện khả năng hấp thụ chất nhuộm, tăng thêm đặc tính
+              cho chất liệu.
+            </p>
+            <div class="text-center mb-3">
+              <img
+                src="images/vai-acrylic-la-gi-4-1.jpg"
+                alt="Various colors of acrylic fabric stacked in layers"
+                class="img-fluid rounded"
+              />
+              <div class="image-caption text-center mt-2">
+                Vải acrylic là gì
+              </div>
+            </div>
+            <h3>Ưu điểm vải Acrylic:</h3>
+            <ul>
+              <li>
+                Trọng lượng nhẹ nhưng ấm áp: Sự liên kết chặt chẽ đảm bảo độ bền
+                chắc và khả năng giữ ấm trong thời tiết lạnh.
+              </li>
+              <li>
+                Độ co giãn tốt: Nhờ ưu điểm này nên vải có khả năng phục hồi
+                nguyên trạng tốt, chống nếp nhăn, vết gấp hiệu quả trong quá
+                trình sử dụng.
+              </li>
+              <li>
+                Chịu nhiệt cao: Loại vải này đứng thứ 2 trong danh sách những
+                sợi tổng hợp có khả năng chịu nhiệt tốt nhất.
+              </li>
+              <li>
+                Có thể chống lại một số tác nhân có hại: Vải có thể chống lại
+                nhiều vết bẩn cứng một số hóa chất, ngăn chặn các loại sâu bướm
+                và hạn chế tác tụ cặn tạm thời. Ngoài ra, chúng cũng không bị co
+                bóp bởi các loại ánh sáng mặt trời.
+              </li>
+              <li>
+                Dễ nhuộm màu: Acrylic đáp ứng rất tốt nhu cầu về thụ khí rất dễ
+                nhuộm màu và giữ được độ bám màu cao.
+              </li>
+              <li>
+                Giá bán vải Acrylic: So với những loại vải tổng hợp khác thì giá
+                thành của Acrylic được đánh giá là rẻ và cũng phải chăng, phù
+                hợp với túi tiền của người tiêu dùng.
+              </li>
+              <li>
+                Dễ vệ sinh: Do Acrylic có thể chống lại các vết bẩn, bụi nhanh
+                khô, khả năng chịu nhiệt lại tốt nên rất thuận tiện trong việc
+                vệ sinh, giặt giũ.
+              </li>
+              <li>
+                Bên cạnh những ứng dụng phổ biến trên, vải acrylic còn được dùng
+                để sản xuất chăn, thảm trải sàn, áo bọc đệm, vải dù, đồ chơi trẻ
+                em. Ngoài ra, chúng còn được dùng để sản xuất khăn lau, thay thế
+                bông vải và trong ngành công nghiệp.
+              </li>
+            </ul>
+
+            <!-- Hướng Dẫn Vệ Sinh và Bảo Quản Vải Acrylic -->
+            <h3>Hướng dẫn cách vệ sinh và bảo quản vải Acrylic</h3>
+            <p>
+              Trước khi giặt hoặc làm sạch vải acrylic, hãy đọc nhãn chăm sóc
+              của sản phẩm để được hướng dẫn cụ thể; các nhà sản xuất có thể đã
+              trộn lẫn trong các loại vải và sợi khác, và thậm chí cả các loại
+              acrylic khác nhau.
+            </p>
+            <p>
+              Đối với các mặt hàng mỏng, tốt nhất nên được giặt bằng tay và
+              trong nước ấm và phơi khô trên dây phơi hoặc móc treo trong nhà.
+            </p>
+            <p>
+              Khi giặt bằng máy, sử dụng nước ấm và chế độ giặt nhẹ. Bạn có thể
+              sấy khô acrylic trong máy sấy ở chế độ thấp và nhanh chóng loại bỏ
+              chúng khi khô.
+            </p>
+          </article>
+
+          <!-- Vải Canvas -->
+          <section class="canvas-section mb-5">
+            <h2>Vải Canvas</h2>
+            <p>
+              Vải canvas hay còn được gọi là vải bố. Đây là sản phẩm được làm từ
+              sợi gai dầu. Là dòng sản phẩm ngày càng được sử dụng để phổ biến
+              hơn từ trong may mặc đến các đồ gia dụng và được ứng dụng rất
+              nhiều hiện nay.
+            </p>
+
+            <div class="text-center mb-3">
+              <img
+                src="images/Vo-goi-tua-Vintage-cao-cap-trang-tri-sofa-PCH5916-7-1.jpg"
+                alt="Two decorative pillows, one with a pink cover featuring a white llama and orange pom-poms, and the other with a plain white cover."
+                class="img-fluid rounded"
+              />
+              <div class="image-caption text-center mt-2">Vải Canvas</div>
+            </div>
+            <h3>Ưu điểm vải bố canvas</h3>
+            <p>
+              Vải canvas có độ bền rất tốt và có thể tái sử dụng thường xuyên.
+              Đặc biệt, vải còn có khả năng chống thấm cực kỳ hoàn hảo, dễ dàng
+              được ứng dụng trong may mặc. Sản phẩm làm từ vải bố canvas, ngoài
+              ra còn sử dụng trong những lĩnh vực khác như nội thất và làm các
+              đồ dùng khác.
+            </p>
+            <p>
+              Với khả năng chống thấm, không bám mùi, chống cháy nổ tốt, vải bố
+              canvas thường được sử dụng may các dòng túi xách mang theo các đồ
+              dùng cá nhân hàng ngày. Ngày nay, rất nhiều sản phẩm vải bố canvas
+              còn được ứng dụng trong may mặc và làm các loại túi xách hoặc các
+              loại đồ dùng khác.
+            </p>
+
+            <h3>Bí quyết bảo quản và vệ sinh vải canvas đúng cách</h3>
+            <p>
+              Vải canvas có độ bền rất tốt nhưng để bảo quản và vệ sinh đúng
+              cách thì bạn nên lưu ý kiểm điểm các bước đơn giản sau đây để vải
+              được sử dụng đúng cách nhất.
+            </p>
+            <p>
+              Khi vải có vết bẩn bạn nên làm sạch ngay bằng cách dùng bàn chải
+              và xà phòng chà nhẹ nhàng. Sau đó bạn ngâm vải trong nước ấm và
+              giặt sạch. Đối với các vết bẩn cứng đầu bạn có thể dùng các loại
+              chất tẩy rửa chuyên dụng. Tuy nhiên hạn chế dùng các loại chất tẩy
+              rửa mạnh để tránh làm hỏng vải.
+            </p>
+            <p>
+              Vải canvas có thể giặt bằng máy giặt, tuy nhiên không nên giặt quá
+              nhiều lần để tránh làm hỏng vải. Bạn có thể phơi vải ở nơi thoáng
+              mát, tránh ánh nắng trực tiếp để vải không bị phai màu. Khi không
+              sử dụng bạn nên cất vải ở nơi khô ráo, tránh ẩm ướt để vải không
+              bị mốc.
+            </p>
+
+            <!-- Danh mục sản phẩm Gối tựa lưng tại Flexhouse VN -->
+            <h5 class="mt-4 mb-3">
+              Danh mục sản phẩm Gối tựa lưng tại Flexhouse VN
+            </h5>
+            <div class="row">
+              <!-- Sử dụng Card -->
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div
+                  class="product-card position-relative h-100 d-flex flex-column"
+                >
+                  <div class="discount-badge">-25%</div>
+                  <img
+                    src="images/Goi-tua-sofa-hoa-tiet-theu-noi-nhieu-mau-sac-HL1844-8-1.jpg"
+                    alt="Vỏ gối tựa sofa họa tiết thêu nổi nhiều màu sắc HL1844"
+                    class="img-fluid rounded"
+                  />
+                  <div class="product-title mt-2">
+                    Vỏ gối tựa sofa họa tiết thêu nổi nhiều màu sắc HL1844
+                  </div>
+                  <div class="original-price">80,000 đ</div>
+                  <div class="discounted-price">66,000 đ</div>
+                  
+                  <!-- Thêm product-actions -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div
+                  class="product-card position-relative h-100 d-flex flex-column"
+                >
+                  <div class="discount-badge">-20%</div>
+                  <img
+                    src="images/goi-tua-lung-sofa-phong-cach-nhat-ban-fh4866-7.jpg"
+                    alt="Gối tựa lưng sofa phong cách Nhật Bản FH4886"
+                    class="img-fluid rounded"
+                  />
+                  <div class="product-title mt-2">
+                    Gối tựa lưng sofa phong cách Nhật Bản FH4886
+                  </div>
+                  <div class="original-price">537,500 đ</div>
+                  <div class="discounted-price">430,000 đ</div>
+                  
+                  <!-- Thêm product-actions -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div
+                  class="product-card position-relative h-100 d-flex flex-column"
+                >
+                  <div class="discount-badge">-28%</div>
+                  <img
+                    src="images/Vo-boc-ghe-don-hat-xop-trang-tri-phong-khach-PCH4747-5-768x768.jpg"
+                    alt="Ghế đôn hạt xốp trang trí phòng khách PCH4747"
+                    class="img-fluid rounded"
+                  />
+                  <div class="product-title mt-2">
+                    Ghế đôn hạt xốp trang trí phòng khách PCH4747
+                  </div>
+                  <div class="original-price">575,000 đ</div>
+                  <div class="discounted-price">414,000 đ</div>
+                  
+                  <!-- Thêm product-actions -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 d-flex align-items-stretch">
+                <div
+                  class="product-card position-relative h-100 d-flex flex-column"
+                >
+                  <div class="discount-badge">-28%</div>
+                  <img
+                    src="images/Dem-ghe-tron-vai-long-nhung-hoat-hinh-BMH7290-5-768x768.jpg"
+                    alt="Đệm ghế tròn vải lông nhung hoạt hình BMF7200"
+                    class="img-fluid rounded"
+                  />
+                  <div class="product-title mt-2">
+                    Đệm ghế tròn vải lông nhung hoạt hình BMF7200
+                  </div>
+                  <div class="original-price">385,000 đ</div>
+                  <div class="discounted-price">277,000 đ</div>
+                  
+                  <!-- Thêm product-actions -->
+                  <div class="product-actions">
+                      <i class="fas fa-shopping-cart"></i>
+                      <i class="fas fa-exchange-alt"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Vải Nhung -->
+          <article class="content mb-5">
+            <h2>Vải Nhung</h2>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <img
+                  src="images/ghetualungsangtrong.jpg"
+                  alt="Gối tựa lưng vải nhung sang trọng"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="col-md-6 mt-3 mt-md-0">
+                <img
+                  src="images/ghetualungnhung2.jpg"
+                  alt="Close-up of velvet fabric showing its texture"
+                  class="img-fluid rounded"
+                />
+              </div>
+            </div>
+            <div class="image-caption text-center mb-3">
+              Gối tựa lưng vải nhung sang trọng
+            </div>
+            <p>
+              Vải nhung là một loại vải mềm, mịn, mượt, có khả năng giữ ấm tốt.
+              Đặc điểm nổi bật của vải nhung là có vẻ ngoài sáng bóng, sang
+              trọng, và độ mềm mại hơn so với nhiều loại vải khác như tơ lụa,
+              lanh, ...
+            </p>
+            <div class="section-title">Ưu điểm của vải nhung:</div>
+            <ul>
+              <li>
+                <strong>Sang trọng:</strong> Vải nhung có vẻ bề ngoài bắt sáng
+                tốt, tạo nên sự quyến rũ và thanh lịch.
+              </li>
+              <li>
+                <strong>Mềm mại và thoải mái:</strong> Bề mặt nhung mang lại cảm
+                giác mềm mịn, dễ chịu khi chạm vào, phù hợp với các sản phẩm
+                sofa và gối tựa lưng.
+              </li>
+              <li>
+                <strong>Khả năng giữ ấm tốt:</strong> Vải nhung có khả năng giữ
+                ấm tốt, giúp bạn thoải mái trong những ngày thời tiết se lạnh.
+              </li>
+            </ul>
+            <div class="section-title">Cách bảo quản vải nhung:</div>
+            <ul>
+              <li>
+                Không giặt bằng máy, nên giặt nhẹ tay để tránh làm mất đi độ mềm
+                mại của vải.
+              </li>
+              <li>
+                Hạn chế sử dụng bàn là, nếu cần là thì hãy sử dụng hơi nước với
+                nhiệt độ thấp.
+              </li>
+              <li>
+                Phơi tại nơi khô ráo, thoáng mát để tránh bị ẩm mốc và bảo quản
+                chất liệu vải tốt nhất.
+              </li>
+            </ul>
+          </article>
+        </section>
+
+        <!-- Sidebar -->
+        <aside class="col-lg-4">
+    <!-- Chuyên Mục -->
+<div class="sidebar">
+  <h5 class="text-center mb-3">CHUYÊN MỤC</h5>
+  <ul class="list-group mb-4">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://hbh.vn/tin-tuc/cach-bo-tri-phong-trong-nha-theo-phong-thuy.html">Các phòng</a>
+      <span class="badge bg-secondary rounded-pill">242</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://www.ixinavietnam.vn/?gad_source=1&gclid=CjwKCAiAxKy5BhBbEiwAYiW--6FDmt9_nc2VyR9pMYNsa-vbirEPceEWdwfR1UlCbiHK4X3nZATX6xoCrQAQAvD_BwE">Thiết kế bếp</a>
+      <span class="badge bg-secondary rounded-pill">174</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://ngukimhcm.com/?gad_source=1&gclid=CjwKCAiAxKy5BhBbEiwAYiW---eRvq8AFsHkOzlDcZBA4bCXowV32AL1nPfMcnMTpLsY5yCvgwqsTxoCvg8QAvD_BwE">Phụ kiện ngành gỗ</a>
+      <span class="badge bg-secondary rounded-pill">98</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://phukiengaris.com/?gad_source=1&gclid=CjwKCAiAxKy5BhBbEiwAYiW--3bjBwkCIe9gWBN96GzwbEWWTB4thRsfXjaKKeTkQygFiCGgSmA2ZhoCns4QAvD_BwE">Phụ kiện tủ bếp thông minh</a>
+      <span class="badge bg-secondary rounded-pill">75</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://eurogoldvietnam.net/?gad_source=1&gclid=CjwKCAiAxKy5BhBbEiwAYiW--0eMfm_T8V7D05wDk9CCI2ZwstVTFbDCFfnMfJN1m9m7jROxEoDnDBoCBh0QAvD_BwE">Thiết bị bếp thông minh</a>
+      <span class="badge bg-secondary rounded-pill">58</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://thietbicanhquan.vn/">Thiết bị cảnh quan</a>
+      <span class="badge bg-secondary rounded-pill">47</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://thietkenoithat.com/thiet-ke-phong-tam">Thiết kế nhà tắm</a>
+      <span class="badge bg-secondary rounded-pill">37</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://www.tapchikientruc.com.vn/chuyen-muc/4-dac-diem-cua-phong-cach-thiet-ke-noi-that-hien-dai.html">Thiết kế nội thất</a>
+      <span class="badge bg-secondary rounded-pill">36</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://decoxdesign.com/mau-thiet-ke-van-phong-sang-tao.html">Thiết kế văn phòng</a>
+      <span class="badge bg-secondary rounded-pill">35</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://tadavietnam.com/tu-quan-ao-go-cong-nghiep-thong-minh-tada-viet-nam-tdta9">Tủ quần áo thông minh</a>
+      <span class="badge bg-secondary rounded-pill">34</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://emporio.vn/vi/vai-noi-that-cao-cap.html">Vải Nội thất</a>
+      <span class="badge bg-secondary rounded-pill">17</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <a href="https://laodong.vn/bat-dong-san/y-tuong-thiet-ke-trang-tri-noi-that-khien-nha-o-chung-cu-dep-me-man-814830.ldo">Ý tưởng trang trí nội thất</a>
+      <span class="badge bg-secondary rounded-pill">110</span>
+    </li>
+  </ul>
+
+  <!-- Bài Viết Mới -->
+  <h5 class="text-center mb-3">BÀI VIẾT MỚI</h5>
+  <div class="recent-posts">
+    <!-- Bài viết 1 -->
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-4">
+          <a href="link-den-bai-viet-1.html" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/iLR9ALeDKA35ZSDXSEoDP6n2bWJrVjrnMkENvr2m51qc8G3JA.jpg"
+              alt="A modern wardrobe with smart storage solutions"
+              class="img-fluid rounded-start"
+            />
+          </a>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h6 class="card-title">
+              <a href="https://noithatlamson.com/bi-quyet-chon-tu-quan-ao-thong-minh-cho-phong-ngu-hep/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+                3 Tip chọn tủ quần áo thông minh cho phòng ngủ nhỏ
+              </a>
+            </h6>
+            <p class="card-text">
+              <small class="text-muted">05/11/2024 | Bình luận</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bài viết 2 -->
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-4">
+          <a href="link-den-bai-viet-2.html" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/gtg06zggJPojHZNtGTgbUTLtedgmRAvbeKfcISsCUd92xbcnA.jpg"
+              alt="A cozy living room with an Armchair"
+              class="img-fluid rounded-start"
+            />
+          </a>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h6 class="card-title">
+              <a href="https://flexhouse.vn/bien-hoa-khong-gian-voi-suc-hut-kho-cuong-tu-ghe-armchair" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+                Biến hóa không gian với sức hút không cưỡng từ ghế Armchair
+              </a>
+            </h6>
+            <p class="card-text">
+              <small class="text-muted">05/11/2024 | Bình luận</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bài viết 3 -->
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-4">
+          <a href="link-den-bai-viet-3.html" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/8pGdBsJK0iZaAJ9N0neDD4awmZfxOVGRN8wBEuAqO7Z24NuTA.jpg"
+              alt="A modern house with unique architecture"
+              class="img-fluid rounded-start"
+            />
+          </a>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h6 class="card-title">
+              <a href="https://tintuconline.com.vn/nha-dep/mau-nha-co-tang-ban-ham-dep-doc-dao-n-618534.html" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+                Update 5 mẫu tầng hầm độc đáo dự đoán xu hướng 2025
+              </a>
+            </h6>
+            <p class="card-text">
+              <small class="text-muted">05/11/2024 | Bình luận</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bài viết 4 -->
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-4">
+          <a href="link-den-bai-viet-4.html" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/qdZJ8yo7EBphON6HSXEUS2nGrShUZeI4BedZKAYkEPk64NuTA.jpg"
+              alt="A cozy bedroom with warm lighting"
+              class="img-fluid rounded-start"
+            />
+          </a>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h6 class="card-title">
+              <a href="https://viet-power.com.vn/7-y-tuong-phong-ngu-sang-trong/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+                Decor phòng ngủ với 5 ý tưởng chạm đến sự sang trọng
+              </a>
+            </h6>
+            <p class="card-text">
+              <small class="text-muted">30/10/2024 | Bình luận</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bài viết 5 -->
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-4">
+          <a href="link-den-bai-viet-5.html" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://storage.googleapis.com/a1aa/image/LsIqj2jyl25aC52mGIfnunrosViM01T7VbFQLvOJW4nb8G3JA.jpg"
+              alt="A modern kitchen with farmhouse style"
+              class="img-fluid rounded-start"
+            />
+          </a>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h6 class="card-title">
+              <a href="https://thinhphatconstruction.vn/meo-giup-can-bep-mau-trang-luon-sach-se-tinh-tuom/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-dark">
+                Mẹo giữ bếp màu trắng luôn sạch sẽ từ chuyên gia Farmhouse VN
+              </a>
+            </h6>
+            <p class="card-text">
+              <small class="text-muted">30/10/2024 | Bình luận</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </aside>
+
+<!-- Related Posts Section - Tích hợp vào cuối phần main -->
+<section class="content mb-5">
+  <!-- Tags Section -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="tags">
+        <button type="button" class="btn btn-green btn-sm">Các Loại Vải Chuyên Dùng Cho Đồ Nội Thất</button>
+        <button type="button" class="btn btn-green btn-sm">Vải Bọc Ghế Sofa</button>
+        <button type="button" class="btn btn-green btn-sm">Vải Trang Trí Nội Thất</button>
+      </div>
+
+      <div class="social-icons d-flex justify-content-end">
+        <a href="#" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="icon twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="icon pinterest"><i class="fab fa-pinterest-p"></i></a>
+        <a href="#" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="icon telegram"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+    
+  </div>
+
+  <!-- Related Posts Title -->
+  <h2 class="mb-4">Bài Viết Liên Quan</h2>
+
+  <div id="relatedPostsCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- Carousel Items -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="position-relative post-card">
+                        <img src="images/Vai-boc-ghe-sofa.jpg" alt="Post Image" class="img-fluid">
+                        <div class="post-date">05 <br> TH10</div>
+                        <div class="post-content p-3">
+                            <div class="category-badge">Vải Nội Thất</div>
+                            <h5 class="fw-bold mt-3">Tiêu chí chọn vải bọc ghế giúp sofa nhà bạn đẹp gấp 10 lần</h5>
+                            <p>Posted by Lương Thị Mỹ Lệ</p>
+                            <p class="text-muted">Sofa là trái tim của không gian sống, mang đến sự ấm cúng và sang trọng cho ngôi nhà bạn...</p>
+                            <a href="https://comay.com.vn/" class="read-more">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative post-card">
+                        <img src="images/4-bi-quyet-chon-noi-that-phong-khach-4.png" alt="Post Image" class="img-fluid">
+                        <div class="post-date">22 <br> TH11</div>
+                        <div class="post-content p-3">
+                            <div class="category-badge">Các Phòng, Phòng Sinh Hoạt Chung, Thiết Kế Nội Thất</div>
+                            <h5 class="fw-bold mt-3">4 bí quyết chọn nội thất phòng khách như chuyên gia</h5>
+                            <p>Posted by Cúc Hoa</p>
+                            <p class="text-muted">Phòng khách là không gian quan trọng nhất trong ngôi nhà...</p>
+                            <a href="https://sbshouse.vn/phong-sinh-hoat-chung/" class="read-more">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="position-relative post-card">
+                        <img src="images/15-cover.png" alt="Post Image" class="img-fluid">
+                        <div class="post-date">15 <br> TH12</div>
+                        <div class="post-content p-3">
+                            <div class="category-badge">Thiết Kế Nội Thất</div>
+                            <h5 class="fw-bold mt-3">5 Ý Tưởng Thiết Kế Nội Thất Cho Phòng Khách</h5>
+                            <p>Posted by Trần Văn A</p>
+                            <p class="text-muted">Phòng khách là không gian quan trọng trong ngôi nhà...</p>
+                            <a href="https://housef.vn/bao-gia-dich-vu-thiet-ke-noi-that/" class="read-more">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative post-card">
+                        <img src="images/cach-chon-den-ban-tot-nhat-cho-phong-ngu-cua-ban-3.jpg" alt="Post Image" class="img-fluid">
+                        <div class="post-date">20 <br> TH12</div>
+                        <div class="post-content p-3">
+                            <div class="category-badge">Phòng Ngủ</div>
+                            <h5 class="fw-bold mt-3">Cách Chọn Đèn Chiếu Sáng Cho Phòng Ngủ</h5>
+                            <p>Posted by Lê Thị B</p>
+                            <p class="text-muted">Đèn chiếu sáng đóng vai trò quan trọng trong việc tạo không gian thoải mái...</p>
+                            <a href="https://dogolegia.vn/danh-muc-san-pham/noi-that-phong-ngu/bo-giuong-tu/" class="read-more">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="position-relative post-card">
+                        <img src="images/9-y-tuong-trang-tri-phong-ngu-hien-dai-6.png" alt="Post Image" class="img-fluid">
+                        <div class="post-date">25 <br> TH12</div>
+                        <div class="post-content p-3">
+                            <div class="category-badge">Trang Trí Nội Thất</div>
+                            <h5 class="fw-bold mt-3">6 Cách Trang Trí Nội Thất Hiện Đại</h5>
+                            <p>Posted by Nguyễn Văn C</p>
+                            <p class="text-muted">Nội thất hiện đại mang đến sự tiện nghi và thẩm mỹ cao...</p>
+                            <a href="https://phedecor.com/tin-tuc/trang-tri-noi-that.html" class="read-more">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative post-card">
+                        <img src="images/vuon-rau-mini-truoc-nha.jpg" alt="Post Image" class="img-fluid">
+                        <div class="post-date">30 <br> TH12</div>
+                        <div class="post-content p-3">
+                            <div class="category-badge">Sân Vườn</div>
+                            <h5 class="fw-bold mt-3">Tạo Sân Vườn Xanh Mát Cho Ngôi Nhà Bạn</h5>
+                            <p>Posted by Phạm Thị D</p>
+                            <p class="text-muted">Sân vườn xanh mát không chỉ làm đẹp cho ngôi nhà mà còn mang lại sức khỏe...</p>
+                            <a href="https://www.pinterest.com/pin/628111479274139351/" class="read-more">Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#relatedPostsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#relatedPostsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#relatedPostsCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#relatedPostsCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#relatedPostsCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+  
+</div>
+</section>
+  
+<!-- Form trả lời hiện tại -->
+<div class="comment-form-container">
+  <h4>TRẢ LỜI</h4>
+  <p>Email của bạn sẽ không được hiển thị công khai. Các trường bắt buộc được đánh dấu <span class="text-danger">*</span></p>
+  
+  <form id="comment-form" class="comment-form">
+    <div class="mb-3">
+      <label for="comment" class="form-label">Bình luận <span class="text-danger">*</span></label>
+      <textarea class="form-control" id="comment" rows="4" required></textarea>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="name" class="form-label">Tên <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="name" required />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+        <input type="email" class="form-control" id="email" required />
+      </div>
+    </div>
+    <button type="submit" class="btn btn-submit">PHẢN HỒI</button>
+  </form>
+
+  <!-- Thêm phần thông báo -->
+  <div id="form-message"></div>
+</div>
+      </div>
+    </main>
+    <!-- footer -->
+     <div>
+        <iframe src="footer.html" frameborder="0" width="100%" height="450px" scrolling="no"></iframe>
+     </div>
+     <!-- end footer-->
+
+    <!-- Bootstrap JS và các phụ thuộc -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Xử lý toggle mục lục bài viết
+      const toggleButton = document.querySelector(".btn-outline-secondary");
+      const contentTable = document.querySelector(".content-table");
+
+      toggleButton.addEventListener("click", function () {
+        if (contentTable.style.display === "none" || !contentTable.style.display) {
+          contentTable.style.display = "block";
+          toggleButton.innerText = "MỤC LỤC BÀI VIẾT [Ẩn]";
+        } else {
+          contentTable.style.display = "none";
+          toggleButton.innerText = "MỤC LỤC BÀI VIẾT [Hiện]";
+        }
+      });
+
+      // Xử lý nút Back to Top
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add("show");
+        } else {
+          backToTopButton.classList.remove("show");
+        }
+      });
+
+      backToTopButton.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+
+      // Khởi tạo Carousel cho Bài Viết Liên Quan
+      var relatedPostsCarousel = document.querySelector('#relatedPostsCarousel');
+      var carousel = new bootstrap.Carousel(relatedPostsCarousel, {
+        interval: 5000, // Thời gian chuyển slide (ms)
+        ride: 'carousel', // Tự động khởi chạy carousel
+        wrap: true, // Chu kỳ chuyển slide
+        pause: 'hover' // Tạm dừng khi hover
+      });
+
+      // Xử lý Form TRẢ LỜI
+      const commentForm = document.getElementById('comment-form');
+      const formMessage = document.getElementById('form-message');
+
+      commentForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn chặn gửi form mặc định
+
+        // Thu thập dữ liệu từ form
+        const comment = document.getElementById('comment').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+
+        // Kiểm tra tính hợp lệ của dữ liệu
+        if (!comment || !name || !email) {
+          formMessage.innerHTML = '<div class="alert alert-danger" role="alert">Vui lòng điền đầy đủ các trường yêu cầu.</div>';
+          return;
+        }
+
+        // Kiểm tra định dạng email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          formMessage.innerHTML = '<div class="alert alert-danger" role="alert">Vui lòng nhập một địa chỉ email hợp lệ.</div>';
+          return;
+        }
+
+        // Nếu dữ liệu hợp lệ, bạn có thể gửi dữ liệu tới server ở đây
+        // Ví dụ: Sử dụng fetch API để gửi dữ liệu tới một endpoint (URL) xử lý trên server
+        /*
+        fetch('https://your-server-endpoint.com/api/comments', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ comment, name, email })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            formMessage.innerHTML = '<div class="alert alert-success" role="alert">Cảm ơn bạn đã phản hồi!</div>';
+            commentForm.reset(); // Làm sạch form
+          } else {
+            formMessage.innerHTML = '<div class="alert alert-danger" role="alert">Đã xảy ra lỗi khi gửi phản hồi. Vui lòng thử lại sau.</div>';
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          formMessage.innerHTML = '<div class="alert alert-danger" role="alert">Đã xảy ra lỗi khi gửi phản hồi. Vui lòng thử lại sau.</div>';
+        });
+        */
+
+        // Nếu bạn không có backend để xử lý, hiển thị thông báo thành công ngay lập tức
+        formMessage.innerHTML = '<div class="alert alert-success" role="alert">Cảm ơn bạn đã phản hồi!</div>';
+        commentForm.reset(); // Làm sạch form
+      });
+    });
+
+
+    // JavaScript cho nút Back to Top (Đã tích hợp ở trên)
+    // Không cần lặp lại nếu đã tích hợp ở trên
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    // Xử lý sự kiện cho nút "Thêm vào giỏ"
+    const addToCartButtons = document.querySelectorAll(".fa-shopping-cart");
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        alert("Sản phẩm đã được thêm vào giỏ hàng!");
+        // Logic để thêm sản phẩm vào giỏ hàng có thể được thêm vào đây
+      });
+    });
+
+    // Xử lý sự kiện cho nút "So sánh sản phẩm"
+    const compareProductButtons = document.querySelectorAll(".fa-exchange-alt");
+    compareProductButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        alert("Sản phẩm đã được thêm vào danh sách so sánh!");
+        // Logic để thêm sản phẩm vào danh sách so sánh có thể được thêm vào đây
+      });
+    });
+  });
+    </script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+    <!-- Nút Biểu Tượng -->
+    <div class="icon-buttons">
+      <a href="https://facebook.com" class="icon-btn facebook-btn" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="tel:+84123456789" class="icon-btn call-btn">
+        <i class="fas fa-phone"></i>
+      </a>
+    </div>
+    
+    <!-- Nút Back to Top -->
+    <button id="back-to-top" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    
+  </body>
+</html>
