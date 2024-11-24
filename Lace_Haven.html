@@ -16,286 +16,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       rel="stylesheet"
     />
-    <style>
-      /* Các kiểu chung */
-      body {
-        font-family: "Arial", sans-serif;
-        background-color: #f5f5f5;
-      }
-      /* Chỉnh sửa breadcrumb */
-      .breadcrumb {
-        background-color: #4fd0b6; /* Màu nền mới */
-        margin-bottom: 20px;
-        padding: 10px 15px;
-        border-radius: 5px;
-      }
-      .breadcrumb-item a,
-      .breadcrumb-item.active {
-        color: #fff; /* Màu chữ trắng */
-        text-decoration: none;
-      }
-      .breadcrumb-item a:hover {
-        text-decoration: underline;
-        color: #fff; /* Giữ màu chữ trắng khi hover */
-      }
-      .breadcrumb-item.active {
-        color: #fff; /* Màu chữ trắng cho mục active */
-      }
-      /* Sidebar Styles */
-      .sidebar {
-        background-color: #fff;
-        padding: 20px;
-        border-right: 1px solid #ddd;
-        border-radius: 5px;
-        margin-bottom: 20px;
-      }
-      .sidebar h5 {
-        font-size: 18px;
-        margin-bottom: 15px;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 5px;
-      }
-      .sidebar .form-check-label {
-        font-size: 14px;
-      }
-      .sidebar a {
-        color: #333;
-        text-decoration: none;
-        display: block;
-        padding: 5px 0;
-        transition: color 0.3s;
-      }
-      .sidebar a:hover {
-        color: #007bff;
-        text-decoration: none;
-      }
-      .pagination {
-        justify-content: flex-end;
-      }
-
-      /* Các kiểu cho Grid View */
-      .product-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px; /* Khoảng cách giữa các card */
-      }
-      .product-grid .col-md-4 {
-        flex: 0 0 calc(33.33% - 20px); /* Điều chỉnh để mỗi card chiếm đều không gian */
-        max-width: calc(33.33% - 20px);
-      }
-      .card {
-        transition: transform 0.3s, box-shadow 0.3s;
-        height: 100%;
-        position: relative; /* Để chứa các nút hành động */
-        overflow: hidden; /* Ẩn phần tràn */
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-      }
-      .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-      }
-      .card-img-top {
-        width: 100%;
-        height: 200px; /* Đặt chiều cao cố định */
-        object-fit: cover;
-      }
-      .description {
-        display: -webkit-box;
-        --webkit-line-clamp: 3; /* Giới hạn 3 dòng */
-        --webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-bottom: 10px;
-        font-size: 14px;
-        color: #555;
-      }
-      .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 15px;
-      }
-      .card-title {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 1.25rem;
-        margin-bottom: 10px;
-      }
-      .pricing {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-      .discount-badge {
-        background-color: red;
-        color: white;
-        padding: 2px 6px;
-        font-size: 12px;
-        border-radius: 4px;
-      }
-      .discounted-price {
-        font-size: 1rem;
-        font-weight: bold;
-        color: #28a745;
-      }
-      .original-price {
-        font-size: 0.9rem;
-        text-decoration: line-through;
-        color: #6c757d;
-      }
-
-      /* Nút hành động trên card */
-      .card-actions {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .card:hover .card-actions {
-        opacity: 1;
-      }
-      .btn-add-to-cart {
-        background-color: rgba(40, 167, 69, 0.9); /* Màu xanh lá */
-        border: none;
-        padding: 8px;
-        border-radius: 50%;
-        color: #fff;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .btn-add-to-cart:hover {
-        background-color: rgba(40, 167, 69, 1);
-      }
-      .btn-favorite {
-        background-color: rgba(220, 53, 69, 0.9); /* Màu đỏ */
-        border: none;
-        padding: 8px;
-        border-radius: 50%;
-        color: #fff;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .btn-favorite:hover {
-        background-color: rgba(220, 53, 69, 1);
-      }
-      .card-actions .btn {
-        width: 40px;
-        height: 40px;
-        padding: 0;
-      }
-
-      /* Giới hạn độ dài văn bản */
-      .card-title {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .description {
-        display: -webkit-box;
-        --webkit-line-clamp: 3; /* Giới hạn 3 dòng */
-        --webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      .sidebar .brand-section {
-        margin-top: 20px; /* Khoảng cách trên tiêu đề "Thương hiệu" */
-        margin-bottom: 20px; /* Khoảng cách dưới tiêu đề "Thương hiệu" */
-      }
-
-      .sidebar {
-        text-align: left;
-      }
-
-      .sidebar h5 {
-        text-align: left;
-      }
-
-      .sidebar a {
-        text-align: left;
-      }
-
-      .back-to-top {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        border: none;
-        border-radius: 50%;
-        background-color: #ffffff;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #333;
-        font-size: 20px;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s;
-        z-index: 9999;
-        pointer-events: none; /* Ban đầu không cho phép click */
-      }
-
-      .back-to-top.show {
-        opacity: 1;
-        pointer-events: all; /* Cho phép click khi hiển thị */
-      }
-
-      .icon-buttons {
-        position: fixed;
-        bottom: 80px; /* Cách đáy 80px */
-        right: 20px; /* Cách phải 20px */
-        display: flex; /* Sắp xếp các nút theo cột */
-        flex-direction: column;
-        gap: 15px; /* Khoảng cách giữa các nút */
-        z-index: 9999; /* Đặt lên trên các thành phần khác */
-      }
-
-      .icon-btn {
-        display: flex; /* Căn giữa icon trong nút */
-        justify-content: center;
-        align-items: center;
-        width: 55px; /* Kích thước nút 55x55px */
-        height: 55px;
-        border-radius: 50%; /* Tạo nút tròn */
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Đổ bóng */
-        transition: transform 0.3s; /* Hiệu ứng thay đổi kích thước khi hover */
-        opacity: 0.85; /* Độ mờ ban đầu */
-      }
-
-      .facebook-btn {
-        background-color: #1877f2; /* Màu xanh của Facebook */
-        color: #ffffff; /* Màu trắng cho biểu tượng */
-      }
-
-      .call-btn {
-        background-color: #e53935; /* Màu đỏ của nút gọi điện */
-        color: #ffffff; /* Màu trắng cho biểu tượng */
-      }
-
-      .icon-btn:hover {
-        transform: scale(1.1); /* Tăng kích thước khi hover */
-        opacity: 1; /* Hiện rõ hơn khi hover */
-      }
-      #back-to-top {
-        opacity: 1 !important;
-        pointer-events: all !important;
-      }
-    </style>
     <link rel="stylesheet" href="css/navbar.css" />
+
+    <link rel="stylesheet" href="css/Lace_Haven.css" />
   </head>
   <body>
     <!-- Header -->
@@ -317,7 +40,10 @@
         style="background-color: #4fd0b6; height: 40px"
       >
         <div class="container-fluid">
-          <a class="navbar-brand text-white" href="index.html">Trang chủ</a>
+          <a class="navbar-item text-white active" href="index.html"
+            >Trang chủ</a
+          >
+          <!-- Updated href -->
           <button
             class="navbar-toggler"
             type="button"
@@ -331,157 +57,173 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <!-- Dropdown Sản phẩm -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle text-white"
-                  href="#"
-                  role="button"
-                  id="dropdownMenuLink"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Sản phẩm
-                </a>
-                <ul
-                  class="dropdown-menu custom-dropdown"
-                  aria-labelledby="dropdownMenuLink"
-                >
-                  <div class="dropdown-item">
-                    <div class="container">
-                      <div class="row">
-                        <h4>Sản phẩm nổi bật</h4>
-                        <!-- Thêm các sản phẩm nổi bật ở đây nếu cần -->
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar1.jpg"
-                              class="card-img-top"
-                              alt="Vải lụa"
-                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải lụa</h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar2.jpg"
-                              class="card-img-top"
-                              alt="Vải kaki"
-                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải kaki</h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar3.jpg"
-                              class="card-img-top"
-                              alt="Vải nhung"
-                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải nhung</h4>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-3">
-                          <div class="card">
-                            <img
-                              src="images/navbar4.jpg"
-                              class="card-img-top"
-                              alt="Vải Linen"
-                              onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=No+Image';"
-                            />
-                            <div class="card-body">
-                              <h4 class="card-title text-center">Vải Linen</h4>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- Các danh mục sản phẩm -->
-                  <div class="dropdown-item">
-                    <div class="row">
-                      <div class="col-md-2">
-                        <h4>Bán chạy nhất</h4>
-                        <a href="#">Vải Cotton</a><br />
-                        <a href="#">Vải Linen</a><br />
-                        <a href="#">Vải Silk</a><br />
-                        <a href="#">Polyester</a><br />
-                        <a href="#">Denim</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Mới nhất</h4>
-                        <a href="#">Vải len</a><br />
-                        <a href="#">Vải nhung</a><br />
-                        <a href="#">Vải lanh</a><br />
-                        <a href="#">Vải da</a><br />
-                        <a href="#">Vải dù</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Từ thấp đến cao</h4>
-                        <a href="#">Vải Cotton</a><br />
-                        <a href="#">Vải Linen</a><br />
-                        <a href="#">Vải Rayon</a><br />
-                        <a href="#">Vải Bamboo</a><br />
-                        <a href="#">Vải Chambray</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Từ cao đến thấp</h4>
-                        <a href="#">Vải Cotton</a><br />
-                        <a href="#">Vải Wool</a><br />
-                        <a href="#">Vải Tweed</a><br />
-                        <a href="#">Vải Flannel</a><br />
-                        <a href="#">Vải Corduroy</a><br />
-                        <a href="#">Vải Denim</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Đồng phục</h4>
-                        <a href="#">Polyester</a><br />
-                        <a href="#">Cotton-PVC</a><br />
-                        <a href="#">Nỉ</a><br />
-                        <a href="#">Kaki</a><br />
-                        <a href="#">Lanh</a><br />
-                      </div>
-
-                      <div class="col-md-2">
-                        <h4>Nội thất</h4>
-                        <a href="#">Vải Cotton</a><br />
-                        <a href="#">Vải Microfiber</a><br />
-                        <a href="#">Vải Velvet</a><br />
-                        <a href="#">Vải Polyester</a><br />
-                        <a href="#">Vải Tweed</a><br />
-                        <a href="#">Vải Canvas</a><br />
-                      </div>
-                    </div>
-                  </div>
-                </ul>
-              </li>
-              <!-- Các mục khác trong navbar -->
               <li class="nav-item">
-                <a class="nav-link text-white" href="product.html"
+                <div class="dropdown">
+                  <a
+                    class="nav-link dropdown-toggle text-white"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Sản phẩm
+                  </a>
+                  <ul
+                    class="dropdown-menu custom-dropdown"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <div class="dropdown-item">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar1.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải lụa
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar2.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải kaki
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar3.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải nhung
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-3">
+                            <div class="card">
+                              <img
+                                src="images/navbar4.jpg"
+                                class="card-img-top"
+                                alt="..."
+                              />
+                              <div class="card-body">
+                                <h4
+                                  class="card-title"
+                                  style="text-align: center"
+                                >
+                                  Vải Linen
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dropdown-item">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <h4>Bán chạy</h4>
+                          <a href="templateProduct.html">Vải Cotton</a><br />
+                          <a href="templateProduct.html">Vải Linen</a><br />
+                          <a href="templateProduct.html">Vải Silk</a><br />
+                          <a href="templateProduct.html">Polyester</a><br />
+                          <a href="templateProduct.html">Denim</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa đông</h4>
+                          <a href="templateProduct.html">Vải len</a><br />
+                          <a href="templateProduct.html">Vải nhung</a><br />
+                          <a href="templateProduct.html">Vải lanh</a><br />
+                          <a href="templateProduct.html">Vải da</a><br />
+                          <a href="templateProduct.html">Vải dù</a>
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa hè</h4>
+                          <a href="templateProduct.html">Vải Cotton</a><br />
+                          <a href="templateProduct.html">Vải Linen </a><br />
+                          <a href="templateProduct.html">Vải Rayon</a><br />
+                          <a href="templateProduct.html">Vải Bamboo </a><br />
+                          <a href="templateProduct.html">Vải Chambray</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Mùa thu</h4>
+                          <a href="templateProduct.html">Vải Cotton</a> <br />
+                          <a href="templateProduct.html">Vải Wool </a><br />
+                          <a href="templateProduct.html">Vải Tweed</a><br />
+                          <a href="templateProduct.html">Vải Flannel</a><br />
+                          <a href="templateProduct.html">Vải Corduroy</a><br />
+                          <a href="templateProduct.html">Vải Denim</a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Đồng phục</h4>
+                          <a href="templateProduct.html">Polyester</a><br />
+                          <a href="templateProduct.htmll">Cotton-PVC</a><br />
+                          <a href="templateProduct.html">Nỉ </a><br />
+                          <a href="templateProduct.html">Kaki</a><br />
+                          <a href="templateProduct.html">Lanh </a><br />
+                        </div>
+
+                        <div class="col-md-2">
+                          <h4>Nội thất</h4>
+                          <a href="templateProduct.html">Vải Cotton</a><br />
+                          <a href="templateProduct.html">Vải Microfiber</a
+                          ><br />
+                          <a href="templateProduct.html">Vải Velvet</a><br />
+                          <a href="templateProduct.html">Vải Polyester</a><br />
+                          <a href="templateProduct.html">Vải Tweed</a><br />
+                          <a href="templateProduct.html">Vải Canvas</a><br />
+                        </div>
+                      </div>
+                    </div>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="templateMayMac.html"
                   >Vải may mặc</a
                 >
+                <!-- Updated href -->
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="fabric_blog.html"
                   >Vải nội thất</a
                 >
+                <!-- Updated href -->
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -513,14 +255,17 @@
                 <a class="nav-link text-white" href="designProduct.html"
                   >Các mẫu thiết kế</a
                 >
+                <!-- Updated href -->
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="contact.html">Liên hệ</a>
+                <!-- Updated href -->
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" href="policyReturn.html"
                   >Chính sách đổi trả</a
                 >
+                <!-- Updated href -->
               </li>
             </ul>
           </div>
