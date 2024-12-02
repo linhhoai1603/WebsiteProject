@@ -1,94 +1,76 @@
-
-.poster{
-  margin: 0;
-  padding: 0;
-  position: absolute;
-
-}
-.poster img{
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-.btn-custom{
-  background-color:#339C87 ;
-}
-.btn-custom:hover,
-.btn-custom:focus ,
-.btn-custom:active{
-  background-color: #008080; /* Màu nền khi nhấn */
-  color: #fff; /* Màu chữ khi nhấn */
-  border-color: #008080; /* Màu viền khi nhấn */
-}
-
-.footer{
-  background-color: #339C87;
-  height: 100px;
-  width: 100%;
-}
-.product-container {
-  max-width: 100%;
-}
-.text-primary {
-  color: #0073e6 !important;
-}
-.text-danger {
-  color: #ff6600 !important;
-}
-.text-info {
-  color: #ffffff !important;
-  background-color: #006bb3 !important;
-}
-.container img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-* {
+ /* General styling for a more polished look */
+ body, html {
+	height: 100%;
 	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+	font-family: Arial, sans-serif;
+	background-color: #f3f4f6;
 }
-body {
+
+.container-fluid iframe {
+	margin-bottom: 0;
+}
+
+/* Styling the poster background */
+.poster {
+	position: relative;
+	background-image: url('images/poster.png');
+	background-size: cover;
+	background-position: center;
 	height: 100vh;
-	background-color: #0d234b;
-	color: #fff;
-	font-size: 24px;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
-}
-.star-rating {
-	white-space: nowrap;
-}
-.star-rating [type="radio"] {
-	appearance: none;
-}
-.star-rating i {
-	font-size: 1.2em;
-	transition: 0.3s;
+	overflow: hidden;
 }
 
-.star-rating label:is(:hover, :has(~ :hover)) i {
-	transform: scale(1.35);
-	color: #fffdba;
-	animation: jump 0.5s calc(0.3s + (var(--i) - 1) * 0.15s) alternate infinite;
-}
-.star-rating label:has(~ :checked) i {
-	color: #faec1b;
-	text-shadow: 0 0 2px #ffffff, 0 0 10px #ffee58;
+/* Center the login card vertically and make it cover the right side text */
+.login-card {
+	max-width: 400px;
+	width: 100%;
+	margin: 0 auto;
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	padding: 30px;
+	opacity: 0.95;
 }
 
-@keyframes jump {
-	0%,
-	50% {
-		transform: translatey(0) scale(1.35);
+/* Styling the form elements */
+.login-card .form-control {
+	border-radius: 20px;
+}
+
+.login-card h2 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+.btn-custom {
+	background-color: #28a745;
+	color: white;
+	font-weight: bold;
+	border-radius: 20px;
+}
+
+.btn-custom:hover {
+	background-color: #218838;
+}
+
+/* Forgot Password and Sign up links */
+.login-card a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+.login-card a:hover {
+	text-decoration: underline;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+	.login-card {
+			width: 90%;
 	}
-	100% {
-		transform: translatey(-15%) scale(1.35);
-	}
 }
-
-
