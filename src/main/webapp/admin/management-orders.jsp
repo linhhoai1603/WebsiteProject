@@ -57,12 +57,12 @@
             <td>2024-12-06 10:30</td>
             <td>1101</td>
             <td>VOUCHER123</td>
-            <td>Thẻ tín dụng</td>
+            <td>Chuyển khoản</td>
             <td>Đã thanh toán</td>
             <td>Đang xử lý</td>
             <td>500.000 VNĐ</td>
             <td>450.000 VNĐ</td>
-            <td><button class="btn btn-info" onclick="showOrderDetails('ORD001')">Xem chi tiết</button></td>
+            <td><a class="btn btn-info" href="management-detail-orders.jsp">Xem chi tiết</a></td>
         </tr>
         <!-- Đơn hàng 2 -->
         <tr>
@@ -75,7 +75,7 @@
             <td>Đang giao hàng</td>
             <td>1.200.000 VNĐ</td>
             <td>1.200.000 VNĐ</td>
-            <td><button class="btn btn-info">Xem chi tiết</button></td>
+            <td><a class="btn btn-info" href="management-detail-orders.jsp">Xem chi tiết</a></td>
         </tr>
         <!-- Các đơn hàng khác -->
         </tbody>

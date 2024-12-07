@@ -9,14 +9,14 @@
 <%@include file="menu-admin.jsp"%>
 
 <div class="container mt-4">
-    <h2 class="mb-4 text-center">Chi Tiết Đơn Hàng - Mã Đơn Hàng: ORD001</h2>
+    <h2 class="mb-4 text-center">Chi Tiết Đơn Hàng - Mã Đơn Hàng: 111</h2>
 
     <!-- Thông tin đơn hàng -->
     <div class="row mb-4">
         <div class="col-md-6">
-            <p><strong>Mã Đơn Hàng:</strong> ORD001</p>
+            <p><strong>Mã Đơn Hàng:</strong> 111</p>
             <p><strong>Thời Gian Đặt:</strong> 2024-12-06 10:30</p>
-            <p><strong>Phương Thức Thanh Toán:</strong> Thẻ tín dụng</p>
+            <p><strong>Phương Thức Thanh Toán:</strong> Chuyển khoản</p>
             <p><strong>Trạng Thái Thanh Toán:</strong> Đã thanh toán</p>
             <p><strong>Trạng Thái Đơn Hàng:</strong> Đang giao hàng</p>
             <p><strong>Tổng Giá Trị:</strong> 1,200,000 VNĐ</p>
@@ -30,6 +30,9 @@
         <tr>
             <th>Mã Sản Phẩm</th>
             <th>Tên Sản Phẩm</th>
+            <th>Màu sắc</th>
+            <th>Kích thước</th>
+            <th>Loại</th>
             <th>Số Lượng</th>
             <th>Giá Tiền</th>
             <th>Tổng Giá</th>
@@ -37,25 +40,34 @@
         </thead>
         <tbody>
         <tr>
-            <td>P001</td>
-            <td>Điện thoại Samsung</td>
+            <td>1</td>
+            <td>Vải kaki</td>
+            <td>Màu da</td>
+            <td>400x400</td>
+            <td>Kaki</td>
             <td>2</td>
             <td>600,000 VNĐ</td>
             <td>1,200,000 VNĐ</td>
         </tr>
         <tr>
-            <td>P002</td>
-            <td>Laptop Dell</td>
             <td>1</td>
-            <td>500,000 VNĐ</td>
-            <td>500,000 VNĐ</td>
+            <td>Vải kaki</td>
+            <td>Màu da</td>
+            <td>400x400</td>
+            <td>Kaki</td>
+            <td>2</td>
+            <td>600,000 VNĐ</td>
+            <td>1,200,000 VNĐ</td>
         </tr>
         <tr>
-            <td>P003</td>
-            <td>Tai nghe Sony</td>
             <td>1</td>
-            <td>500,000 VNĐ</td>
-            <td>500,000 VNĐ</td>
+            <td>Vải kaki</td>
+            <td>Màu da</td>
+            <td>400x400</td>
+            <td>Kaki</td>
+            <td>2</td>
+            <td>600,000 VNĐ</td>
+            <td>1,200,000 VNĐ</td>
         </tr>
         </tbody>
     </table>
