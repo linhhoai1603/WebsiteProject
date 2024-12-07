@@ -18,10 +18,13 @@
   <div class="slide">
     <h1>Menu</h1>
     <ul>
-      <li><a href="#"><i class="fas fa-tv"></i>Trang chủ</a></li>
-      <li><a href="Admin1.html"><i class="fas fa-tv"></i>Điều chỉnh sản phẩm</a></li>
-      <li><a href="Admin2.html"><i class="fas fa-tv"></i>Thông tin doanh thu</a></li>
-      <li><a href="Admin3.html"><i class="fas fa-tv"></i>Biểu đồ doanh thu</a></li>
+      <li><a href="dashboard.jsp"><i class="fa-solid fa-chart-line"></i>Dashboard</a></li>
+      <li><a href="management-users.jsp"><i class="fa-solid fa-users"></i>Người dùng</a></li>
+      <li><a href="management-products.jsp"><i class="fa-solid fa-clone"></i>Sản phẩm</a></li>
+      <li><a href="management-orders.jsp"><i class="fa-solid fa-cart-shopping"></i>Đơn hàng</a></li>
+      <li><a href="management-deliveries.jsp"><i class="fa-solid fa-truck-fast"></i>Vận chuyển</a></li>
+      <li><a href="management-vouchers.jsp"><i class="fa-solid fa-ticket"></i>Mã giảm giá</a></li>
+      <li><a href="management-message.jsp"><i class="fa-regular fa-message"></i>Tin nhắn</a></li>
     </ul>
   </div>
 </label>
