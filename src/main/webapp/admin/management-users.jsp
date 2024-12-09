@@ -3,68 +3,25 @@
 <head>
     <title>Quản Lý Người Dùng</title>
     <%@include file="../includes/link/headLink.jsp"%>
-    <link rel="stylesheet" href="css/management.css">
-    <style>
-        .center-text {
-            text-align: center;  /* Canh giữa nội dung */
-        }
-
-        .container-fluid {
-            font-family: 'Arial', sans-serif;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .table th, .table td {
-            padding: 10px;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
-
-        .table th {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .table td {
-            background-color: #f9f9f9;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="css/management-users.css">
 </head>
 <body>
 <%@include file="menu-admin.jsp"%>
 <div class="container-fluid mt-4">
     <h2 class="center-text mb-4">Danh Sách Người Dùng</h2>
 
+   <div class="row">
+       <!-- Form Tìm kiếm Người dùng -->
+       <div class="col-md-7"></div>
+       <div class="col-md-5 my-3">
+                   <form action="admin-search-users" method="get" class="d-flex">
+                      <input name="name" id="searchUser" type="text" class="form-control me-1" placeholder="Nhập tên người dùng">
+                       <button type="submit" class="btn btn-success">
+                           Tìm kiếm<i class="fa-solid fa-search"></i>
+                       </button>
+                   </form>
+       </div>
+   </div>
     <!-- Bảng thông tin người dùng -->
     <table class="table">
         <thead>
@@ -89,7 +46,10 @@
             <td>Hà Nội, Hoàn Kiếm, Phố Trần Hưng Đạo</td>
             <td>5</td>
             <td>3,500,000 VNĐ</td>
-            <td><a class="btn" href="user-details.jsp?id=U001">Xem chi tiết</a></td>
+            <td>
+                <a href="admin-detail-user" class="btn btn-warning my-1">Xem chi tiết</a>
+                <a href="admin-delete-user" class="btn my-1" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này?')" style="background-color: #f62424" >Xóa</a>
+            </td>
         </tr>
         <!-- Ví dụ người dùng 2 -->
         <tr>
@@ -100,14 +60,17 @@
             <td>Hồ Chí Minh, Quận 1, Phố Nguyễn Huệ</td>
             <td>3</td>
             <td>2,200,000 VNĐ</td>
-            <td><a class="btn" href="user-details.jsp?id=U002">Xem chi tiết</a></td>
+            <td>
+                    <a href="admin-detail-user" class="btn btn-warning my-1" style="background-color: #f3721e">Xem chi tiết</a>
+                    <a href="admin-delete-user" class="btn my-1" style="background-color: #f62424">Xóa</a>
+            </td>
         </tr>
         <!-- Các người dùng khác -->
         </tbody>
     </table>
 
     <div class="text-center">
-        <a class="btn" href="admin-dashboard.jsp">Quay lại</a>
+        <a class="btn btn-primary" href="dashboard.jsp">Quay lại</a>
     </div>
 </div>
 

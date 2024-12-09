@@ -260,23 +260,9 @@
     <div class="container mt-4">
         <!-- Sale Section -->
         <div class="d-flex justify-content-between align-items-center sale-banner">
-            <div>
-                SALE LỚN (10/10-30/10)
-            </div>
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">VẢI LỤA</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VẢI COTTON</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VẢI MODAL</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">VẢI KAKI</a>
-                </li>
-            </ul>
+            <p class="text-center">
+                SẢN PHẨM SALE LỚN NHẤT
+            </p>
         </div>
         <div class="row">
             <div class="col-md-3">

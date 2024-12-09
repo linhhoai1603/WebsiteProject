@@ -14,11 +14,8 @@
 .custom-table tbody tr:hover {
     background-color: #c7ecee; /* Màu nền khi hover */
 }
-input[type="text"] {
-    display: block !important; /* Đảm bảo input được hiển thị */
-    visibility: visible !important; /* Đảm bảo input không bị ẩn */
-    width: 100% !important; /* Đảm bảo input chiếm đủ chiều rộng */
+h2{
+    color: #2c8b73;
 }
-
 
 

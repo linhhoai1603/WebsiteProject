@@ -40,6 +40,7 @@
         <tr>
             <th>Mã Đơn Hàng</th>
             <th>Thông Tin Giao Hàng</th>
+            <th>Trọng lượng</th>
             <th>Phí Vận Chuyển</th>
             <th>Ghi Chú</th>
             <th>Trạng Thái Vận Chuyển</th>
@@ -55,6 +56,7 @@
                 <p><strong>Người nhận:</strong> Nguyễn Văn A</p>
                 <p><strong>SĐT:</strong> 0123456789</p>
             </td>
+            <td>2Kg</td>
             <td>50.000 VNĐ</td>
             <td>Yêu cầu giao hàng gấp</td>
             <td>Đang giao</td>
@@ -67,6 +69,7 @@
                 <p><strong>Người nhận:</strong> Trần Văn B</p>
                 <p><strong>SĐT:</strong> 0987654321</p>
             </td>
+            <td>0.5Kg</td>
             <td>30.000 VNĐ</td>
             <td>Địa chỉ không rõ ràng, cần xác minh</td>
             <td>Hoàn thành</td>

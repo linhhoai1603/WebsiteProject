@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Đảm bảo thanh menu không che mất phần nội dung */
+label.h-auto {
+    position: relative;
+    display: block;
+}
+
 .slide{
     height: 100%;
     width: 200px;
