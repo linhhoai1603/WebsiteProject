@@ -9,6 +9,7 @@ public class Style  implements Serializable {
     private String image;
     private int quantity;
 
+
     public int getId() {
         return id;
     }
@@ -59,5 +60,16 @@ public class Style  implements Serializable {
 
     public Style() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Style{" +
+                "id=" + id +
+                ", product=" + product +
+                ", name='" + name + '\'' +
+                ", image='" + image + '\'' +
+                ", quantity=" + quantity +
+                '}';
     }
 }
