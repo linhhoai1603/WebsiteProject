@@ -86,4 +86,14 @@ public class User implements Serializable {
         this.fullName = name;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.numberPhone = phoneNumber;
+    }
+
+    public void setIdAddress(int idAddress) {
+        if (this.address == null) {
+            this.address = new Address();
+        }
+        this.address.setId(idAddress);
+    }
 }

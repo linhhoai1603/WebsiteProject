@@ -1,79 +1,82 @@
 package controllers;
 
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import dao.MessageDao;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import models.User;
-import services.ContactService;
+import org.jdbi.v3.core.Jdbi;
+import services.MessageService;
+import connection.DBConnection;
 
 import java.io.IOException;
 
-@WebServlet(name = "ContactServlet", value = "/ContactServlet")
+@WebServlet("/ContactServlet")
 public class ContactServlet extends HttpServlet {
-
-    private ContactService contactService;
+    private static final long serialVersionUID = 1L;
+    private MessageService messageService;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        contactService = new ContactService();
+        Jdbi jdbi = DBConnection.getJdbi();
+        MessageDao messageDao = new MessageDao(jdbi);
+        messageService = new MessageService(messageDao);
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("contact.jsp").forward(request, response);
-    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Thiết lập mã hóa ký tự
+        request.setCharacterEncoding("UTF-8");
 
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String messageContent = request.getParameter("message");
+        // Lấy thông tin từ form
+        String title = request.getParameter("subject");
+        String content = request.getParameter("message");
         String contactTime = request.getParameter("contactTime"); // Honeypot field
 
-        // Kiểm tra honeypot để chống spam
+        // Kiểm tra honeypot field để chống spam
         if (contactTime != null && !contactTime.isEmpty()) {
-            request.setAttribute("honeypotError", "Form không hợp lệ.");
+            // Nếu trường honeypot được điền, coi đây là spam và bỏ qua xử lý
+            response.sendRedirect("contact.jsp");
+            return;
+        }
+
+        // Kiểm tra các trường bắt buộc
+        if (title == null || title.trim().isEmpty() ||
+                content == null || content.trim().isEmpty()) {
+            request.setAttribute("error", "Vui lòng điền đầy đủ các trường bắt buộc.");
             request.getRequestDispatcher("contact.jsp").forward(request, response);
             return;
         }
 
-        if (name.isEmpty() || email.isEmpty() || messageContent.isEmpty()) {
-            request.setAttribute("error", "Vui lòng điền đầy đủ các trường.");
+        // Lấy thông tin người dùng hiện tại từ session (giả sử bạn đã lưu User vào session khi đăng nhập)
+        User currentUser = (User) request.getSession().getAttribute("currentUser");
+        if (currentUser == null) {
+            // Người dùng chưa đăng nhập, chuyển hướng đến trang đăng nhập hoặc hiển thị lỗi
+            request.setAttribute("error", "Vui lòng đăng nhập để gửi tin nhắn.");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+
+        try {
+            // Gọi service để xử lý gửi tin nhắn
+            messageService.sendMessage(currentUser, title, content);
+
+            // Nếu thành công, chuyển hướng và hiển thị thông báo thành công
+            request.setAttribute("success", "Cảm ơn bạn đã liên hệ với chúng tôi!");
             request.getRequestDispatcher("contact.jsp").forward(request, response);
-        } else {
-            try {
-                // Giả sử bạn có hệ thống đăng nhập và có đối tượng User hiện tại
-                // Nếu không, bạn có thể tạo một User tạm thời hoặc xử lý theo cách khác
-                User user = getCurrentUser(request); // Implement phương thức này phù hợp với ứng dụng của bạn
-
-                contactService.sendMessage(user, name + " - " + email, messageContent);
-
-                request.setAttribute("success", "Tin nhắn đã được gửi thành công.");
-                request.getRequestDispatcher("contact.jsp").forward(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-                request.setAttribute("formError", "Đã xảy ra lỗi khi gửi yêu cầu: " + e.getMessage());
-                request.getRequestDispatcher("contact.jsp").forward(request, response);
-            }
+        } catch (IllegalArgumentException e) {
+            // Nếu có lỗi về dữ liệu đầu vào, hiển thị thông báo lỗi
+            request.setAttribute("error", e.getMessage());
+            request.getRequestDispatcher("contact.jsp").forward(request, response);
+        } catch (Exception e) {
+            // Nếu có lỗi khác, hiển thị thông báo lỗi
+            e.printStackTrace();
+            request.setAttribute("error", "Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại sau.");
+            request.getRequestDispatcher("contact.jsp").forward(request, response);
         }
-    }
-
-    public void User() {
-
-    }
-
-    private User getCurrentUser(HttpServletRequest request) {
-        // Implement phương thức này để lấy thông tin người dùng hiện tại
-        // Ví dụ: lấy từ session
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            return (User) session.getAttribute("user");
-        }
-        // Nếu không có người dùng đăng nhập, bạn có thể tạo một User tạm thời hoặc xử lý khác
-        User anonymous = new User();
-        anonymous.setId(0); // ID cho người dùng ẩn danh
-        anonymous.setName("Anonymous");
-        return anonymous;
     }
 }

@@ -1,24 +1,17 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hoai1
-  Date: 12/4/2024
-  Time: 1:51 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="includes/link/headLink.jsp"%>
+<%@ include file="includes/link/headLink.jsp" %>
 <html>
 <head>
-    <title>Liên hệ</title>
+  <title>Liên hệ</title>
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 <body>
-<%@include file="includes/header.jsp"%>
-<%@include file="includes/navbar.jsp"%>
-<link rel="stylesheet" href="css/contact.css">
+<%@ include file="includes/header.jsp" %>
+<%@ include file="includes/navbar.jsp" %>
+
 <section class="contact-section">
   <div class="container">
-    <!-- Breadcrumb Navigation -->
-
     <!-- Section Title -->
     <div class="section-title">
       <h2>Thông tin liên hệ</h2>
@@ -49,11 +42,7 @@
           </p>
           <p>
             <i class="fas fa-envelope"></i> Email:
-            <a
-                    href="mailto:vaihongngan@gmail.com"
-                    class="text-decoration-none text-light"
-            >vovanvai@gmail.com</a
-            >
+            <a href="mailto:vaihongngan@gmail.com" class="text-decoration-none text-light">vovanvai@gmail.com</a>
           </p>
           <!-- Interactive Map -->
           <div class="map-container">
@@ -72,56 +61,43 @@
       <!-- Contact Form -->
       <div class="col-lg-6 d-flex">
         <div class="contact-form w-100">
-          <h3>
-            <i class="fas fa-envelope"></i> Gửi tin nhắn cho chúng tôi
-          </h3>
+          <h3><i class="fas fa-envelope"></i> Gửi tin nhắn cho chúng tôi</h3>
+
           <!-- Thông báo thành công và lỗi -->
-          <div
-                  id="successMessage"
-                  class="alert alert-success"
-                  style="display: none"
-          >
-            Cảm ơn bạn đã liên hệ với chúng tôi!
-          </div>
-          <div
-                  id="honeypotError"
-                  class="alert alert-danger"
-                  style="display: none"
-          >
-            Form không hợp lệ.
-          </div>
-          <div
-                  id="formError"
-                  class="alert alert-danger"
-                  style="display: none"
-          >
-            Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại sau.
-          </div>
-          <form id="contactForm" novalidate>
+          <c:if test="${not empty success}">
+            <div class="alert alert-success">
+                ${success}
+            </div>
+          </c:if>
+          <c:if test="${not empty error}">
+            <div class="alert alert-danger">
+                ${error}
+            </div>
+          </c:if>
+
+          <form id="contactForm" action="ContactServlet" method="post" novalidate>
             <div class="form-floating mb-4">
               <input
                       type="text"
                       class="form-control"
                       id="subject"
+                      name="subject"
                       placeholder="Nhập tiêu đề"
                       required
               />
-              <label for="subject"
-              >Tiêu đề <span class="text-danger">*</span></label
-              >
+              <label for="subject">Tiêu đề <span class="text-danger">*</span></label>
               <div class="invalid-feedback">Vui lòng nhập tiêu đề.</div>
             </div>
             <div class="form-floating mb-4">
                   <textarea
                           class="form-control"
                           id="message"
+                          name="message"
                           placeholder="Nhập nội dung"
                           style="height: 150px"
                           required
                   ></textarea>
-              <label for="message"
-              >Nội dung <span class="text-danger">*</span></label
-              >
+              <label for="message">Nội dung <span class="text-danger">*</span></label>
               <div class="invalid-feedback">Vui lòng nhập nội dung.</div>
             </div>
             <!-- Honeypot Field -->
@@ -130,9 +106,7 @@
                     aria-hidden="true"
                     tabindex="-1"
             >
-              <label for="contactTime"
-              >Nếu bạn là người thật, hãy bỏ trống trường này:</label
-              >
+              <label for="contactTime">Nếu bạn là người thật, hãy bỏ trống trường này:</label>
               <input
                       type="text"
                       id="contactTime"
@@ -141,9 +115,7 @@
                       autocomplete="off"
               />
             </div>
-            <button type="submit" class="btn btn-warning w-100">
-              Gửi yêu cầu
-            </button>
+            <button type="submit" class="btn btn-warning w-100">Gửi yêu cầu</button>
           </form>
         </div>
       </div>
@@ -151,8 +123,31 @@
   </div>
 </section>
 
-<%@include file="includes/footer.jsp"%>
-<%@include file="includes/link/footLink.jsp"%>
-<%--<script src="js/contact.js"></script>--%>
+<%@ include file="includes/footer.jsp" %>
+<%@ include file="includes/link/footLink.jsp" %>
+
+<script>
+  // JavaScript để kiểm tra form
+  (function () {
+    'use strict'
+
+    // Lấy form để kiểm tra
+    var forms = document.querySelectorAll('#contactForm')
+
+    // Vòng lặp qua từng form và ngăn không cho gửi nếu form không hợp lệ
+    Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+              form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+              }, false)
+            })
+  })()
+</script>
+
 </body>
 </html>
