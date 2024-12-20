@@ -153,6 +153,6 @@
 
 <%@include file="includes/footer.jsp"%>
 <%@include file="includes/link/footLink.jsp"%>
-<script src="js/contact.js"></script>
+<%--<script src="js/contact.js"></script>--%>
 </body>
 </html>
