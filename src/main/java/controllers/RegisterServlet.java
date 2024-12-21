@@ -34,6 +34,14 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
+
+        // Kiểm tra độ dài mật khẩu
+        if (password.length() < 6) {
+            request.setAttribute("error", "Mật khẩu phải có ít nhất 6 ký tự.");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+            return;
+        }
+
         if (!password.equals(confirmPassword)) {
             request.setAttribute("error", "Mật khẩu và xác nhận mật khẩu không khớp.");
             request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -48,11 +56,13 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             userService.registerUser(email, password, "Default Name", "0000000000", 1, "default.png");
-            response.sendRedirect("login.jsp");
+            // Thay vì sendRedirect(...):
+            request.getRequestDispatcher("register_success.jsp").forward(request, response);
         } catch (RuntimeException e) {
             request.setAttribute("error", e.getMessage());
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
+
     }
 
     private boolean isValidEmail(String email) {

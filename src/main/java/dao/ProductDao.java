@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductDao {
     private Jdbi jdbi;
     public ProductDao() {
-        jdbi = DBConnection.getConnetion();
+        jdbi = DBConnection.getConnection();
     }
     public int getNumberPageProductByCategory(int idCategory, int pageSize) {
         String query = "select count(*) from products where idCategory = ? ";

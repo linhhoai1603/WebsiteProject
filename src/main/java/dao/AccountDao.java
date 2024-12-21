@@ -7,7 +7,7 @@ import org.jdbi.v3.core.Jdbi;
 
 public class AccountDao {
     public AccountUser findByUsername(String username) {
-        Jdbi jdbi = DBConnection.getConnetion();
+        Jdbi jdbi = DBConnection.getConnection();
         UserDao userDao = new UserDao();
         return jdbi.withHandle(handle ->
                 handle.createQuery("select * from account_user where username = :username")
@@ -23,7 +23,7 @@ public class AccountDao {
         );
     }
     public AccountUser findByUserId(int id) {
-        Jdbi jdbi = DBConnection.getConnetion();
+        Jdbi jdbi = DBConnection.getConnection();
         return jdbi.withHandle(handle ->
                 handle.createQuery("select * from account_users where idUser = :idUser")
                         .bind("idUser", id)

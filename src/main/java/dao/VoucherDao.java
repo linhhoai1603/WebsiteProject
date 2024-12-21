@@ -9,7 +9,7 @@ import java.util.List;
 public class VoucherDao {
     private Jdbi jdbi;
     public VoucherDao() {
-        jdbi = DBConnection.getConnetion();
+        jdbi = DBConnection.getConnection();
     }
     public List<Voucher> getAllVouchers() {
         String query = "SELECT * FROM voucher;";

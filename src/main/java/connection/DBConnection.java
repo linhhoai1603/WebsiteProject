@@ -13,13 +13,13 @@
 
         public static Jdbi getJdbi() {
             if (jdbi == null) {
-                getConnetion();
+                getConnection();
             }
             return jdbi;
         }
 
         // cung cấp kết nối Jdbi
-        public static Jdbi getConnetion() {
+        public static Jdbi getConnection() {
             MysqlDataSource dataSource = new MysqlDataSource();
             dataSource.setURL("jdbc:mysql://"+ DBProperties.HOST+":"+DBProperties.PORT+"/"+DBProperties.NAME+"?"+DBProperties.OPTIONS);
             dataSource.setUser(DBProperties.USER);
@@ -36,7 +36,7 @@
         public static void main(String[] args) {
             int aidi = 1;
             List<Product> products = getJdbi().withHandle(handle ->
-                    handle.createQuery("SELECT * FROM products where id = ?").bind(0, aidi)
+                    handle.createQuery("SELECT * FROM products where id = ?").bind(1, aidi)
                             .mapToBean(Product.class)
                             .list()
             );

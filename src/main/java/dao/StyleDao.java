@@ -9,7 +9,7 @@ import java.util.List;
 public class StyleDao {
     private Jdbi jdbi;
     public StyleDao() {
-        jdbi = DBConnection.getConnetion();
+        jdbi = DBConnection.getConnection();
     }
     public List<Style> getAllStylesByIDProduct(int idProduct){
         String query = "select * from styles where idProduct = ?";

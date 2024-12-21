@@ -16,7 +16,7 @@ public class UserDao {
     }
 
     public User findUserById(int id) {
-        Jdbi jdbi = DBConnection.getConnetion();
+        Jdbi jdbi = DBConnection.getConnection();
         return jdbi.withHandle(handle ->
                 handle.createQuery("SELECT * FROM Users WHERE id = :id")
                         .bind("id", id)

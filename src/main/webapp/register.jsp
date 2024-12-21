@@ -11,8 +11,8 @@
 <a href="index.jsp">&lt;-- Quay lại trang chủ</a>
 <!-- Nội Dung Chính: Form Đăng Ký -->
 <div class="container">
-  <div class="row justify-content-center"> <!-- Thêm lớp justify-content-center để trung tâm hóa cột -->
-    <div class="col-md-6"> <!-- Đảm bảo rằng lớp col-md-6 được viết đúng -->
+  <div class="row justify-content-center">
+    <div class="col-md-6">
       <div class="form-section">
         <h2 class="text-center">ĐĂNG KÝ TÀI KHOẢN</h2>
 
