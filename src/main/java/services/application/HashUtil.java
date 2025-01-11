@@ -11,6 +11,7 @@ public class HashUtil {
         return Base64.getEncoder().encodeToString(saltedPassword.getBytes());
     }
 
+
     public static void main(String[] args) {
         String password ="123456";
         System.out.println(encodePasswordBase64(password));

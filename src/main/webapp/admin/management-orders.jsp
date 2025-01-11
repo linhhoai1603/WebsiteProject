@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hoai1
-  Date: 12/6/2024
-  Time: 3:51 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Quản lý đơn hàng</title>
@@ -21,7 +15,7 @@
     <div class="row my-3">
         <div class="col-md-8"></div>
         <div class="col-md-4">
-            <form method="post" action="search-order" class="d-flex float-end w-100">
+            <form method="post" action="order" class="d-flex float-end w-100">
                 <div class="row w-100">
                     <div class="col-md-8">
                         <input type="text" placeholder="Tìm theo mã đơn hàng" name="searchOrder" class="form-control me-2">
@@ -51,33 +45,20 @@
         </tr>
         </thead>
         <tbody>
-        <!-- Đơn hàng 1 -->
-        <tr>
-            <td>ORD001</td>
-            <td>2024-12-06 10:30</td>
-            <td>1101</td>
-            <td>VOUCHER123</td>
-            <td>Chuyển khoản</td>
-            <td>Đã thanh toán</td>
-            <td>Đang xử lý</td>
-            <td>500.000 VNĐ</td>
-            <td>450.000 VNĐ</td>
-            <td><a class="btn btn-info" href="management-detail-orders.jsp">Xem chi tiết</a></td>
-        </tr>
-        <!-- Đơn hàng 2 -->
-        <tr>
-            <td>ORD002</td>
-            <td>2024-12-06 11:00</td>
-            <td>1102</td>
-            <td>NULL</td>
-            <td>Tiền mặt</td>
-            <td>Chưa thanh toán</td>
-            <td>Đang giao hàng</td>
-            <td>1.200.000 VNĐ</td>
-            <td>1.200.000 VNĐ</td>
-            <td><a class="btn btn-info" href="management-detail-orders.jsp">Xem chi tiết</a></td>
-        </tr>
-        <!-- Các đơn hàng khác -->
+        <c:forEach var="order" items="${orders}">
+            <tr>
+                <td>ORD${order.id}</td>
+                <td>${order.timeOrdered}</td>
+                <td>${order.user.id}</td>
+                <td>${order.voucher != null ? order.voucher.code : "NULL"}</td>
+                <td>${order.paymentMethod}</td>
+                <td>${order.paymentStatus}</td>
+                <td>${order.status}</td>
+                <td>${order.totalPrice} VNĐ</td>
+                <td>${order.lastPrice} VNĐ</td>
+                <td><a class="btn btn-info" href="order-detail?id=${order.id}">Xem chi tiết</a></td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>

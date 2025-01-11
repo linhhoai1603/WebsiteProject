@@ -1,3 +1,4 @@
+
 package models;
 
 import java.io.Serializable;
@@ -6,14 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order implements Serializable {
-   private int id;
-   private User user;
-   private LocalDateTime timeOrdered;
-   private Voucher voucher;
-   private String status;
-   private double totalPrice;
-   private double lastPrice;
-   private List<OrderDetail> listOfDetailOrder = new ArrayList<OrderDetail>();
+    private int id;
+    private User user;
+    private LocalDateTime timeOrdered;
+    private Voucher voucher;
+    private String status;
+    private double totalPrice;
+    private double lastPrice;
+    private List<OrderDetail> listOfDetailOrder = new ArrayList<OrderDetail>();
     public Order() {
 
     }

@@ -3,6 +3,7 @@ package services;
 import dao.UserDao;
 import models.AccountUser;
 import models.User;
+import services.application.HashUtil;
 
 import java.util.List;
 // Đảm bảo bạn import HashUtil từ package services
@@ -54,5 +55,46 @@ public class UserService {
     public List<AccountUser> searchUser(String name) {
         return userDao.findUserByName(name);
     }
+
+    public void registerAdmin(String username, String password,
+                              String fullName, String phoneNumber,
+                              int idAddress, String image) {
+        // Kiểm tra username
+        if (username == null || username.isEmpty()) {
+            throw new RuntimeException("Username không được để trống.");
+        }
+
+        // Kiểm tra username đã tồn tại chưa
+        if (userDao.usernameExists(username)) {
+            throw new RuntimeException("Username đã được sử dụng.");
+        }
+
+        String fakeEmail = "admin@example.com";
+
+        // Thêm User mới vào bảng users
+        int newUserId = userDao.insertUser(fakeEmail, fullName, phoneNumber, idAddress, image);
+
+        // Thêm tài khoản Admin (role = 2) vào bảng account_users
+        userDao.insertAccountUser(newUserId,username, HashUtil.encodePasswordBase64(password), 2, 0, 0);
+    }
+
+    public static void main(String[] args) {
+        UserService userService = new UserService();
+        try {
+            userService.registerAdmin(
+                    "admin",                 // Tên đăng nhập
+                    "123456",                // Mật khẩu
+                    "Admin User",            // Tên đầy đủ
+                    "0123456789",            // Số điện thoại
+                    1,                       // ID địa chỉ (cần tồn tại trong DB)
+                    "default-avatar.png"     // Avatar mặc định
+            );
+            System.out.println("Tạo tài khoản Admin thành công!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
 
